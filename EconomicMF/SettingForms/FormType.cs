@@ -1,0 +1,38 @@
+﻿namespace EconomicMF.SettingForms
+{
+    public enum FormType 
+    {
+        Login,
+        Register,
+        Solution,
+        Main,
+        Others,
+        ResolveDepreciation,
+        AddSolution,
+        UpdateUser,
+        AddInvestor,
+        CreateProject,
+        FlowMain,
+        ChargeData,
+        Cost,
+        Entry,
+        Inversion,
+        Start,
+        Config,
+        DashBoard,
+        Detail,
+        Gestor,
+        Inversors,
+        Reporte,
+        Annuaty,
+        Calculus,
+        Conversor,
+        ConvertTime,
+        Interesp,
+        ForgotPassword,
+        ValidateRegister,
+        ValidateUser,
+        ConfigInit,
+        EditarInversor,
+    }
+}
