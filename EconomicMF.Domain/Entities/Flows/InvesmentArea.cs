@@ -8,5 +8,6 @@
         public int Start { get; set; }
         public decimal Amount { get; set; }
         public bool IsDiferida { get; set; }
+        public decimal RecoveryCt { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace EconomicMF.Domain.Contracts
         /// </summary>
         /// <param name="projectId"></param>
         /// <returns></returns>
-        Task<IEnumerable<InvesmentEntity>> GetByProjectIdAsync(int projectId);
+        Task<List<InvesmentEntity>> GetByProjectIdAsync(int projectId);
         /// <summary>
         /// Get All the entities by SolutionId
         /// </summary>

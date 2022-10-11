@@ -1,8 +1,14 @@
 ﻿using EconomicEF.Common.UserCache;
+using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Contracts;
-using EconomicMF.Forms.FormsFlujo;
-using EconomicMF.SettingForms;
+using EconomicMF.Domain.Entities.DataWithList;
+using EconomicMF.Domain.Entities.Flows;
+using EconomicMF.Domain.Entities.FlowTool;
+using EconomicMF.Services;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,131 +16,160 @@ namespace EconomicMF.Forms.FormsProject.FNE
 {
     public partial class FrmChargeData : Form
     {
-        private readonly IUnitOfWork projectServices;
+        private readonly IUnitOfWork unitOfWork;
+        private Project getProject = new Project();
 
-        private int idProject;
-        public FrmChargeData(IUnitOfWork projectServices)
+        public FrmChargeData(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
-            this.projectServices = projectServices;
-            this.idProject = DataOnMemory.ProjectId;
+            this.unitOfWork = unitOfWork;
         }
 
-        private void FrmChargeData_Load(object sender, EventArgs e)
+        private async void FrmChargeData_Load(object sender, EventArgs e)
         {
-            lblTasa.Text = MemoryOnProject.TmarMixta + "";
-            ValidateInvestors();
+            getProject = await ChargeProject();
+            GetFNE();
             ChargeLabels();
-            ChargeInversors();
         }
 
-        private void ValidateInvestors()
+        private async Task<Project> ChargeProject()
         {
-            //var investors = projectServices.GetEntitiesByProjectId(idProject);
-            //var project = projectServices.GetById(idProject);
-            //if (investors is null || investors.Count <= 0)
-            //{
-                
-            //    const string wait = "Esperando..";
-            //    btnEspecificado.Visible = false;
-            //    lblTasa.Text = wait;
-            //    lblTir.Text = wait;
-            //    lblVpn.Text = wait;
-            //    lblInversionistas.Text = wait;  
-            //    lblPeriodo.Text = $"{project.Period}";
-            //}
-            //else
-            //{
-            //    lblPeriodo.Text = $"{project.Period}";
-            //    btnEspecificado.Visible = true;
-            //    ChargeInversors();
-            //}
+            ProjectClient projectClient = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+
+            List<Asset> assets = await unitOfWork.AssetClient.GetAllAssetAsync(DataOnMemory.ProjectId);
+            List<InvesmentArea> invesmentAreas = await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId);
+            List<ProjectCost> projectCosts = await unitOfWork.CostClient.GetAllCost(DataOnMemory.ProjectId);
+            List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
+            List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
+
+            if (projectClient.WithFinancing)
+            {
+                List<InvesmentEntity> invesmentEntities = await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(DataOnMemory.ProjectId);
+
+                Project project = new Project()
+                {
+                    Id = DataOnMemory.ProjectId,
+                    SolutionId = projectClient.SolutionId,
+                    Name = projectClient.Name,
+                    Description = projectClient.Description,
+                    Period = projectClient.Period,
+                    Duration = projectClient.Duration,
+                    WithFinancing = projectClient.WithFinancing,
+                    TMAR = projectClient.TMAR,
+                    TMARMixta = projectClient.TMARMixta,
+                    Contribution = projectClient.Contribution,
+                    InvestmentArea = invesmentAreas,
+                    ProjectCosts = projectCosts,
+                    InvestmentEntities = invesmentEntities,
+                    ProjectExpenses = projectExpenses,
+                    ProjectEntries = projectEntries,
+                    Assets = assets,
+                };
+
+                return project;
+            }
+            else
+            {
+                Project project = new Project()
+                {
+                    Id = DataOnMemory.ProjectId,
+                    SolutionId = projectClient.SolutionId,
+                    Name = projectClient.Name,
+                    Description = projectClient.Description,
+                    Period = projectClient.Period,
+                    Duration = projectClient.Duration,
+                    WithFinancing = projectClient.WithFinancing,
+                    TMAR = projectClient.TMAR,
+                    TMARMixta = projectClient.TMARMixta,
+                    Contribution = projectClient.Contribution,
+                    InvestmentArea = invesmentAreas,
+                    ProjectCosts = projectCosts,
+                    ProjectExpenses = projectExpenses,
+                    ProjectEntries = projectEntries,
+                    Assets = assets,
+                };
+
+                return project;
+            }
+
         }
-        private void ChargeLabels()
+
+        private void GetFNE()
+        {
+            dtgFNE.DataSource =  ProjectCalculations.AllFNE(getProject);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (dtgFNE.Rows.Count > 0)
+            {
+                ExportarDatos(dtgFNE);
+            }
+        }
+
+
+        public void ExportarDatos(DataGridView data)
         {
             try
             {
-                //var (project, flows) = ChargeProject();
-                //lblInversionistas.Text = project.EntidadInvs.Count.ToString();
-                //lblPeriodo.Text = project.Period.ToString();
-                //lblTasa.Text = "27%";
-                //ValidateInvestors();
+                Microsoft.Office.Interop.Excel.Application application = new Microsoft.Office.Interop.Excel.Application();
+                application.Application.Workbooks.Add(true);
+                int indice = 0;
+                foreach (DataGridViewColumn i in data.Columns)
+                {
+                    indice++;
+                    application.Cells[1, indice] = i.Name;
+                }
+                int indicefila = 0;
+                foreach (DataGridViewRow fila in data.Rows)
+                {
+                    indicefila++;
+                    if (indicefila == 1)
+                    {
+                        //indicefila++;
+                    }
+                    indice = 0;
+                    foreach (DataGridViewColumn columna in data.Columns)
+                    {
+                        indice++;
+                        application.Cells[indicefila + 1, indice] = fila.Cells[columna.Name].Value;
+                    }
 
-                //if (project.AreaInversions.Count > 0 && project.CostProjects.Count > 0 && project.EntidadInvs.Count > 0)
-                //{
-                //    lblTir.Text = Math.Round(ProjectCalculations.TIR(flows, 10), 2).ToString();
-                //    lblVpn.Text = Math.Round(ProjectCalculations.VPN(flows, 10), 2).ToString();
-                //    btnEspecificado.Visible = true;
-                //}
-                //else
-                //{
-                //    lblVpn.Text = "Esperando...";
-                //    btnEspecificado.Visible = false;
-                //}
-
-                //dtgFNE.DataSource = flows;
-
+                }
+                application.Visible = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        //private (Project, List<Flujo>) ChargeProject()
-        //{
-        //    var project = projectServices.GetById(idProject);
-        //    var inversiones = projectServices.GetAllInversionsByProject(project);
-        //    var costos = projectServices.GetAllCosto(project);
-        //    var ingresos = projectServices.GetAllIngreso(project);
-        //    var flujos = ProjectCalculations.FNE(project);
-
-        //    project.IngresoProyectos = ingresos;
-        //    project.CostProjects = costos;
-        //    project.AreaInversions = inversiones;
-
-        //    return (project, flujos);
-        //}
-
-        private void btnEspecificado_Click(object sender, EventArgs e)
+        private void ChargeLabels()
         {
+            List<Flujo> flujo = ProjectCalculations.FNE(getProject);
+         
+            if (getProject.WithFinancing)
+            {
+                decimal tmarMixta = CalculusOnMemory.GetTmar(getProject);
+                lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: tmarMixta), 2) + " %";
+                lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, tmarMixta), 2) + " $";
+                lblGetTmar.Text = "TMAR mixta";
+                lblTasa.Text = tmarMixta + "";
+                lblPeriodo.Text = getProject.Period;
+            }
+            else
+            {
+                lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: getProject.TMAR), 2) + " %";
+                lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, getProject.TMAR), 2) + " $";
+                lblGetTmar.Text = "TMAR";
+                lblTasa.Text = getProject.TMAR + " %";
+                lblPeriodo.Text = getProject.Period;
+                lblTir.Text = ProjectCalculations.TIR(flujo, getProject.TMAR) + " %";
+            }
         }
-
-        private void ChargeInversors()
+        private void btnAmortizacion_Click(object sender, EventArgs e)
         {
-            //flpInvestors.Controls.Clear();
-            //foreach (var item in projectServices.GetEntitiesByProjectId(idProject))
-            //{
-            //    UCInvestorForCharge uCInvestorForCharge = new UCInvestorForCharge();
-            //    flpInvestors.Controls.Add(uCInvestorForCharge);
-            //}
-        }
 
-        private void btnAddInvestor_Click(object sender, EventArgs e)
-        {
-            FrmAddInvestors frmAddInvestors = new FrmAddInvestors(projectServices);
-            frmAddInvestors.ShowDialog();
-            ChargeInversors();
-            ValidateInvestors();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.EditarInversor));
-        }
-
-        private void AbrirFormEnPanel(object formHijo)
-        {
-            if (this.panelOpen.Controls.Count > 0)
-                this.panelOpen.Controls.RemoveAt(0);
-            Form fh = (Form)formHijo;
-            fh.TopLevel = false;
-            fh.FormBorderStyle = FormBorderStyle.None;
-            fh.Dock = DockStyle.Fill;
-            this.panelOpen.Controls.Add(fh);
-            this.panelOpen.Tag = fh;
-            fh.Show();
         }
     }
 }

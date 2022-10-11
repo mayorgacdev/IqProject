@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddAsset));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblValorResidual = new System.Windows.Forms.Label();
             this.txtValorResidual = new RJCodeAdvance.RJControls.RJTextBox();
-            this.lbVidautil = new System.Windows.Forms.Label();
             this.txtVidaUtil = new RJCodeAdvance.RJControls.RJTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtMonto = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblDepreciación = new System.Windows.Forms.Label();
             this.tgDepreciacion = new RJCodeAdvance.RJControls.RJToggleButton();
-            this.panelOpen = new System.Windows.Forms.Panel();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescription = new RJCodeAdvance.RJControls.RJTextBox();
@@ -46,8 +47,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new RJCodeAdvance.RJControls.RJTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnAdd = new RJCodeAdvance.RJControls.RJButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dtgFNE = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.txtNameProject = new RJCodeAdvance.RJControls.RJTextBox();
+            this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
+            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
+            this.btnAgregar = new RJCodeAdvance.RJControls.RJButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tglsVidaDeActivo = new RJCodeAdvance.RJControls.RJToggleButton();
+            this.cmbVidaActivos = new RJCodeAdvance.RJControls.RJComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             this.SuspendLayout();
             // 
             // lblValorResidual
@@ -79,23 +90,14 @@
             this.txtValorResidual.PasswordChar = false;
             this.txtValorResidual.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtValorResidual.PlaceholderText = "Valor residual";
-            this.txtValorResidual.Size = new System.Drawing.Size(299, 39);
+            this.txtValorResidual.Size = new System.Drawing.Size(307, 39);
             this.txtValorResidual.TabIndex = 93;
             this.txtValorResidual.Texts = "";
             this.txtValorResidual.UnderlinedStyle = true;
             // 
-            // lbVidautil
-            // 
-            this.lbVidautil.AutoSize = true;
-            this.lbVidautil.ForeColor = System.Drawing.Color.White;
-            this.lbVidautil.Location = new System.Drawing.Point(566, 257);
-            this.lbVidautil.Name = "lbVidautil";
-            this.lbVidautil.Size = new System.Drawing.Size(64, 20);
-            this.lbVidautil.TabIndex = 92;
-            this.lbVidautil.Text = "Vida util";
-            // 
             // txtVidaUtil
             // 
+            this.txtVidaUtil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVidaUtil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.txtVidaUtil.BorderColor = System.Drawing.Color.White;
             this.txtVidaUtil.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -109,7 +111,7 @@
             this.txtVidaUtil.Name = "txtVidaUtil";
             this.txtVidaUtil.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtVidaUtil.PasswordChar = false;
-            this.txtVidaUtil.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtVidaUtil.PlaceholderColor = System.Drawing.Color.White;
             this.txtVidaUtil.PlaceholderText = "Vida util";
             this.txtVidaUtil.Size = new System.Drawing.Size(299, 39);
             this.txtVidaUtil.TabIndex = 91;
@@ -150,9 +152,10 @@
             // 
             // lblDepreciación
             // 
+            this.lblDepreciación.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDepreciación.AutoSize = true;
             this.lblDepreciación.ForeColor = System.Drawing.Color.White;
-            this.lblDepreciación.Location = new System.Drawing.Point(461, 146);
+            this.lblDepreciación.Location = new System.Drawing.Point(479, 146);
             this.lblDepreciación.Name = "lblDepreciación";
             this.lblDepreciación.Size = new System.Drawing.Size(97, 20);
             this.lblDepreciación.TabIndex = 98;
@@ -160,8 +163,9 @@
             // 
             // tgDepreciacion
             // 
+            this.tgDepreciacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tgDepreciacion.AutoSize = true;
-            this.tgDepreciacion.Location = new System.Drawing.Point(585, 146);
+            this.tgDepreciacion.Location = new System.Drawing.Point(603, 146);
             this.tgDepreciacion.MinimumSize = new System.Drawing.Size(45, 22);
             this.tgDepreciacion.Name = "tgDepreciacion";
             this.tgDepreciacion.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(120)))));
@@ -171,14 +175,6 @@
             this.tgDepreciacion.Size = new System.Drawing.Size(45, 22);
             this.tgDepreciacion.TabIndex = 97;
             this.tgDepreciacion.UseVisualStyleBackColor = true;
-            // 
-            // panelOpen
-            // 
-            this.panelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelOpen.Location = new System.Drawing.Point(71, 439);
-            this.panelOpen.Name = "panelOpen";
-            this.panelOpen.Size = new System.Drawing.Size(789, 239);
-            this.panelOpen.TabIndex = 99;
             // 
             // rjCircularPictureBox1
             // 
@@ -208,6 +204,7 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.txtDescription.BorderColor = System.Drawing.Color.White;
             this.txtDescription.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -223,7 +220,7 @@
             this.txtDescription.PasswordChar = false;
             this.txtDescription.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtDescription.PlaceholderText = "Descripción";
-            this.txtDescription.Size = new System.Drawing.Size(370, 39);
+            this.txtDescription.Size = new System.Drawing.Size(193, 39);
             this.txtDescription.TabIndex = 101;
             this.txtDescription.Texts = "";
             this.txtDescription.UnderlinedStyle = true;
@@ -233,7 +230,7 @@
             this.lblTipoDeMetodo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTipoDeMetodo.AutoSize = true;
             this.lblTipoDeMetodo.ForeColor = System.Drawing.Color.White;
-            this.lblTipoDeMetodo.Location = new System.Drawing.Point(395, 344);
+            this.lblTipoDeMetodo.Location = new System.Drawing.Point(299, 354);
             this.lblTipoDeMetodo.Name = "lblTipoDeMetodo";
             this.lblTipoDeMetodo.Size = new System.Drawing.Size(117, 20);
             this.lblTipoDeMetodo.TabIndex = 104;
@@ -251,12 +248,12 @@
             this.cmbTipoMetodo.IconColor = System.Drawing.Color.MediumSpringGreen;
             this.cmbTipoMetodo.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTipoMetodo.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbTipoMetodo.Location = new System.Drawing.Point(325, 374);
+            this.cmbTipoMetodo.Location = new System.Drawing.Point(440, 344);
             this.cmbTipoMetodo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbTipoMetodo.MinimumSize = new System.Drawing.Size(229, 40);
             this.cmbTipoMetodo.Name = "cmbTipoMetodo";
             this.cmbTipoMetodo.Padding = new System.Windows.Forms.Padding(1);
-            this.cmbTipoMetodo.Size = new System.Drawing.Size(254, 42);
+            this.cmbTipoMetodo.Size = new System.Drawing.Size(262, 42);
             this.cmbTipoMetodo.TabIndex = 103;
             this.cmbTipoMetodo.Texts = "Tipo de metodo";
             // 
@@ -272,6 +269,7 @@
             // 
             // txtName
             // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.txtName.BorderColor = System.Drawing.Color.White;
             this.txtName.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -302,35 +300,219 @@
             this.label5.TabIndex = 106;
             this.label5.Text = "Nombre";
             // 
-            // btnAdd
+            // pictureBox1
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnAdd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnAdd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnAdd.BorderRadius = 0;
-            this.btnAdd.BorderSize = 0;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdd.Location = new System.Drawing.Point(341, 701);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(204, 39);
-            this.btnAdd.TabIndex = 107;
-            this.btnAdd.Text = "Agregar";
-            this.btnAdd.TextColor = System.Drawing.Color.White;
-            this.btnAdd.UseVisualStyleBackColor = false;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(799, 410);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 112;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dtgFNE
+            // 
+            this.dtgFNE.AllowUserToResizeRows = false;
+            this.dtgFNE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgFNE.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dtgFNE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgFNE.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgFNE.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.dtgFNE.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgFNE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgFNE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgFNE.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgFNE.EnableHeadersVisualStyles = false;
+            this.dtgFNE.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtgFNE.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.dtgFNE.Location = new System.Drawing.Point(96, 466);
+            this.dtgFNE.Name = "dtgFNE";
+            this.dtgFNE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgFNE.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgFNE.RowHeadersWidth = 51;
+            this.dtgFNE.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgFNE.RowTemplate.Height = 29;
+            this.dtgFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgFNE.Size = new System.Drawing.Size(733, 212);
+            this.dtgFNE.TabIndex = 110;
+            // 
+            // txtNameProject
+            // 
+            this.txtNameProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNameProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtNameProject.BorderColor = System.Drawing.Color.White;
+            this.txtNameProject.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtNameProject.BorderRadius = 0;
+            this.txtNameProject.BorderSize = 2;
+            this.txtNameProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNameProject.ForeColor = System.Drawing.Color.White;
+            this.txtNameProject.Location = new System.Drawing.Point(107, 410);
+            this.txtNameProject.Margin = new System.Windows.Forms.Padding(5);
+            this.txtNameProject.Multiline = false;
+            this.txtNameProject.Name = "txtNameProject";
+            this.txtNameProject.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.txtNameProject.PasswordChar = false;
+            this.txtNameProject.PlaceholderColor = System.Drawing.Color.White;
+            this.txtNameProject.PlaceholderText = "Buscar entidad";
+            this.txtNameProject.Size = new System.Drawing.Size(676, 39);
+            this.txtNameProject.TabIndex = 109;
+            this.txtNameProject.Texts = "";
+            this.txtNameProject.UnderlinedStyle = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminar.BorderRadius = 0;
+            this.btnEliminar.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.Location = new System.Drawing.Point(569, 704);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(132, 39);
+            this.btnEliminar.TabIndex = 115;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.White;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnActualizar.BorderRadius = 0;
+            this.btnActualizar.BorderSize = 0;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActualizar.Location = new System.Drawing.Point(210, 704);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(132, 39);
+            this.btnActualizar.TabIndex = 114;
+            this.btnActualizar.Text = "Editar";
+            this.btnActualizar.TextColor = System.Drawing.Color.White;
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnAgregar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnAgregar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAgregar.BorderRadius = 0;
+            this.btnAgregar.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.Location = new System.Drawing.Point(355, 704);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(205, 39);
+            this.btnAgregar.TabIndex = 113;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextColor = System.Drawing.Color.White;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(479, 220);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.TabIndex = 117;
+            this.label2.Text = "Años como en Ni";
+            // 
+            // tglsVidaDeActivo
+            // 
+            this.tglsVidaDeActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tglsVidaDeActivo.AutoSize = true;
+            this.tglsVidaDeActivo.Location = new System.Drawing.Point(608, 220);
+            this.tglsVidaDeActivo.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tglsVidaDeActivo.Name = "tglsVidaDeActivo";
+            this.tglsVidaDeActivo.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(120)))));
+            this.tglsVidaDeActivo.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.tglsVidaDeActivo.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tglsVidaDeActivo.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.tglsVidaDeActivo.Size = new System.Drawing.Size(45, 22);
+            this.tglsVidaDeActivo.TabIndex = 116;
+            this.tglsVidaDeActivo.UseVisualStyleBackColor = true;
+            this.tglsVidaDeActivo.CheckedChanged += new System.EventHandler(this.tglsVidaDeActivo_CheckedChanged);
+            // 
+            // cmbVidaActivos
+            // 
+            this.cmbVidaActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbVidaActivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.cmbVidaActivos.BorderColor = System.Drawing.Color.White;
+            this.cmbVidaActivos.BorderSize = 1;
+            this.cmbVidaActivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVidaActivos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbVidaActivos.ForeColor = System.Drawing.Color.DimGray;
+            this.cmbVidaActivos.IconColor = System.Drawing.Color.MediumSpringGreen;
+            this.cmbVidaActivos.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cmbVidaActivos.ListTextColor = System.Drawing.Color.DimGray;
+            this.cmbVidaActivos.Location = new System.Drawing.Point(481, 279);
+            this.cmbVidaActivos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbVidaActivos.MinimumSize = new System.Drawing.Size(229, 40);
+            this.cmbVidaActivos.Name = "cmbVidaActivos";
+            this.cmbVidaActivos.Padding = new System.Windows.Forms.Padding(1);
+            this.cmbVidaActivos.Size = new System.Drawing.Size(304, 42);
+            this.cmbVidaActivos.TabIndex = 118;
+            this.cmbVidaActivos.Texts = "Tipo de metodo";
+            this.cmbVidaActivos.OnSelectedIndexChanged += new System.EventHandler(this.cmbVidaActivos_OnSelectedIndexChanged);
             // 
             // FrmAddAsset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(903, 776);
-            this.Controls.Add(this.btnAdd);
+            this.ClientSize = new System.Drawing.Size(911, 776);
+            this.Controls.Add(this.cmbVidaActivos);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tglsVidaDeActivo);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dtgFNE);
+            this.Controls.Add(this.txtNameProject);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblTipoDeMetodo);
@@ -339,19 +521,20 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.rjCircularPictureBox1);
-            this.Controls.Add(this.panelOpen);
             this.Controls.Add(this.lblDepreciación);
             this.Controls.Add(this.tgDepreciacion);
             this.Controls.Add(this.lblValorResidual);
             this.Controls.Add(this.txtValorResidual);
-            this.Controls.Add(this.lbVidautil);
             this.Controls.Add(this.txtVidaUtil);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMonto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAddAsset";
             this.Text = "FrmAddAsset";
+            this.Load += new System.EventHandler(this.FrmAddAsset_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,13 +544,11 @@
 
         private System.Windows.Forms.Label lblValorResidual;
         private RJCodeAdvance.RJControls.RJTextBox txtValorResidual;
-        private System.Windows.Forms.Label lbVidautil;
         private RJCodeAdvance.RJControls.RJTextBox txtVidaUtil;
         private System.Windows.Forms.Label label4;
         private RJCodeAdvance.RJControls.RJTextBox txtMonto;
         private System.Windows.Forms.Label lblDepreciación;
         private RJCodeAdvance.RJControls.RJToggleButton tgDepreciacion;
-        private System.Windows.Forms.Panel panelOpen;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
         private System.Windows.Forms.Label label1;
         private RJCodeAdvance.RJControls.RJTextBox txtDescription;
@@ -376,6 +557,14 @@
         private System.Windows.Forms.Label label3;
         private RJCodeAdvance.RJControls.RJTextBox txtName;
         private System.Windows.Forms.Label label5;
-        private RJCodeAdvance.RJControls.RJButton btnAdd;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private ReaLTaiizor.Controls.PoisonDataGridView dtgFNE;
+        private RJCodeAdvance.RJControls.RJTextBox txtNameProject;
+        private RJCodeAdvance.RJControls.RJButton btnEliminar;
+        private RJCodeAdvance.RJControls.RJButton btnActualizar;
+        private RJCodeAdvance.RJControls.RJButton btnAgregar;
+        private System.Windows.Forms.Label label2;
+        private RJCodeAdvance.RJControls.RJToggleButton tglsVidaDeActivo;
+        private RJCodeAdvance.RJControls.RJComboBox cmbVidaActivos;
     }
 }

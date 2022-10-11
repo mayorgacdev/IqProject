@@ -15,6 +15,8 @@ namespace EconomicMF.Domain.Contracts
         IHttpProjectEntryClient ProjectEntryClient { get; }
         IHttpSolutionClient SolutionClient { get; }
         IHttpUserClient UserClient { get; }
-        IMailRepository mailRepository { get; }
+        IMailRepository MailClient { get; }
+        IHttpAssetClient AssetClient { get; }
+
     }
 }

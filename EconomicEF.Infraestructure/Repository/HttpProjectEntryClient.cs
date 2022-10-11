@@ -16,7 +16,7 @@ namespace EconomicEF.Infraestructure.Repository
         {
         }
 
-        public async Task<IEnumerable<ProjectEntry>> GetEntriesAsync(int projectId)
+        public async Task<List<ProjectEntry>> GetEntriesAsync(int projectId)
         {
             // Get: https://localhost:7062/api/entry?projectId=12
 

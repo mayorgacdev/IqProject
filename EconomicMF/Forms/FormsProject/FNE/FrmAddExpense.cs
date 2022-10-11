@@ -4,22 +4,21 @@ using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsProject.FNE
 {
-    public partial class FrmAddEntry : Form
+    public partial class FrmAddExpense : Form
     {
         private readonly IUnitOfWork unitOfWork;
-        public FrmAddEntry(IUnitOfWork unitOfWork)
+        public FrmAddExpense(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
         }
 
-        private void FrmIngreso_Load(object sender, EventArgs e)
+        private void FrmAddExpense_Load(object sender, EventArgs e)
         {
             ChargeDtg();
             cmbTipodeCrecimiento.Items.AddRange(Enum.GetValues(typeof(TipoCrecimiento)).Cast<object>().ToArray());
@@ -27,18 +26,6 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void cmbTipodeCrecimiento_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTipodeCrecimiento.SelectedIndex >= 0)
-            {
-                cmbTipodeCrecimiento.Visible = true;
-                lblIngreso.Location = new Point(493, 226);
-            }
-            else
-            {
-                cmbTipodeCrecimiento.Visible = false;
-                lblIngreso.Location = new Point(387, 226);
-                txtCrecimiento.Size = new Size(800, 39);
-            }
-
             if ((TipoCrecimiento)cmbTipodeCrecimiento.SelectedItem is TipoCrecimiento.SinCrecimiento)
             {
                 lblCrecimiento.Visible = false;
@@ -51,50 +38,45 @@ namespace EconomicMF.Forms.FormsProject.FNE
             }
         }
 
-        private async void ChargeDtg()
-        {
-            dtgFNE.DataSource = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
-        }
-
-        private async void btnAgregar_Click_1(object sender, EventArgs e)
+        private async void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
                 TipoCrecimiento crecimiento = (TipoCrecimiento)cmbTipodeCrecimiento.SelectedItem;
-                if (crecimiento != TipoCrecimiento.SinCrecimiento && crecimiento
+                if (crecimiento != TipoCrecimiento.SinCrecimiento && crecimiento 
                     is TipoCrecimiento.Aritmetico || crecimiento is TipoCrecimiento.Geometrico)
                 {
-                    ProjectEntry projectEntry = new ProjectEntry()
+                    ProjectExpense projectExpense = new ProjectExpense()
                     {
                         ProjectId = DataOnMemory.ProjectId,
-                        Entry = Math.Round(decimal.Parse(txtIngreso.Texts)),
-                        Growth = Math.Round(decimal.Parse(txtCrecimiento.Texts)),
+                        Expense = Math.Round(decimal.Parse(txtCosto.Texts), 2),
+                        Growth = Math.Round(decimal.Parse(txtCrecimiento.Texts), 2),
                         TypeGrowth = cmbTipodeCrecimiento.SelectedIndex.ToString(),
                         Start = int.Parse(txtStart.Texts),
                         End = int.Parse(txtEnd.Texts),
-                        EntryType = txtTipoIngreso.Texts,
+                        TypeExpense = txtTipoDeCosto.Texts,
 
                     };
 
-                    await unitOfWork.ProjectEntryClient.SetEntriesAsync(projectEntry);
+                    await unitOfWork.ProjectExpense.SetExpense(projectExpense);
 
                     ChargeDtg();
                 }
                 else
                 {
-                    ProjectEntry projectEntry = new ProjectEntry()
+                    ProjectExpense projectExpense = new ProjectExpense()
                     {
                         ProjectId = DataOnMemory.ProjectId,
-                        Entry = Math.Round(decimal.Parse(txtIngreso.Texts), 2),
+                        Expense = Math.Round(decimal.Parse(txtCosto.Texts), 2),
                         Growth = 0,
                         TypeGrowth = "Sin crecimiento",
                         Start = int.Parse(txtStart.Texts),
                         End = int.Parse(txtEnd.Texts),
-                        EntryType = txtTipoIngreso.Texts,
+                        TypeExpense = txtTipoDeCosto.Texts,
 
                     };
 
-                    await unitOfWork.ProjectEntryClient.SetEntriesAsync(projectEntry);
+                    await unitOfWork.ProjectExpense.SetExpense(projectExpense);
 
                     ChargeDtg();
                 }
@@ -103,6 +85,11 @@ namespace EconomicMF.Forms.FormsProject.FNE
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void ChargeDtg()
+        {
+            dtgFNE.DataSource = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
         }
     }
 }

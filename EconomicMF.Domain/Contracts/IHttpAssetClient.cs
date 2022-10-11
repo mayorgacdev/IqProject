@@ -19,6 +19,6 @@ namespace EconomicMF.Domain.Contracts
         /// </summary>
         /// <param name="projectId"></param>
         /// <returns></returns>
-        Task<IEnumerable<Asset>> GetAllAssetAsync(Int32 projectId);
+        Task<List<Asset>> GetAllAssetAsync(Int32 projectId);
     }
 }

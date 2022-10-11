@@ -11,30 +11,30 @@ namespace EconomicMF.Domain.Enums
         //Vida en años
 
         //EDIFICIOS
-        Edificios_Industriales = 10,
-        Edificios_Comerciales = 20,
-        Residencia_Del_Propietario = 10,
-        Edificios_De_Alquiler = 30,
-        Instalaciones_fijas_en_explotacion_agropecuaria = 10,
+        Edificios_Industriales,
+        Edificios_Comerciales,
+        Residencia_Del_Propietario,
+        Edificios_De_Alquiler,
+        Instalaciones_fijas_en_explotacion_agropecuaria,
         //EQUIPOS DE TRANSPORTE
-        Colectivo_De_Carga = 5,
-        Vehiculo_De_Empresas_de_Alquiler = 3,
-        Otros_Equipos_de_Transporte = 8,
+        Colectivo_De_Carga,
+        Vehiculo_De_Empresas_de_Alquiler,
+        Otros_Equipos_de_Transporte,
         //MAQUINARYA Y EQUIPO
-        Maquinaria_fija_en_bien_inmovil = 10,
-        Maquinaria_no_adherida_permanentemente = 7,
-        Otras_Maquinarias_y_Equipo = 5,
-        Equipos_de_Empresas_Agroindustriales = 5,
-        Equipos_Agricolas = 5,
+        Maquinaria_fija_en_bien_inmovil,
+        Maquinaria_no_adherida_permanentemente,
+        Otras_Maquinarias_y_Equipo,
+        Equipos_de_Empresas_Agroindustriales,
+        Equipos_Agricolas,
         //OTROS BIENES MUEBLES
-        Mobilario_y_Equipo_de_Oficina = 5,
-        Equipos_de_Comunicacion = 5,
-        Equipos_de_Computacion = 2,
-        Equipos_para_Medio_de_comunicacion = 2,
-        Ascensores = 10,
-        Elevadores = 10,
-        Unidad_de_Aire_Acondicionado = 10,
-        Otros_bienes_muebles = 5,
+        Mobilario_y_Equipo_de_Oficina,
+        Equipos_de_Comunicacion,
+        Equipos_de_Computacion,
+        Equipos_para_Medio_de_comunicacion,
+        Ascensores,
+        Elevadores,
+        Unidad_de_Aire_Acondicionado,
+        Otros_bienes_muebles,
         //TERRENO
         Terreno
     }

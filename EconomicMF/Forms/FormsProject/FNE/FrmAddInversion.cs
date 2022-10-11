@@ -2,62 +2,95 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsProject.FNE
 {
     public partial class FrmAddInversion : Form
     {
-        private readonly IUnitOfWork unitOdWork;
-
-        private int projectId;
-
+        private readonly IUnitOfWork unitOfWork;
         public FrmAddInversion(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
-            this.unitOdWork = unitOfWork;
-            this.projectId = DataOnMemory.ProjectId;
+            this.unitOfWork = unitOfWork;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void FrmInversion_Load(object sender, EventArgs e)
+        {
+            tgIsDiferida.Checked = true;
+            ChargeData();
+        }
+
+        private async void ChargeData()
+        {
+            dtgFNE.DataSource = await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId);
+        }
+
+        private void tgIsDiferida_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tgIsDiferida.Checked)
+            {
+                nupRecuperaciónCt.Visible = false;
+                lblRecuperacion.Visible = false;
+                lblIsDiferida.Visible = true;
+                txtMonto.Visible = true;
+                lblMonto.Visible = true;
+            }
+            else
+            {
+                nupRecuperaciónCt.Visible = true;
+                lblRecuperacion.Visible = true;
+                lblIsDiferida.Visible = false;
+                txtMonto.Visible = false;
+                lblMonto.Visible = false;
+            }
+        }
+
+        private async void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                InvesmentArea invesment = new InvesmentArea()
+                if (tgIsDiferida.Checked)
                 {
-                    ProjectId = projectId,
-                    Name = txtName.Texts,
-                    Start = int.Parse(txtInicio.Texts),
-                    Amount = decimal.Parse(txtMonto.Texts),
-                    IsDiferida = tgIsDiferida.Checked,
-                    RecoveryCt = nupRecuperaciónCt.Value,
-                };
+                    InvesmentArea invesmentArea = new InvesmentArea()
+                    {
+                        ProjectId = DataOnMemory.ProjectId,
+                        Name = txtName.Texts,
+                        Start = 0,
+                        Amount = Math.Round(decimal.Parse(txtMonto.Texts), 2),
+                        IsDiferida = true,
+                        RecoveryCt = 0,
+                    };
 
-                unitOdWork.InvesmentArea.SetInvesmentArea(invesment);
+                    await unitOfWork.InvesmentArea.SetInvesmentArea(invesmentArea);
+                    ChargeDtg();
+                }
+                else
+                {
+                    InvesmentArea invesmentArea = new InvesmentArea()
+                    {
+                        ProjectId = DataOnMemory.ProjectId,
+                        Name = txtName.Texts,
+                        Start = 0,
+                        Amount = 0,
+                        IsDiferida = true,
+                        RecoveryCt = Math.Round(decimal.Parse(txtMonto.Texts), 2),
+                    };
+
+                    await unitOfWork.InvesmentArea.SetInvesmentArea(invesmentArea);
+                    ChargeDtg();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void FrmInversion_Load(object sender, EventArgs e)
+        private async void ChargeDtg()
         {
-            AbrirFormEnPanel(new FrmSettingsInvestor(unitOdWork, projectId));
-        }
-
-        private void AbrirFormEnPanel(object formHijo)
-        {
-            if (this.panelOpen.Controls.Count > 0)
-                this.panelOpen.Controls.RemoveAt(0);
-            Form fh = (Form)formHijo;
-            fh.TopLevel = false;
-            fh.FormBorderStyle = FormBorderStyle.None;
-            fh.Dock = DockStyle.Fill;
-            this.panelOpen.Controls.Add(fh);
-            this.panelOpen.Tag = fh;
-            fh.Show();
+            dtgFNE.DataSource = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
         }
     }
 }

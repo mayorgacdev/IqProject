@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.btnActivos = new RJCodeAdvance.RJControls.RJButton();
+            this.btnGastos = new RJCodeAdvance.RJControls.RJButton();
             this.btnMenu = new System.Windows.Forms.PictureBox();
             this.pbProfile = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
@@ -47,6 +49,8 @@
             // panelButtons
             // 
             this.panelButtons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.panelButtons.Controls.Add(this.btnActivos);
+            this.panelButtons.Controls.Add(this.btnGastos);
             this.panelButtons.Controls.Add(this.btnMenu);
             this.panelButtons.Controls.Add(this.pbProfile);
             this.panelButtons.Controls.Add(this.btnClose);
@@ -60,13 +64,60 @@
             this.panelButtons.Size = new System.Drawing.Size(218, 776);
             this.panelButtons.TabIndex = 0;
             // 
+            // btnActivos
+            // 
+            this.btnActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActivos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActivos.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnActivos.BorderRadius = 0;
+            this.btnActivos.BorderSize = 0;
+            this.btnActivos.FlatAppearance.BorderSize = 0;
+            this.btnActivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActivos.ForeColor = System.Drawing.Color.White;
+            this.btnActivos.Image = ((System.Drawing.Image)(resources.GetObject("btnActivos.Image")));
+            this.btnActivos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActivos.Location = new System.Drawing.Point(0, 407);
+            this.btnActivos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnActivos.Name = "btnActivos";
+            this.btnActivos.Size = new System.Drawing.Size(215, 53);
+            this.btnActivos.TabIndex = 17;
+            this.btnActivos.Text = "Activos";
+            this.btnActivos.TextColor = System.Drawing.Color.White;
+            this.btnActivos.UseVisualStyleBackColor = false;
+            this.btnActivos.Click += new System.EventHandler(this.btnActivos_Click);
+            // 
+            // btnGastos
+            // 
+            this.btnGastos.AccessibleDescription = "s";
+            this.btnGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnGastos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnGastos.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnGastos.BorderRadius = 0;
+            this.btnGastos.BorderSize = 0;
+            this.btnGastos.FlatAppearance.BorderSize = 0;
+            this.btnGastos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGastos.ForeColor = System.Drawing.Color.White;
+            this.btnGastos.Image = ((System.Drawing.Image)(resources.GetObject("btnGastos.Image")));
+            this.btnGastos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGastos.Location = new System.Drawing.Point(0, 530);
+            this.btnGastos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnGastos.Name = "btnGastos";
+            this.btnGastos.Size = new System.Drawing.Size(215, 53);
+            this.btnGastos.TabIndex = 16;
+            this.btnGastos.Text = "Gastos";
+            this.btnGastos.TextColor = System.Drawing.Color.White;
+            this.btnGastos.UseVisualStyleBackColor = false;
+            this.btnGastos.Click += new System.EventHandler(this.btnGastos_Click);
+            // 
             // btnMenu
             // 
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
             this.btnMenu.Location = new System.Drawing.Point(4, 4);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(45, 48);
+            this.btnMenu.Size = new System.Drawing.Size(40, 38);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMenu.TabIndex = 15;
             this.btnMenu.TabStop = false;
@@ -82,7 +133,7 @@
             this.pbProfile.BorderSize = 2;
             this.pbProfile.GradientAngle = 50F;
             this.pbProfile.Image = ((System.Drawing.Image)(resources.GetObject("pbProfile.Image")));
-            this.pbProfile.Location = new System.Drawing.Point(55, 95);
+            this.pbProfile.Location = new System.Drawing.Point(60, 95);
             this.pbProfile.Name = "pbProfile";
             this.pbProfile.Size = new System.Drawing.Size(112, 112);
             this.pbProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -115,7 +166,7 @@
             this.btnEvaluar.ForeColor = System.Drawing.Color.White;
             this.btnEvaluar.Image = ((System.Drawing.Image)(resources.GetObject("btnEvaluar.Image")));
             this.btnEvaluar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEvaluar.Location = new System.Drawing.Point(0, 471);
+            this.btnEvaluar.Location = new System.Drawing.Point(0, 591);
             this.btnEvaluar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEvaluar.Name = "btnEvaluar";
             this.btnEvaluar.Size = new System.Drawing.Size(215, 53);
@@ -138,7 +189,7 @@
             this.btnInversion.ForeColor = System.Drawing.Color.White;
             this.btnInversion.Image = ((System.Drawing.Image)(resources.GetObject("btnInversion.Image")));
             this.btnInversion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInversion.Location = new System.Drawing.Point(0, 410);
+            this.btnInversion.Location = new System.Drawing.Point(0, 285);
             this.btnInversion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnInversion.Name = "btnInversion";
             this.btnInversion.Size = new System.Drawing.Size(215, 53);
@@ -162,7 +213,7 @@
             this.btnCosto.ForeColor = System.Drawing.Color.White;
             this.btnCosto.Image = ((System.Drawing.Image)(resources.GetObject("btnCosto.Image")));
             this.btnCosto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCosto.Location = new System.Drawing.Point(0, 349);
+            this.btnCosto.Location = new System.Drawing.Point(0, 468);
             this.btnCosto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCosto.Name = "btnCosto";
             this.btnCosto.Size = new System.Drawing.Size(215, 53);
@@ -185,7 +236,7 @@
             this.btnIngresos.ForeColor = System.Drawing.Color.White;
             this.btnIngresos.Image = ((System.Drawing.Image)(resources.GetObject("btnIngresos.Image")));
             this.btnIngresos.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIngresos.Location = new System.Drawing.Point(0, 288);
+            this.btnIngresos.Location = new System.Drawing.Point(0, 346);
             this.btnIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIngresos.Name = "btnIngresos";
             this.btnIngresos.Size = new System.Drawing.Size(215, 53);
@@ -235,5 +286,7 @@
         private System.Windows.Forms.PictureBox btnClose;
         private RJCodeAdvance.RJControls.RJCircularPictureBox pbProfile;
         private System.Windows.Forms.PictureBox btnMenu;
+        private RJCodeAdvance.RJControls.RJButton btnGastos;
+        private RJCodeAdvance.RJControls.RJButton btnActivos;
     }
 }

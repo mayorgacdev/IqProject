@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsProject.FNE
 {
-    public partial class FrmSettingsCost : Form
+    public partial class FrmShowAmortización : Form
     {
-        public FrmSettingsCost()
+        public FrmShowAmortización()
         {
             InitializeComponent();
         }

@@ -85,8 +85,10 @@ namespace EconomicMF.SettingForms
                     return ServicesReq.ServiceProvider.GetRequiredService<frmValidateUser>();
                 case FormType.ConfigInit:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmConfigInit>();
-                case FormType.EditarInversor:
-                    return ServicesReq.ServiceProvider.GetRequiredService<FrmSettingsInvestor>();
+                case FormType.AddGasto:
+                    return ServicesReq.ServiceProvider.GetRequiredService<FrmAddExpense>();
+                case FormType.AddAsset:
+                    return ServicesReq.ServiceProvider.GetRequiredService<FrmAddAsset>();
                 default:
                     throw new Exception("Error");
             }   
@@ -128,7 +130,8 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<frmValidateUser>();
             services.AddSingleton<FrmForgotPassword>();
             services.AddSingleton<FrmConfigInit>();
-            services.AddSingleton<FrmSettingsInvestor>();
+            services.AddSingleton<FrmAddExpense>();
+            services.AddSingleton<FrmAddAsset>();
         }
 
         public static void DestroyForms()

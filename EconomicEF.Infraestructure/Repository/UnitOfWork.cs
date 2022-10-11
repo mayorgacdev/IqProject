@@ -17,8 +17,8 @@ namespace EconomicEF.Infraestructure.Repository
             ProjectEntryClient = new HttpProjectEntryClient();
             SolutionClient = new HttpSolutionClient();
             UserClient = new HttpUserClient();
-            mailRepository = new MailRepository();
-            assetClient = new HttpAssetClient();
+            MailClient = new MailRepository();
+            AssetClient = new HttpAssetClient();
         }
         public IHttpConversionClient ConversionClient { get; }
 
@@ -40,8 +40,8 @@ namespace EconomicEF.Infraestructure.Repository
 
         public IHttpUserClient UserClient { get; }
 
-        public IMailRepository mailRepository { get; }
+        public IMailRepository MailClient { get; }
 
-        public IHttpAssetClient assetClient { get; }
+        public IHttpAssetClient AssetClient { get; }
     }
 }

@@ -16,7 +16,7 @@ namespace EconomicEF.Infraestructure.Repository
             
         }
 
-        public async Task<IEnumerable<ProjectCost>> GetAllCost(int projectId)
+        public async Task<List<ProjectCost>> GetAllCost(int projectId)
         {
             //GetCost: https://localhost:7062/api/cost/getCost?projectId=1
 

@@ -20,6 +20,6 @@ namespace EconomicMF.Domain.Contracts
         /// </summary>
         /// <param name="projectId"></param>
         /// <returns></returns>
-        Task<IEnumerable<InvesmentArea>> GetProjects(Int32 projectId);
+        Task<List<InvesmentArea>> GetProjects(Int32 projectId);
     }
 }

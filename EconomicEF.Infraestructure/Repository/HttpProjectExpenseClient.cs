@@ -15,7 +15,7 @@ namespace EconomicEF.Infraestructure.Repository
         public HttpProjectExpenseClient() : base("expense")
         {
         }
-        public async Task<IEnumerable<ProjectExpense>> GetAllExpenses(int projectId)
+        public async Task<List<ProjectExpense>> GetAllExpenses(int projectId)
         {
             //Get: https://localhost:7062/api/expense/getexpensesbyprojectid?projectId=123
 
@@ -41,7 +41,7 @@ namespace EconomicEF.Infraestructure.Repository
             {
                 var serializedObject = JsonConvert.SerializeObject(gastoProjects);
                 var content = new StringContent(serializedObject, Encoding.UTF8, "application/json");
-                var result = await client.PostAsync(URL + "/setExpenseAsync", content);
+                var result = await client.PostAsync(URL, content);
 
                 if (!result.IsSuccessStatusCode)
                     throw new Exception($"El registro no se pudo añadir correctamente");

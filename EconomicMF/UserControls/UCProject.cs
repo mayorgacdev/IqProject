@@ -1,4 +1,5 @@
-﻿using EconomicMF.Domain.Contracts;
+﻿using EconomicEF.Common.UserCache;
+using EconomicMF.Domain.Contracts;
 using EconomicMF.SettingForms;
 using System;
 using System.Drawing;
@@ -43,6 +44,7 @@ namespace EconomicMF.UserControls
 
         private void UCProject_Click(object sender, EventArgs e)
         {
+            DataOnMemory.ProjectId = projectId;
             SingletonFrm.GetForm(FormType.FlowMain).Show();
             SingletonFrm.GetForm(FormType.Main).Hide();
         }

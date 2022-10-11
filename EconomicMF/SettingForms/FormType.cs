@@ -33,6 +33,7 @@
         ValidateRegister,
         ValidateUser,
         ConfigInit,
-        EditarInversor,
+        AddGasto,
+        AddAsset,
     }
 }

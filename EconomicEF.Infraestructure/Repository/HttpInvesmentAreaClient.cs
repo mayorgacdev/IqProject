@@ -3,7 +3,6 @@ using EconomicMF.Domain.Entities.Flows;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +15,7 @@ namespace EconomicEF.Infraestructure.Repository
         {
         }
 
-        public async Task<IEnumerable<InvesmentArea>> GetProjects(int projectId)
+        public async Task<List<InvesmentArea>> GetProjects(int projectId)
         {
             try
             {

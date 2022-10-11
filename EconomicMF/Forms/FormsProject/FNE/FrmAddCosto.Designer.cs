@@ -29,22 +29,31 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddCosto));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEnd = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblInit = new System.Windows.Forms.Label();
             this.lblPeriodo = new System.Windows.Forms.Label();
             this.cmbTipodeCrecimiento = new RJCodeAdvance.RJControls.RJComboBox();
             this.txtStart = new RJCodeAdvance.RJControls.RJTextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblCrecimiento = new System.Windows.Forms.Label();
             this.txtCrecimiento = new RJCodeAdvance.RJControls.RJTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCosto = new RJCodeAdvance.RJControls.RJTextBox();
-            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.lblCosto = new System.Windows.Forms.Label();
             this.txtTipoDeCosto = new RJCodeAdvance.RJControls.RJTextBox();
-            this.panelOpen = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dtgFNE = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.txtNameProject = new RJCodeAdvance.RJControls.RJTextBox();
+            this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
+            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
+            this.btnAgregar = new RJCodeAdvance.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +84,7 @@
             this.txtEnd.PasswordChar = false;
             this.txtEnd.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtEnd.PlaceholderText = "Fin";
-            this.txtEnd.Size = new System.Drawing.Size(373, 39);
+            this.txtEnd.Size = new System.Drawing.Size(381, 39);
             this.txtEnd.TabIndex = 78;
             this.txtEnd.Texts = "";
             this.txtEnd.UnderlinedStyle = true;
@@ -102,6 +111,7 @@
             // 
             // cmbTipodeCrecimiento
             // 
+            this.cmbTipodeCrecimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTipodeCrecimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.cmbTipodeCrecimiento.BorderColor = System.Drawing.Color.White;
             this.cmbTipodeCrecimiento.BorderSize = 1;
@@ -143,15 +153,15 @@
             this.txtStart.Texts = "";
             this.txtStart.UnderlinedStyle = true;
             // 
-            // label4
+            // lblCrecimiento
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(77, 223);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 20);
-            this.label4.TabIndex = 73;
-            this.label4.Text = "Crecimiento";
+            this.lblCrecimiento.AutoSize = true;
+            this.lblCrecimiento.ForeColor = System.Drawing.Color.White;
+            this.lblCrecimiento.Location = new System.Drawing.Point(77, 223);
+            this.lblCrecimiento.Name = "lblCrecimiento";
+            this.lblCrecimiento.Size = new System.Drawing.Size(89, 20);
+            this.lblCrecimiento.TabIndex = 73;
+            this.lblCrecimiento.Text = "Crecimiento";
             // 
             // txtCrecimiento
             // 
@@ -171,7 +181,7 @@
             this.txtCrecimiento.PasswordChar = false;
             this.txtCrecimiento.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCrecimiento.PlaceholderText = "Crecimiento";
-            this.txtCrecimiento.Size = new System.Drawing.Size(393, 39);
+            this.txtCrecimiento.Size = new System.Drawing.Size(391, 39);
             this.txtCrecimiento.TabIndex = 72;
             this.txtCrecimiento.Texts = "";
             this.txtCrecimiento.UnderlinedStyle = true;
@@ -209,29 +219,6 @@
             this.txtCosto.Texts = "";
             this.txtCosto.UnderlinedStyle = true;
             // 
-            // rjButton1
-            // 
-            this.rjButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 0;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Image = ((System.Drawing.Image)(resources.GetObject("rjButton1.Image")));
-            this.rjButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton1.Location = new System.Drawing.Point(309, 703);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(197, 39);
-            this.rjButton1.TabIndex = 82;
-            this.rjButton1.Text = "Agregar";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
-            // 
             // rjCircularPictureBox1
             // 
             this.rjCircularPictureBox1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
@@ -241,9 +228,9 @@
             this.rjCircularPictureBox1.BorderSize = 2;
             this.rjCircularPictureBox1.GradientAngle = 50F;
             this.rjCircularPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("rjCircularPictureBox1.Image")));
-            this.rjCircularPictureBox1.Location = new System.Drawing.Point(66, 53);
+            this.rjCircularPictureBox1.Location = new System.Drawing.Point(66, 38);
             this.rjCircularPictureBox1.Name = "rjCircularPictureBox1";
-            this.rjCircularPictureBox1.Size = new System.Drawing.Size(117, 117);
+            this.rjCircularPictureBox1.Size = new System.Drawing.Size(125, 125);
             this.rjCircularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.rjCircularPictureBox1.TabIndex = 83;
             this.rjCircularPictureBox1.TabStop = false;
@@ -276,32 +263,177 @@
             this.txtTipoDeCosto.PasswordChar = false;
             this.txtTipoDeCosto.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtTipoDeCosto.PlaceholderText = "Tipo de costo";
-            this.txtTipoDeCosto.Size = new System.Drawing.Size(373, 39);
+            this.txtTipoDeCosto.Size = new System.Drawing.Size(381, 39);
             this.txtTipoDeCosto.TabIndex = 84;
             this.txtTipoDeCosto.Texts = "";
             this.txtTipoDeCosto.UnderlinedStyle = true;
             // 
-            // panelOpen
+            // pictureBox1
             // 
-            this.panelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelOpen.Location = new System.Drawing.Point(65, 434);
-            this.panelOpen.Name = "panelOpen";
-            this.panelOpen.Size = new System.Drawing.Size(789, 239);
-            this.panelOpen.TabIndex = 86;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(794, 417);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 90;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dtgFNE
+            // 
+            this.dtgFNE.AllowUserToResizeRows = false;
+            this.dtgFNE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgFNE.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dtgFNE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgFNE.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgFNE.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.dtgFNE.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgFNE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgFNE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgFNE.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgFNE.EnableHeadersVisualStyles = false;
+            this.dtgFNE.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtgFNE.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.dtgFNE.Location = new System.Drawing.Point(91, 473);
+            this.dtgFNE.Name = "dtgFNE";
+            this.dtgFNE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgFNE.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgFNE.RowHeadersWidth = 51;
+            this.dtgFNE.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgFNE.RowTemplate.Height = 29;
+            this.dtgFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgFNE.Size = new System.Drawing.Size(733, 212);
+            this.dtgFNE.TabIndex = 87;
+            // 
+            // txtNameProject
+            // 
+            this.txtNameProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNameProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtNameProject.BorderColor = System.Drawing.Color.White;
+            this.txtNameProject.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtNameProject.BorderRadius = 0;
+            this.txtNameProject.BorderSize = 2;
+            this.txtNameProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNameProject.ForeColor = System.Drawing.Color.White;
+            this.txtNameProject.Location = new System.Drawing.Point(102, 417);
+            this.txtNameProject.Margin = new System.Windows.Forms.Padding(5);
+            this.txtNameProject.Multiline = false;
+            this.txtNameProject.Name = "txtNameProject";
+            this.txtNameProject.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.txtNameProject.PasswordChar = false;
+            this.txtNameProject.PlaceholderColor = System.Drawing.Color.White;
+            this.txtNameProject.PlaceholderText = "Buscar entidad";
+            this.txtNameProject.Size = new System.Drawing.Size(676, 39);
+            this.txtNameProject.TabIndex = 86;
+            this.txtNameProject.Texts = "";
+            this.txtNameProject.UnderlinedStyle = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminar.BorderRadius = 0;
+            this.btnEliminar.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.Location = new System.Drawing.Point(574, 704);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(132, 39);
+            this.btnEliminar.TabIndex = 112;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.White;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnActualizar.BorderRadius = 0;
+            this.btnActualizar.BorderSize = 0;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActualizar.Location = new System.Drawing.Point(215, 704);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(132, 39);
+            this.btnActualizar.TabIndex = 111;
+            this.btnActualizar.Text = "Editar";
+            this.btnActualizar.TextColor = System.Drawing.Color.White;
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnAgregar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnAgregar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAgregar.BorderRadius = 0;
+            this.btnAgregar.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.Location = new System.Drawing.Point(360, 704);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(205, 39);
+            this.btnAgregar.TabIndex = 110;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextColor = System.Drawing.Color.White;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // FrmAddCosto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(903, 776);
-            this.Controls.Add(this.panelOpen);
+            this.ClientSize = new System.Drawing.Size(911, 776);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dtgFNE);
+            this.Controls.Add(this.txtNameProject);
             this.Controls.Add(this.txtCrecimiento);
             this.Controls.Add(this.lblCosto);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblCrecimiento);
             this.Controls.Add(this.txtTipoDeCosto);
             this.Controls.Add(this.rjCircularPictureBox1);
-            this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEnd);
             this.Controls.Add(this.lblInit);
@@ -315,6 +447,8 @@
             this.Text = "S";
             this.Load += new System.EventHandler(this.FrmCosto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,14 +461,18 @@
         private System.Windows.Forms.Label lblPeriodo;
         private RJCodeAdvance.RJControls.RJComboBox cmbTipodeCrecimiento;
         private RJCodeAdvance.RJControls.RJTextBox txtStart;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCrecimiento;
         private RJCodeAdvance.RJControls.RJTextBox txtCrecimiento;
         private System.Windows.Forms.Label label2;
         private RJCodeAdvance.RJControls.RJTextBox txtCosto;
-        private RJCodeAdvance.RJControls.RJButton rjButton1;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
         private System.Windows.Forms.Label lblCosto;
         private RJCodeAdvance.RJControls.RJTextBox txtTipoDeCosto;
-        private System.Windows.Forms.Panel panelOpen;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private ReaLTaiizor.Controls.PoisonDataGridView dtgFNE;
+        private RJCodeAdvance.RJControls.RJTextBox txtNameProject;
+        private RJCodeAdvance.RJControls.RJButton btnEliminar;
+        private RJCodeAdvance.RJControls.RJButton btnActualizar;
+        private RJCodeAdvance.RJControls.RJButton btnAgregar;
     }
 }

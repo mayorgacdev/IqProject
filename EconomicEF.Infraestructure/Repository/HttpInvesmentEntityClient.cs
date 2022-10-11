@@ -18,17 +18,17 @@ namespace EconomicEF.Infraestructure.Repository
         {
         }
         // TODO: look at project
-        public async Task<IEnumerable<InvesmentEntity>> GetByProjectIdAsync(int projectId)
+        public async Task<List<InvesmentEntity>> GetByProjectIdAsync(int projectId)
         {
-            // Get: https://localhost:7062/api/invesmentEntity/getInvesmentBySolutionId?projectId=1
+            // Get: https://localhost:7062/api/invesmentEntity/GetByProjectIdAsync?projectId=1
 
-            string URI = URL + "/getInvesmentBySolutionId?projectId=" + projectId.ToString();
+            string URI = URL + "/GetByProjectIdAsync?projectId=" + projectId.ToString();
             HttpResponseMessage response = await client.GetAsync(URI);
             if (response.IsSuccessStatusCode)
             {
                 var jsonstring = await response.Content.ReadAsStringAsync();
                 return
-                    JsonConvert.DeserializeObject<IEnumerable<InvesmentEntity>>(jsonstring);
+                    JsonConvert.DeserializeObject<List<InvesmentEntity>>(jsonstring);
             }
             else
                 throw new Exception("No se pudo obtener las inversiones del proyecto con id: " + projectId);

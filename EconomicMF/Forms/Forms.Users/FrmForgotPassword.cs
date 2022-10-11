@@ -55,7 +55,7 @@ namespace EconomicMF.Forms.Forms.Users
                     Guid code = Guid.NewGuid();
                     MemoryOnProject.Forgot = code;
                     DataOnMemory.Email = txtNameOrEmail.Texts;
-                    unitOfWork.mailRepository.SendMail("Confirmación de codígo", 
+                    unitOfWork.MailClient.SendMail("Confirmación de codígo", 
                         $"Confirmarción de código no compartir con nadie \nesta información:" +
                         $" {code.ToString()}", new List<string>() { data.Email });
 
