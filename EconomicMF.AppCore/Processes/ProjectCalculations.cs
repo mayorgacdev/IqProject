@@ -131,7 +131,6 @@ namespace EconomicMF.AppCore.Processes
                 /*decimal total = GastosN(p).Sum(i => i.Gasto) + ingresosN(p).Sum(i => i.Monto) + ActivosN(p).Sum(i => i.Monto) + costosN(p).Sum(i => i.costo)
                     + PrestamosN(p).Sum(i => i.Monto);*/
                 data["VPN"] = Math.Round(VPN(FNE(p), TIR(FNE(p))), 2);
-                decimal cien = 100;
                 decimal s = GastosN(p).Sum(i => i.Gasto);
                 decimal s1 = costosN(p).Sum(i => i.costo);
                 decimal s2 = ActivosN(p).Sum(i => i.Monto);
@@ -186,123 +185,220 @@ namespace EconomicMF.AppCore.Processes
             try
             {
                 FlujoGeneral flujo = GetGeneral(p);
+
                 if (p == null)
                 {
                     throw new ArgumentException("Se encontró un problema con el proyecto");
                 }
-                int a = 0;
                 DataTable dt = new DataTable();
                 List<Flujo> flujos = FNE(p);
                 //Convertir<Flujo> convertir = new Convertir<Flujo>();
-                dt = GetDataDTO(GetGeneral(p));
+                dt = GetDataDTO(GetGeneral(p), p.WithFinancing);
                 DataRow data = dt.NewRow();
-                data["Conceptos:"] = "Utilidad antes de IR";
-                for (int i = 0; i < flujos.Count; i++)
-                {
 
-                    data[i.ToString()] = flujos[i].Utilidad_antes_de_IR;
-                }
-                dt.Rows.Add(data);
-                DataRow data1 = dt.NewRow();
-                data1["Conceptos:"] = "IR";
-                for (int i = 0; i < flujos.Count; i++)
-                {
-
-                    data1[i.ToString()] = flujos[i].IR;
-                }
-                dt.Rows.Add(data1);
-                DataRow data2 = dt.NewRow();
-                data2["Conceptos:"] = "Utilidades despues de impuestos";
-                for (int i = 0; i < flujos.Count; i++)
-                {
-
-                    data2[i.ToString()] = flujos[i].Utilidad_después_de_IR;
-                }
-                dt.Rows.Add(data2);
-                foreach (var item in flujo.activosGenerals)
-                {
-                    DataRow dr = dt.NewRow();
-                    if (item.Nombre == "Terreno")
-                    {
-                        dr["Conceptos:"] = item.Nombre;
-                    }
-                    else if (item.Nombre.Contains("Diferida") || item.Nombre.Contains("Diferido"))
-                    {
-                        dr["Conceptos:"] = item.Nombre;
-                    }
-                    else
-                    {
-                        dr["Conceptos:"] = "Depreciacion de " + item.Nombre;
-                    }
-                    for (int i = 0; i < item.Monto.Count; i++)
-                    {
-                        dr[i.ToString()] = item.Monto[i];
-                    }
-                    dt.Rows.Add(dr);
-                }
                 if (p.WithFinancing)
                 {
-                    DataRow data3 = dt.NewRow();
-                    data3["Conceptos:"] = "Amortización";
+
+                    data["Conceptos:"] = "Utilidad antes de IR";
                     for (int i = 0; i < flujos.Count; i++)
                     {
 
-                        data3[i.ToString()] = flujos[i].Amortización_;
+                        data[i.ToString()] = flujos[i].Utilidad_antes_de_IR;
                     }
-                    dt.Rows.Add(data3);
-                }
-                DataRow data4 = dt.NewRow();
-                data4["Conceptos:"] = "Valor residual";
-                for (int i = 0; i < flujos.Count; i++)
-                {
-
-                    data4[i.ToString()] = flujos[i].ValorResidual;
-                }
-                dt.Rows.Add(data4);
-                DataRow data5 = dt.NewRow();
-                data5["Conceptos:"] = "Recuperación de capital de trabajo";
-                for (int i = 0; i < flujos.Count; i++)
-                {
-
-                    data5[i.ToString()] = flujos[i].Recuperación_de_capital_de_Trabajo;
-                }
-                dt.Rows.Add(data5);
-                foreach (var item in flujo.prestamosGenereals)
-                {
-                    DataRow dr = dt.NewRow();
-                    dr["Conceptos:"] = "Saldo insoluto a " + item.Nombre;
-                    for (int i = 0; i < item.AbonoDeuda.Count; i++)
+                    dt.Rows.Add(data);
+                    DataRow data1 = dt.NewRow();
+                    data1["Conceptos:"] = "IR";
+                    for (int i = 0; i < flujos.Count; i++)
                     {
-                        dr[i.ToString()] = item.SaldoInsoluto;
+
+                        data1[i.ToString()] = flujos[i].IR;
                     }
-                    dt.Rows.Add(dr);
-                }
-                foreach (var item in flujo.prestamosGenereals)
-                {
-                    DataRow dr = dt.NewRow();
-                    dr["Conceptos:"] = "Abono a la deuda de " + item.Nombre;
-                    for (int i = 0; i < item.AbonoDeuda.Count; i++)
+                    dt.Rows.Add(data1);
+                    DataRow data2 = dt.NewRow();
+                    data2["Conceptos:"] = "Utilidades despues de impuestos";
+                    for (int i = 0; i < flujos.Count; i++)
                     {
-                        dr[i.ToString()] = item.AbonoDeuda[i];
+
+                        data2[i.ToString()] = flujos[i].Utilidad_después_de_IR;
                     }
-                    dt.Rows.Add(dr);
+                    dt.Rows.Add(data2);
+                    foreach (var item in flujo.activosGenerals)
+                    {
+                        DataRow dr = dt.NewRow();
+                        if (item.Nombre == "Terreno")
+                        {
+                            dr["Conceptos:"] = item.Nombre;
+                        }
+                        else if (item.Nombre.Contains("Diferida") || item.Nombre.Contains("Diferido"))
+                        {
+                            dr["Conceptos:"] = item.Nombre;
+                        }
+                        else
+                        {
+                            dr["Conceptos:"] = "Depreciacion de " + item.Nombre;
+                        }
+                        for (int i = 0; i < item.Monto.Count; i++)
+                        {
+                            dr[i.ToString()] = item.Monto[i];
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                    if (p.WithFinancing)
+                    {
+                        DataRow data3 = dt.NewRow();
+                        data3["Conceptos:"] = "Amortización";
+                        for (int i = 0; i < flujos.Count; i++)
+                        {
+
+                            data3[i.ToString()] = flujos[i].Amortización_;
+                        }
+                        dt.Rows.Add(data3);
+                    }
+                    DataRow data4 = dt.NewRow();
+                    data4["Conceptos:"] = "Valor residual";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data4[i.ToString()] = flujos[i].ValorResidual;
+                    }
+                    dt.Rows.Add(data4);
+                    DataRow data5 = dt.NewRow();
+                    data5["Conceptos:"] = "Recuperación de capital de trabajo";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data5[i.ToString()] = flujos[i].Recuperación_de_capital_de_Trabajo;
+                    }
+                    dt.Rows.Add(data5);
+                    foreach (var item in flujo.prestamosGenereals)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["Conceptos:"] = "Saldo insoluto a " + item.Nombre;
+                        for (int i = 0; i < item.AbonoDeuda.Count; i++)
+                        {
+                            dr[i.ToString()] = item.SaldoInsoluto;
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                    foreach (var item in flujo.prestamosGenereals)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["Conceptos:"] = "Abono a la deuda de " + item.Nombre;
+                        for (int i = 0; i < item.AbonoDeuda.Count; i++)
+                        {
+                            dr[i.ToString()] = item.AbonoDeuda[i];
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                    data = dt.NewRow();
+                    data["Conceptos:"] = "Inverion Total";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data[i.ToString()] = flujos[i].Inversion;
+                    }
+                    dt.Rows.Add(data);
+                    data = dt.NewRow();
+                    data["Conceptos:"] = "FNE";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data[i.ToString()] = flujos[i].FNE;
+                    }
+                    dt.Rows.Add(data);
                 }
-                data = dt.NewRow();
-                data["Conceptos:"] = "Inverion Total";
-                for (int i = 0; i < flujos.Count; i++)
+                else
                 {
 
-                    data[i.ToString()] = flujos[i].Inversion;
-                }
-                dt.Rows.Add(data);
-                data = dt.NewRow();
-                data["Conceptos:"] = "FNE";
-                for (int i = 0; i < flujos.Count; i++)
-                {
+                    data["Conceptos:"] = "Utilidad antes de IR";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
 
-                    data[i.ToString()] = flujos[i].FNE;
+                        data[i.ToString()] = flujos[i].Utilidad_antes_de_IR;
+                    }
+                    dt.Rows.Add(data);
+                    DataRow data1 = dt.NewRow();
+                    data1["Conceptos:"] = "IR";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data1[i.ToString()] = flujos[i].IR;
+                    }
+                    dt.Rows.Add(data1);
+                    DataRow data2 = dt.NewRow();
+                    data2["Conceptos:"] = "Utilidades despues de impuestos";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data2[i.ToString()] = flujos[i].Utilidad_después_de_IR;
+                    }
+                    dt.Rows.Add(data2);
+                    foreach (var item in flujo.activosGenerals)
+                    {
+                        DataRow dr = dt.NewRow();
+                        if (item.Nombre == "Terreno")
+                        {
+                            dr["Conceptos:"] = item.Nombre;
+                        }
+                        else if (item.Nombre.Contains("Diferida") || item.Nombre.Contains("Diferido"))
+                        {
+                            dr["Conceptos:"] = item.Nombre;
+                        }
+                        else
+                        {
+                            dr["Conceptos:"] = "Depreciacion de " + item.Nombre;
+                        }
+                        for (int i = 0; i < item.Monto.Count; i++)
+                        {
+                            dr[i.ToString()] = item.Monto[i];
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                    if (p.WithFinancing)
+                    {
+                        DataRow data3 = dt.NewRow();
+                        data3["Conceptos:"] = "Amortización";
+                        for (int i = 0; i < flujos.Count; i++)
+                        {
+
+                            data3[i.ToString()] = flujos[i].Amortización_;
+                        }
+                        dt.Rows.Add(data3);
+                    }
+                    DataRow data4 = dt.NewRow();
+                    data4["Conceptos:"] = "Valor residual";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data4[i.ToString()] = flujos[i].ValorResidual;
+                    }
+                    dt.Rows.Add(data4);
+                    DataRow data5 = dt.NewRow();
+                    data5["Conceptos:"] = "Recuperación de capital de trabajo";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data5[i.ToString()] = flujos[i].Recuperación_de_capital_de_Trabajo;
+                    }
+                    dt.Rows.Add(data5);
+
+                    data = dt.NewRow();
+                    data["Conceptos:"] = "Inverion Total";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data[i.ToString()] = flujos[i].Inversion;
+                    }
+                    dt.Rows.Add(data);
+                    data = dt.NewRow();
+                    data["Conceptos:"] = "FNE";
+                    for (int i = 0; i < flujos.Count; i++)
+                    {
+
+                        data[i.ToString()] = flujos[i].FNE;
+                    }
+                    dt.Rows.Add(data);
                 }
-                dt.Rows.Add(data);
                 return dt;
             }
             catch (Exception)
@@ -536,11 +632,11 @@ namespace EconomicMF.AppCore.Processes
                 {
                     if (item.TipoDeAmortización == TipoDeAmortizacion.AmortizacionNivelada.ToString())
                     {
-                        deudas.Add(AmortizacionNivelada((decimal)(item.Contribution * Total), p.Duration, (decimal)item.Rate));
+                        deudas.Add(AmortizacionNivelada((item.Contribution * Total), p.Duration, item.Rate));
                     }
                     else
                     {
-                        deudas.Add(AmortizacionProporcional((decimal)(item.Contribution * Total), p.Duration, (decimal)item.Rate));
+                        deudas.Add(AmortizacionProporcional((item.Contribution * Total), p.Duration, item.Rate));
                     }
                 }
                 return deudas;
@@ -554,13 +650,18 @@ namespace EconomicMF.AppCore.Processes
         // Prestamos carnal
         public static List<Amortizacion> AmortizacionNivelada(decimal prestamo, int N, decimal tasa)
         {
+            double flow = (double)Math.Round(prestamo, 2);
+            double rate = ((double)Math.Round(tasa, 2)) / 100;
+
             List<Amortizacion> amortizacion = new List<Amortizacion>();
-            decimal cuota = (decimal)Microsoft.VisualBasic.Financial.Pmt((double)tasa / 100, N, -(double)prestamo);
+
+            decimal cuota = (decimal)Microsoft.VisualBasic.Financial.Pmt(rate, N, -flow);
             for (int i = 0; i <= N; i++)
             {
                 decimal interes = i == 0 ? 0 : prestamo * (tasa / 100);
                 decimal abono = cuota - interes;
                 prestamo = i == 0 ? prestamo : prestamo - abono;
+
                 Amortizacion amort = new Amortizacion()
                 {
                     Período = i,
@@ -708,7 +809,7 @@ namespace EconomicMF.AppCore.Processes
 
                     for (int i = 0; i <= project.Duration; i++)
                     {
-                        if (prest.TipoDeAmortización == TipoDeAmortizacion.AmortizacionNivelada.ToString())
+                        if (prest.TipoDeAmortización.Equals("AmortizacionNivelada"))
                         {
 
                             prestamosN[i] += AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].Interes;
@@ -976,104 +1077,188 @@ namespace EconomicMF.AppCore.Processes
         }
         public static FlujoGeneral GetGeneral(Project project)
         {
-            FlujoGeneral flujoGeneral = new FlujoGeneral()
+            if (project.WithFinancing)
             {
-                costoGenerals = GetCostoGenerals(project),
-                gastosGenerals = GetGastosGenerals(project),
-                activosGenerals = GetActivosGenerals(project),
-                ingresosGenerals = GetIngresosGenerals(project),
-                prestamosGenereals = GetPrestamosGenerals(project)
-            };
-            return flujoGeneral;
+                return new FlujoGeneral()
+                {
+                    costoGenerals = GetCostoGenerals(project),
+                    gastosGenerals = GetGastosGenerals(project),
+                    activosGenerals = GetActivosGenerals(project),
+                    ingresosGenerals = GetIngresosGenerals(project),
+                    prestamosGenereals = GetPrestamosGenerals(project)
+                };
+            }
+            else
+            {
+                return new FlujoGeneral()
+                {
+                    costoGenerals = GetCostoGenerals(project),
+                    gastosGenerals = GetGastosGenerals(project),
+                    activosGenerals = GetActivosGenerals(project),
+                    ingresosGenerals = GetIngresosGenerals(project),
+                };
+            }
         }
-        public static DataTable GetDataDTO(FlujoGeneral flujo)
+        public static DataTable GetDataDTO(FlujoGeneral flujo, bool withFinancing)
         {
             DataTable data = new DataTable();
-            data.Columns.Add("Conceptos:");
-            int count = 0;
-            if (flujo.gastosGenerals.Count != 0)
-            {
-                count = flujo.gastosGenerals[0].Monto.Count;
-            }
-            else if (flujo.ingresosGenerals.Count != 0)
-            {
-                count = flujo.ingresosGenerals[0].Monto.Count;
-            }
-            for (int i = 0; i < count; i++)
-            {
-                data.Columns.Add((i).ToString());
-            }
-            foreach (var item in flujo.ingresosGenerals)
-            {
-                DataRow dr = data.NewRow();
-                dr["Conceptos:"] = item.Nombre;
-                for (int i = 0; i < item.Monto.Count; i++)
-                {
-                    dr[i.ToString()] = item.Monto[i];
-                }
-                data.Rows.Add(dr);
-            }
-            foreach (var item in flujo.costoGenerals)
-            {
-                DataRow dr = data.NewRow();
-                dr["Conceptos:"] = item.Nombre;
-                for (int i = 0; i < item.Monto.Count; i++)
-                {
-                    dr[i.ToString()] = item.Monto[i];
-                }
-                data.Rows.Add(dr);
-            }
-            foreach (var item in flujo.gastosGenerals)
-            {
-                DataRow dr = data.NewRow();
-                dr["Conceptos:"] = item.Nombre;
-                for (int i = 0; i < item.Monto.Count; i++)
-                {
-                    dr[i.ToString()] = item.Monto[i];
-                }
-                data.Rows.Add(dr);
-            }
-            foreach (var item in flujo.prestamosGenereals)
-            {
-                DataRow dr = data.NewRow();
-                dr["Conceptos:"] = "Interes de " + item.Nombre;
-                for (int i = 0; i < item.Interes.Count; i++)
-                {
-                    dr[i.ToString()] = item.Interes[i];
-                }
-                data.Rows.Add(dr);
-            }
-            foreach (var item in flujo.activosGenerals)
-            {
-                DataRow dr = data.NewRow();
-                if (item.Nombre == "Terreno")
-                {
-                    dr["Conceptos:"] = item.Nombre;
-                }
-                else if (item.Nombre.Contains("Diferida") || item.Nombre.Contains("Diferido"))
-                {
-                    dr["Conceptos:"] = item.Nombre;
-                }
-                else
-                {
-                    dr["Conceptos:"] = "Depreciacion de " + item.Nombre;
-                }
-                for (int i = 0; i < item.Monto.Count; i++)
-                {
-                    dr[i.ToString()] = item.Monto[i];
-                }
-                data.Rows.Add(dr);
-            }
 
-            foreach (var item in flujo.prestamosGenereals)
+            if (withFinancing)
             {
-                DataRow dr = data.NewRow();
-                dr["Conceptos:"] = "Abono a la deuda de " + item.Nombre;
-                for (int i = 0; i < item.AbonoDeuda.Count; i++)
+                data.Columns.Add("Conceptos:");
+                int count = 0;
+                if (flujo.gastosGenerals.Count != 0)
                 {
-                    dr[i.ToString()] = item.AbonoDeuda[i];
+                    count = flujo.gastosGenerals[0].Monto.Count;
                 }
-                data.Rows.Add(dr);
+                else if (flujo.ingresosGenerals.Count != 0)
+                {
+                    count = flujo.ingresosGenerals[0].Monto.Count;
+                }
+                for (int i = 0; i < count; i++)
+                {
+                    data.Columns.Add((i).ToString());
+                }
+                foreach (var item in flujo.ingresosGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = item.Nombre;
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.costoGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = item.Nombre;
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.gastosGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = item.Nombre;
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.prestamosGenereals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = "Interes de " + item.Nombre;
+                    for (int i = 0; i < item.Interes.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Interes[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.activosGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    if (item.Nombre == "Terreno")
+                    {
+                        dr["Conceptos:"] = item.Nombre;
+                    }
+                    else if (item.Nombre.Contains("Diferida") || item.Nombre.Contains("Diferido"))
+                    {
+                        dr["Conceptos:"] = item.Nombre;
+                    }
+                    else
+                    {
+                        dr["Conceptos:"] = "Depreciacion de " + item.Nombre;
+                    }
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+
+                foreach (var item in flujo.prestamosGenereals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = "Abono a la deuda de " + item.Nombre;
+                    for (int i = 0; i < item.AbonoDeuda.Count; i++)
+                    {
+                        dr[i.ToString()] = item.AbonoDeuda[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+            }
+            else
+            {
+                data.Columns.Add("Conceptos:");
+                int count = 0;
+                if (flujo.gastosGenerals.Count != 0)
+                {
+                    count = flujo.gastosGenerals[0].Monto.Count;
+                }
+                else if (flujo.ingresosGenerals.Count != 0)
+                {
+                    count = flujo.ingresosGenerals[0].Monto.Count;
+                }
+                for (int i = 0; i < count; i++)
+                {
+                    data.Columns.Add((i).ToString());
+                }
+                foreach (var item in flujo.ingresosGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = item.Nombre;
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.costoGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = item.Nombre;
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.gastosGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    dr["Conceptos:"] = item.Nombre;
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
+                foreach (var item in flujo.activosGenerals)
+                {
+                    DataRow dr = data.NewRow();
+                    if (item.Nombre == "Terreno")
+                    {
+                        dr["Conceptos:"] = item.Nombre;
+                    }
+                    else if (item.Nombre.Contains("Diferida") || item.Nombre.Contains("Diferido"))
+                    {
+                        dr["Conceptos:"] = item.Nombre;
+                    }
+                    else
+                    {
+                        dr["Conceptos:"] = "Depreciacion de " + item.Nombre;
+                    }
+                    for (int i = 0; i < item.Monto.Count; i++)
+                    {
+                        dr[i.ToString()] = item.Monto[i];
+                    }
+                    data.Rows.Add(dr);
+                }
             }
 
             return data;
@@ -1364,43 +1549,46 @@ namespace EconomicMF.AppCore.Processes
             }
             foreach (var prest in project.InvestmentEntities)
             {
-                if (prest.MoneyLoan)
+                if (project.WithFinancing)
                 {
-                    decimal tasa = (decimal)(prest.IsPorcentage ? prest.Rate : (prest.Rate / 100));
-                    PrestamosGeneral prestamos1 = new PrestamosGeneral()
+                    if (prest.MoneyLoan)
                     {
-                        AbonoDeuda = new List<decimal>(),
-                        Interes = new List<decimal>(),
-                        Nombre = prest.Name
-                    };
-                    for (int ii = 0; ii <= project.Duration; ii++)
-                    {
-                        prestamos1.Interes.Add(0);
-                        prestamos1.AbonoDeuda.Add(0);
-                    }
-                    for (int i = 0; i <= project.Duration; i++)
-                    {
-                        if (prest.TipoDeAmortización == TipoDeAmortizacion.AmortizacionNivelada.ToString())
+                        decimal tasa = (decimal)(prest.IsPorcentage ? prest.Rate : (prest.Rate / 100));
+                        PrestamosGeneral prestamos1 = new PrestamosGeneral()
                         {
+                            AbonoDeuda = new List<decimal>(),
+                            Interes = new List<decimal>(),
+                            Nombre = prest.Name,
+                            SaldoInsoluto = new List<decimal>(),
 
-                            prestamos1.Interes[i] = AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].Interes;
-                            prestamos1.AbonoDeuda[i] = AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].AbonoDeuda;
-                            prestamos1.SaldoInsoluto[i] = AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].SaldoInsoluto;
-
-                        }
-                        else
+                        };
+                        for (int ii = 0; ii <= project.Duration; ii++)
                         {
-
-
-                            prestamos1.Interes[i] = AmortizacionProporcional((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].Interes;
-                            prestamos1.AbonoDeuda[i] = AmortizacionProporcional((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].AbonoDeuda;
-                            prestamos1.SaldoInsoluto[i] = AmortizacionProporcional((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].SaldoInsoluto;
+                            prestamos1.Interes.Add(0);
+                            prestamos1.AbonoDeuda.Add(0);
                         }
+                        for (int i = 0; i < project.Duration; i++)
+                        {
+                            if (prest.TipoDeAmortización.Equals("AmortizacionNivelada"))
+                            {
+
+                                prestamos1.Interes[i] = AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].Interes;
+                                prestamos1.AbonoDeuda[i] = AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].AbonoDeuda;
+                                prestamos1.SaldoInsoluto[i] = AmortizacionNivelada((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].SaldoInsoluto;
+
+                            }
+                            else
+                            {
+
+
+                                prestamos1.Interes[i] = AmortizacionProporcional((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].Interes;
+                                prestamos1.AbonoDeuda[i] = AmortizacionProporcional((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].AbonoDeuda;
+                                prestamos1.SaldoInsoluto[i] = AmortizacionProporcional((decimal)prest.Contribution, prest.LoanTerm, tasa)[i].SaldoInsoluto;
+                            }
+                        }
+                        prestamos.Add(prestamos1);
                     }
-                    prestamos.Add(prestamos1);
                 }
-
-
             }
             return prestamos;
         }

@@ -1,4 +1,5 @@
-﻿using EconomicEF.Common.UserCache;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using EconomicEF.Common.UserCache;
 using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
@@ -7,8 +8,6 @@ using EconomicMF.Domain.Entities.FlowTool;
 using EconomicMF.Services;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,85 +17,84 @@ namespace EconomicMF.Forms.FormsProject.FNE
     {
         private readonly IUnitOfWork unitOfWork;
         private Project getProject = new Project();
+        private int projectId;
 
-        public FrmChargeData(IUnitOfWork unitOfWork)
+        public FrmChargeData(IUnitOfWork unitOfWork, int projectId)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
+            this.projectId = projectId;
         }
 
         private async void FrmChargeData_Load(object sender, EventArgs e)
         {
             getProject = await ChargeProject();
-            GetFNE();
-            ChargeLabels();
+            GetFNE(getProject);
+            ValidateInvesmentEntity();
+            ChargeLabels(getProject);
+        }
+
+        private void ValidateInvesmentEntity()
+        {
+            if (getProject.WithFinancing)
+            {
+                btnAmortizacion.Visible = true;
+                tgIsFinancement.Visible = true;
+                lblFinancing.Visible = true;
+            }
+            else
+            {
+                btnAmortizacion.Visible = false;
+                tgIsFinancement.Visible = false;
+                lblFinancing.Visible = false;
+            }
         }
 
         private async Task<Project> ChargeProject()
         {
-            ProjectClient projectClient = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+            ProjectClient projectClient = await unitOfWork.ProjectClient.GetAsync(projectId);
 
-            List<Asset> assets = await unitOfWork.AssetClient.GetAllAssetAsync(DataOnMemory.ProjectId);
-            List<InvesmentArea> invesmentAreas = await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId);
-            List<ProjectCost> projectCosts = await unitOfWork.CostClient.GetAllCost(DataOnMemory.ProjectId);
-            List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
-            List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
+            List<Asset> assets = await unitOfWork.AssetClient.GetAllAssetAsync(projectId);
+            List<InvesmentArea> invesmentAreas = await unitOfWork.InvesmentArea.GetProjects(projectId);
+            List<ProjectCost> projectCosts = await unitOfWork.CostClient.GetAllCost(projectId);
+            List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(projectId);
+            List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(projectId);
 
-            if (projectClient.WithFinancing)
+            Project project = new Project()
             {
-                List<InvesmentEntity> invesmentEntities = await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(DataOnMemory.ProjectId);
+                Id = projectId,
+                SolutionId = projectClient.SolutionId,
+                CreationDate = projectClient.CreationDate,
+                Name = projectClient.Name,
+                Description = projectClient.Description,
+                Period = projectClient.Period,
+                Duration = projectClient.Duration,
+                WithFinancing = projectClient.WithFinancing,
+                TMAR = projectClient.TMAR,
+                TMARMixta = projectClient.TMARMixta,
+                Contribution = projectClient.Contribution,
+                InvestmentArea = invesmentAreas,
+                ProjectCosts = projectCosts,
+                ProjectExpenses = projectExpenses,
+                ProjectEntries = projectEntries,
+                Assets = assets,
+            };
 
-                Project project = new Project()
-                {
-                    Id = DataOnMemory.ProjectId,
-                    SolutionId = projectClient.SolutionId,
-                    Name = projectClient.Name,
-                    Description = projectClient.Description,
-                    Period = projectClient.Period,
-                    Duration = projectClient.Duration,
-                    WithFinancing = projectClient.WithFinancing,
-                    TMAR = projectClient.TMAR,
-                    TMARMixta = projectClient.TMARMixta,
-                    Contribution = projectClient.Contribution,
-                    InvestmentArea = invesmentAreas,
-                    ProjectCosts = projectCosts,
-                    InvestmentEntities = invesmentEntities,
-                    ProjectExpenses = projectExpenses,
-                    ProjectEntries = projectEntries,
-                    Assets = assets,
-                };
-
-                return project;
-            }
-            else
-            {
-                Project project = new Project()
-                {
-                    Id = DataOnMemory.ProjectId,
-                    SolutionId = projectClient.SolutionId,
-                    Name = projectClient.Name,
-                    Description = projectClient.Description,
-                    Period = projectClient.Period,
-                    Duration = projectClient.Duration,
-                    WithFinancing = projectClient.WithFinancing,
-                    TMAR = projectClient.TMAR,
-                    TMARMixta = projectClient.TMARMixta,
-                    Contribution = projectClient.Contribution,
-                    InvestmentArea = invesmentAreas,
-                    ProjectCosts = projectCosts,
-                    ProjectExpenses = projectExpenses,
-                    ProjectEntries = projectEntries,
-                    Assets = assets,
-                };
-
-                return project;
-            }
+            return project;
 
         }
 
-        private void GetFNE()
+        private void GetFNE(Project project)
         {
-            dtgFNE.DataSource =  ProjectCalculations.AllFNE(getProject);
+            try
+            {
+                dtgFNE.DataSource = null;
+                dtgFNE.DataSource = ProjectCalculations.AllFNE(project);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -144,32 +142,61 @@ namespace EconomicMF.Forms.FormsProject.FNE
             }
         }
 
-        private void ChargeLabels()
+        private async void ChargeLabels(Project project)
         {
-            List<Flujo> flujo = ProjectCalculations.FNE(getProject);
-         
-            if (getProject.WithFinancing)
+            try
             {
-                decimal tmarMixta = CalculusOnMemory.GetTmar(getProject);
-                lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: tmarMixta), 2) + " %";
-                lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, tmarMixta), 2) + " $";
-                lblGetTmar.Text = "TMAR mixta";
-                lblTasa.Text = tmarMixta + "";
-                lblPeriodo.Text = getProject.Period;
+                List<Flujo> flujo = ProjectCalculations.FNE(project);
+                lblName.Text = project.Name;
+                lblDescription.Text = project.Description;
+                lblCreation.Text = project.CreationDate.ToShortDateString();
+               
+                if (getProject.WithFinancing)
+                {
+                    List<InvesmentEntity> invesmentEntities = await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(DataOnMemory.ProjectId);
+                    project.InvestmentEntities = invesmentEntities;
+
+                    decimal tmarMixta = CalculusOnMemory.GetTmar(project);
+                    lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: tmarMixta), 2) + " %";
+                    lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, tmarMixta), 2) + " $";
+                    lblGetTmar.Text = "TMAR mixta";
+                    lblTasa.Text = tmarMixta + " %";
+                    lblPeriodo.Text = getProject.Period;
+                }
+                else
+                {
+                    lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: getProject.TMAR), 2) + " %";
+                    lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, getProject.TMAR), 2) + " $";
+                    lblGetTmar.Text = "TMAR";
+                    lblTasa.Text = getProject.TMAR + " %";
+                    lblPeriodo.Text = getProject.Period;
+                    lblTir.Text = ProjectCalculations.TIR(flujo, getProject.TMAR) + " %";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: getProject.TMAR), 2) + " %";
-                lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, getProject.TMAR), 2) + " $";
-                lblGetTmar.Text = "TMAR";
-                lblTasa.Text = getProject.TMAR + " %";
-                lblPeriodo.Text = getProject.Period;
-                lblTir.Text = ProjectCalculations.TIR(flujo, getProject.TMAR) + " %";
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnAmortizacion_Click(object sender, EventArgs e)
         {
+            new FrmShowAmortización(unitOfWork).ShowDialog();
+        }
 
+        private void tgIsFinancement_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tgIsFinancement.Checked)
+            {
+                getProject.WithFinancing = false;
+                GetFNE(getProject);
+                ChargeLabels(getProject);
+            }
+            else
+            {
+                getProject.WithFinancing = true;
+                GetFNE(getProject);
+                ChargeLabels(getProject);
+            }
         }
     }
 }

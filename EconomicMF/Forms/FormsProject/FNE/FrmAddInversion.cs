@@ -18,8 +18,8 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void FrmInversion_Load(object sender, EventArgs e)
         {
+            ChargeDtg();
             tgIsDiferida.Checked = true;
-            ChargeData();
         }
 
         private async void ChargeData()

@@ -2,7 +2,10 @@
 using EconomicMF.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
+using System.Security;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
@@ -118,13 +121,17 @@ namespace EconomicMF.Services
 
         public static decimal GetTmar(Project project)
         {
-            decimal sum = project.Contribution * project.TMAR;
+
+            decimal sum = 0;
 
             foreach (var item in project.InvestmentEntities)
             {
                 sum += item.Contribution * item.Rate;
             }
-            return Math.Round(sum, 2);
+
+            sum += project.Contribution * project.TMAR;
+
+            return Math.Round(sum, 2)/100;
         }
     }
 }

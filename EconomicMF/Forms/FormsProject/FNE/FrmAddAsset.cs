@@ -22,10 +22,10 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void FrmAddAsset_Load(object sender, EventArgs e)
         {
+            ChargeDtg();
             tglsVidaDeActivo.Checked = true;
             cmbVidaActivos.Items.AddRange(Enum.GetValues(typeof(VidaUtilActivos)).Cast<object>().ToArray());
             cmbTipoMetodo.Items.AddRange(Enum.GetValues(typeof(Depreciacion)).Cast<object>().ToArray());
-            ChargeDtg();
         }
 
         private void tglsVidaDeActivo_CheckedChanged(object sender, EventArgs e)

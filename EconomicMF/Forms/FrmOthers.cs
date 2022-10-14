@@ -1,8 +1,13 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Others;
+using EconomicMF.Domain.Enums;
+using EconomicMF.Domain.Enums.Others;
 using EconomicMF.SettingForms;
 using System;
+using System.Collections.Immutable;
+using System.Configuration;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms
@@ -10,55 +15,93 @@ namespace EconomicMF.Forms
     public partial class FrmOthers : Form
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly int solutionId;
 
         public FrmOthers(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
-            this.solutionId = DataOnMemory.SolutionId;
             this.unitOfWork = unitOfWork;
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Activo activo = new()
-            {
-                Nombre = txtNombre.Texts,
-                SolutionId = solutionId,
-                Precio = decimal.Parse(txtPrecio.Texts),
-                Tiempo = int.Parse(txtTiempo.Texts),
-                ValorResidual = decimal.Parse(txtValorResidual.Texts),
-                Descripcion = txtDescripcion.Texts,
-                Creación = DateTime.UtcNow,
-            };
-
-            //solutionServices.SetActivoToSolution(activo, solutionId);
-            Charge();
-        }
-
-        private void Charge()
-        {
-            //if (solutionServices.GetAllActivoById(solutionId) is null)
-            //{
-            //    return;
-            //}
-
-            //dtgvDepreciación.DataSource = solutionServices.GetAllActivoById(solutionId);
-        }
-
-        private void FrmOthers_Load(object sender, EventArgs e)
-        {
-            Charge();
         }
 
         private void btnResolver_Click(object sender, EventArgs e)
         {
             int id = 0;
-            if ((int)dtgvDepreciación.Rows.Count > 0)
-                id = (int)dtgvDepreciación.Rows[dtgvDepreciación.CurrentRow.Index].Cells[0].Value;
+            if ((int)dtgFNE.Rows.Count > 0)
+                id = (int)dtgFNE.Rows[dtgFNE.CurrentRow.Index].Cells[0].Value;
 
             DataOnMemory.ActivoId = id;
             SingletonFrm.GetForm(FormType.ResolveDepreciation).Show();
+        }
+
+        private void FrmOthers_Load(object sender, EventArgs e)
+        {
+   
+            cmbTipoDeCalculos.Items.AddRange(Enum.GetValues(typeof(TipoDeCalculo)).Cast<object>().ToArray());
+            cmbTipoAmortizaciónAmrt.Items.AddRange(Enum.GetValues(typeof(TipoDeAmortizacion)).Cast<object>().ToArray());
+            cmbVidaActivosAsset.Items.AddRange(Enum.GetValues(typeof(VidaUtilActivos)).Cast<object>().ToArray());
+            cmbTipoMetodoAsset.Items.AddRange(Enum.GetValues(typeof(Depreciacion)).Cast<object>().ToArray());
+
+            cmbTipoDeCalculos.SelectedIndex = 1;
+            ValidateCmb();
+        }
+
+        private void cmbTipoDeCalculos_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValidateCmb();
+        }
+
+        private void ValidateCmb()
+        {
+            if (cmbTipoDeCalculos.SelectedItem is TipoDeCalculo.Amortización)
+            {
+                cmbTipoMetodoAsset.Visible = false;
+                cmbVidaActivosAsset.Visible = false;
+                lblAñosComoNiAsset.Visible = false;
+                lblDepreciaciónAsset.Visible = false;
+                lblMontoAsset.Visible = false;
+                lblTipoAsset.Visible = false;
+                tgDepreciacionAsset.Visible = false;
+                tglsVidaDeActivoAsset.Visible = false;
+                txtVidaUtil.Visible = false;
+                txtValorResidualAsset.Visible = false;
+                lblValorResidualAsset.Visible = false;
+                lblValorResidualAsset.Visible = false;
+                lblTipoDeMetodoAsset.Visible = false;
+
+                cmbTipoAmortizaciónAmrt.Visible = true;
+                lblAñoAmrt.Visible = true;
+                lblInteresAmrt.Visible = true;
+                lblTipoMetodoAmrt.Visible = true;
+                lbMontoAmrt.Visible = true;
+                nupAportacionAmrt.Visible = true;
+                txtAñosAmrt.Visible = true;
+                txtInteresPrestamoAmrt.Visible = true;
+            }
+            else
+            {
+                cmbTipoAmortizaciónAmrt.Visible = false;
+                lblAñoAmrt.Visible = false;
+                lblInteresAmrt.Visible = false;
+                lblTipoMetodoAmrt.Visible = false;
+                lbMontoAmrt.Visible = false;
+                nupAportacionAmrt.Visible = false;
+                txtAñosAmrt.Visible = false;
+                txtInteresPrestamoAmrt.Visible = false;
+
+                cmbTipoMetodoAsset.Visible = true;
+                cmbVidaActivosAsset.Visible = true;
+                lblAñosComoNiAsset.Visible = true;
+                lblDepreciaciónAsset.Visible = true;
+                lblMontoAsset.Visible = true;
+                lblTipoAsset.Visible = true;
+                lblValorResidualAsset.Visible = true;
+                tgDepreciacionAsset.Visible = true;
+                tglsVidaDeActivoAsset.Visible = true;
+                txtVidaUtil.Visible = true;
+                lblValorResidualAsset.Visible = true;
+                lblValorResidualAsset.Visible = true;
+                txtValorResidualAsset.Visible = true;
+                lblTipoDeMetodoAsset.Visible = true;
+            }
         }
     }
 }

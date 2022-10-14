@@ -20,7 +20,8 @@ namespace EconomicEF.Infraestructure.Repository
         // TODO: look at project
         public async Task<List<InvesmentEntity>> GetByProjectIdAsync(int projectId)
         {
-            // Get: https://localhost:7062/api/invesmentEntity/GetByProjectIdAsync?projectId=1
+            // Get: https://localhost:7062/api/invesmentEntity/GetByProjectIdAsync?projectId=18
+
 
             string URI = URL + "/GetByProjectIdAsync?projectId=" + projectId.ToString();
             HttpResponseMessage response = await client.GetAsync(URI);

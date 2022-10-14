@@ -21,6 +21,9 @@ namespace EconomicMF.Forms.FormsFlujo
 
         }
 
-        
+        private void Charge()
+        {
+
+        }
     }
 }

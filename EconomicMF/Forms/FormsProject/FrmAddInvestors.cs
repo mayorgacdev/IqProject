@@ -85,17 +85,9 @@ namespace EconomicMF.Forms.FormsProject
                     LoanTerm = MemoryOnProject.LoanTerm,
                 };
 
-                MemoryOnProject.CalculoTmar.Add(txtInteresPrestamo.Value);
-                MemoryOnProject.CalculoTmar.Add(nupAportacionUser.Value);
-
                 CleanTextBoxs();
                 await unitOfWork.InvesmentEntityClient.SetInvesmentEntityAsync(entidadInv);
-                nupAportacionUser.Maximum = 0;
-                nupAportacionUser.Value = 0;
                 ChargeData();
-
-                nupAportacionUser.Maximum = 0;
-                nupAportacionUser.Value = 0;
             }
             catch (Exception ex)
             {
@@ -151,12 +143,16 @@ namespace EconomicMF.Forms.FormsProject
                 txtSumTotal.Text = totalSum + " %";
                 return true;
             }
-            else
+            else if (sum < totalSum)
             {
                 totalSum = aportacion.Sum() + MemoryOnProject.Contribution;
                 newLim = limSup - sum;
                 nupAportacionUser.Maximum = newLim;
                 txtSumTotal.Text = totalSum + " %";
+                return false;
+            }
+            else
+            {
                 return false;
             }
         }
@@ -176,7 +172,7 @@ namespace EconomicMF.Forms.FormsProject
 
             nupAportacionUser.Value = limSup;
             lblNameProject.Text = projectClient.Name;
-            lblTmarProject.Text = projectClient.TMAR+"";
+            lblTmarProject.Text = projectClient.TMAR+" %";
             MemoryOnProject.CalculoTmar.Clear();
         }
 

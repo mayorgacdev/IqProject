@@ -17,7 +17,7 @@ namespace EconomicEF.Infraestructure.Repository
 
         public async Task<List<Asset>> GetAllAssetAsync(int projectId)
         {
-            string URI = URL + "/getAssets?assetId=" + projectId.ToString();
+            string URI = URL + "/getAssets?projectId=" + projectId.ToString();
             HttpResponseMessage response = await client.GetAsync(URI);
             if (response.IsSuccessStatusCode)
             {

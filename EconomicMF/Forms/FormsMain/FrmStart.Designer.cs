@@ -42,7 +42,7 @@
             this.labelFecha = new System.Windows.Forms.Label();
             this.btnControl = new RJCodeAdvance.RJControls.RJButton();
             this.panelInfoUser = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnChecked = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -50,15 +50,16 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.flpBestProject = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.flpInversors = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProjects = new System.Windows.Forms.FlowLayoutPanel();
             this.dtTIme = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelWelcomeToUser.SuspendLayout();
             this.panelUserBarra.SuspendLayout();
             this.panelInfoUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChecked)).BeginInit();
             this.SuspendLayout();
             // 
             // panelWelcomeToUser
@@ -204,7 +205,9 @@
             // 
             this.panelInfoUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelInfoUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.panelInfoUser.Controls.Add(this.pictureBox1);
+            this.panelInfoUser.Controls.Add(this.label3);
+            this.panelInfoUser.Controls.Add(this.label2);
+            this.panelInfoUser.Controls.Add(this.btnChecked);
             this.panelInfoUser.Controls.Add(this.label1);
             this.panelInfoUser.Controls.Add(this.label17);
             this.panelInfoUser.Controls.Add(this.label16);
@@ -212,7 +215,6 @@
             this.panelInfoUser.Controls.Add(this.label14);
             this.panelInfoUser.Controls.Add(this.label13);
             this.panelInfoUser.Controls.Add(this.label12);
-            this.panelInfoUser.Controls.Add(this.flpBestProject);
             this.panelInfoUser.Controls.Add(this.label11);
             this.panelInfoUser.Location = new System.Drawing.Point(849, 26);
             this.panelInfoUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -220,14 +222,14 @@
             this.panelInfoUser.Size = new System.Drawing.Size(282, 421);
             this.panelInfoUser.TabIndex = 14;
             // 
-            // pictureBox1
+            // btnChecked
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(114, 286);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 55);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.btnChecked.Image = ((System.Drawing.Image)(resources.GetObject("btnChecked.Image")));
+            this.btnChecked.Location = new System.Drawing.Point(114, 345);
+            this.btnChecked.Name = "btnChecked";
+            this.btnChecked.Size = new System.Drawing.Size(54, 55);
+            this.btnChecked.TabIndex = 15;
+            this.btnChecked.TabStop = false;
             // 
             // label1
             // 
@@ -236,9 +238,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(19, 227);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 22);
+            this.label1.Size = new System.Drawing.Size(138, 22);
             this.label1.TabIndex = 14;
-            this.label1.Text = "de su TIR, RBC y VPN";
+            this.label1.Text = "de su TIR y VPN";
             // 
             // label17
             // 
@@ -306,15 +308,6 @@
             this.label12.TabIndex = 8;
             this.label12.Text = "Agrega los datos necesarios";
             // 
-            // flpBestProject
-            // 
-            this.flpBestProject.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpBestProject.Location = new System.Drawing.Point(0, 348);
-            this.flpBestProject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flpBestProject.Name = "flpBestProject";
-            this.flpBestProject.Size = new System.Drawing.Size(282, 73);
-            this.flpBestProject.TabIndex = 7;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -352,6 +345,28 @@
             this.dtTIme.Enabled = true;
             this.dtTIme.Tick += new System.EventHandler(this.dtTIme_Tick);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(20, 286);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(213, 22);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Verifica el mejor proyecto:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(20, 308);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(175, 22);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Da click en la imagen";
+            // 
             // FrmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -374,7 +389,7 @@
             this.panelUserBarra.PerformLayout();
             this.panelInfoUser.ResumeLayout(false);
             this.panelInfoUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChecked)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,13 +413,14 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.FlowLayoutPanel flpBestProject;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flpInversors;
         private System.Windows.Forms.FlowLayoutPanel flpProjects;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnChecked;
         private System.Windows.Forms.Timer dtTIme;
         private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

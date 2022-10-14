@@ -12,6 +12,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
     public partial class FormMain : Form
     {
         private readonly IUnitOfWork unitOfWork;
+
         public FormMain(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
@@ -32,80 +33,83 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void btnIngresos_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Entry));
+            AbrirFormEnPanel(new FrmAddEntry(unitOfWork));
         }
 
         private void btnCosto_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Cost));
+            AbrirFormEnPanel(new FrmAddExpense(unitOfWork));
         }
 
         private void btnInversion_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Inversion));
+            AbrirFormEnPanel(new FrmAddInversion(unitOfWork));
         }
 
         private async void btnEvaluar_Click(object sender, EventArgs e)
         {
-            List<Asset> assets = await unitOfWork.AssetClient.GetAllAssetAsync(DataOnMemory.ProjectId);
-            List<InvesmentArea> invesmentAreas = await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId);
-            List<ProjectCost> projectCosts = await unitOfWork.CostClient.GetAllCost(DataOnMemory.ProjectId);
-            List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
-            List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
-
-            if (assets.Count < 0 || invesmentAreas.Count < 0)
+            try
             {
-                MessageBox.Show("Necesitas agregar una inversión a tu proyecto");
-                AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Inversion));
-                return;
-            }
+                List<Asset> assets = await unitOfWork.AssetClient.GetAllAssetAsync(DataOnMemory.ProjectId);
+                List<InvesmentArea> invesmentAreas = await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId);
+                List<ProjectCost> projectCosts = await unitOfWork.CostClient.GetAllCost(DataOnMemory.ProjectId);
+                List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
+                List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
 
-            if (projectEntries.Count < 0)
-            {
-                MessageBox.Show("Quizás olvidaste agregar ingresos a tu proyecto, por favor añade ingresos...", "Error");
-                AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Entry));
-                return;
-            }
-            else
-            {
-                AbrirFormEnPanel(SingletonFrm.GetForm(FormType.ChargeData));
-            }
-
-            if (projectCosts.Count < 0 && projectExpenses.Count < 0)
-            {
-                MessageBox.Show("Necesitas agregar más costos ó más gastos a tu proyecto", "Error");
-
-                if (projectCosts.Count < 0)
+                if (assets.Count <= 0 || invesmentAreas.Count <= 0)
                 {
-                    AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Cost));
+                    MessageBox.Show("Necesitas agregar una inversión a tu proyecto");
+                    AbrirFormEnPanel(new FrmAddInversion(unitOfWork));
                     return;
                 }
-                else
+
+                if (projectEntries.Count <= 0)
                 {
-                    AbrirFormEnPanel(SingletonFrm.GetForm(FormType.AddGasto));
+                    MessageBox.Show("Quizás olvidaste agregar ingresos a tu proyecto, por favor añade ingresos...", "Error");
+                    AbrirFormEnPanel(new FrmAddEntry(unitOfWork));
                     return;
-
                 }
+
+                if (projectCosts.Count <= 0 || projectExpenses.Count <= 0)
+                {
+                    if (projectCosts.Count <= 0)
+                    {
+                        MessageBox.Show("Necesitas agregar más costos a tu proyecto", "Error");
+                        AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Cost));
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Necesitas agregar más gastos a tu proyecto", "Error");
+                        AbrirFormEnPanel(new FrmAddExpense(unitOfWork));
+                        return;
+
+                    }
+                }
+
+                if (assets.Count >= 0 && invesmentAreas.Count >= 0 && 
+                    projectEntries.Count >= 0 && projectCosts.Count >= 0 && projectExpenses.Count >= 0)
+                {
+                    AbrirFormEnPanel(new FrmChargeData(unitOfWork, DataOnMemory.ProjectId));
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                AbrirFormEnPanel(SingletonFrm.GetForm(FormType.ChargeData));
-                return;
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             SingletonFrm.GetForm(FormType.Main).Show();
-            this.Hide();
+            this.Dispose();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Inversion));
+            AbrirFormEnPanel(new FrmAddInversion(unitOfWork));
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -138,12 +142,12 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void btnGastos_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.AddGasto));
+            AbrirFormEnPanel(new FrmAddExpense(unitOfWork));
         }
 
         private void btnActivos_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.AddAsset));
+            AbrirFormEnPanel(new FrmAddAsset(unitOfWork));
         }
     }
 }

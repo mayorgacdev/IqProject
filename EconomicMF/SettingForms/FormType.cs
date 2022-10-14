@@ -20,7 +20,6 @@
         Start,
         Config,
         DashBoard,
-        Detail,
         Gestor,
         Inversors,
         Reporte,

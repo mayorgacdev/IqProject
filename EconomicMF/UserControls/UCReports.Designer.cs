@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbImage = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCReports));
             this.btnDowloadReport = new RJCodeAdvance.RJControls.RJButton();
             this.lblAportación = new System.Windows.Forms.Label();
             this.lblNameInversor = new System.Windows.Forms.Label();
@@ -36,24 +36,12 @@
             this.lblIdProject = new System.Windows.Forms.Label();
             this.lblData = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbImage
-            // 
-            this.pbImage.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbImage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
-            this.pbImage.BorderColor2 = System.Drawing.Color.HotPink;
-            this.pbImage.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbImage.BorderSize = 2;
-            this.pbImage.GradientAngle = 50F;
-            this.pbImage.Location = new System.Drawing.Point(15, 5);
-            this.pbImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(48, 48);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImage.TabIndex = 0;
-            this.pbImage.TabStop = false;
             // 
             // btnDowloadReport
             // 
@@ -66,10 +54,10 @@
             this.btnDowloadReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDowloadReport.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDowloadReport.ForeColor = System.Drawing.Color.White;
-            this.btnDowloadReport.Location = new System.Drawing.Point(744, 13);
+            this.btnDowloadReport.Location = new System.Drawing.Point(867, 7);
             this.btnDowloadReport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDowloadReport.Name = "btnDowloadReport";
-            this.btnDowloadReport.Size = new System.Drawing.Size(185, 29);
+            this.btnDowloadReport.Size = new System.Drawing.Size(283, 35);
             this.btnDowloadReport.TabIndex = 2;
             this.btnDowloadReport.Text = "Dowload report";
             this.btnDowloadReport.TextColor = System.Drawing.Color.White;
@@ -83,9 +71,9 @@
             this.lblAportación.ForeColor = System.Drawing.Color.White;
             this.lblAportación.Location = new System.Drawing.Point(110, 33);
             this.lblAportación.Name = "lblAportación";
-            this.lblAportación.Size = new System.Drawing.Size(22, 17);
+            this.lblAportación.Size = new System.Drawing.Size(62, 17);
             this.lblAportación.TabIndex = 57;
-            this.lblAportación.Text = "Id:";
+            this.lblAportación.Text = "Creación:";
             // 
             // lblNameInversor
             // 
@@ -116,35 +104,83 @@
             this.lblIdProject.ForeColor = System.Drawing.Color.White;
             this.lblIdProject.Location = new System.Drawing.Point(219, 37);
             this.lblIdProject.Name = "lblIdProject";
-            this.lblIdProject.Size = new System.Drawing.Size(82, 17);
+            this.lblIdProject.Size = new System.Drawing.Size(75, 17);
             this.lblIdProject.TabIndex = 59;
-            this.lblIdProject.Text = "<Id project>";
+            this.lblIdProject.Text = "<creación>";
             // 
             // lblData
             // 
             this.lblData.AutoSize = true;
             this.lblData.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblData.ForeColor = System.Drawing.Color.White;
-            this.lblData.Location = new System.Drawing.Point(454, 20);
+            this.lblData.Location = new System.Drawing.Point(431, 7);
             this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(91, 17);
+            this.lblData.Size = new System.Drawing.Size(122, 17);
             this.lblData.TabIndex = 60;
-            this.lblData.Text = "Name project:";
+            this.lblData.Text = "Con financiamiento:";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
-            this.panel1.Location = new System.Drawing.Point(0, 58);
+            this.panel1.Location = new System.Drawing.Point(8, 59);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(967, 3);
+            this.panel1.Size = new System.Drawing.Size(1150, 2);
             this.panel1.TabIndex = 62;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(30, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(51, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 63;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(431, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "Tasa:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(559, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 17);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "<Con financiamiento>";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(559, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.TabIndex = 66;
+            this.label3.Text = "<19%>";
             // 
             // UCReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.lblIdProject);
@@ -152,22 +188,19 @@
             this.Controls.Add(this.lblAportación);
             this.Controls.Add(this.lblNameInversor);
             this.Controls.Add(this.btnDowloadReport);
-            this.Controls.Add(this.pbImage);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCReports";
-            this.Size = new System.Drawing.Size(947, 64);
+            this.Size = new System.Drawing.Size(1165, 68);
             this.Load += new System.EventHandler(this.UCReports_Load);
             this.MouseEnter += new System.EventHandler(this.UCReports_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.UCReports_MouseLeave);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private RJCodeAdvance.RJControls.RJCircularPictureBox pbImage;
         private RJCodeAdvance.RJControls.RJButton btnDowloadReport;
         private System.Windows.Forms.Label lblAportación;
         private System.Windows.Forms.Label lblNameInversor;
@@ -175,5 +208,9 @@
         private System.Windows.Forms.Label lblIdProject;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

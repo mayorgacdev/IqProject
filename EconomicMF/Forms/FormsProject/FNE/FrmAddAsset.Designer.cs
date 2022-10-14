@@ -74,7 +74,7 @@
             // 
             // txtValorResidual
             // 
-            this.txtValorResidual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValorResidual.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtValorResidual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.txtValorResidual.BorderColor = System.Drawing.Color.White;
             this.txtValorResidual.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -82,7 +82,7 @@
             this.txtValorResidual.BorderSize = 2;
             this.txtValorResidual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValorResidual.ForeColor = System.Drawing.Color.White;
-            this.txtValorResidual.Location = new System.Drawing.Point(134, 282);
+            this.txtValorResidual.Location = new System.Drawing.Point(109, 279);
             this.txtValorResidual.Margin = new System.Windows.Forms.Padding(5);
             this.txtValorResidual.Multiline = false;
             this.txtValorResidual.Name = "txtValorResidual";

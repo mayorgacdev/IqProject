@@ -9,6 +9,7 @@ using EconomicMF.Forms.FormsProject;
 using EconomicMF.Forms.FormsProject.FNE;
 using EconomicMF.Forms.FrmConfigs;
 using EconomicMF.Forms.FrmInitProjects;
+using EconomicMF.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
@@ -33,8 +34,6 @@ namespace EconomicMF.SettingForms
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmMain>();
                 case FormType.Others:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmOthers>();
-                case FormType.ResolveDepreciation:
-                    return ServicesReq.ServiceProvider.GetRequiredService<FrmResolveDepreciation>();
                 case FormType.AddSolution:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmAddSolution>();
                 case FormType.UpdateUser:
@@ -59,10 +58,6 @@ namespace EconomicMF.SettingForms
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmConfig>();
                 case FormType.DashBoard:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmDashboard>();
-                case FormType.Detail:
-                    return ServicesReq.ServiceProvider.GetRequiredService<FrmDetalleProyecto>();
-                case FormType.Gestor:
-                    return ServicesReq.ServiceProvider.GetRequiredService<FrmGestor>();
                 case FormType.Inversors:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmInversors>();
                 case FormType.Reporte:
@@ -97,14 +92,13 @@ namespace EconomicMF.SettingForms
         public static void GetInstances(this ServiceCollection services)
         {
             serviceDescriptors = services;
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<FrmLogin>();
             services.AddSingleton<FrmRegister>();
             services.AddSingleton<FrmSolution>();
             services.AddSingleton<FrmValidateForgotPass>();
             services.AddSingleton<FrmMain>();
             services.AddSingleton<FrmOthers>();
-            services.AddSingleton<FrmResolveDepreciation>();
             services.AddSingleton<FrmAddSolution>();
             services.AddSingleton<FrmUpdateUser>();
             services.AddSingleton<FrmAddInvestors>();
@@ -118,8 +112,6 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmConfig>();
             services.AddSingleton<FrmConfig>();
             services.AddSingleton<FrmDashboard>();
-            services.AddSingleton<FrmDetalleProyecto>();
-            services.AddSingleton<FrmGestor>();
             services.AddSingleton<FrmInversors>();
             services.AddSingleton<FrmReporte>();
             services.AddSingleton<FrmAnnuaty>();
@@ -132,8 +124,8 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmConfigInit>();
             services.AddSingleton<FrmAddExpense>();
             services.AddSingleton<FrmAddAsset>();
-        }
-
+            services.AddSingleton<UCProject>();
+        }            
         public static void DestroyForms()
         {
 

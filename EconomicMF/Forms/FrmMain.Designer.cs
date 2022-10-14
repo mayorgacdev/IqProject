@@ -224,7 +224,7 @@
             this.btnInversionistas.Name = "btnInversionistas";
             this.btnInversionistas.Size = new System.Drawing.Size(197, 53);
             this.btnInversionistas.TabIndex = 2;
-            this.btnInversionistas.Text = "Inversionistas";
+            this.btnInversionistas.Text = "Config. Proyecto";
             this.btnInversionistas.TextColor = System.Drawing.Color.White;
             this.btnInversionistas.UseVisualStyleBackColor = false;
             this.btnInversionistas.Click += new System.EventHandler(this.btnInversionistas_Click);
@@ -247,7 +247,7 @@
             this.btnProjects.Name = "btnProjects";
             this.btnProjects.Size = new System.Drawing.Size(197, 53);
             this.btnProjects.TabIndex = 1;
-            this.btnProjects.Text = "Projects";
+            this.btnProjects.Text = "Proyectos";
             this.btnProjects.TextColor = System.Drawing.Color.White;
             this.btnProjects.UseVisualStyleBackColor = false;
             this.btnProjects.Click += new System.EventHandler(this.btnProjects_Click);

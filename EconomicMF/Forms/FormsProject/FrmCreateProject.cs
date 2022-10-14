@@ -2,6 +2,7 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
+using EconomicMF.SettingForms;
 using System;
 using System.Data;
 using System.Linq;
@@ -52,12 +53,15 @@ namespace EconomicMF.Forms.FormsProject
 
         private void btnAtrás_Click(object sender, EventArgs e)
         {
+            SingletonFrm.GetForm(FormType.Main).Show();
             this.Hide();
         }
 
         private void FrmCreateProject_Load(object sender, EventArgs e)
         {
             cmbPeriodo.Items.AddRange(Enum.GetValues(typeof(Periodo)).Cast<object>().ToArray());
+            SingletonFrm.GetForm(FormType.Main).Hide();
+
         }
         #endregion
 
@@ -118,6 +122,8 @@ namespace EconomicMF.Forms.FormsProject
 
                     await unitOfWork.ProjectClient.CreateAsync(project);
                     Clean();
+                    SingletonFrm.GetForm(FormType.Main).Show();
+                    this.Hide();
                 }
 
                 CleanTextBox();

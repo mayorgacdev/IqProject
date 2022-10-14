@@ -3,7 +3,6 @@ using EconomicMF.Domain.Contracts;
 using EconomicMF.Forms.FormsProject;
 using EconomicMF.SettingForms;
 using EconomicMF.UserControls;
-using EconomicMF.UserControls.UserInits;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,9 +33,7 @@ namespace EconomicMF.Forms.FormsMain
             ChargeInversors();
         }
         private async void ChargeProjects()
-        {
-
-            flpProjects.Controls.Clear();
+        {   
             var projects = await unitOfWork.ProjectClient.GetProjectsAsync(solutionId);
 
             if (projects is null)
@@ -58,19 +55,19 @@ namespace EconomicMF.Forms.FormsMain
 
         private async void ChargeInversors()
         {
-            var inversors = await unitOfWork.ProjectClient.GetProjectsAsync(solutionId);
-            if (inversors is null)
+            var investments = await unitOfWork.InvesmentEntityClient.GetBySolutionIdAsync(solutionId);
+
+            if (investments is null)
             {
-                UCInvestorInit uC = new UCInvestorInit();
-                flpProjects.Controls.Add(uC);
+                return;
             }
             else
             {
                 flpInversors.Controls.Clear();
-                foreach (var item in inversors)
+                foreach (var item in investments)
                 {
-                    UCInversor uCInversor = new UCInversor(unitOfWork, item.Id);
-                    flpInversors.Controls.Add(uCInversor);
+                    UCInversor ucInversor = new UCInversor(unitOfWork, item.Id);
+                    flpInversors.Controls.Add(ucInversor);
                 }
             }
         }
@@ -83,6 +80,8 @@ namespace EconomicMF.Forms.FormsMain
         {
             try
             {
+                flpInversors.Controls.Clear();
+                flpProjects.Controls.Clear();
                 SingletonFrm.GetForm(FormType.CreateProject).ShowDialog();
                 ChargeProjects();
                 ChargeInversors();
