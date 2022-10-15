@@ -38,7 +38,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void btnCosto_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new FrmAddExpense(unitOfWork));
+            AbrirFormEnPanel(new FrmAddCosto(unitOfWork));
         }
 
         private void btnInversion_Click(object sender, EventArgs e)

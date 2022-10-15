@@ -74,8 +74,8 @@ namespace EconomicMF.Forms.FormsProject.FNE
                         Name = txtName.Texts,
                         Start = 0,
                         Amount = 0,
-                        IsDiferida = true,
-                        RecoveryCt = Math.Round(decimal.Parse(txtMonto.Texts), 2),
+                        IsDiferida = false,
+                        RecoveryCt = nupRecuperaciónCt.Value,
                     };
 
                     await unitOfWork.InvesmentArea.SetInvesmentArea(invesmentArea);
@@ -90,7 +90,8 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void ChargeDtg()
         {
-            dtgFNE.DataSource = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
+            dtgFNE.DataSource = null;
+            dtgFNE.DataSource = (await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId));
         }
     }
 }

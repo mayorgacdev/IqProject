@@ -80,7 +80,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                         ProjectId = DataOnMemory.ProjectId,
                         Cost = Math.Round(decimal.Parse(txtCosto.Texts), 2),
                         Growth = 0,
-                        TypeGrowth = "Sin crecimiento",
+                        TypeGrowth = "SinCrecimiento",
                         Start = int.Parse(txtStart.Texts),
                         End = int.Parse(txtEnd.Texts),
                         CostType = txtTipoDeCosto.Texts,

@@ -1747,16 +1747,16 @@ namespace EconomicMF.AppCore.Processes
         private static PastelData CrearPastel(string tipoCrecimiento, int n, string nombre, decimal value, decimal crecimiento)
         {
             decimal valorPastel = 0;
-            if (string.Compare(tipoCrecimiento, "0", StringComparison.CurrentCultureIgnoreCase) == 0)
+            if (string.Compare(tipoCrecimiento, TipoCrecimiento.SinCrecimiento.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
             {
                 valorPastel = value * (n + 1);
             }
-            else if (string.Compare(tipoCrecimiento, "1", StringComparison.CurrentCultureIgnoreCase) == 0)
+            else if (string.Compare(tipoCrecimiento, TipoCrecimiento.Aritmetico.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
             {
                 decimal valorFinal = value + (n * crecimiento);
                 valorPastel = ((value + valorFinal) / 2) * n;
             }
-            else if (string.Compare(tipoCrecimiento, "2", StringComparison.CurrentCultureIgnoreCase) == 0)
+            else if (string.Compare(tipoCrecimiento, TipoCrecimiento.Geometrico.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
             {
                 double multiplicador = 1 + (double)crecimiento;
                 double numerador = Math.Pow(multiplicador, n) - 1;

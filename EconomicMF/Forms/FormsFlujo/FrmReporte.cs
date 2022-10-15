@@ -65,6 +65,7 @@ namespace EconomicMF.Forms.FormsFlujo
                     var projectExpense = await unitOfWork.ProjectExpense.GetAllExpenses(projectId);
                     var projectCost = await unitOfWork.CostClient.GetAllCost(projectId);
                     var investmentAreas = await unitOfWork.InvesmentArea.GetProjects(projectId);
+                    var assets = await unitOfWork.AssetClient.GetAllAssetAsync(projectId);
 
                     var totalEntry = ProjectCalculations.TotalIndividual(projecEntry);
                     var totalExpense = ProjectCalculations.TotalIndividual(projectExpense);
@@ -72,16 +73,28 @@ namespace EconomicMF.Forms.FormsFlujo
                     var totalInvestment = ProjectCalculations.TotalIndividual(investmentAreas);
 
 
-                    lblMontoCosto.Text = totalCost.Max(e => e.Valor) + "";
-                    lblMontoIngreso.Text = totalEntry.Max(e => e.Valor) + "";
-                    lblMontoGasto.Text = totalExpense.Max(e => e.Valor) + "";
+                    var maxCost = totalCost.Max(e => e.Valor);
+                    var minEntry = totalEntry.Min(e => e.Valor);
+                    var MaxExpense = totalExpense.Max(e => e.Valor);
+                    var assetExpensive = assets.Max(e => e.Amount);
+
+                    lblMontoCosto.Text   = maxCost + " $";
+                    lblMontoIngreso.Text = minEntry + " $";
+                    lblMontoGasto.Text   = MaxExpense + " $";
+                    lblMontoActivo.Text = assetExpensive + " $";
+
+                    lblNombreCosto.Text = totalCost.FirstOrDefault(e => e.Valor == maxCost)?.Nombres;
+                    lblNombreIngreso.Text = totalEntry.FirstOrDefault(e => e.Valor == minEntry)?.Nombres;
+                    lblNombreGasto.Text = totalExpense.FirstOrDefault(e => e.Valor == MaxExpense)?.Nombres;
+                    lblNombreActivo.Text = assets.FirstOrDefault(e => e.Amount == assetExpensive)?.Name;
+                    lblInversiónTotal.Text = assets.Sum(e => e.Amount) + investmentAreas.Sum(e => e.Amount) + " $";
                 }
                 else
                     return;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lo sentimos, le faltan datos importantes a su proyecto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

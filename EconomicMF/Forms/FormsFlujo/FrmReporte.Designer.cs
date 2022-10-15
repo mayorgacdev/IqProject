@@ -47,7 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblTipoDeMetodo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblInversiónTotal = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblNombreCosto = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblNombreActivo = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblMontoActivo = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -287,24 +287,24 @@
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.lblInversiónTotal);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Location = new System.Drawing.Point(707, 289);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(183, 164);
             this.panel3.TabIndex = 111;
             // 
-            // label11
+            // lblInversiónTotal
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.Coral;
-            this.label11.Location = new System.Drawing.Point(47, 70);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(92, 31);
-            this.label11.TabIndex = 124;
-            this.label11.Text = "75000 $";
+            this.lblInversiónTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblInversiónTotal.AutoSize = true;
+            this.lblInversiónTotal.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblInversiónTotal.ForeColor = System.Drawing.Color.Coral;
+            this.lblInversiónTotal.Location = new System.Drawing.Point(47, 70);
+            this.lblInversiónTotal.Name = "lblInversiónTotal";
+            this.lblInversiónTotal.Size = new System.Drawing.Size(92, 31);
+            this.lblInversiónTotal.TabIndex = 124;
+            this.lblInversiónTotal.Text = "75000 $";
             // 
             // label14
             // 
@@ -392,7 +392,7 @@
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.panel5.Controls.Add(this.lblNombreActivo);
-            this.panel5.Controls.Add(this.label15);
+            this.panel5.Controls.Add(this.lblMontoActivo);
             this.panel5.Controls.Add(this.label16);
             this.panel5.Controls.Add(this.label17);
             this.panel5.Controls.Add(this.label18);
@@ -412,17 +412,17 @@
             this.lblNombreActivo.TabIndex = 125;
             this.lblNombreActivo.Text = "Activo 1";
             // 
-            // label15
+            // lblMontoActivo
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(25, 117);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(83, 28);
-            this.label15.TabIndex = 124;
-            this.label15.Text = "75000 $";
+            this.lblMontoActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMontoActivo.AutoSize = true;
+            this.lblMontoActivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMontoActivo.ForeColor = System.Drawing.Color.White;
+            this.lblMontoActivo.Location = new System.Drawing.Point(25, 117);
+            this.lblMontoActivo.Name = "lblMontoActivo";
+            this.lblMontoActivo.Size = new System.Drawing.Size(83, 28);
+            this.lblMontoActivo.TabIndex = 124;
+            this.lblMontoActivo.Text = "75000 $";
             // 
             // label16
             // 
@@ -673,7 +673,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblInversiónTotal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblNombreCosto;
         private System.Windows.Forms.Label lblMontoCosto;
@@ -681,7 +681,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lblNombreActivo;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblMontoActivo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
