@@ -1754,12 +1754,15 @@ namespace EconomicMF.AppCore.Processes
             else if (string.Compare(tipoCrecimiento, TipoCrecimiento.Aritmetico.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
             {
                 decimal valorFinal = value + (n * crecimiento);
-                valorPastel = ((value + valorFinal) / 2) * n;
+                valorPastel = ((((value + crecimiento) + valorFinal) / 2) * n) + value;
             }
             else if (string.Compare(tipoCrecimiento, TipoCrecimiento.Geometrico.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
             {
-                double multiplicador = 1 + (double)crecimiento;
-                double numerador = Math.Pow(multiplicador, n) - 1;
+                //TODO: ya que la base de datos no aceptaba decimales ocupe la siguiente linea para probar
+                //cuando ya se puedan guardar decimales borrar esta linea y descomentar la otra
+                double multiplicador = 1 + (double)crecimiento / 100;
+                //double multiplicador = 1 + (double)crecimiento;
+                double numerador = Math.Pow(multiplicador, n + 1) - 1;
                 double denominador = multiplicador - 1;
                 valorPastel = value * (decimal)(numerador / denominador);
             }
