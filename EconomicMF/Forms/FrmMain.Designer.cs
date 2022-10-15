@@ -38,7 +38,6 @@
             this.btnConfigurar = new RJCodeAdvance.RJControls.RJButton();
             this.btnGestionar = new RJCodeAdvance.RJControls.RJButton();
             this.btnReporte = new RJCodeAdvance.RJControls.RJButton();
-            this.btnInversionistas = new RJCodeAdvance.RJControls.RJButton();
             this.btnProjects = new RJCodeAdvance.RJControls.RJButton();
             this.btnDashBoard = new RJCodeAdvance.RJControls.RJButton();
             this.panelUser = new System.Windows.Forms.Panel();
@@ -50,6 +49,7 @@
             this.pbImageProfileUser = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelOpen = new System.Windows.Forms.Panel();
             this.dtTIme = new System.Windows.Forms.Timer(this.components);
+            this.btnInversor = new RJCodeAdvance.RJControls.RJButton();
             this.panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -61,6 +61,7 @@
             // panelButtons
             // 
             this.panelButtons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.panelButtons.Controls.Add(this.btnInversor);
             this.panelButtons.Controls.Add(this.btnOthers);
             this.panelButtons.Controls.Add(this.btnMenu);
             this.panelButtons.Controls.Add(this.pbLogo);
@@ -68,7 +69,6 @@
             this.panelButtons.Controls.Add(this.btnConfigurar);
             this.panelButtons.Controls.Add(this.btnGestionar);
             this.panelButtons.Controls.Add(this.btnReporte);
-            this.panelButtons.Controls.Add(this.btnInversionistas);
             this.panelButtons.Controls.Add(this.btnProjects);
             this.panelButtons.Controls.Add(this.btnDashBoard);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Left;
@@ -205,29 +205,6 @@
             this.btnReporte.TextColor = System.Drawing.Color.White;
             this.btnReporte.UseVisualStyleBackColor = false;
             this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
-            // 
-            // btnInversionistas
-            // 
-            this.btnInversionistas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInversionistas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnInversionistas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnInversionistas.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnInversionistas.BorderRadius = 0;
-            this.btnInversionistas.BorderSize = 0;
-            this.btnInversionistas.FlatAppearance.BorderSize = 0;
-            this.btnInversionistas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInversionistas.ForeColor = System.Drawing.Color.White;
-            this.btnInversionistas.Image = ((System.Drawing.Image)(resources.GetObject("btnInversionistas.Image")));
-            this.btnInversionistas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInversionistas.Location = new System.Drawing.Point(0, 427);
-            this.btnInversionistas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnInversionistas.Name = "btnInversionistas";
-            this.btnInversionistas.Size = new System.Drawing.Size(197, 53);
-            this.btnInversionistas.TabIndex = 2;
-            this.btnInversionistas.Text = "Config. Proyecto";
-            this.btnInversionistas.TextColor = System.Drawing.Color.White;
-            this.btnInversionistas.UseVisualStyleBackColor = false;
-            this.btnInversionistas.Click += new System.EventHandler(this.btnInversionistas_Click);
             // 
             // btnProjects
             // 
@@ -377,6 +354,29 @@
             this.dtTIme.Enabled = true;
             this.dtTIme.Tick += new System.EventHandler(this.dtTIme_Tick);
             // 
+            // btnInversor
+            // 
+            this.btnInversor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInversor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnInversor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnInversor.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnInversor.BorderRadius = 0;
+            this.btnInversor.BorderSize = 0;
+            this.btnInversor.FlatAppearance.BorderSize = 0;
+            this.btnInversor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInversor.ForeColor = System.Drawing.Color.White;
+            this.btnInversor.Image = ((System.Drawing.Image)(resources.GetObject("btnInversor.Image")));
+            this.btnInversor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInversor.Location = new System.Drawing.Point(0, 425);
+            this.btnInversor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnInversor.Name = "btnInversor";
+            this.btnInversor.Size = new System.Drawing.Size(200, 54);
+            this.btnInversor.TabIndex = 16;
+            this.btnInversor.Text = "Config. Proyecto";
+            this.btnInversor.TextColor = System.Drawing.Color.White;
+            this.btnInversor.UseVisualStyleBackColor = false;
+            this.btnInversor.Click += new System.EventHandler(this.btnInversor_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -408,7 +408,6 @@
         private RJCodeAdvance.RJControls.RJButton btnConfigurar;
         private RJCodeAdvance.RJControls.RJButton btnGestionar;
         private RJCodeAdvance.RJControls.RJButton btnReporte;
-        private RJCodeAdvance.RJControls.RJButton btnInversionistas;
         private RJCodeAdvance.RJControls.RJButton btnProjects;
         private RJCodeAdvance.RJControls.RJButton btnDashBoard;
         private System.Windows.Forms.Panel panelUser;
@@ -424,5 +423,6 @@
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.PictureBox btnMenu;
         private RJCodeAdvance.RJControls.RJButton btnOthers;
+        private RJCodeAdvance.RJControls.RJButton btnInversor;
     }
 }

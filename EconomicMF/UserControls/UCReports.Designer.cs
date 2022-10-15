@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCReports));
             this.btnDowloadReport = new RJCodeAdvance.RJControls.RJButton();
-            this.lblAportación = new System.Windows.Forms.Label();
-            this.lblNameInversor = new System.Windows.Forms.Label();
+            this.labels = new System.Windows.Forms.Label();
+            this.labelasd = new System.Windows.Forms.Label();
             this.lblNameProject = new System.Windows.Forms.Label();
-            this.lblIdProject = new System.Windows.Forms.Label();
-            this.lblData = new System.Windows.Forms.Label();
+            this.lblCreacion = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblNameRate = new System.Windows.Forms.Label();
+            this.lblFinancing = new System.Windows.Forms.Label();
+            this.lblRate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,27 +64,27 @@
             this.btnDowloadReport.UseVisualStyleBackColor = false;
             this.btnDowloadReport.Click += new System.EventHandler(this.btnDowloadReport_Click_1);
             // 
-            // lblAportación
+            // labels
             // 
-            this.lblAportación.AutoSize = true;
-            this.lblAportación.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAportación.ForeColor = System.Drawing.Color.White;
-            this.lblAportación.Location = new System.Drawing.Point(110, 33);
-            this.lblAportación.Name = "lblAportación";
-            this.lblAportación.Size = new System.Drawing.Size(62, 17);
-            this.lblAportación.TabIndex = 57;
-            this.lblAportación.Text = "Creación:";
+            this.labels.AutoSize = true;
+            this.labels.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labels.ForeColor = System.Drawing.Color.White;
+            this.labels.Location = new System.Drawing.Point(110, 33);
+            this.labels.Name = "labels";
+            this.labels.Size = new System.Drawing.Size(62, 17);
+            this.labels.TabIndex = 57;
+            this.labels.Text = "Creación:";
             // 
-            // lblNameInversor
+            // labelasd
             // 
-            this.lblNameInversor.AutoSize = true;
-            this.lblNameInversor.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNameInversor.ForeColor = System.Drawing.Color.White;
-            this.lblNameInversor.Location = new System.Drawing.Point(109, 7);
-            this.lblNameInversor.Name = "lblNameInversor";
-            this.lblNameInversor.Size = new System.Drawing.Size(91, 17);
-            this.lblNameInversor.TabIndex = 56;
-            this.lblNameInversor.Text = "Name project:";
+            this.labelasd.AutoSize = true;
+            this.labelasd.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelasd.ForeColor = System.Drawing.Color.White;
+            this.labelasd.Location = new System.Drawing.Point(109, 7);
+            this.labelasd.Name = "labelasd";
+            this.labelasd.Size = new System.Drawing.Size(91, 17);
+            this.labelasd.TabIndex = 56;
+            this.labelasd.Text = "Name project:";
             // 
             // lblNameProject
             // 
@@ -97,27 +97,27 @@
             this.lblNameProject.TabIndex = 58;
             this.lblNameProject.Text = "<name project>";
             // 
-            // lblIdProject
+            // lblCreacion
             // 
-            this.lblIdProject.AutoSize = true;
-            this.lblIdProject.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblIdProject.ForeColor = System.Drawing.Color.White;
-            this.lblIdProject.Location = new System.Drawing.Point(219, 37);
-            this.lblIdProject.Name = "lblIdProject";
-            this.lblIdProject.Size = new System.Drawing.Size(75, 17);
-            this.lblIdProject.TabIndex = 59;
-            this.lblIdProject.Text = "<creación>";
+            this.lblCreacion.AutoSize = true;
+            this.lblCreacion.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCreacion.ForeColor = System.Drawing.Color.White;
+            this.lblCreacion.Location = new System.Drawing.Point(219, 37);
+            this.lblCreacion.Name = "lblCreacion";
+            this.lblCreacion.Size = new System.Drawing.Size(75, 17);
+            this.lblCreacion.TabIndex = 59;
+            this.lblCreacion.Text = "<creación>";
             // 
-            // lblData
+            // label
             // 
-            this.lblData.AutoSize = true;
-            this.lblData.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblData.ForeColor = System.Drawing.Color.White;
-            this.lblData.Location = new System.Drawing.Point(431, 7);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(122, 17);
-            this.lblData.TabIndex = 60;
-            this.lblData.Text = "Con financiamiento:";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label.ForeColor = System.Drawing.Color.White;
+            this.label.Location = new System.Drawing.Point(431, 7);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(122, 17);
+            this.label.TabIndex = 60;
+            this.label.Text = "Con financiamiento:";
             // 
             // panel1
             // 
@@ -138,38 +138,38 @@
             this.pictureBox1.TabIndex = 63;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // lblNameRate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(431, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
-            this.label1.TabIndex = 64;
-            this.label1.Text = "Tasa:";
+            this.lblNameRate.AutoSize = true;
+            this.lblNameRate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNameRate.ForeColor = System.Drawing.Color.White;
+            this.lblNameRate.Location = new System.Drawing.Point(431, 33);
+            this.lblNameRate.Name = "lblNameRate";
+            this.lblNameRate.Size = new System.Drawing.Size(37, 17);
+            this.lblNameRate.TabIndex = 64;
+            this.lblNameRate.Text = "Tasa:";
             // 
-            // label2
+            // lblFinancing
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(559, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 17);
-            this.label2.TabIndex = 65;
-            this.label2.Text = "<Con financiamiento>";
+            this.lblFinancing.AutoSize = true;
+            this.lblFinancing.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFinancing.ForeColor = System.Drawing.Color.White;
+            this.lblFinancing.Location = new System.Drawing.Point(559, 7);
+            this.lblFinancing.Name = "lblFinancing";
+            this.lblFinancing.Size = new System.Drawing.Size(137, 17);
+            this.lblFinancing.TabIndex = 65;
+            this.lblFinancing.Text = "<Con financiamiento>";
             // 
-            // label3
+            // lblRate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(559, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
-            this.label3.TabIndex = 66;
-            this.label3.Text = "<19%>";
+            this.lblRate.AutoSize = true;
+            this.lblRate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblRate.ForeColor = System.Drawing.Color.White;
+            this.lblRate.Location = new System.Drawing.Point(559, 33);
+            this.lblRate.Name = "lblRate";
+            this.lblRate.Size = new System.Drawing.Size(51, 17);
+            this.lblRate.TabIndex = 66;
+            this.lblRate.Text = "<19%>";
             // 
             // UCReports
             // 
@@ -177,16 +177,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblRate);
+            this.Controls.Add(this.lblFinancing);
+            this.Controls.Add(this.lblNameRate);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblData);
-            this.Controls.Add(this.lblIdProject);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.lblCreacion);
             this.Controls.Add(this.lblNameProject);
-            this.Controls.Add(this.lblAportación);
-            this.Controls.Add(this.lblNameInversor);
+            this.Controls.Add(this.labels);
+            this.Controls.Add(this.labelasd);
             this.Controls.Add(this.btnDowloadReport);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCReports";
@@ -202,15 +202,15 @@
 
         #endregion
         private RJCodeAdvance.RJControls.RJButton btnDowloadReport;
-        private System.Windows.Forms.Label lblAportación;
-        private System.Windows.Forms.Label lblNameInversor;
+        private System.Windows.Forms.Label labels;
+        private System.Windows.Forms.Label labelasd;
         private System.Windows.Forms.Label lblNameProject;
-        private System.Windows.Forms.Label lblIdProject;
-        private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.Label lblCreacion;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblNameRate;
+        private System.Windows.Forms.Label lblFinancing;
+        private System.Windows.Forms.Label lblRate;
     }
 }

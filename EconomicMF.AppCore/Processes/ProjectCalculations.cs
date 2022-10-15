@@ -18,6 +18,7 @@ namespace EconomicMF.AppCore.Processes
 {
     public static class ProjectCalculations
     {
+
         public static Project GetBestProject(List<Project> projects, int IdSolution)
         {
             try
@@ -1692,6 +1693,80 @@ namespace EconomicMF.AppCore.Processes
             };
             return totales;
         }
+
+        #region Totales
+
+        public static List<PastelData> TotalIndividual(List<ProjectEntry> projectEntries)
+        {
+            List<PastelData> total = new List<PastelData>();
+            foreach (var ingreso in projectEntries)
+            {
+                int n = ingreso.End - ingreso.Start;
+                PastelData pastel = CrearPastel(ingreso.TypeGrowth, n, ingreso.EntryType, ingreso.Entry, ingreso.Growth);
+                total.Add(pastel);
+            }
+            return total;
+        }
+
+        public static List<PastelData> TotalIndividual(List<ProjectCost> projectcost)
+        {
+            List<PastelData> total = new List<PastelData>();
+            foreach (var cost in projectcost)
+            {
+                int n = cost.End - cost.Start;
+                PastelData pastel = CrearPastel(cost.TypeGrowth, n, cost.CostType, cost.Cost, cost.Growth);
+                total.Add(pastel);
+            }
+            return total;
+        }
+        public static List<PastelData> TotalIndividual(List<ProjectExpense> expenses)
+        {
+            List<PastelData> total = new List<PastelData>();
+            foreach (var expense in expenses)
+            {
+                int n = expense.End - expense.Start;
+                PastelData pastel = CrearPastel(expense.TypeGrowth, n, expense.TypeExpense, expense.Expense, expense.Growth);
+                total.Add(pastel);
+            }
+            return total;
+        }
+        public static List<PastelData> TotalIndividual(List<InvesmentArea> inversiones)
+        {
+            List<PastelData> total = new List<PastelData>();
+            foreach (var inversion in inversiones)
+            {
+                PastelData pastelData = new PastelData()
+                {
+                    Nombres = inversion.Name,
+                    Valor = inversion.Amount
+                };
+                total.Add(pastelData);
+            }
+            return total;
+        }
+        private static PastelData CrearPastel(string tipoCrecimiento, int n, string nombre, decimal value, decimal crecimiento)
+        {
+            decimal valorPastel = 0;
+            if (string.Compare(tipoCrecimiento, "0", StringComparison.CurrentCultureIgnoreCase) == 0)
+            {
+                valorPastel = value * (n + 1);
+            }
+            else if (string.Compare(tipoCrecimiento, "1", StringComparison.CurrentCultureIgnoreCase) == 0)
+            {
+                decimal valorFinal = value + (n * crecimiento);
+                valorPastel = ((value + valorFinal) / 2) * n;
+            }
+            else if (string.Compare(tipoCrecimiento, "2", StringComparison.CurrentCultureIgnoreCase) == 0)
+            {
+                double multiplicador = 1 + (double)crecimiento;
+                double numerador = Math.Pow(multiplicador, n) - 1;
+                double denominador = multiplicador - 1;
+                valorPastel = value * (decimal)(numerador / denominador);
+            }
+            return new PastelData() { Nombres = nombre, Valor = valorPastel };
+        }
+
+        #endregion
     }
     public class Convertir<T>
     {

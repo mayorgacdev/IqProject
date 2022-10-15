@@ -131,9 +131,11 @@ namespace EconomicMF.Forms
 
         private void btnInversionistas_Click(object sender, EventArgs e)
         {
-            //FrmInversors frmInversors = new FrmInversors(unitOfWork);
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Inversors));
+
         }
+
+        //            //FrmInversors frmInversors = new FrmInversors(unitOfWork);
+
 
         private void btnGestionar_Click(object sender, EventArgs e)
         {
@@ -185,24 +187,31 @@ namespace EconomicMF.Forms
                 btnDashBoard.Text = String.Empty;
                 btnReporte.Text = String.Empty;
                 btnProjects.Text = String.Empty;
-                btnInversionistas.Text = String.Empty;
+                btnInversor.Text = String.Empty;
                 btnGestionar.Text = String.Empty;
                 btnConfigurar.Text = String.Empty;
+                btnOthers.Text = String.Empty;
             }
             else
             {
                 btnDashBoard.Text = "Dashboard";
                 btnReporte.Text = "Reportes";
                 btnProjects.Text = "Proyecto";
-                btnInversionistas.Text = "Inversionistas";
+                btnInversor.Text = "Config. Proyecto";
                 btnGestionar.Text = "Gestionar";
                 btnConfigurar.Text = "Configurar";
+                btnOthers.Text = "Otro";
             }
         }
 
         private void btnOthers_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Others));
+        }
+
+        private void btnInversor_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Inversors));
         }
     }
 }

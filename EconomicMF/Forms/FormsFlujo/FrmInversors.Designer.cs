@@ -29,62 +29,69 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInversors));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPeriodo = new System.Windows.Forms.Label();
-            this.lbldescription = new System.Windows.Forms.Label();
             this.cmbPeriodo = new RJCodeAdvance.RJControls.RJComboBox();
-            this.txtDuracion = new RJCodeAdvance.RJControls.RJTextBox();
-            this.txtDescripción = new RJCodeAdvance.RJControls.RJTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNameProject = new RJCodeAdvance.RJControls.RJTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelConfigProject = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.PictureBox();
-            this.rjButton3 = new RJCodeAdvance.RJControls.RJButton();
-            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
-            this.panelData = new System.Windows.Forms.Panel();
-            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
-            this.poisonDataGridView1 = new ReaLTaiizor.Controls.PoisonDataGridView();
-            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.rjTextBox1 = new RJCodeAdvance.RJControls.RJTextBox();
-            this.rjTextBox2 = new RJCodeAdvance.RJControls.RJTextBox();
-            this.rjComboBox1 = new RJCodeAdvance.RJControls.RJComboBox();
-            this.rjTextBox3 = new RJCodeAdvance.RJControls.RJTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.PictureBox();
             this.txtFilter = new RJCodeAdvance.RJControls.RJTextBox();
             this.dtgFNE = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            this.btnDelete = new RJCodeAdvance.RJControls.RJButton();
+            this.btnUpdate = new RJCodeAdvance.RJControls.RJButton();
+            this.panelData = new System.Windows.Forms.Panel();
+            this.nupContribution = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.nupTMAR = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tgIsFinancement = new RJCodeAdvance.RJControls.RJToggleButton();
+            this.nupDuration = new System.Windows.Forms.NumericUpDown();
+            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dtgInvestment = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
+            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.cmbTipoAmortizacion = new RJCodeAdvance.RJControls.RJComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelConfigProject.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panelData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupContribution)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupTMAR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupDuration)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgInvestment)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(16, 271);
+            this.label6.Location = new System.Drawing.Point(20, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 20);
             this.label6.TabIndex = 47;
@@ -94,21 +101,11 @@
             // 
             this.lblPeriodo.AutoSize = true;
             this.lblPeriodo.ForeColor = System.Drawing.Color.White;
-            this.lblPeriodo.Location = new System.Drawing.Point(16, 183);
+            this.lblPeriodo.Location = new System.Drawing.Point(20, 17);
             this.lblPeriodo.Name = "lblPeriodo";
             this.lblPeriodo.Size = new System.Drawing.Size(187, 20);
             this.lblPeriodo.TabIndex = 46;
             this.lblPeriodo.Text = "Periodo (Anual, mensual ...)";
-            // 
-            // lbldescription
-            // 
-            this.lbldescription.AutoSize = true;
-            this.lbldescription.ForeColor = System.Drawing.Color.White;
-            this.lbldescription.Location = new System.Drawing.Point(16, 99);
-            this.lbldescription.Name = "lbldescription";
-            this.lbldescription.Size = new System.Drawing.Size(87, 20);
-            this.lbldescription.TabIndex = 45;
-            this.lbldescription.Text = "Descripción";
             // 
             // cmbPeriodo
             // 
@@ -121,7 +118,7 @@
             this.cmbPeriodo.IconColor = System.Drawing.Color.MediumSpringGreen;
             this.cmbPeriodo.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbPeriodo.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbPeriodo.Location = new System.Drawing.Point(5, 207);
+            this.cmbPeriodo.Location = new System.Drawing.Point(9, 41);
             this.cmbPeriodo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbPeriodo.MinimumSize = new System.Drawing.Size(229, 40);
             this.cmbPeriodo.Name = "cmbPeriodo";
@@ -129,82 +126,6 @@
             this.cmbPeriodo.Size = new System.Drawing.Size(229, 48);
             this.cmbPeriodo.TabIndex = 44;
             this.cmbPeriodo.Texts = "Periodo";
-            // 
-            // txtDuracion
-            // 
-            this.txtDuracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.txtDuracion.BorderColor = System.Drawing.Color.White;
-            this.txtDuracion.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtDuracion.BorderRadius = 0;
-            this.txtDuracion.BorderSize = 2;
-            this.txtDuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDuracion.ForeColor = System.Drawing.Color.White;
-            this.txtDuracion.Location = new System.Drawing.Point(5, 297);
-            this.txtDuracion.Margin = new System.Windows.Forms.Padding(5);
-            this.txtDuracion.Multiline = false;
-            this.txtDuracion.Name = "txtDuracion";
-            this.txtDuracion.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.txtDuracion.PasswordChar = false;
-            this.txtDuracion.PlaceholderColor = System.Drawing.Color.Gray;
-            this.txtDuracion.PlaceholderText = "Duración";
-            this.txtDuracion.Size = new System.Drawing.Size(227, 39);
-            this.txtDuracion.TabIndex = 43;
-            this.txtDuracion.Texts = "";
-            this.txtDuracion.UnderlinedStyle = true;
-            // 
-            // txtDescripción
-            // 
-            this.txtDescripción.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.txtDescripción.BorderColor = System.Drawing.Color.White;
-            this.txtDescripción.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtDescripción.BorderRadius = 0;
-            this.txtDescripción.BorderSize = 2;
-            this.txtDescripción.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescripción.ForeColor = System.Drawing.Color.White;
-            this.txtDescripción.Location = new System.Drawing.Point(5, 125);
-            this.txtDescripción.Margin = new System.Windows.Forms.Padding(5);
-            this.txtDescripción.Multiline = false;
-            this.txtDescripción.Name = "txtDescripción";
-            this.txtDescripción.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.txtDescripción.PasswordChar = false;
-            this.txtDescripción.PlaceholderColor = System.Drawing.Color.Gray;
-            this.txtDescripción.PlaceholderText = "Descripción";
-            this.txtDescripción.Size = new System.Drawing.Size(227, 39);
-            this.txtDescripción.TabIndex = 42;
-            this.txtDescripción.Texts = "";
-            this.txtDescripción.UnderlinedStyle = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(16, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 20);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Nombre del proyecto";
-            // 
-            // txtNameProject
-            // 
-            this.txtNameProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.txtNameProject.BorderColor = System.Drawing.Color.White;
-            this.txtNameProject.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtNameProject.BorderRadius = 0;
-            this.txtNameProject.BorderSize = 2;
-            this.txtNameProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNameProject.ForeColor = System.Drawing.Color.White;
-            this.txtNameProject.Location = new System.Drawing.Point(5, 43);
-            this.txtNameProject.Margin = new System.Windows.Forms.Padding(5);
-            this.txtNameProject.Multiline = false;
-            this.txtNameProject.Name = "txtNameProject";
-            this.txtNameProject.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.txtNameProject.PasswordChar = false;
-            this.txtNameProject.PlaceholderColor = System.Drawing.Color.Gray;
-            this.txtNameProject.PlaceholderText = "Nombre del proyecto";
-            this.txtNameProject.Size = new System.Drawing.Size(227, 39);
-            this.txtNameProject.TabIndex = 40;
-            this.txtNameProject.Texts = "";
-            this.txtNameProject.UnderlinedStyle = true;
             // 
             // pictureBox1
             // 
@@ -253,336 +174,6 @@
             this.panelConfigProject.Size = new System.Drawing.Size(780, 400);
             this.panelConfigProject.TabIndex = 48;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnClose);
-            this.panel3.Controls.Add(this.rjButton3);
-            this.panel3.Controls.Add(this.rjButton1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(250, 333);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(530, 67);
-            this.panel3.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(83, 14);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(30, 38);
-            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnClose.TabIndex = 115;
-            this.btnClose.TabStop = false;
-            // 
-            // rjButton3
-            // 
-            this.rjButton3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.rjButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton3.BorderRadius = 0;
-            this.rjButton3.BorderSize = 0;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.ForeColor = System.Drawing.Color.White;
-            this.rjButton3.Image = ((System.Drawing.Image)(resources.GetObject("rjButton3.Image")));
-            this.rjButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton3.Location = new System.Drawing.Point(297, 13);
-            this.rjButton3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(132, 39);
-            this.rjButton3.TabIndex = 115;
-            this.rjButton3.Text = "Eliminar";
-            this.rjButton3.TextColor = System.Drawing.Color.White;
-            this.rjButton3.UseVisualStyleBackColor = false;
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.rjButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 0;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Image = ((System.Drawing.Image)(resources.GetObject("rjButton1.Image")));
-            this.rjButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton1.Location = new System.Drawing.Point(144, 13);
-            this.rjButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(132, 39);
-            this.rjButton1.TabIndex = 114;
-            this.rjButton1.Text = "Editar";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            // 
-            // panelData
-            // 
-            this.panelData.Controls.Add(this.txtDuracion);
-            this.panelData.Controls.Add(this.label6);
-            this.panelData.Controls.Add(this.txtDescripción);
-            this.panelData.Controls.Add(this.cmbPeriodo);
-            this.panelData.Controls.Add(this.txtNameProject);
-            this.panelData.Controls.Add(this.lbldescription);
-            this.panelData.Controls.Add(this.label2);
-            this.panelData.Controls.Add(this.lblPeriodo);
-            this.panelData.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelData.Location = new System.Drawing.Point(0, 0);
-            this.panelData.Name = "panelData";
-            this.panelData.Size = new System.Drawing.Size(250, 400);
-            this.panelData.TabIndex = 0;
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton2.BorderRadius = 0;
-            this.rjButton2.BorderSize = 0;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
-            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton2.Location = new System.Drawing.Point(138, 214);
-            this.rjButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(0, 39);
-            this.rjButton2.TabIndex = 115;
-            this.rjButton2.Text = "Editar";
-            this.rjButton2.TextColor = System.Drawing.Color.White;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.poisonDataGridView1);
-            this.panel1.Controls.Add(this.btnActualizar);
-            this.panel1.Location = new System.Drawing.Point(50, 508);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 222);
-            this.panel1.TabIndex = 49;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEliminar.BorderRadius = 0;
-            this.btnEliminar.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.Location = new System.Drawing.Point(955, 155);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(102, 39);
-            this.btnEliminar.TabIndex = 114;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextColor = System.Drawing.Color.White;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // poisonDataGridView1
-            // 
-            this.poisonDataGridView1.AllowUserToResizeRows = false;
-            this.poisonDataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.poisonDataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.poisonDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.poisonDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.poisonDataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            this.poisonDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.poisonDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.poisonDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.poisonDataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
-            this.poisonDataGridView1.EnableHeadersVisualStyles = false;
-            this.poisonDataGridView1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.poisonDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.poisonDataGridView1.Location = new System.Drawing.Point(18, 23);
-            this.poisonDataGridView1.Name = "poisonDataGridView1";
-            this.poisonDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.poisonDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.poisonDataGridView1.RowHeadersWidth = 51;
-            this.poisonDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.poisonDataGridView1.RowTemplate.Height = 29;
-            this.poisonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.poisonDataGridView1.Size = new System.Drawing.Size(780, 171);
-            this.poisonDataGridView1.TabIndex = 89;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnActualizar.BorderRadius = 0;
-            this.btnActualizar.BorderSize = 0;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnActualizar.Location = new System.Drawing.Point(839, 155);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(100, 39);
-            this.btnActualizar.TabIndex = 113;
-            this.btnActualizar.Text = "Editar";
-            this.btnActualizar.TextColor = System.Drawing.Color.White;
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel2.Controls.Add(this.rjTextBox1);
-            this.panel2.Controls.Add(this.rjTextBox2);
-            this.panel2.Controls.Add(this.rjComboBox1);
-            this.panel2.Controls.Add(this.rjTextBox3);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.rjButton2);
-            this.panel2.Location = new System.Drawing.Point(853, 85);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(279, 424);
-            this.panel2.TabIndex = 50;
-            // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.rjTextBox1.BorderColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox1.BorderRadius = 0;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rjTextBox1.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox1.Location = new System.Drawing.Point(25, 332);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.Gray;
-            this.rjTextBox1.PlaceholderText = "Duración";
-            this.rjTextBox1.Size = new System.Drawing.Size(227, 39);
-            this.rjTextBox1.TabIndex = 119;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = true;
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.rjTextBox2.BorderColor = System.Drawing.Color.White;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox2.BorderRadius = 0;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rjTextBox2.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox2.Location = new System.Drawing.Point(25, 160);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(5);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.Gray;
-            this.rjTextBox2.PlaceholderText = "Descripción";
-            this.rjTextBox2.Size = new System.Drawing.Size(227, 39);
-            this.rjTextBox2.TabIndex = 118;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = true;
-            // 
-            // rjComboBox1
-            // 
-            this.rjComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.rjComboBox1.BorderColor = System.Drawing.Color.White;
-            this.rjComboBox1.BorderSize = 1;
-            this.rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rjComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rjComboBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.rjComboBox1.IconColor = System.Drawing.Color.MediumSpringGreen;
-            this.rjComboBox1.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.rjComboBox1.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjComboBox1.Location = new System.Drawing.Point(25, 242);
-            this.rjComboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rjComboBox1.MinimumSize = new System.Drawing.Size(229, 40);
-            this.rjComboBox1.Name = "rjComboBox1";
-            this.rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox1.Size = new System.Drawing.Size(229, 48);
-            this.rjComboBox1.TabIndex = 120;
-            this.rjComboBox1.Texts = "Periodo";
-            // 
-            // rjTextBox3
-            // 
-            this.rjTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.rjTextBox3.BorderColor = System.Drawing.Color.White;
-            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox3.BorderRadius = 0;
-            this.rjTextBox3.BorderSize = 2;
-            this.rjTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rjTextBox3.ForeColor = System.Drawing.Color.White;
-            this.rjTextBox3.Location = new System.Drawing.Point(25, 78);
-            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(5);
-            this.rjTextBox3.Multiline = false;
-            this.rjTextBox3.Name = "rjTextBox3";
-            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.rjTextBox3.PasswordChar = false;
-            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.Gray;
-            this.rjTextBox3.PlaceholderText = "Nombre del proyecto";
-            this.rjTextBox3.Size = new System.Drawing.Size(227, 39);
-            this.rjTextBox3.TabIndex = 116;
-            this.rjTextBox3.Texts = "";
-            this.rjTextBox3.UnderlinedStyle = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(36, 53);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 20);
-            this.label3.TabIndex = 117;
-            this.label3.Text = "Nombre del proyecto";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(36, 218);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(187, 20);
-            this.label4.TabIndex = 121;
-            this.label4.Text = "Periodo (Anual, mensual ...)";
-            // 
             // btnSearch
             // 
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -598,7 +189,7 @@
             // txtFilter
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.txtFilter.BorderColor = System.Drawing.Color.White;
             this.txtFilter.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtFilter.BorderRadius = 0;
@@ -612,7 +203,7 @@
             this.txtFilter.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtFilter.PasswordChar = false;
             this.txtFilter.PlaceholderColor = System.Drawing.Color.White;
-            this.txtFilter.PlaceholderText = "Buscar entidad";
+            this.txtFilter.PlaceholderText = "Buscar proyecto";
             this.txtFilter.Size = new System.Drawing.Size(427, 39);
             this.txtFilter.TabIndex = 124;
             this.txtFilter.Texts = "";
@@ -665,6 +256,376 @@
             this.dtgFNE.Size = new System.Drawing.Size(471, 235);
             this.dtgFNE.TabIndex = 123;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnClose);
+            this.panel3.Controls.Add(this.btnDelete);
+            this.panel3.Controls.Add(this.btnUpdate);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(250, 333);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(530, 67);
+            this.panel3.TabIndex = 1;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(83, 14);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(30, 38);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnClose.TabIndex = 115;
+            this.btnClose.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnDelete.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnDelete.BorderRadius = 0;
+            this.btnDelete.BorderSize = 0;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.Location = new System.Drawing.Point(297, 13);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(132, 39);
+            this.btnDelete.TabIndex = 115;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.TextColor = System.Drawing.Color.White;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnUpdate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnUpdate.BorderRadius = 0;
+            this.btnUpdate.BorderSize = 0;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdate.Location = new System.Drawing.Point(144, 13);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(132, 39);
+            this.btnUpdate.TabIndex = 114;
+            this.btnUpdate.Text = "Editar";
+            this.btnUpdate.TextColor = System.Drawing.Color.White;
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            // 
+            // panelData
+            // 
+            this.panelData.Controls.Add(this.nupContribution);
+            this.panelData.Controls.Add(this.label7);
+            this.panelData.Controls.Add(this.nupTMAR);
+            this.panelData.Controls.Add(this.label5);
+            this.panelData.Controls.Add(this.label2);
+            this.panelData.Controls.Add(this.tgIsFinancement);
+            this.panelData.Controls.Add(this.nupDuration);
+            this.panelData.Controls.Add(this.label6);
+            this.panelData.Controls.Add(this.cmbPeriodo);
+            this.panelData.Controls.Add(this.lblPeriodo);
+            this.panelData.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelData.Location = new System.Drawing.Point(0, 0);
+            this.panelData.Name = "panelData";
+            this.panelData.Size = new System.Drawing.Size(250, 400);
+            this.panelData.TabIndex = 0;
+            // 
+            // nupContribution
+            // 
+            this.nupContribution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.nupContribution.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nupContribution.ForeColor = System.Drawing.Color.White;
+            this.nupContribution.Location = new System.Drawing.Point(9, 269);
+            this.nupContribution.Name = "nupContribution";
+            this.nupContribution.Size = new System.Drawing.Size(229, 23);
+            this.nupContribution.TabIndex = 73;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(20, 234);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 20);
+            this.label7.TabIndex = 72;
+            this.label7.Text = "Contribución";
+            // 
+            // nupTMAR
+            // 
+            this.nupTMAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.nupTMAR.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nupTMAR.ForeColor = System.Drawing.Color.White;
+            this.nupTMAR.Location = new System.Drawing.Point(11, 206);
+            this.nupTMAR.Name = "nupTMAR";
+            this.nupTMAR.Size = new System.Drawing.Size(229, 23);
+            this.nupTMAR.TabIndex = 71;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(22, 171);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 20);
+            this.label5.TabIndex = 70;
+            this.label5.Text = "TMAR";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(35, 355);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 20);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Con financiamiento:";
+            // 
+            // tgIsFinancement
+            // 
+            this.tgIsFinancement.AutoSize = true;
+            this.tgIsFinancement.Location = new System.Drawing.Point(182, 355);
+            this.tgIsFinancement.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tgIsFinancement.Name = "tgIsFinancement";
+            this.tgIsFinancement.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
+            this.tgIsFinancement.OffToggleColor = System.Drawing.Color.White;
+            this.tgIsFinancement.OnBackColor = System.Drawing.Color.RoyalBlue;
+            this.tgIsFinancement.OnToggleColor = System.Drawing.Color.Black;
+            this.tgIsFinancement.Size = new System.Drawing.Size(45, 22);
+            this.tgIsFinancement.TabIndex = 68;
+            this.tgIsFinancement.UseVisualStyleBackColor = true;
+            // 
+            // nupDuration
+            // 
+            this.nupDuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.nupDuration.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nupDuration.ForeColor = System.Drawing.Color.White;
+            this.nupDuration.Location = new System.Drawing.Point(9, 140);
+            this.nupDuration.Name = "nupDuration";
+            this.nupDuration.Size = new System.Drawing.Size(229, 23);
+            this.nupDuration.TabIndex = 67;
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.rjButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton2.BorderRadius = 0;
+            this.rjButton2.BorderSize = 0;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.ForeColor = System.Drawing.Color.White;
+            this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
+            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rjButton2.Location = new System.Drawing.Point(139, 165);
+            this.rjButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(0, 39);
+            this.rjButton2.TabIndex = 115;
+            this.rjButton2.Text = "Editar";
+            this.rjButton2.TextColor = System.Drawing.Color.White;
+            this.rjButton2.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.dtgInvestment);
+            this.panel1.Location = new System.Drawing.Point(50, 508);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1082, 222);
+            this.panel1.TabIndex = 49;
+            // 
+            // dtgInvestment
+            // 
+            this.dtgInvestment.AllowUserToResizeRows = false;
+            this.dtgInvestment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgInvestment.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dtgInvestment.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgInvestment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgInvestment.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.dtgInvestment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgInvestment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgInvestment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgInvestment.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dtgInvestment.EnableHeadersVisualStyles = false;
+            this.dtgInvestment.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtgInvestment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.dtgInvestment.Location = new System.Drawing.Point(18, 23);
+            this.dtgInvestment.Name = "dtgInvestment";
+            this.dtgInvestment.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgInvestment.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dtgInvestment.RowHeadersWidth = 51;
+            this.dtgInvestment.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgInvestment.RowTemplate.Height = 29;
+            this.dtgInvestment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgInvestment.Size = new System.Drawing.Size(1039, 171);
+            this.dtgInvestment.TabIndex = 89;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminar.BorderRadius = 0;
+            this.btnEliminar.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.Location = new System.Drawing.Point(152, 347);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(102, 39);
+            this.btnEliminar.TabIndex = 114;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.White;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnActualizar.BorderRadius = 0;
+            this.btnActualizar.BorderSize = 0;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnActualizar.Location = new System.Drawing.Point(36, 347);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(100, 39);
+            this.btnActualizar.TabIndex = 113;
+            this.btnActualizar.Text = "Editar";
+            this.btnActualizar.TextColor = System.Drawing.Color.White;
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel2.Controls.Add(this.btnEliminar);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.btnActualizar);
+            this.panel2.Controls.Add(this.numericUpDown1);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.numericUpDown2);
+            this.panel2.Controls.Add(this.cmbTipoAmortizacion);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.rjButton2);
+            this.panel2.Location = new System.Drawing.Point(853, 85);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(279, 424);
+            this.panel2.TabIndex = 50;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(36, 117);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 20);
+            this.label9.TabIndex = 123;
+            this.label9.Text = "Interés";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
+            this.numericUpDown1.Location = new System.Drawing.Point(25, 211);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(229, 23);
+            this.numericUpDown1.TabIndex = 122;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(36, 176);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 20);
+            this.label3.TabIndex = 121;
+            this.label3.Text = "Contribución";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown2.ForeColor = System.Drawing.Color.White;
+            this.numericUpDown2.Location = new System.Drawing.Point(27, 148);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(229, 23);
+            this.numericUpDown2.TabIndex = 120;
+            // 
+            // cmbTipoAmortizacion
+            // 
+            this.cmbTipoAmortizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.cmbTipoAmortizacion.BorderColor = System.Drawing.Color.White;
+            this.cmbTipoAmortizacion.BorderSize = 1;
+            this.cmbTipoAmortizacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoAmortizacion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbTipoAmortizacion.ForeColor = System.Drawing.Color.DimGray;
+            this.cmbTipoAmortizacion.IconColor = System.Drawing.Color.MediumSpringGreen;
+            this.cmbTipoAmortizacion.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cmbTipoAmortizacion.ListTextColor = System.Drawing.Color.DimGray;
+            this.cmbTipoAmortizacion.Location = new System.Drawing.Point(25, 50);
+            this.cmbTipoAmortizacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbTipoAmortizacion.MinimumSize = new System.Drawing.Size(229, 40);
+            this.cmbTipoAmortizacion.Name = "cmbTipoAmortizacion";
+            this.cmbTipoAmortizacion.Padding = new System.Windows.Forms.Padding(1);
+            this.cmbTipoAmortizacion.Size = new System.Drawing.Size(229, 48);
+            this.cmbTipoAmortizacion.TabIndex = 116;
+            this.cmbTipoAmortizacion.Texts = "Tipo amortización";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(36, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(151, 20);
+            this.label8.TabIndex = 117;
+            this.label8.Text = "Tipo de amortización";
+            // 
             // FrmInversors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -685,16 +646,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelConfigProject.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.panelData.ResumeLayout(false);
             this.panelData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupContribution)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupTMAR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupDuration)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgInvestment)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -704,35 +670,37 @@
 
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblPeriodo;
-        private System.Windows.Forms.Label lbldescription;
         private RJCodeAdvance.RJControls.RJComboBox cmbPeriodo;
-        private RJCodeAdvance.RJControls.RJTextBox txtDuracion;
-        private RJCodeAdvance.RJControls.RJTextBox txtDescripción;
-        private System.Windows.Forms.Label label2;
-        private RJCodeAdvance.RJControls.RJTextBox txtNameProject;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelConfigProject;
         private System.Windows.Forms.Panel panelData;
         private System.Windows.Forms.Panel panel1;
-        private ReaLTaiizor.Controls.PoisonDataGridView poisonDataGridView1;
+        private ReaLTaiizor.Controls.PoisonDataGridView dtgInvestment;
         private RJCodeAdvance.RJControls.RJButton btnEliminar;
         private RJCodeAdvance.RJControls.RJButton btnActualizar;
         private RJCodeAdvance.RJControls.RJButton rjButton2;
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private RJCodeAdvance.RJControls.RJButton rjButton3;
-        private RJCodeAdvance.RJControls.RJButton rjButton1;
-        private RJCodeAdvance.RJControls.RJTextBox rjTextBox1;
-        private RJCodeAdvance.RJControls.RJTextBox rjTextBox2;
-        private RJCodeAdvance.RJControls.RJComboBox rjComboBox1;
-        private RJCodeAdvance.RJControls.RJTextBox rjTextBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private RJCodeAdvance.RJControls.RJButton btnDelete;
+        private RJCodeAdvance.RJControls.RJButton btnUpdate;
         private System.Windows.Forms.PictureBox btnSearch;
         private RJCodeAdvance.RJControls.RJTextBox txtFilter;
         private ReaLTaiizor.Controls.PoisonDataGridView dtgFNE;
+        private System.Windows.Forms.NumericUpDown nupDuration;
+        private System.Windows.Forms.NumericUpDown nupContribution;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown nupTMAR;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private RJCodeAdvance.RJControls.RJToggleButton tgIsFinancement;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private RJCodeAdvance.RJControls.RJComboBox cmbTipoAmortizacion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
