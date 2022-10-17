@@ -31,6 +31,7 @@ namespace EconomicMF.Forms.FormsFlujo
 
             dtgFNE.DataSource = (from e in (projects)
                                  select new { e.Id, e.Name, e.Duration, e.Description, e.Period, e.TMAR, e.TMARMixta, e.Contribution }).ToList();
+            dtgFNE.Columns[0].Visible = false;
 
             ChargeUcReport(projects);
         }
@@ -96,6 +97,11 @@ namespace EconomicMF.Forms.FormsFlujo
             {
                 MessageBox.Show("Lo sentimos, le faltan datos importantes a su proyecto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void btnSendEmail_Click(object sender, EventArgs e)
+        {
 
         }
     }

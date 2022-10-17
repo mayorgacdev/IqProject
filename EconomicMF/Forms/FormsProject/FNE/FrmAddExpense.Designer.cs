@@ -32,9 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFInd = new System.Windows.Forms.PictureBox();
             this.dtgFNE = new ReaLTaiizor.Controls.PoisonDataGridView();
-            this.txtNameProject = new RJCodeAdvance.RJControls.RJTextBox();
+            this.txtSearch = new RJCodeAdvance.RJControls.RJTextBox();
             this.txtCrecimiento = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblCosto = new System.Windows.Forms.Label();
             this.lblCrecimiento = new System.Windows.Forms.Label();
@@ -49,24 +49,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCosto = new RJCodeAdvance.RJControls.RJTextBox();
             this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
-            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
             this.btnAgregar = new RJCodeAdvance.RJControls.RJButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFInd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // btnFInd
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(794, 396);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 109;
-            this.pictureBox1.TabStop = false;
+            this.btnFInd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFInd.Image = ((System.Drawing.Image)(resources.GetObject("btnFInd.Image")));
+            this.btnFInd.Location = new System.Drawing.Point(794, 396);
+            this.btnFInd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFInd.Name = "btnFInd";
+            this.btnFInd.Size = new System.Drawing.Size(30, 38);
+            this.btnFInd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFInd.TabIndex = 109;
+            this.btnFInd.TabStop = false;
+            this.btnFInd.Click += new System.EventHandler(this.btnFInd_Click);
             // 
             // dtgFNE
             // 
@@ -115,28 +115,29 @@
             this.dtgFNE.Size = new System.Drawing.Size(733, 212);
             this.dtgFNE.TabIndex = 107;
             // 
-            // txtNameProject
+            // txtSearch
             // 
-            this.txtNameProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNameProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.txtNameProject.BorderColor = System.Drawing.Color.White;
-            this.txtNameProject.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtNameProject.BorderRadius = 0;
-            this.txtNameProject.BorderSize = 2;
-            this.txtNameProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNameProject.ForeColor = System.Drawing.Color.White;
-            this.txtNameProject.Location = new System.Drawing.Point(102, 395);
-            this.txtNameProject.Margin = new System.Windows.Forms.Padding(5);
-            this.txtNameProject.Multiline = false;
-            this.txtNameProject.Name = "txtNameProject";
-            this.txtNameProject.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.txtNameProject.PasswordChar = false;
-            this.txtNameProject.PlaceholderColor = System.Drawing.Color.White;
-            this.txtNameProject.PlaceholderText = "Buscar entidad";
-            this.txtNameProject.Size = new System.Drawing.Size(676, 39);
-            this.txtNameProject.TabIndex = 106;
-            this.txtNameProject.Texts = "";
-            this.txtNameProject.UnderlinedStyle = true;
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtSearch.BorderColor = System.Drawing.Color.White;
+            this.txtSearch.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtSearch.BorderRadius = 0;
+            this.txtSearch.BorderSize = 2;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.ForeColor = System.Drawing.Color.White;
+            this.txtSearch.Location = new System.Drawing.Point(102, 395);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSearch.Multiline = false;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.txtSearch.PasswordChar = false;
+            this.txtSearch.PlaceholderColor = System.Drawing.Color.White;
+            this.txtSearch.PlaceholderText = "Buscar gasto";
+            this.txtSearch.Size = new System.Drawing.Size(676, 39);
+            this.txtSearch.TabIndex = 106;
+            this.txtSearch.Texts = "";
+            this.txtSearch.UnderlinedStyle = true;
+            this.txtSearch._TextChanged += new System.EventHandler(this.txtSearch__TextChanged);
             // 
             // txtCrecimiento
             // 
@@ -160,6 +161,7 @@
             this.txtCrecimiento.TabIndex = 94;
             this.txtCrecimiento.Texts = "";
             this.txtCrecimiento.UnderlinedStyle = true;
+            this.txtCrecimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCrecimiento_KeyPress);
             // 
             // lblCosto
             // 
@@ -252,6 +254,7 @@
             this.txtEnd.TabIndex = 100;
             this.txtEnd.Texts = "";
             this.txtEnd.UnderlinedStyle = true;
+            this.txtEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEnd_KeyPress);
             // 
             // lblInit
             // 
@@ -316,6 +319,7 @@
             this.txtStart.TabIndex = 96;
             this.txtStart.Texts = "";
             this.txtStart.UnderlinedStyle = true;
+            this.txtStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStart_KeyPress);
             // 
             // label2
             // 
@@ -349,6 +353,7 @@
             this.txtCosto.TabIndex = 92;
             this.txtCosto.Texts = "";
             this.txtCosto.UnderlinedStyle = true;
+            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
             // 
             // btnEliminar
             // 
@@ -363,7 +368,7 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.Location = new System.Drawing.Point(574, 705);
+            this.btnEliminar.Location = new System.Drawing.Point(298, 704);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(132, 39);
@@ -371,28 +376,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextColor = System.Drawing.Color.White;
             this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnActualizar.BorderRadius = 0;
-            this.btnActualizar.BorderSize = 0;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnActualizar.Location = new System.Drawing.Point(215, 705);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(132, 39);
-            this.btnActualizar.TabIndex = 111;
-            this.btnActualizar.Text = "Editar";
-            this.btnActualizar.TextColor = System.Drawing.Color.White;
-            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -407,10 +391,10 @@
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.Location = new System.Drawing.Point(360, 705);
+            this.btnAgregar.Location = new System.Drawing.Point(436, 704);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(205, 39);
+            this.btnAgregar.Size = new System.Drawing.Size(144, 39);
             this.btnAgregar.TabIndex = 110;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextColor = System.Drawing.Color.White;
@@ -424,11 +408,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.ClientSize = new System.Drawing.Size(911, 776);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnFInd);
             this.Controls.Add(this.dtgFNE);
-            this.Controls.Add(this.txtNameProject);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.txtCrecimiento);
             this.Controls.Add(this.lblCosto);
             this.Controls.Add(this.lblCrecimiento);
@@ -446,7 +429,7 @@
             this.Name = "FrmAddExpense";
             this.Text = "FrmAddExpense";
             this.Load += new System.EventHandler(this.FrmAddExpense_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFInd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -455,9 +438,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnFInd;
         private ReaLTaiizor.Controls.PoisonDataGridView dtgFNE;
-        private RJCodeAdvance.RJControls.RJTextBox txtNameProject;
+        private RJCodeAdvance.RJControls.RJTextBox txtSearch;
         private RJCodeAdvance.RJControls.RJTextBox txtCrecimiento;
         private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.Label lblCrecimiento;
@@ -472,7 +455,6 @@
         private System.Windows.Forms.Label label2;
         private RJCodeAdvance.RJControls.RJTextBox txtCosto;
         private RJCodeAdvance.RJControls.RJButton btnEliminar;
-        private RJCodeAdvance.RJControls.RJButton btnActualizar;
         private RJCodeAdvance.RJControls.RJButton btnAgregar;
     }
 }

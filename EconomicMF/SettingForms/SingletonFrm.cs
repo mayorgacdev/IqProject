@@ -18,6 +18,7 @@ namespace EconomicMF.SettingForms
 {
     public static class SingletonFrm
     {
+
         private static ServiceCollection serviceDescriptors = null!;
 
         public static Form GetForm(FormType formType)
@@ -92,7 +93,7 @@ namespace EconomicMF.SettingForms
         public static void GetInstances(this ServiceCollection services)
         {
             serviceDescriptors = services;
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<FrmLogin>();
             services.AddSingleton<FrmRegister>();
             services.AddSingleton<FrmSolution>();
@@ -108,10 +109,11 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmAddCosto>();
             services.AddSingleton<FrmAddEntry>();
             services.AddSingleton<FrmAddInversion>();
+            services.AddSingleton<FrmDashboard>();
             services.AddSingleton<FrmStart>();
             services.AddSingleton<FrmConfig>();
             services.AddSingleton<FrmConfig>();
-            services.AddSingleton<FrmDashboard>();
+            services.AddSingleton<FrmChargeData>();
             services.AddSingleton<FrmInversors>();
             services.AddSingleton<FrmReporte>();
             services.AddSingleton<FrmAnnuaty>();
@@ -125,10 +127,6 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmAddExpense>();
             services.AddSingleton<FrmAddAsset>();
             services.AddSingleton<UCProject>();
-        }            
-        public static void DestroyForms()
-        {
-
-        }
+        }      
     }
 }

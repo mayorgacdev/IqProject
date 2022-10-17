@@ -102,7 +102,7 @@ namespace EconomicMF.Helper
         {
             if (ingresCost <= 0)
             {
-                throw new ArgumentException("El valor es invalido ya que es menor que cero");
+                throw new ArgumentException("Ingrese un valor dentro del rango de duración de su proyecto");
             }
             if (duracion == 0)
             {
@@ -117,7 +117,6 @@ namespace EconomicMF.Helper
             {
                 throw new Exception("El valor final no puede ser mayor a la duracion del proyecto");
             };
-
         }
         public static void ValidateInversion(decimal inversion, int start, int duracion)
         {
@@ -130,14 +129,6 @@ namespace EconomicMF.Helper
                 throw new InvalidOperationException("valores inavlidos para el comienzo del proyecto");
             }
 
-        }
-
-        public static bool ValidateEntidad(List<InvesmentEntity> entidadInvs)
-        {
-            var sumAportacion = entidadInvs.Sum(e => e.Contribution);
-            return (entidadInvs.Count == 1) ?
-                sumAportacion != 100M ? throw new Exception("La aportación del inversionista debe ser igual al 100%") : true :
-                sumAportacion != 100M ? throw new Exception("La aportación entre todos los inversionistas debe ser igual al 100%") : true;
         }
     }
 }

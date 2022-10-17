@@ -28,7 +28,7 @@ namespace EconomicEF.Infraestructure.Repository
             smtpClient.EnableSsl = ssl;
         }
 
-        public async void SendMail(string subject, string body, List<string> recipientMail,string path)
+        public async void SendMail(string subject, string body, List<string> recipientMail,List<string> path)
         {
             var mailMessage = new MailMessage();
             try
@@ -43,7 +43,12 @@ namespace EconomicEF.Infraestructure.Repository
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
                 mailMessage.Priority = MailPriority.Normal;
-                mailMessage.Attachments.Add(new Attachment(path));//obtiene la ruta del archivo a enviar
+
+                foreach (var item in path)
+                {
+                    mailMessage.Attachments.Add(new Attachment(item));//obtiene la ruta del archivo a enviar
+                }
+
                 await (smtpClient.SendMailAsync(mailMessage));//Enviar mensaje
             }
             catch (Exception)

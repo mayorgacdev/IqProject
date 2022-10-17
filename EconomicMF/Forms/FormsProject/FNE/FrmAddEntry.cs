@@ -2,6 +2,7 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
+using EconomicMF.Helper;
 using System;
 using System.Data;
 using System.Drawing;
@@ -53,7 +54,10 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void ChargeDtg()
         {
+            dtgFNE.DataSource = null;
             dtgFNE.DataSource = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
+            dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[1].Visible = false;
         }
 
         private async void btnAgregar_Click_1(object sender, EventArgs e)
@@ -103,6 +107,58 @@ namespace EconomicMF.Forms.FormsProject.FNE
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dtgFNE.SelectedRows.Count == 1)
+            {
+                int entryId = (int)dtgFNE.CurrentRow.Cells[0].Value;
+                await unitOfWork.ProjectEntryClient.DeleteAsync(entryId);
+                ChargeDtg();
+            }
+        }
+
+        private void txtSearch__TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Texts.Equals(String.Empty))
+            {
+                ChargeDtg();
+            }
+        }
+
+        private async void btnFind_Click(object sender, EventArgs e)
+        {
+            var assets = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
+            decimal.TryParse((txtSearch.Texts), out decimal get);
+
+            var result = assets.Where(e => e.EntryType.Equals(txtSearch.Texts, StringComparison.OrdinalIgnoreCase)
+            || e.Entry >= get || e.Growth >= get);
+
+            dtgFNE.DataSource = null;
+            dtgFNE.DataSource = result.ToList();
+            dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[1].Visible = false;
+        }
+
+        private void txtIngreso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtCrecimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtStart_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtEnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
         }
     }
 }

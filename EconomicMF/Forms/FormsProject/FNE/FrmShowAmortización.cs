@@ -4,13 +4,10 @@ using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Entities.FlowTool;
-using Microsoft.FSharp.Core;
-using Microsoft.ReportingServices.Interfaces;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WinRT;
 
 namespace EconomicMF.Forms.FormsProject.FNE
 {
@@ -22,6 +19,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
         private ProjectClient ProjectClient = new ProjectClient();
         private int index = 0;
         private int countM = 0;
+
         public FrmShowAmortización(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
@@ -30,6 +28,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void FrmShowAmortización_Load(object sender, EventArgs e)
         {
+            dtgFNE.DataSource = null;
             ValidateButtons();
         }
 
@@ -198,6 +197,11 @@ namespace EconomicMF.Forms.FormsProject.FNE
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbTipoMetodo_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

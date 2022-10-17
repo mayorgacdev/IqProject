@@ -2,6 +2,7 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
+using EconomicMF.Helper;
 using System;
 using System.Data;
 using System.Linq;
@@ -89,7 +90,62 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void ChargeDtg()
         {
+            dtgFNE.DataSource = null;
             dtgFNE.DataSource = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
+            dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[1].Visible = false;
+        }
+
+        private async void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dtgFNE.SelectedRows.Count == 1)
+            {
+                int expenseId = (int)dtgFNE.CurrentRow.Cells[0].Value;
+                await unitOfWork.ProjectExpense.DeleteAsync(expenseId);
+                ChargeDtg();
+            }
+        }
+
+        private void txtSearch__TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Texts.Equals(string.Empty))
+            {
+                ChargeDtg();
+            }
+        }
+
+        private async void btnFInd_Click(object sender, EventArgs e)
+        {
+            var assets = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
+            decimal.TryParse((txtSearch.Texts), out decimal get);
+
+            var result = assets.Where(e => e.TypeExpense.Equals(txtSearch.Texts, StringComparison.OrdinalIgnoreCase)
+            || e.Expense >= get || e.Growth >= get);
+
+            dtgFNE.DataSource = null;
+            dtgFNE.DataSource = result.ToList();
+            dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[1].Visible = false;
+        }
+
+        private void txtEnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtStart_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtCrecimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
         }
     }
 }

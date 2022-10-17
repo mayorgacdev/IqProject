@@ -106,6 +106,7 @@
             Guna.Charts.WinForms.ChartFont chartFont39 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.Tick tick15 = new Guna.Charts.WinForms.Tick();
             Guna.Charts.WinForms.ChartFont chartFont40 = new Guna.Charts.WinForms.ChartFont();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
             this.chartIngresos = new Guna.Charts.WinForms.GunaChart();
             this.chartGastos = new Guna.Charts.WinForms.GunaChart();
             this.ChartCostos = new Guna.Charts.WinForms.GunaChart();
@@ -113,8 +114,10 @@
             this.dgvFNE = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.pnlGrafico = new System.Windows.Forms.Panel();
             this.chartFNE = new Guna.Charts.WinForms.GunaChart();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).BeginInit();
             this.pnlGrafico.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // chartIngresos
@@ -122,9 +125,10 @@
             this.chartIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             chartFont1.FontName = "Arial";
             this.chartIngresos.Legend.LabelFont = chartFont1;
-            this.chartIngresos.Location = new System.Drawing.Point(514, -5);
+            this.chartIngresos.Location = new System.Drawing.Point(598, 32);
+            this.chartIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartIngresos.Name = "chartIngresos";
-            this.chartIngresos.Size = new System.Drawing.Size(216, 191);
+            this.chartIngresos.Size = new System.Drawing.Size(236, 216);
             this.chartIngresos.TabIndex = 0;
             chartFont2.FontName = "Arial";
             chartFont2.Size = 12;
@@ -159,9 +163,10 @@
             this.chartGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             chartFont9.FontName = "Arial";
             this.chartGastos.Legend.LabelFont = chartFont9;
-            this.chartGastos.Location = new System.Drawing.Point(758, -5);
+            this.chartGastos.Location = new System.Drawing.Point(866, 32);
+            this.chartGastos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartGastos.Name = "chartGastos";
-            this.chartGastos.Size = new System.Drawing.Size(235, 191);
+            this.chartGastos.Size = new System.Drawing.Size(261, 216);
             this.chartGastos.TabIndex = 1;
             chartFont10.FontName = "Arial";
             chartFont10.Size = 12;
@@ -196,9 +201,10 @@
             this.ChartCostos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             chartFont17.FontName = "Arial";
             this.ChartCostos.Legend.LabelFont = chartFont17;
-            this.ChartCostos.Location = new System.Drawing.Point(12, -5);
+            this.ChartCostos.Location = new System.Drawing.Point(34, 32);
+            this.ChartCostos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChartCostos.Name = "ChartCostos";
-            this.ChartCostos.Size = new System.Drawing.Size(216, 191);
+            this.ChartCostos.Size = new System.Drawing.Size(221, 216);
             this.ChartCostos.TabIndex = 2;
             chartFont18.FontName = "Arial";
             chartFont18.Size = 12;
@@ -233,9 +239,10 @@
             this.ChartInversiones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             chartFont25.FontName = "Arial";
             this.ChartInversiones.Legend.LabelFont = chartFont25;
-            this.ChartInversiones.Location = new System.Drawing.Point(256, -5);
+            this.ChartInversiones.Location = new System.Drawing.Point(309, 32);
+            this.ChartInversiones.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChartInversiones.Name = "ChartInversiones";
-            this.ChartInversiones.Size = new System.Drawing.Size(216, 191);
+            this.ChartInversiones.Size = new System.Drawing.Size(231, 216);
             this.ChartInversiones.TabIndex = 3;
             chartFont26.FontName = "Arial";
             chartFont26.Size = 12;
@@ -294,8 +301,7 @@
             this.dgvFNE.EnableHeadersVisualStyles = false;
             this.dgvFNE.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvFNE.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.dgvFNE.Location = new System.Drawing.Point(12, 191);
-            this.dgvFNE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvFNE.Location = new System.Drawing.Point(14, 255);
             this.dgvFNE.Name = "dgvFNE";
             this.dgvFNE.ReadOnly = true;
             this.dgvFNE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -311,17 +317,19 @@
             this.dgvFNE.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvFNE.RowTemplate.Height = 29;
             this.dgvFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFNE.Size = new System.Drawing.Size(984, 158);
+            this.dgvFNE.Size = new System.Drawing.Size(1125, 211);
             this.dgvFNE.TabIndex = 103;
             this.dgvFNE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFNE_CellClick);
             // 
             // pnlGrafico
             // 
+            this.pnlGrafico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlGrafico.AutoScroll = true;
             this.pnlGrafico.Controls.Add(this.chartFNE);
-            this.pnlGrafico.Location = new System.Drawing.Point(12, 354);
+            this.pnlGrafico.Location = new System.Drawing.Point(14, 472);
+            this.pnlGrafico.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlGrafico.Name = "pnlGrafico";
-            this.pnlGrafico.Size = new System.Drawing.Size(984, 216);
+            this.pnlGrafico.Size = new System.Drawing.Size(1125, 288);
             this.pnlGrafico.TabIndex = 104;
             // 
             // chartFNE
@@ -329,9 +337,10 @@
             this.chartFNE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             chartFont33.FontName = "Arial";
             this.chartFNE.Legend.LabelFont = chartFont33;
-            this.chartFNE.Location = new System.Drawing.Point(-3, 28);
+            this.chartFNE.Location = new System.Drawing.Point(0, 4);
+            this.chartFNE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartFNE.Name = "chartFNE";
-            this.chartFNE.Size = new System.Drawing.Size(984, 216);
+            this.chartFNE.Size = new System.Drawing.Size(1125, 288);
             this.chartFNE.TabIndex = 0;
             chartFont34.FontName = "Arial";
             chartFont34.Size = 12;
@@ -365,12 +374,24 @@
             tick15.Font = chartFont40;
             this.chartFNE.ZAxes.Ticks = tick15;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1133, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 105;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // FrmDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(1019, 582);
+            this.ClientSize = new System.Drawing.Size(1165, 776);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlGrafico);
             this.Controls.Add(this.dgvFNE);
             this.Controls.Add(this.ChartInversiones);
@@ -378,11 +399,13 @@
             this.Controls.Add(this.chartGastos);
             this.Controls.Add(this.chartIngresos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmDashboard";
             this.Text = "FrmDashboard";
             this.Load += new System.EventHandler(this.FrmDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).EndInit();
             this.pnlGrafico.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,5 +419,6 @@
         private ReaLTaiizor.Controls.PoisonDataGridView dgvFNE;
         private System.Windows.Forms.Panel pnlGrafico;
         private Guna.Charts.WinForms.GunaChart chartFNE;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

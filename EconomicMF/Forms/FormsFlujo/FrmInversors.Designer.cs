@@ -58,17 +58,13 @@
             this.tgIsFinancement = new RJCodeAdvance.RJControls.RJToggleButton();
             this.nupDuration = new System.Windows.Forms.NumericUpDown();
             this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dtgInvestment = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
-            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.cmbTipoAmortizacion = new RJCodeAdvance.RJControls.RJComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.dtgXD = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnUdpateMethodAmortization = new RJCodeAdvance.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelConfigProject.SuspendLayout();
@@ -80,11 +76,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupContribution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupTMAR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupDuration)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgInvestment)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgXD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -255,6 +249,7 @@
             this.dtgFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgFNE.Size = new System.Drawing.Size(471, 235);
             this.dtgFNE.TabIndex = 123;
+            this.dtgFNE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgFNE_CellClick);
             // 
             // panel3
             // 
@@ -300,6 +295,7 @@
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.TextColor = System.Drawing.Color.White;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -322,6 +318,7 @@
             this.btnUpdate.Text = "Editar";
             this.btnUpdate.TextColor = System.Drawing.Color.White;
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // panelData
             // 
@@ -428,7 +425,7 @@
             this.rjButton2.ForeColor = System.Drawing.Color.White;
             this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
             this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton2.Location = new System.Drawing.Point(139, 165);
+            this.rjButton2.Location = new System.Drawing.Point(139, 188);
             this.rjButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rjButton2.Name = "rjButton2";
             this.rjButton2.Size = new System.Drawing.Size(0, 39);
@@ -436,63 +433,6 @@
             this.rjButton2.Text = "Editar";
             this.rjButton2.TextColor = System.Drawing.Color.White;
             this.rjButton2.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel1.Controls.Add(this.dtgInvestment);
-            this.panel1.Location = new System.Drawing.Point(50, 508);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 222);
-            this.panel1.TabIndex = 49;
-            // 
-            // dtgInvestment
-            // 
-            this.dtgInvestment.AllowUserToResizeRows = false;
-            this.dtgInvestment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgInvestment.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.dtgInvestment.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgInvestment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgInvestment.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            this.dtgInvestment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgInvestment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dtgInvestment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgInvestment.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dtgInvestment.EnableHeadersVisualStyles = false;
-            this.dtgInvestment.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dtgInvestment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.dtgInvestment.Location = new System.Drawing.Point(18, 23);
-            this.dtgInvestment.Name = "dtgInvestment";
-            this.dtgInvestment.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgInvestment.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dtgInvestment.RowHeadersWidth = 51;
-            this.dtgInvestment.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dtgInvestment.RowTemplate.Height = 29;
-            this.dtgInvestment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgInvestment.Size = new System.Drawing.Size(1039, 171);
-            this.dtgInvestment.TabIndex = 89;
             // 
             // btnEliminar
             // 
@@ -507,94 +447,30 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.Location = new System.Drawing.Point(152, 347);
+            this.btnEliminar.Location = new System.Drawing.Point(156, 399);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(102, 39);
+            this.btnEliminar.Size = new System.Drawing.Size(107, 39);
             this.btnEliminar.TabIndex = 114;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextColor = System.Drawing.Color.White;
             this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnActualizar.BorderRadius = 0;
-            this.btnActualizar.BorderSize = 0;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnActualizar.Location = new System.Drawing.Point(36, 347);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(100, 39);
-            this.btnActualizar.TabIndex = 113;
-            this.btnActualizar.Text = "Editar";
-            this.btnActualizar.TextColor = System.Drawing.Color.White;
-            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel2.Controls.Add(this.btnUdpateMethodAmortization);
+            this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.btnEliminar);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.btnActualizar);
-            this.panel2.Controls.Add(this.numericUpDown1);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.numericUpDown2);
             this.panel2.Controls.Add(this.cmbTipoAmortizacion);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.rjButton2);
             this.panel2.Location = new System.Drawing.Point(853, 85);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(279, 424);
+            this.panel2.Size = new System.Drawing.Size(279, 471);
             this.panel2.TabIndex = 50;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(36, 117);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 20);
-            this.label9.TabIndex = 123;
-            this.label9.Text = "Interés";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown1.Location = new System.Drawing.Point(25, 211);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(229, 23);
-            this.numericUpDown1.TabIndex = 122;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(36, 176);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 20);
-            this.label3.TabIndex = 121;
-            this.label3.Text = "Contribución";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown2.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown2.Location = new System.Drawing.Point(27, 148);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(229, 23);
-            this.numericUpDown2.TabIndex = 120;
             // 
             // cmbTipoAmortizacion
             // 
@@ -607,7 +483,7 @@
             this.cmbTipoAmortizacion.IconColor = System.Drawing.Color.MediumSpringGreen;
             this.cmbTipoAmortizacion.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTipoAmortizacion.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbTipoAmortizacion.Location = new System.Drawing.Point(25, 50);
+            this.cmbTipoAmortizacion.Location = new System.Drawing.Point(23, 77);
             this.cmbTipoAmortizacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbTipoAmortizacion.MinimumSize = new System.Drawing.Size(229, 40);
             this.cmbTipoAmortizacion.Name = "cmbTipoAmortizacion";
@@ -620,11 +496,92 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(36, 26);
+            this.label8.Location = new System.Drawing.Point(34, 53);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(151, 20);
             this.label8.TabIndex = 117;
             this.label8.Text = "Tipo de amortización";
+            // 
+            // dtgXD
+            // 
+            this.dtgXD.AllowUserToResizeRows = false;
+            this.dtgXD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgXD.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dtgXD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgXD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgXD.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.dtgXD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgXD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgXD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgXD.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dtgXD.EnableHeadersVisualStyles = false;
+            this.dtgXD.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtgXD.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.dtgXD.Location = new System.Drawing.Point(41, 555);
+            this.dtgXD.Name = "dtgXD";
+            this.dtgXD.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgXD.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dtgXD.RowHeadersWidth = 51;
+            this.dtgXD.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgXD.RowTemplate.Height = 29;
+            this.dtgXD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgXD.Size = new System.Drawing.Size(1091, 178);
+            this.dtgXD.TabIndex = 125;
+            this.dtgXD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgXD_CellClick);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(43, 155);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(195, 208);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 118;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnUdpateMethodAmortization
+            // 
+            this.btnUdpateMethodAmortization.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnUdpateMethodAmortization.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnUdpateMethodAmortization.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnUdpateMethodAmortization.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnUdpateMethodAmortization.BorderRadius = 0;
+            this.btnUdpateMethodAmortization.BorderSize = 0;
+            this.btnUdpateMethodAmortization.FlatAppearance.BorderSize = 0;
+            this.btnUdpateMethodAmortization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUdpateMethodAmortization.ForeColor = System.Drawing.Color.White;
+            this.btnUdpateMethodAmortization.Image = ((System.Drawing.Image)(resources.GetObject("btnUdpateMethodAmortization.Image")));
+            this.btnUdpateMethodAmortization.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUdpateMethodAmortization.Location = new System.Drawing.Point(23, 399);
+            this.btnUdpateMethodAmortization.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnUdpateMethodAmortization.Name = "btnUdpateMethodAmortization";
+            this.btnUdpateMethodAmortization.Size = new System.Drawing.Size(127, 39);
+            this.btnUdpateMethodAmortization.TabIndex = 119;
+            this.btnUdpateMethodAmortization.Text = "Editar";
+            this.btnUdpateMethodAmortization.TextColor = System.Drawing.Color.White;
+            this.btnUdpateMethodAmortization.UseVisualStyleBackColor = false;
+            this.btnUdpateMethodAmortization.Click += new System.EventHandler(this.btnUdpateMethodAmortization_Click);
             // 
             // FrmInversors
             // 
@@ -632,8 +589,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.ClientSize = new System.Drawing.Size(1165, 776);
+            this.Controls.Add(this.dtgXD);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelConfigProject);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -655,12 +612,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupContribution)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupTMAR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupDuration)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgInvestment)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgXD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,10 +631,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelConfigProject;
         private System.Windows.Forms.Panel panelData;
-        private System.Windows.Forms.Panel panel1;
-        private ReaLTaiizor.Controls.PoisonDataGridView dtgInvestment;
         private RJCodeAdvance.RJControls.RJButton btnEliminar;
-        private RJCodeAdvance.RJControls.RJButton btnActualizar;
         private RJCodeAdvance.RJControls.RJButton rjButton2;
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.Panel panel2;
@@ -696,11 +648,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private RJCodeAdvance.RJControls.RJToggleButton tgIsFinancement;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private RJCodeAdvance.RJControls.RJComboBox cmbTipoAmortizacion;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private ReaLTaiizor.Controls.PoisonDataGridView dtgXD;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private RJCodeAdvance.RJControls.RJButton btnUdpateMethodAmortization;
     }
 }

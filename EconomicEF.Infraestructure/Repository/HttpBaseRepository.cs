@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EconomicEF.Infraestructure.Repository
@@ -83,8 +84,10 @@ namespace EconomicEF.Infraestructure.Repository
                 throw new Exception($"Error al obtener el registro con id {guid}");
 
         }
+
         public async Task<bool> UpdateAsync(TEntity entity)
         {
+
             // PUT: https://localhost:7062/api/project?id=1
             int id = (int)entity.GetType().GetProperty("Id").GetValue(entity);
             string URI = URL + "?id=" + id.ToString();
@@ -99,5 +102,7 @@ namespace EconomicEF.Infraestructure.Repository
             return true;
 
         }
+
+
     }
 }

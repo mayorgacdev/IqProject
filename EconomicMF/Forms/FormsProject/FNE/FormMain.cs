@@ -56,42 +56,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(DataOnMemory.ProjectId);
                 List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(DataOnMemory.ProjectId);
 
-                if (assets.Count <= 0 || invesmentAreas.Count <= 0)
-                {
-                    MessageBox.Show("Necesitas agregar una inversión a tu proyecto");
-                    AbrirFormEnPanel(new FrmAddInversion(unitOfWork));
-                    return;
-                }
-
-                if (projectEntries.Count <= 0)
-                {
-                    MessageBox.Show("Quizás olvidaste agregar ingresos a tu proyecto, por favor añade ingresos...", "Error");
-                    AbrirFormEnPanel(new FrmAddEntry(unitOfWork));
-                    return;
-                }
-
-                if (projectCosts.Count <= 0 || projectExpenses.Count <= 0)
-                {
-                    if (projectCosts.Count <= 0)
-                    {
-                        MessageBox.Show("Necesitas agregar más costos a tu proyecto", "Error");
-                        AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Cost));
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Necesitas agregar más gastos a tu proyecto", "Error");
-                        AbrirFormEnPanel(new FrmAddExpense(unitOfWork));
-                        return;
-
-                    }
-                }
-
-                if (assets.Count >= 0 && invesmentAreas.Count >= 0 && 
-                    projectEntries.Count >= 0 && projectCosts.Count >= 0 && projectExpenses.Count >= 0)
-                {
-                    AbrirFormEnPanel(new FrmChargeData(unitOfWork, DataOnMemory.ProjectId));
-                }
+                AbrirFormEnPanel(new FrmChargeData(unitOfWork, DataOnMemory.ProjectId));
 
             }
             catch (Exception ex)

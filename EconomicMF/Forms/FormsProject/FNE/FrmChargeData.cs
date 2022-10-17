@@ -1,15 +1,22 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using EconomicEF.Common.UserCache;
+﻿using EconomicEF.Common.UserCache;
 using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Entities.FlowTool;
-using EconomicMF.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.ComponentModel;
+using System.Data;
+using System.Text.RegularExpressions;
+using NPOI.SS.UserModel;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using ListToExcelPackage;
+using Windows.Globalization;
 
 namespace EconomicMF.Forms.FormsProject.FNE
 {
@@ -88,6 +95,11 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             try
             {
+                if (project.InvestmentArea.Count == 0 || project.Assets.Count == 0 || ExistAny(project) is false)
+                {
+                    return;
+                }
+
                 dtgFNE.DataSource = null;
                 dtgFNE.DataSource = ProjectCalculations.AllFNE(project);
             }
@@ -146,31 +158,39 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             try
             {
+                if (project.InvestmentArea.Count == 0 || project.Assets.Count == 0 || ExistAny(project) is false)
+                {
+                    return;
+                }
+
+
                 List<Flujo> flujo = ProjectCalculations.FNE(project);
                 lblName.Text = project.Name;
                 lblDescription.Text = project.Description;
                 lblCreation.Text = project.CreationDate.ToShortDateString();
-               
+
                 if (getProject.WithFinancing)
                 {
                     List<InvesmentEntity> invesmentEntities = await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(DataOnMemory.ProjectId);
                     project.InvestmentEntities = invesmentEntities;
 
-                    decimal tmarMixta = CalculusOnMemory.GetTmar(project);
-                    lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: tmarMixta), 2) + " %";
+                    decimal tmarMixta = ProjectCalculations.TMAR(project);
+
                     lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, tmarMixta), 2) + " $";
                     lblGetTmar.Text = "TMAR mixta";
                     lblTasa.Text = tmarMixta + " %";
                     lblPeriodo.Text = getProject.Period;
+                    lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: tmarMixta), 2) + " %";
                 }
                 else
                 {
-                    lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: getProject.TMAR), 2) + " %";
-                    lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, getProject.TMAR), 2) + " $";
+                    lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, project.TMAR), 2) + " $";
                     lblGetTmar.Text = "TMAR";
-                    lblTasa.Text = getProject.TMAR + " %";
-                    lblPeriodo.Text = getProject.Period;
-                    lblTir.Text = ProjectCalculations.TIR(flujo, getProject.TMAR) + " %";
+                    lblTasa.Text = project.TMAR + " %";
+                    lblPeriodo.Text = project.Period;
+                    lblTir.Text = ProjectCalculations.TIR(flujo, project.TMAR) + " %";
+                    lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: project.TMAR), 2) + " %";
+
                 }
             }
             catch (Exception ex)
@@ -183,20 +203,68 @@ namespace EconomicMF.Forms.FormsProject.FNE
             new FrmShowAmortización(unitOfWork).ShowDialog();
         }
 
-        private void tgIsFinancement_CheckedChanged(object sender, EventArgs e)
+        private bool ExistAny(Project project)
         {
-            if (tgIsFinancement.Checked)
+            bool exist = false;
+            
+            if (project.ProjectCosts.Count == 0)
             {
-                getProject.WithFinancing = false;
-                GetFNE(getProject);
-                ChargeLabels(getProject);
+                exist = false;
             }
             else
             {
-                getProject.WithFinancing = true;
-                GetFNE(getProject);
-                ChargeLabels(getProject);
+                exist = true;
+            }
+
+            if (exist)
+                return exist;
+
+            if (project.ProjectExpenses.Count == 0)
+            {
+                exist = false;
+            }
+            else
+            {
+                exist = true;
+            }
+
+            if (exist)
+                return exist;
+
+            if (project.ProjectEntries.Count == 0)
+            {
+                exist = false;
+            }
+            else
+            {
+                exist = true;
+            }
+
+            if (exist)
+                return exist;
+
+            return exist;
+
+        }
+
+        private async void tgIsFinancement_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tgIsFinancement.Checked)
+            {
+                var project = await ChargeProject();
+                project.WithFinancing = true;
+                GetFNE(project);
+                ChargeLabels(project);
+            }
+            else
+            {
+
+                var project = await ChargeProject();
+                project.WithFinancing = false;
+                GetFNE(project);
+                ChargeLabels(project);
             }
         }
+
     }
 }

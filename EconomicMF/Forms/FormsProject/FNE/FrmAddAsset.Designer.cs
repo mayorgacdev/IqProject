@@ -47,17 +47,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new RJCodeAdvance.RJControls.RJTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFind = new System.Windows.Forms.PictureBox();
             this.dtgFNE = new ReaLTaiizor.Controls.PoisonDataGridView();
-            this.txtNameProject = new RJCodeAdvance.RJControls.RJTextBox();
             this.btnEliminar = new RJCodeAdvance.RJControls.RJButton();
-            this.btnActualizar = new RJCodeAdvance.RJControls.RJButton();
             this.btnAgregar = new RJCodeAdvance.RJControls.RJButton();
             this.label2 = new System.Windows.Forms.Label();
             this.tglsVidaDeActivo = new RJCodeAdvance.RJControls.RJToggleButton();
             this.cmbVidaActivos = new RJCodeAdvance.RJControls.RJComboBox();
+            this.txtSearchAsset = new RJCodeAdvance.RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFind)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +93,7 @@
             this.txtValorResidual.TabIndex = 93;
             this.txtValorResidual.Texts = "";
             this.txtValorResidual.UnderlinedStyle = true;
+            this.txtValorResidual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorResidual_KeyPress);
             // 
             // txtVidaUtil
             // 
@@ -149,6 +149,7 @@
             this.txtMonto.TabIndex = 89;
             this.txtMonto.Texts = "";
             this.txtMonto.UnderlinedStyle = true;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // lblDepreciación
             // 
@@ -175,6 +176,7 @@
             this.tgDepreciacion.Size = new System.Drawing.Size(45, 22);
             this.tgDepreciacion.TabIndex = 97;
             this.tgDepreciacion.UseVisualStyleBackColor = true;
+            this.tgDepreciacion.CheckedChanged += new System.EventHandler(this.tgDepreciacion_CheckedChanged);
             // 
             // rjCircularPictureBox1
             // 
@@ -300,17 +302,18 @@
             this.label5.TabIndex = 106;
             this.label5.Text = "Nombre";
             // 
-            // pictureBox1
+            // btnFind
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(799, 410);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 112;
-            this.pictureBox1.TabStop = false;
+            this.btnFind.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
+            this.btnFind.Location = new System.Drawing.Point(799, 410);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(30, 38);
+            this.btnFind.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFind.TabIndex = 112;
+            this.btnFind.TabStop = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // dtgFNE
             // 
@@ -342,7 +345,9 @@
             this.dtgFNE.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dtgFNE.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.dtgFNE.Location = new System.Drawing.Point(96, 466);
+            this.dtgFNE.MultiSelect = false;
             this.dtgFNE.Name = "dtgFNE";
+            this.dtgFNE.ReadOnly = true;
             this.dtgFNE.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
@@ -358,33 +363,11 @@
             this.dtgFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgFNE.Size = new System.Drawing.Size(733, 212);
             this.dtgFNE.TabIndex = 110;
-            // 
-            // txtNameProject
-            // 
-            this.txtNameProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNameProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.txtNameProject.BorderColor = System.Drawing.Color.White;
-            this.txtNameProject.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtNameProject.BorderRadius = 0;
-            this.txtNameProject.BorderSize = 2;
-            this.txtNameProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNameProject.ForeColor = System.Drawing.Color.White;
-            this.txtNameProject.Location = new System.Drawing.Point(107, 410);
-            this.txtNameProject.Margin = new System.Windows.Forms.Padding(5);
-            this.txtNameProject.Multiline = false;
-            this.txtNameProject.Name = "txtNameProject";
-            this.txtNameProject.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.txtNameProject.PasswordChar = false;
-            this.txtNameProject.PlaceholderColor = System.Drawing.Color.White;
-            this.txtNameProject.PlaceholderText = "Buscar entidad";
-            this.txtNameProject.Size = new System.Drawing.Size(676, 39);
-            this.txtNameProject.TabIndex = 109;
-            this.txtNameProject.Texts = "";
-            this.txtNameProject.UnderlinedStyle = true;
+            this.dtgFNE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgFNE_CellClick);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.btnEliminar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -395,7 +378,7 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.Location = new System.Drawing.Point(569, 704);
+            this.btnEliminar.Location = new System.Drawing.Point(299, 724);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(132, 39);
@@ -403,28 +386,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextColor = System.Drawing.Color.White;
             this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnActualizar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnActualizar.BorderRadius = 0;
-            this.btnActualizar.BorderSize = 0;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnActualizar.Location = new System.Drawing.Point(210, 704);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(132, 39);
-            this.btnActualizar.TabIndex = 114;
-            this.btnActualizar.Text = "Editar";
-            this.btnActualizar.TextColor = System.Drawing.Color.White;
-            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -439,10 +401,10 @@
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.Location = new System.Drawing.Point(355, 704);
+            this.btnAgregar.Location = new System.Drawing.Point(443, 724);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(205, 39);
+            this.btnAgregar.Size = new System.Drawing.Size(159, 39);
             this.btnAgregar.TabIndex = 113;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.TextColor = System.Drawing.Color.White;
@@ -493,10 +455,34 @@
             this.cmbVidaActivos.MinimumSize = new System.Drawing.Size(229, 40);
             this.cmbVidaActivos.Name = "cmbVidaActivos";
             this.cmbVidaActivos.Padding = new System.Windows.Forms.Padding(1);
-            this.cmbVidaActivos.Size = new System.Drawing.Size(304, 42);
+            this.cmbVidaActivos.Size = new System.Drawing.Size(302, 42);
             this.cmbVidaActivos.TabIndex = 118;
             this.cmbVidaActivos.Texts = "Tipo de metodo";
             this.cmbVidaActivos.OnSelectedIndexChanged += new System.EventHandler(this.cmbVidaActivos_OnSelectedIndexChanged);
+            // 
+            // txtSearchAsset
+            // 
+            this.txtSearchAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchAsset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtSearchAsset.BorderColor = System.Drawing.Color.White;
+            this.txtSearchAsset.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtSearchAsset.BorderRadius = 0;
+            this.txtSearchAsset.BorderSize = 2;
+            this.txtSearchAsset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchAsset.ForeColor = System.Drawing.Color.White;
+            this.txtSearchAsset.Location = new System.Drawing.Point(107, 410);
+            this.txtSearchAsset.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSearchAsset.Multiline = false;
+            this.txtSearchAsset.Name = "txtSearchAsset";
+            this.txtSearchAsset.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.txtSearchAsset.PasswordChar = false;
+            this.txtSearchAsset.PlaceholderColor = System.Drawing.Color.White;
+            this.txtSearchAsset.PlaceholderText = "Buscar activo";
+            this.txtSearchAsset.Size = new System.Drawing.Size(676, 39);
+            this.txtSearchAsset.TabIndex = 109;
+            this.txtSearchAsset.Texts = "";
+            this.txtSearchAsset.UnderlinedStyle = true;
+            this.txtSearchAsset._TextChanged += new System.EventHandler(this.txtSearchAsset__TextChanged);
             // 
             // FrmAddAsset
             // 
@@ -508,18 +494,16 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tglsVidaDeActivo);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnFind);
             this.Controls.Add(this.dtgFNE);
-            this.Controls.Add(this.txtNameProject);
+            this.Controls.Add(this.txtSearchAsset);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblTipoDeMetodo);
             this.Controls.Add(this.cmbTipoMetodo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.rjCircularPictureBox1);
             this.Controls.Add(this.lblDepreciación);
             this.Controls.Add(this.tgDepreciacion);
@@ -528,12 +512,13 @@
             this.Controls.Add(this.txtVidaUtil);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMonto);
+            this.Controls.Add(this.txtDescription);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAddAsset";
             this.Text = "FrmAddAsset";
             this.Load += new System.EventHandler(this.FrmAddAsset_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFind)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -557,14 +542,13 @@
         private System.Windows.Forms.Label label3;
         private RJCodeAdvance.RJControls.RJTextBox txtName;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnFind;
         private ReaLTaiizor.Controls.PoisonDataGridView dtgFNE;
-        private RJCodeAdvance.RJControls.RJTextBox txtNameProject;
         private RJCodeAdvance.RJControls.RJButton btnEliminar;
-        private RJCodeAdvance.RJControls.RJButton btnActualizar;
         private RJCodeAdvance.RJControls.RJButton btnAgregar;
         private System.Windows.Forms.Label label2;
         private RJCodeAdvance.RJControls.RJToggleButton tglsVidaDeActivo;
         private RJCodeAdvance.RJControls.RJComboBox cmbVidaActivos;
+        private RJCodeAdvance.RJControls.RJTextBox txtSearchAsset;
     }
 }

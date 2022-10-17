@@ -80,6 +80,8 @@ namespace EconomicMF.Forms.FormsFlujo
         private async void LoadDgv()
         {
             dgvFNE.DataSource = await unitOfWork.ProjectClient.GetProjectsAsync(solutionId);
+            dgvFNE.Columns[0].Visible = false;
+            dgvFNE.Columns[1].Visible = false;
         }
 
         private async void dgvFNE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -112,8 +114,8 @@ namespace EconomicMF.Forms.FormsFlujo
             {
                 int width = chartFNE.Width;
                 int height = chartFNE.Height;
-                dataset.DataPoints.Add(flujos[i].ToString(), (double)flujos[i].FNE);
-                chartFNE.Size = new Size(width += 10, height);
+                dataset.DataPoints.Add(i.ToString(), (double)flujos[i].FNE);
+                //chartFNE.Size = new Size(width += 10, height);
             }
             chartFNE.Datasets.Add(dataset);
             chartFNE.Update();
@@ -149,6 +151,11 @@ namespace EconomicMF.Forms.FormsFlujo
             };
             return project;
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            LoadDgv();
         }
     }
 }

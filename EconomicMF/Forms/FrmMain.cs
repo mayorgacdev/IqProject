@@ -1,5 +1,7 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
+using EconomicMF.Forms.FormsFlujo;
+using EconomicMF.Forms.FormsMain;
 using EconomicMF.SettingForms;
 using System;
 using System.Drawing;
@@ -34,6 +36,8 @@ namespace EconomicMF.Forms
         {
             if (this.panelOpen.Controls.Count > 0)
                 this.panelOpen.Controls.RemoveAt(0);
+
+
             Form fh = (Form)formHijo;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
@@ -116,26 +120,18 @@ namespace EconomicMF.Forms
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Reporte));
+            AbrirFormEnPanel(new FrmReporte(unitOfWork));
         }
 
         private void btnProjects_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Start));
+            AbrirFormEnPanel(new FrmStart(unitOfWork));
         }
 
         private void btnDashBoard_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(SingletonFrm.GetForm(FormType.DashBoard));
         }
-
-        private void btnInversionistas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //            //FrmInversors frmInversors = new FrmInversors(unitOfWork);
-
 
         private void btnGestionar_Click(object sender, EventArgs e)
         {
@@ -211,7 +207,7 @@ namespace EconomicMF.Forms
 
         private void btnInversor_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.Inversors));
+            AbrirFormEnPanel(new FrmInversors(unitOfWork));
         }
     }
 }

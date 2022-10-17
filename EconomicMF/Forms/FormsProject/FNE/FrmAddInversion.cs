@@ -1,8 +1,10 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
+using EconomicMF.Helper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsProject.FNE
@@ -92,6 +94,45 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             dtgFNE.DataSource = null;
             dtgFNE.DataSource = (await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId));
+            dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[1].Visible = false;
+        }
+
+        private async void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dtgFNE.SelectedRows.Count == 1)
+            {
+                int inversionId = (int)dtgFNE.CurrentRow.Cells[0].Value;
+                await unitOfWork.InvesmentArea.DeleteAsync(inversionId);
+                ChargeDtg();
+            }
+        }
+
+        private async void btnFind_Click(object sender, EventArgs e)
+        {
+            var assets = await unitOfWork.InvesmentArea.GetProjects(DataOnMemory.ProjectId);
+            decimal.TryParse((txtSearch.Texts), out decimal get);
+
+            var result = assets.Where(e => e.Name.Equals(txtSearch.Texts, StringComparison.OrdinalIgnoreCase)
+            || e.Amount >= get);
+
+            dtgFNE.DataSource = null;
+            dtgFNE.DataSource = result.ToList();
+            dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[1].Visible = false;
+        }
+
+        private void txtSearch__TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Texts.Equals(string.Empty))
+            {
+                ChargeDtg();
+            }
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
         }
     }
 }
