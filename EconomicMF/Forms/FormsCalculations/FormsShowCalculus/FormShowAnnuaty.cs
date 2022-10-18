@@ -1,67 +1,72 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
+using EconomicMF.Domain.Entities.Calculos;
+using EconomicMF.SettingForms;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
 {
     public partial class FormShowAnnuaty : Form
     {
-        //private Anualidad anualidad;
         private readonly IUnitOfWork unitOfWork;
-        private string userEmail;
-        //public FormShowAnnuaty(Anualidad anualidad)
-        //{
-        //    //this.anualidad = anualidad;
-        //}
+        private int solutionId;
+        private DataTable dt;
 
         public FormShowAnnuaty(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
-            this.userEmail = DataOnMemory.Email;
+            this.solutionId = DataOnMemory.SolutionId;
+            dt = new DataTable();
         }
 
         private void FormShowAnnuaty_Load(object sender, EventArgs e)
         {
-            //LlenarDgv();
-            //dgvAnnuaty.DataSource = economicClassService.GetAnualidades(userEmail);
+            LlenarDgv();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void LlenarDgv()
+        private async void LlenarDgv()
         {
-            //dgvAnnuaty.DataSource = economicClassService.Get(userEmail);
-            //dgvAnnuaty.Columns["IdUser"].Visible = false;
-            //dgvAnnuaty.Columns["Usuario"].Visible = false;
-            //dgvAnnuaty.Columns["PagoAnual"].DisplayIndex = dgvAnnuaty.ColumnCount - 4;
-            //dgvAnnuaty.Columns["TipoAnualidad"].DisplayIndex = dgvAnnuaty.ColumnCount - 3;
-            //dgvAnnuaty.Columns["PeriodoGracia"].DisplayIndex = dgvAnnuaty.ColumnCount - 2;
-            //dgvAnnuaty.Columns["Periodo"].DisplayIndex = dgvAnnuaty.ColumnCount - 1;
+            IEnumerable<AnnuityDto> conversions = await unitOfWork.EconomicClient.GetAnualidadesAsync(solutionId);
+            dgvAnnuaty.DataSource = conversions;
+            dt = ConvertDatagridview.ConvertToDataTable(dgvAnnuaty);
         }
-        private DataTable ConvertToDataTable()
+
+        private void txtSearch_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            foreach (DataGridViewColumn col in dgvAnnuaty.Columns)
-            {
-                dt.Columns.Add(col.Name);
-            }
+            txtSearch.Clear();
+            panel1.BackColor = Color.HotPink;
+        }
 
-            foreach (DataGridViewRow row in dgvAnnuaty.Rows)
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                DataRow dRow = dt.NewRow();
-                foreach (DataGridViewCell cell in row.Cells)
+                if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
-                    dRow[cell.ColumnIndex] = cell.Value;
+                    LlenarDgv();
+                    return;
                 }
-                dt.Rows.Add(dRow);
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = dt;
+                if (int.TryParse(txtSearch.Text, out int result))
+                {
+                    bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+                }
+                else
+                {
+                    bindingSource.Filter = String.Format("TipoAnualidad LIKE '*{0}*' OR Periodo LIKE '*{0}*' OR TipoDeCrecimiento LIKE '*{0}*'", txtSearch.Text);
+                }
+                dgvAnnuaty.DataSource = bindingSource;
             }
-
-            return dt;
         }
     }
 }

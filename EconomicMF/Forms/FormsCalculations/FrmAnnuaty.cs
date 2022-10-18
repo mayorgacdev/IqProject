@@ -6,6 +6,7 @@ using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
 using EconomicMF.Domain.Enums.Calculos;
 using EconomicMF.Helper;
+using EconomicMF.Services.Processes;
 using RJCodeAdvance.RJControls;
 using System;
 using System.Windows.Forms;
@@ -15,13 +16,13 @@ namespace EconomicMF.Forms.FormsCalculations
     public partial class FrmAnnuaty : Form
     {
         private readonly IUnitOfWork unitOfWork;
-        private string userEmail;
-
+        //private string userEmail;
+        private int solutionId;
         public FrmAnnuaty(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
-            this.userEmail = DataOnMemory.Email;
+            solutionId = DataOnMemory.SolutionId;
         }
 
         private void FrmAnnuaty_Load(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace EconomicMF.Forms.FormsCalculations
         }
         private async void TipoCalculoAnualidad(Calculos calculo, TipoAnualidad tipo)
         {
-            decimal vf = 0, nper = 0;
+            decimal vf = 0, nper = 0, crecimiento=0, futuroGradiente=0;
             int perGracia = 0;
             if (tipo.Equals(TipoAnualidad.AnualidadPerpetua))
             {
@@ -104,99 +105,114 @@ namespace EconomicMF.Forms.FormsCalculations
             {
                 perGracia = (string.IsNullOrWhiteSpace(txtPerGracia.Texts)) ? int.Parse(txtPerGracia.Text) : int.Parse(txtPerGracia.Texts);
             }
-            User user = await unitOfWork.UserClient.GetByEmailAsync(userEmail);
-            if (user == null)
+            Solution solution = await unitOfWork.SolutionClient.GetAsync(solutionId);
+            if (solution == null)
             {
-                throw new Exception("Este usuario no existe");
+                throw new Exception($"La solucion con id {solutionId} no existe");
             }
             switch (calculo)
             {
                 case Calculos.ValorPresente:
-                    EconomicDto anualidad = new AnnuityDto()
+                    EconomicDto anualidad = new EconomicDto()
                     {
-                        ValorFuturo = vf,
+                        FutureValue = vf,
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
                         NumPeriodos = nper,
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text)/100 : decimal.Parse(txtTasa.Texts) / 100,
                         TipoAnualidad = tipo,
                         PeriodoGracia = perGracia,
                         Periodo = (Periodo)cmbPer.SelectedItem,
-                        IdUser = user.Id,
+                        SolutionId = solution.Id,
+                        Crecimiento = crecimiento,
+                        FuturoGradiente = futuroGradiente,
+                        Discriminator = Discriminador.Anualidad.ToString()
                     };
-                    anualidad.ValorPresente = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularVP(((AnnuityDto)anualidad));
-                    txtVP.Texts = txtVP.Text = anualidad.ValorPresente.ToString();
+                    anualidad.PresentValue = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularVP(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
+                    txtVP.Texts = txtVP.Text = anualidad.PresentValue.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(anualidad);
 
                     break;
                 case Calculos.ValorFuturo:
-                    anualidad = new AnnuityDto()
+                    anualidad = new EconomicDto()
                     {
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
                         NumPeriodos = nper,
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text)/100 : decimal.Parse(txtTasa.Texts) / 100,
                         TipoAnualidad = tipo,
                         PeriodoGracia = perGracia,
                         Periodo = (Periodo)cmbPer.SelectedItem,
-                        IdUser = user.Id,
+                        SolutionId = solution.Id,
+                        Crecimiento = crecimiento,
+                        FuturoGradiente = futuroGradiente,
+                        Discriminator = Discriminador.Anualidad.ToString()
                     };
-                    anualidad.ValorFuturo = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularVF(((AnnuityDto)anualidad));
-                    txtVF.Texts = txtVF.Text = anualidad.ValorFuturo.ToString();
+                    anualidad.PresentValue = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularVF(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
+                    txtVF.Texts = txtVF.Text = anualidad.FutureValue.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(anualidad);
 
                     break;
                 case Calculos.NumeroDePeriodos:
-                    anualidad = new AnnuityDto()
+                    anualidad = new EconomicDto()
                     {
-                        ValorFuturo = vf,
+                        FutureValue = vf,
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text)/100 : decimal.Parse(txtTasa.Texts) / 100,
                         TipoAnualidad = tipo,
                         PeriodoGracia = perGracia,
                         Periodo = (Periodo)cmbPer.SelectedItem,
-                        IdUser = user.Id,
+                        SolutionId = solution.Id,
+                        Crecimiento = crecimiento,
+                        FuturoGradiente = futuroGradiente,
+                        Discriminator = Discriminador.Anualidad.ToString()
                     };
-                    anualidad.NumPeriodos = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularTiempo(((AnnuityDto)anualidad));
+                    anualidad.NumPeriodos = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularTiempo(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
                     txtDuracion.Texts =txtDuracion.Text= anualidad.NumPeriodos.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(anualidad);
 
                     break;
                 case Calculos.TasaDeInteres:
-                    anualidad = new AnnuityDto()
+                    anualidad = new EconomicDto()
                     {
-                        ValorFuturo = vf,
+                        FutureValue = vf,
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
                         NumPeriodos = nper,
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
                         TipoAnualidad = tipo,
                         PeriodoGracia = perGracia,
                         Periodo = (Periodo)cmbPer.SelectedItem,
-                        IdUser = user.Id,
+                        SolutionId = solution.Id,
+                        Crecimiento = crecimiento,
+                        FuturoGradiente = futuroGradiente,
+                        Discriminator = Discriminador.Anualidad.ToString()
                     };
-                    anualidad.TasaInteres = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularTasa(((AnnuityDto)anualidad));
+                    anualidad.TasaInteres = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularTasa(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
                     txtTasa.Texts = txtTasa.Text = (anualidad.TasaInteres*100).ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(anualidad);
 
                     break;
                 case Calculos.Pago:
-                    anualidad = new AnnuityDto()
+                    anualidad = new EconomicDto()
                     {
-                        ValorFuturo = vf,
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        FutureValue = vf,
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
                         NumPeriodos = nper,
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text)/100 : decimal.Parse(txtTasa.Texts) / 100,
                         TipoAnualidad = tipo,
                         PeriodoGracia = perGracia,
                         Periodo = (Periodo)cmbPer.SelectedItem,
-                        IdUser = user.Id,
+                        SolutionId = solution.Id,
+                        Crecimiento = crecimiento,
+                        FuturoGradiente = futuroGradiente,
+                        Discriminator = Discriminador.Anualidad.ToString()
                     };
-                    ((AnnuityDto)anualidad).PagoAnual = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularPago(((AnnuityDto)anualidad));
-                    txtPago.Texts =txtPago.Text =((AnnuityDto)anualidad).PagoAnual.ToString();
+                    ((EconomicDto)anualidad).PagoAnual = AnualidadSeriesFactory.CreateInstance((TipoAnualidad)cmbTipo.SelectedItem).CalcularPago(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
+                    txtPago.Texts =txtPago.Text =((EconomicDto)anualidad).PagoAnual.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(anualidad);
 
@@ -206,25 +222,26 @@ namespace EconomicMF.Forms.FormsCalculations
         private async void TipoCalculoSerie(Calculos calculo, TipoAnualidad tipo)
         {
             int perGracia = 0;
-            decimal incremento;
+            //TODO: Calcular futurogradiente
+            decimal incremento, futurogradiente=0;
             //TODO: verificar este if
             if (tipo.Equals(TipoAnualidad.AnualidadDiferida))
             {
                 perGracia = (string.IsNullOrWhiteSpace(txtPerGracia.Texts)) ? int.Parse(txtPerGracia.Text) : int.Parse(txtPerGracia.Texts);
             }
-            incremento = (string.IsNullOrWhiteSpace(txtIncremento.Texts)) ? decimal.Parse(txtIncremento.Text) : decimal.Parse(txtIncremento.Texts); 
-            User user = await unitOfWork.UserClient.GetByEmailAsync(userEmail);
-            if (user == null)
+            incremento = (string.IsNullOrWhiteSpace(txtIncremento.Texts)) ? decimal.Parse(txtIncremento.Text) : decimal.Parse(txtIncremento.Texts);
+            Solution solution = await unitOfWork.SolutionClient.GetAsync(solutionId);
+            if (solution == null)
             {
-                throw new Exception("Este usuario no existe");
+                throw new Exception($"La solucion con id {solutionId} no existe");
             }
             switch (calculo)
             {
                 case Calculos.ValorPresente:
                     //cambio por economicClass
-                    EconomicDto series = new Serie()
+                    EconomicDto series = new EconomicDto()
                     {
-                        ValorFuturo = (string.IsNullOrWhiteSpace(txtVF.Texts)) ? decimal.Parse(txtVF.Text) : decimal.Parse(txtVF.Texts),
+                        FutureValue = (string.IsNullOrWhiteSpace(txtVF.Texts)) ? decimal.Parse(txtVF.Text) : decimal.Parse(txtVF.Texts),
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
                         NumPeriodos = (string.IsNullOrWhiteSpace(txtDuracion.Texts)) ? decimal.Parse(txtDuracion.Text) : decimal.Parse(txtDuracion.Texts),
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text)/100 : decimal.Parse(txtTasa.Texts) / 100,
@@ -233,18 +250,20 @@ namespace EconomicMF.Forms.FormsCalculations
                         Periodo = (Periodo)cmbPer.SelectedItem,
                         TipoDeCrecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? TipoCrecimiento.Aritmetico : TipoCrecimiento.Geometrico,
                         Crecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? incremento : incremento / 100,
-                        IdUser = user.Id,
+                        SolutionId = solutionId,
+                        FuturoGradiente = futurogradiente,
+                        Discriminator = Discriminador.Anualidad.ToString(),
                     };
-                    series.ValorPresente = AnualidadSeriesFactory.CreateInstance(tipo).CalcularVP((Serie)series);
-                    txtVP.Texts = txtVP.Text = series.ValorPresente.ToString();
+                    series.PresentValue = AnualidadSeriesFactory.CreateInstance(tipo).CalcularVP(ConvertEconomicDTOS.ConvertAnualidadDTO(series));
+                    txtVP.Texts = txtVP.Text = series.PresentValue.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(series);
 
                     break;
                 case Calculos.ValorFuturo:
-                    series = new Serie()
+                    series = new EconomicDto()
                     {
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
                         NumPeriodos = (string.IsNullOrWhiteSpace(txtDuracion.Texts)) ? decimal.Parse(txtDuracion.Text) : decimal.Parse(txtDuracion.Texts),
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text) / 100 : decimal.Parse(txtTasa.Texts) / 100,
@@ -253,19 +272,21 @@ namespace EconomicMF.Forms.FormsCalculations
                         Periodo = (Periodo)cmbPer.SelectedItem,
                         TipoDeCrecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? TipoCrecimiento.Aritmetico : TipoCrecimiento.Geometrico,
                         Crecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? incremento : incremento / 100,
-                        IdUser = user.Id,
+                        SolutionId = solutionId,
+                        FuturoGradiente = futurogradiente,
+                        Discriminator = Discriminador.Anualidad.ToString(),
                     };
-                    series.ValorFuturo = AnualidadSeriesFactory.CreateInstance(tipo).CalcularVF((Serie)series);
-                    txtVF.Texts = txtVF.Text =series.ValorFuturo.ToString();
+                    series.FutureValue = AnualidadSeriesFactory.CreateInstance(tipo).CalcularVF(ConvertEconomicDTOS.ConvertAnualidadDTO(series));
+                    txtVF.Texts = txtVF.Text =series.FutureValue.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(series);
 
                     break;
                 case Calculos.Pago:
-                    series = new Serie()
+                    series = new EconomicDto()
                     {
-                        ValorFuturo = (string.IsNullOrWhiteSpace(txtVF.Texts)) ? decimal.Parse(txtVF.Text) : decimal.Parse(txtVF.Texts),
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        FutureValue = (string.IsNullOrWhiteSpace(txtVF.Texts)) ? decimal.Parse(txtVF.Text) : decimal.Parse(txtVF.Texts),
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
                         NumPeriodos = (string.IsNullOrWhiteSpace(txtDuracion.Texts)) ? decimal.Parse(txtDuracion.Text) : decimal.Parse(txtDuracion.Texts),
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text) / 100 : decimal.Parse(txtTasa.Texts) / 100,
                         TipoAnualidad = tipo,
@@ -273,18 +294,20 @@ namespace EconomicMF.Forms.FormsCalculations
                         Periodo = (Periodo)cmbPer.SelectedItem,
                         TipoDeCrecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? TipoCrecimiento.Aritmetico : TipoCrecimiento.Geometrico,
                         Crecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? incremento : incremento / 100,
-                        IdUser = user.Id,
+                        SolutionId = solutionId,
+                        FuturoGradiente = futurogradiente,
+                        Discriminator = Discriminador.Anualidad.ToString(),
                     };
-                    ((Serie)series).PagoAnual = AnualidadSeriesFactory.CreateInstance(tipo).CalcularPago((Serie)series);
-                    txtPago.Texts = txtPago.Text = ((Serie)series).PagoAnual.ToString();
+                    series.PagoAnual = AnualidadSeriesFactory.CreateInstance(tipo).CalcularPago(ConvertEconomicDTOS.ConvertAnualidadDTO(series));
+                    txtPago.Texts = txtPago.Text = series.PagoAnual.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(series);
 
                     break;
                 case Calculos.Incremento:
-                    series = new Serie()
+                    series = new EconomicDto()
                     {
-                        ValorFuturo = (string.IsNullOrWhiteSpace(txtVF.Texts)) ? decimal.Parse(txtVF.Text) : decimal.Parse(txtVF.Texts),
+                        FutureValue = (string.IsNullOrWhiteSpace(txtVF.Texts)) ? decimal.Parse(txtVF.Text) : decimal.Parse(txtVF.Texts),
                         PagoAnual = (string.IsNullOrWhiteSpace(txtPago.Texts)) ? decimal.Parse(txtPago.Text) : decimal.Parse(txtPago.Texts),
                         NumPeriodos = (string.IsNullOrWhiteSpace(txtDuracion.Texts)) ? decimal.Parse(txtDuracion.Text) : decimal.Parse(txtDuracion.Texts),
                         TasaInteres = (string.IsNullOrWhiteSpace(txtTasa.Texts)) ? decimal.Parse(txtTasa.Text) / 100 : decimal.Parse(txtTasa.Texts) / 100,
@@ -292,11 +315,13 @@ namespace EconomicMF.Forms.FormsCalculations
                         PeriodoGracia = perGracia,
                         Periodo = (Periodo)cmbPer.SelectedItem,
                         TipoDeCrecimiento = tipo.Equals(TipoAnualidad.SerieAritmetica) ? TipoCrecimiento.Aritmetico : TipoCrecimiento.Geometrico,
-                        ValorPresente = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
-                        IdUser = user.Id
+                        PresentValue = (string.IsNullOrWhiteSpace(txtVP.Texts)) ? decimal.Parse(txtVP.Text) : decimal.Parse(txtVP.Texts),
+                        SolutionId = solutionId,
+                        FuturoGradiente = futurogradiente,
+                        Discriminator = Discriminador.Anualidad.ToString(),
                     };
-                    ((Serie)series).Crecimiento = AnualidadSeriesFactory.CreateInstance(tipo).CalcularGradiente((Serie)series);
-                    txtIncremento.Texts =txtIncremento.Text = ((Serie)series).Crecimiento.ToString();
+                    series.Crecimiento = AnualidadSeriesFactory.CreateInstance(tipo).CalcularGradiente(ConvertEconomicDTOS.ConvertAnualidadDTO(series));
+                    txtIncremento.Texts =txtIncremento.Text = series.Crecimiento.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(series);
 
@@ -474,7 +499,7 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void pbRate_Click(object sender, EventArgs e)
         {
-            FrmConversor frmConversor = new FrmConversor((FrecuenciaTasa)cmbPer.SelectedIndex);
+            FrmConversor frmConversor = new FrmConversor((FrecuenciaTasa)cmbPer.SelectedIndex, unitOfWork);
             frmConversor.ShowDialog();
             //este if seria opcional 
             if (frmConversor.tasaconvertida!=0)

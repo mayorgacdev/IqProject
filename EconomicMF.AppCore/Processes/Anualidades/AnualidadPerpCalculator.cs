@@ -11,25 +11,25 @@ namespace EconomicMF.AppCore.Processes.Anualidades
     public class AnualidadPerpCalculator : IAnualidadCalculator
     {
         public decimal CalcularFuturoGradiente(AnnuityDto serie)
-        {
-            throw new NotImplementedException();
+        {            
+            return 0;
         }
 
         public decimal CalcularGradiente(AnnuityDto series)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public decimal CalcularPago(AnnuityDto anualidad)
         {
             //return anualidad.ValorPresente * anualidad.TasaInteres;
-            return Math.Round(anualidad.ValorPresente * anualidad.TasaInteres,2);
+            return Math.Round(anualidad.PresentValue * anualidad.TasaInteres,2);
         }
 
         public decimal CalcularTasa(AnnuityDto anualidad)
         {
             //return anualidad.PagoAnual / anualidad.ValorPresente * 100;
-            return Math.Round(anualidad.PagoAnual / anualidad.ValorPresente * 100,2);
+            return Math.Round(anualidad.PagoAnual / anualidad.PresentValue * 100,2);
         }
 
         public decimal CalcularTiempo(AnnuityDto anualidad)

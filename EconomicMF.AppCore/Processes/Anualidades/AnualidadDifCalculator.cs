@@ -14,8 +14,8 @@ namespace EconomicMF.AppCore.Processes.Anualidades
         public decimal CalcularPago(AnnuityDto anualidad)
         {
             double tasa = (double)anualidad.TasaInteres;
-            double vp = (double)anualidad.ValorPresente;
-            double vf = (double)anualidad.ValorFuturo;
+            double vp = (double)anualidad.PresentValue;
+            double vf = (double)anualidad.PresentValue;
             int numPagos = (int)anualidad.NumPeriodos - anualidad.PeriodoGracia;
 
             double resultado = Financial.Pmt(tasa, numPagos, vp, vf) * -1;
@@ -40,7 +40,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
         {
             double tasa = (double)anualidad.TasaInteres;
             double pago = (double)anualidad.PagoAnual * -1;
-            double vp = (double)anualidad.ValorPresente;
+            double vp = (double)anualidad.PresentValue;
             int numPagos = (int)anualidad.NumPeriodos - anualidad.PeriodoGracia;
             vp = vp * Math.Pow((1 + tasa), anualidad.PeriodoGracia);
             double resultado = Financial.FV(tasa, numPagos, pago, vp);
@@ -51,7 +51,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
         {
             double tasa = (double)anualidad.TasaInteres;
             double pago = (double)anualidad.PagoAnual * -1;
-            double vf = (double)anualidad.ValorFuturo;
+            double vf = (double)anualidad.FutureValue;
             int numPagos = (int)anualidad.NumPeriodos - anualidad.PeriodoGracia;
             double resultado = Financial.PV(tasa, numPagos, pago, vf);
             if (vf == 0)
@@ -67,12 +67,12 @@ namespace EconomicMF.AppCore.Processes.Anualidades
 
         public decimal CalcularGradiente(AnnuityDto series)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public decimal CalcularFuturoGradiente(AnnuityDto serie)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }

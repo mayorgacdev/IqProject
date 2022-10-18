@@ -40,7 +40,7 @@
             this.lblVF = new System.Windows.Forms.Label();
             this.lblVP = new System.Windows.Forms.Label();
             this.lblMoment = new System.Windows.Forms.Label();
-            this.lblMomento = new System.Windows.Forms.Label();
+            this.lblPer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,16 +162,16 @@
             this.lblMoment.TabIndex = 88;
             this.lblMoment.Text = "<NameUser>";
             // 
-            // lblMomento
+            // lblPer
             // 
-            this.lblMomento.AutoSize = true;
-            this.lblMomento.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMomento.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblMomento.Location = new System.Drawing.Point(399, 20);
-            this.lblMomento.Name = "lblMomento";
-            this.lblMomento.Size = new System.Drawing.Size(63, 13);
-            this.lblMomento.TabIndex = 87;
-            this.lblMomento.Text = "Momento: ";
+            this.lblPer.AutoSize = true;
+            this.lblPer.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPer.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblPer.Location = new System.Drawing.Point(399, 20);
+            this.lblPer.Name = "lblPer";
+            this.lblPer.Size = new System.Drawing.Size(53, 13);
+            this.lblPer.TabIndex = 87;
+            this.lblPer.Text = "Periodo: ";
             // 
             // UCInteres
             // 
@@ -179,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.Controls.Add(this.lblMoment);
-            this.Controls.Add(this.lblMomento);
+            this.Controls.Add(this.lblPer);
             this.Controls.Add(this.lblFrec);
             this.Controls.Add(this.lblRate);
             this.Controls.Add(this.lblFrecuencia);
@@ -213,6 +213,6 @@
         private System.Windows.Forms.Label lblVF;
         private System.Windows.Forms.Label lblVP;
         private System.Windows.Forms.Label lblMoment;
-        private System.Windows.Forms.Label lblMomento;
+        private System.Windows.Forms.Label lblPer;
     }
 }

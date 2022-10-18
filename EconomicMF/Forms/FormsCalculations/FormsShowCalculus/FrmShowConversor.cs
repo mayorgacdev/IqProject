@@ -1,7 +1,14 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
+using EconomicMF.Domain.Entities.Calculos;
+using EconomicMF.Domain.Enums;
+using EconomicMF.Domain.Enums.Conversiones;
+using EconomicMF.SettingForms;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
@@ -11,12 +18,13 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
         private readonly IUnitOfWork unitOfWork;
 
         private string userEmail;
-
+        DataTable dt;
         public FrmShowConversor(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
             this.userEmail = DataOnMemory.Email;
+            dt = new DataTable();
         }
 
         private void FrmShowConversor_Load(object sender, EventArgs e)
@@ -28,69 +36,41 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
         {
             this.Close();
         }
-        private DataTable ConvertToDataTable()
+
+        private async void LlenarDgv()
         {
-            DataTable dt = new DataTable();
-            foreach (DataGridViewColumn col in dgvConversiones.Columns)
-            {
-                dt.Columns.Add(col.Name);
-            }
-
-            foreach (DataGridViewRow row in dgvConversiones.Rows)
-            {
-                DataRow dRow = dt.NewRow();
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    dRow[cell.ColumnIndex] = cell.Value;
-                }
-                dt.Rows.Add(dRow);
-            }
-
-            return dt;
+            IEnumerable<ConversionDto> conversions = await unitOfWork.ConversionClient.GetConversionAsync(userEmail);
+            dgvConversiones.DataSource = conversions;
+            dt = ConvertDatagridview.ConvertToDataTable(dgvConversiones);
         }
 
-        private void txtSearchReport_KeyDown(object sender, KeyEventArgs e)
+        private void textBox1_Click(object sender, EventArgs e)
         {
-            //TODO: No sirve
-            MessageBox.Show("Test");
-            if (e.KeyCode == Keys.Enter)
+            txtSearch.Clear();
+            panel1.BackColor = Color.HotPink;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
             {
-                if (string.IsNullOrWhiteSpace(txtSearchReport.Text))
+                if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
                     LlenarDgv();
                     return;
                 }
-
-                DataTable dt = ConvertToDataTable();
-                dt.DefaultView.RowFilter = string.Format("TipoOriginal LIKE '*{0}*' OR TipoActual LIKE '*{0}*' OR FrecCapOriginal LIKE '*{0}*' FrecCapActual OR Id = '{0}'", txtSearchReport.Text);
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-                dgvConversiones.DataSource = bs;
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = dt;
+                if (int.TryParse(txtSearch.Text, out int result))
+                {
+                    bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+                }
+                else
+                {
+                    bindingSource.Filter = String.Format("TipoOriginal LIKE '*{0}*' OR TipoActual LIKE '*{0}*' OR FrecCapOriginal LIKE '*{0}*' OR FrecCapActual LIKE '*{0}*'", txtSearch.Text);
+                }
+                dgvConversiones.DataSource = bindingSource;
             }
-        }
-        private void LlenarDgv()
-        {
-            //dgvConversiones.DataSource = null;
-            //dgvConversiones.DataSource = conversionService.FindByUserEmail(userEmail);
-            //dgvConversiones.Columns[dgvConversiones.Columns.Count - 1].Visible = false;
-            ////para ocultar el userId
-            //dgvConversiones.Columns[1].Visible = false;
-        }
-
-        private void txtSearchReport__TextChanged(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Test");
-            if (string.IsNullOrWhiteSpace(txtSearchReport.Text))
-            {
-                LlenarDgv();
-                return;
-            }
-
-            DataTable dt = ConvertToDataTable();
-            dt.DefaultView.RowFilter = string.Format("TipoOriginal LIKE '*{0}*' OR TipoActual LIKE '*{0}*' OR FrecCapOriginal LIKE '*{0}*' FrecCapActual OR Id = '{0}'", txtSearchReport.Text);
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dt;
-            dgvConversiones.DataSource = bs;
         }
     }
 }

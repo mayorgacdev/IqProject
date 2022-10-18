@@ -27,8 +27,8 @@ namespace EconomicMF.UserControls.UCForGestor
 
         private void ChargeLabels()
         {
-            lblPresente.Text = interes.ValorPresente.ToString();
-            lblFuturo.Text = interes.ValorFuturo.ToString();
+            lblPresente.Text = interes.PresentValue.ToString();
+            lblFuturo.Text = interes.FutureValue.ToString();
             lblMoment.Text = interes.NumPeriodos.ToString();
             lblFrec.Text = interes.FrecuenciaTasa.ToString();
             lblRate.Text = interes.TasaInteres.ToString();

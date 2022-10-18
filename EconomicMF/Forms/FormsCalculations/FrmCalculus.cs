@@ -5,257 +5,263 @@ using EconomicMF.Domain.Entities.Calculos;
 using EconomicMF.Domain.Enums;
 using EconomicMF.Forms.FormsCalculations.FormsShowCalculus;
 using EconomicMF.Helper;
+using EconomicMF.Services.Processes;
 using EconomicMF.UserControls.UCForGestor;
 using RJCodeAdvance.RJControls;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsCalculations
 {
     public partial class FrmCalculus : Form
     {
-        //private bool tasaFijada;
-
         private readonly IUnitOfWork unitOfWork;
-        private readonly List<EconomicDto> flujo;
-        private readonly string userEmail;
         private int nper;
-        private readonly int idUser;
-
+        private int solutionId;
+        private int idflujo;
+        private bool nuevoFlujo=true;
         public FrmCalculus(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
-            this.userEmail = DataOnMemory.Email;
-            flujo = new List<EconomicDto>();
+            this.solutionId = DataOnMemory.SolutionId;
         }
-
-        private void GetAll()
+        private async void btnAddFlow_Click(object sender, EventArgs e)
         {
-
-        }
-        private void btnAddFlow_Click(object sender, EventArgs e)
-        {
-            //UserDto user = userService.GetByEmail(userEmail);
-            //if (user == null)
+            //try
             //{
-            //    throw new Exception("Este usuario no existe");
+
             //}
-            //idUser = user.Id;
-            ValidateFields();   
-            /*
-            switch (cmbTipoCalculo.SelectedItem)
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return;
+            //}
+            ValidateFields();
+            if (nuevoFlujo)
             {
-                case TipoCalculo.Anualidad:
-                    Anualidad anualidad = CrearAnualidad();
-                    UCFlow uCFlow = new UCFlow();
-                    flpFlows.Controls.Add(uCFlow);
-                    flujo.Add(anualidad);
-                   
-                    break;
-                case TipoCalculo.ValorIndividual:
-                    Interes interes = CrearIndividual();
-                    UCFlow ucFlowInteres = new UCFlow();
-                    flpFlows.Controls.Add(ucFlowInteres);
-                    flujo.Add(interes);
-
-                    break;
-                case TipoCalculo.Serie:
-                    if (int.Parse(txtInicio.Texts) <= 0)
-                    {
-                        throw new ArgumentException("Una serie no puede comenzar en el año 0");
-                        //TODO: add mas codigo --> I don't want adding more code, XD
-                    }
-                    Serie serie = CrearSerie();
-                    UCFlow uCFlowSerire = new UCFlow();
-                    flpFlows.Controls.Add(uCFlowSerire);
-                    flujo.Add(serie);
-                    break;
+                FlujoDeCajaDto flujoDeCajaDto = new FlujoDeCajaDto()
+                {
+                    SolutionId = solutionId,
+                };
+                await unitOfWork.flujoClient.CreateAsync(flujoDeCajaDto);
+                IEnumerable<FlujoDeCajaDto> cashflows = await unitOfWork.flujoClient.GetAllAsync();
+                idflujo = cashflows.Last().Id;
             }
-            tasaFijada = true;
-            txtTasaInteres.Enabled = false;
-            cmbFrecuenciaPago.Enabled = false;*/
-
-            //UCFlow uCFlow = new UCFlow();
-
-            //flpFlows.Controls.Add(uCFlow);
-
-            //flujo.Add(uCFlow);
-
             switch (cmbTipoCalculo.SelectedItem)
             {
                 case TipoCalculo.Anualidad:
-                    AnnuityDto anualidad = CrearAnualidad();
-                    UCAnnuaty uCAnnuaty = new UCAnnuaty(anualidad);
+                    EconomicDto anualidad = CrearAnualidad();
+                    UCAnnuaty uCAnnuaty = new UCAnnuaty(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
+                    await unitOfWork.EconomicClient.CreateAsync(anualidad);
                     flpFlows.Controls.Add(uCAnnuaty);
-                    flujo.Add(anualidad);
+
+                    IEnumerable<EconomicDto> lstEconomic = await unitOfWork.EconomicClient.GetAllAsync();
+                    int idEconomic = lstEconomic.Last().Id;
+
+                    FlujoDeCajaDetalleDto detalleDto = new FlujoDeCajaDetalleDto()
+                    {
+                        IdFlujoDeCaja = idflujo,
+                        IdEconomic = idEconomic,
+                    };
+                    await unitOfWork.flujoDetalleClient.CreateAsync(detalleDto);
                     break;
-                case TipoCalculo.ValorIndividual:
-                    RateDto interes = CrearIndividual();
-                    UCInteres uCInteres= new UCInteres(interes);
+                case TipoCalculo.FlujoUnico:
+                    EconomicDto interes = CrearIndividual();
+                    UCInteres uCInteres = new UCInteres(ConvertEconomicDTOS.ConvertRateDto(interes));
+                    await unitOfWork.EconomicClient.CreateAsync(interes);
                     flpFlows.Controls.Add(uCInteres);
-                    flujo.Add(interes);
+
+                    lstEconomic = await unitOfWork.EconomicClient.GetAllAsync();
+                    idEconomic = lstEconomic.Last().Id;
+
+                    detalleDto = new FlujoDeCajaDetalleDto()
+                    {
+                        IdFlujoDeCaja = idflujo,
+                        IdEconomic = idEconomic,
+                    };
+                    await unitOfWork.flujoDetalleClient.CreateAsync(detalleDto);
                     break;
                 case TipoCalculo.Serie:
                     if (int.Parse(txtInicio.Texts) <= 0)
                     {
-                        throw new ArgumentException("Una serie no puede comenzar en el año 0");
+                        throw new ArgumentException("Una serie no puede comenzar en el año 0 o antes");
                         //add mas codigo
                     }
-                    Serie serie = CrearSerie();
-                    uCAnnuaty = new UCAnnuaty(serie);
+                    EconomicDto serie = CrearSerie();
+                    uCAnnuaty = new UCAnnuaty(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
+                    await unitOfWork.EconomicClient.CreateAsync(serie);
                     flpFlows.Controls.Add(uCAnnuaty);
-                    flujo.Add(serie);
+
+                    lstEconomic = await unitOfWork.EconomicClient.GetAllAsync();
+                    idEconomic = lstEconomic.Last().Id;
+
+                    detalleDto = new FlujoDeCajaDetalleDto()
+                    {
+                        IdFlujoDeCaja = idflujo,
+                        IdEconomic = idEconomic,
+                    };
+                    await unitOfWork.flujoDetalleClient.CreateAsync(detalleDto);
                     break;
             }
-
             txtTasaInteres.Enabled = false;
             cmbFrecuenciaPago.Enabled = false;
+            btnConvert.Enabled = false;
+            nuevoFlujo = false;
+            lblNum.Text = $"Periodo del ultimo pago: {nper}";
         }
 
-        private Serie CrearSerie()
+        private EconomicDto CrearSerie()
         {
-            try
+            decimal incremento = 0, futuroGrad = 0;
+            if (!string.IsNullOrWhiteSpace(txtIncremento.Texts))
             {
+                incremento = decimal.Parse(txtIncremento.Texts);
+            }
+            if (!string.IsNullOrWhiteSpace(txtFuturoGrad.Texts))
+            {
+                futuroGrad = decimal.Parse(txtFuturoGrad.Texts);
+            }
+            int perGracia = int.Parse(txtInicio.Texts) - 1;
+            int ultimoPago = int.Parse(txtDuracion.Texts);
+            decimal tasa = decimal.Parse(txtTasaInteres.Texts) / 100;
+            if (tasa <= 0)
+            {
+                throw new ArgumentException("La tasa de interés no puede ser menor o igual a 0%");
+            }
+            decimal pago = decimal.Parse(txtPagoPeriodico.Texts);
+            if (pago <= 0)
+            {
+                throw new ArgumentException("El pago periodico no puede ser menor o igual a 0");
+            }
+            TipoAnualidad tipoAnualidad = ((TipoCrecimiento)cmbIncremento.SelectedItem).Equals(TipoCrecimiento.Aritmetico) ? TipoAnualidad.SerieAritmetica : TipoAnualidad.SerieGeometrica;
+            EconomicDto serie = new EconomicDto()
+            {
+                SolutionId = solutionId,
+                Discriminator = Discriminador.Anualidad.ToString(),
+                //Discriminator = "Anualidad Flujo"
+                NumPeriodos = ultimoPago,
+                TasaInteres = tasa,
+                TipoAnualidad = tipoAnualidad,
+                //TODO: revisar bien si debe de ir o no el periodo de gracia
+                PeriodoGracia = (perGracia < 0) ? 0 : perGracia,
+                Periodo = (Periodo)cmbFrecuenciaPago.SelectedItem,
+                //PagoAnual = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? decimal.Parse(txtPagoPeriodico.Texts) : decimal.Parse(txtPagoPeriodico.Texts) * -1,
+                PagoAnual = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? pago : pago*-1,
+                Crecimiento = (cmbIncremento.SelectedItem.Equals(TipoCrecimiento.Geometrico)) ? incremento / 100 : incremento,
+                TipoDeCrecimiento = ((TipoCrecimiento)cmbIncremento.SelectedItem),
+                FuturoGradiente = futuroGrad,
 
-                decimal incremento = 0, futuroGrad = 0;
-                if (!string.IsNullOrWhiteSpace(txtIncremento.Texts))
-                {
-                    incremento = decimal.Parse(txtIncremento.Texts);
-                }
-                if (!string.IsNullOrWhiteSpace(txtFuturoGrad.Texts))
-                {
-                    futuroGrad = decimal.Parse(txtFuturoGrad.Texts);
-                }
-                int perGracia = int.Parse(txtInicio.Texts) - 1;
-                TipoAnualidad tipoAnualidad = ((TipoCrecimiento)cmbIncremento.SelectedItem).Equals(TipoCrecimiento.Aritmetico) ? TipoAnualidad.SerieAritmetica : TipoAnualidad.SerieGeometrica;
-                Serie serie = new Serie()
-                {
-                    IdUser = idUser,
-                    NumPeriodos = int.Parse(txtDuracion.Texts),
-                    TasaInteres = decimal.Parse(txtTasaInteres.Texts) / 100,
-                    TipoAnualidad = tipoAnualidad,
-                    //TODO: revisar bien si debe de ir o no el periodo de gracia
-                    PeriodoGracia = (perGracia < 0) ? 0 : perGracia,
-                    Periodo = (Periodo)cmbFrecuenciaPago.SelectedItem,
-                    //PagoAnual = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? decimal.Parse(txtPagoPeriodico.Texts) : decimal.Parse(txtPagoPeriodico.Texts) * -1,
-                    PagoAnual = decimal.Parse(txtPagoPeriodico.Texts),
-                    Crecimiento = (cmbIncremento.SelectedItem.Equals(TipoCrecimiento.Geometrico)) ? incremento / 100 : incremento,
-                    TipoDeCrecimiento = ((TipoCrecimiento)cmbIncremento.SelectedItem),
-                    FuturoGradiente = futuroGrad,
-                };
-                //TODO: Revisar el signo del pago, entre otras cosas
-                if (serie.FuturoGradiente == 0)
-                    serie.FuturoGradiente = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularFuturoGradiente(serie);
-                if (serie.Crecimiento == 0)
-                    serie.Crecimiento = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularGradiente(serie);
-                decimal vp = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularVP(serie);
-                serie.ValorFuturo = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularVF(serie);
-                serie.ValorPresente = vp;
-                VerificarMayor((int)serie.NumPeriodos);
-                return serie;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new Serie();
-            }
+                //propiedad de economic 
+                FrecuenciaTasa = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex
+            };
+            //TODO: Revisar el signo del pago, entre otras cosas
+            if (serie.FuturoGradiente == 0)
+                serie.FuturoGradiente = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularFuturoGradiente(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
+            if (serie.Crecimiento == 0)
+                serie.Crecimiento = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularGradiente(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
+            decimal vp = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularVP(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
+            serie.FutureValue = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularVF(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
+            serie.PresentValue = vp;
+            VerificarMayor((int)serie.NumPeriodos);
+            return serie;
         }
 
-        private RateDto CrearIndividual()
+        private EconomicDto CrearIndividual()
         {
-            try
+            int periodo = int.Parse(txtInicio.Texts);
+            decimal tasa = decimal.Parse(txtTasaInteres.Texts) / 100;
+            if (tasa <= 0)
             {
-
-                int periodo = int.Parse(txtInicio.Texts);
-                RateDto interes = new RateDto()
-                {
-
-                    NumPeriodos = periodo,
-                    //ValorPresente = decimal.Parse(txtValorPresente.Texts),
-                    //TODO : revisar si esto es correcto, y si se tiene que ocultar
-                    ValorFuturo = decimal.Parse(txtValue.Texts),
-                    TasaInteres = decimal.Parse(txtTasaInteres.Texts) / 100,
-                    FrecuenciaTasa = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedItem,
-                    TipoInteres = TipoInteres.CompuestoConTasaEfectiva,
-                    IdUser = idUser,
-                };
-                interes.ValorPresente = InteresFactory.CreateInstance(interes.TipoInteres).CalcularVP(interes);
-                VerificarMayor((int)interes.NumPeriodos);
-                return interes;
+                throw new ArgumentException("La tasa de interés no puedo ser menor o igual a 0%");
             }
-            catch (Exception ex)
+            decimal valor = decimal.Parse(txtValue.Texts);
+            if (valor <= 0)
             {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new RateDto();
+                throw new ArgumentException("El valor ingresado no puede ser menor o igual a 0");
             }
+            EconomicDto interes = new EconomicDto()
+            {
+                SolutionId = solutionId,
+                Discriminator = Discriminador.Interes.ToString(),
+                //Discriminator = "Interes Flujo",
+                NumPeriodos = periodo,
+                //TODO : revisar si esto es correcto, y si se tiene que ocultar
+                FutureValue = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? valor: valor*-1,
+                TasaInteres = tasa,
+                FrecuenciaTasa = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex,
+                TipoInteres = TipoInteres.CompuestoConTasaEfectiva,
+
+                //propiedad de economic
+                Periodo = (Periodo)cmbFrecuenciaPago.SelectedItem
+            };
+            interes.PresentValue = InteresFactory.CreateInstance(interes.TipoInteres).CalcularVP(ConvertEconomicDTOS.ConvertRateDto(interes));
+            VerificarMayor((int)interes.NumPeriodos);
+            return interes;
         }
 
-        private AnnuityDto CrearAnualidad()
+        private EconomicDto CrearAnualidad()
         {
-            try
+            int perGracia = int.Parse(txtInicio.Texts) - 1;
+            int ultimoPago = int.Parse(txtDuracion.Texts);
+            decimal tasa = decimal.Parse(txtTasaInteres.Texts) / 100;
+            if (tasa <= 0)
             {
-                int perGracia = int.Parse(txtInicio.Texts) - 1;
-
-                AnnuityDto anualidad = new AnnuityDto()
-                {
-                    IdUser = idUser,
-                    NumPeriodos = int.Parse(txtDuracion.Texts),
-                    TasaInteres = decimal.Parse(txtTasaInteres.Texts) / 100,
-                    TipoAnualidad = GetTipoAnualidad(),
-                    PeriodoGracia = (perGracia < 0) ? 0 : perGracia,
-                    Periodo = (Periodo)cmbFrecuenciaPago.SelectedItem,
-                    PagoAnual = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? decimal.Parse(txtPagoPeriodico.Texts) : decimal.Parse(txtPagoPeriodico.Texts) * -1
-                };
-                decimal vp = AnualidadSeriesFactory.CreateInstance(anualidad.TipoAnualidad).CalcularVP(anualidad);
-                anualidad.ValorFuturo = AnualidadSeriesFactory.CreateInstance(anualidad.TipoAnualidad).CalcularVF(anualidad);
-                anualidad.ValorPresente = vp;
-                VerificarMayor((int)anualidad.NumPeriodos);
-                return anualidad;
+                throw new ArgumentException("La tasa de interés no puede ser menor o igual a 0%");
             }
-            catch (Exception ex)
+            decimal pago = decimal.Parse(txtPagoPeriodico.Texts);
+            if (pago <= 0)
             {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new AnnuityDto();
+                throw new ArgumentException("El pago periodico no puede ser menor o igual a 0");
             }
+            EconomicDto anualidad = new EconomicDto()
+            {
+                SolutionId = solutionId,
+                Discriminator = Discriminador.Anualidad.ToString(),
+                Crecimiento = 0,
+                FuturoGradiente = 0,
+                //Discriminator = "Anualidad Flujo"
+                //Numero de periodos, aqui se refiere a cuando realizo se ultimo pago
+                //pero podria cambiar a numero de pagos
+                NumPeriodos = (perGracia<0)? (ultimoPago+1) : ultimoPago,
+                TasaInteres = tasa,
+                TipoAnualidad = GetTipoAnualidad(),
+                PeriodoGracia = (perGracia < 0) ? 0 : perGracia,
+                Periodo = (Periodo)cmbFrecuenciaPago.SelectedItem,
+                PagoAnual = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? pago : pago * -1,
+                TipoDeCrecimiento = TipoCrecimiento.SinCrecimiento,
 
+                //propiedad de economic 
+                FrecuenciaTasa = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex
+            };
+            decimal vp = AnualidadSeriesFactory.CreateInstance(anualidad.TipoAnualidad).CalcularVP(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
+            anualidad.FutureValue = AnualidadSeriesFactory.CreateInstance(anualidad.TipoAnualidad).CalcularVF(ConvertEconomicDTOS.ConvertAnualidadDTO(anualidad));
+            anualidad.PresentValue = vp;
+            VerificarMayor((int)anualidad.NumPeriodos);
+            return anualidad;
         }
 
         private TipoAnualidad GetTipoAnualidad()
         {
-            try
+            if (int.Parse(txtInicio.Texts) < 0)
             {
-                if (int.Parse(txtInicio.Texts) < 0)
-                {
-                    throw new ArgumentException("El inicio de la anualidad no puede ser menor a 0");
-                }
-                if (int.Parse(txtDuracion.Texts) <= 0)
-                {
-                    throw new ArgumentException("La duracion no puede ser menor o igual a 0");
-                }
-                if (int.Parse(txtInicio.Texts) > int.Parse(txtDuracion.Texts))
-                {
-                    throw new ArgumentException("El periodo de gracia no puede ser mayor que la duracion de la anualidad");
-                }
-                else if (int.Parse(txtInicio.Texts) == 0)
-                {
-                    return TipoAnualidad.AnualidadAnticipada;
-                }
-                else if (int.Parse(txtInicio.Texts) > 1)
-                {
-                    return TipoAnualidad.AnualidadDiferida;
-                }
-
-                return TipoAnualidad.AnualidadOrdinaria;
+                throw new ArgumentException("El inicio de la anualidad no puede ser menor a 0");
             }
-            catch (Exception ex)
+            if (int.Parse(txtDuracion.Texts) <= 0)
             {
-               
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ArgumentException("La duracion no puede ser menor o igual a 0");
+            }
+            else if (int.Parse(txtInicio.Texts) == 0)
+            {
                 return TipoAnualidad.AnualidadAnticipada;
             }
-
+            else if (int.Parse(txtInicio.Texts) > 1)
+            {
+                return TipoAnualidad.AnualidadDiferida;
+            }
+            return TipoAnualidad.AnualidadOrdinaria;
         }
 
         private void btnAddAnnuity_Click(object sender, EventArgs e)
@@ -276,21 +282,50 @@ namespace EconomicMF.Forms.FormsCalculations
             frmConversion.ShowDialog();
         }
 
-        private void btnCalculateFlow_Click(object sender, EventArgs e)
+        private async void btnCalculateFlow_Click(object sender, EventArgs e)
         {
-            try
-            {
-                unitOfWork.EconomicClient.CreateCashFlowAsync(flujo, nper);
-                nper = 0;
-                txtTasaInteres.Enabled = true;
-                cmbFrecuenciaPago.Enabled = true;
-                flujo.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
 
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    //return;
+            //}
+            if (tgbUltimoN.Checked == true)
+            {
+                //if(int.TryParse(txtN.Texts, out int n))
+                //{
+
+                //}
+                int n = int.Parse(txtN.Texts);
+                if (n < nper)
+                {
+                    throw new ArgumentException($"No se puede calcular el futuro en el periodo {n} ya que esta antes del ultimo pago");
+                }
+                nper = n;
+            }
+            txtTasaInteres.Enabled = true;
+            cmbFrecuenciaPago.Enabled = true;
+            btnConvert.Enabled = true;
+            IEnumerable<EconomicDto> clasesEconomicas = await unitOfWork.flujoDetalleClient.GetEconomics(idflujo);
+            FlujoDeCajaDto flujo = CashFlowMethods.CreateCashFlow(clasesEconomicas.ToList(), nper, (Periodo)cmbFrecuenciaPago.SelectedItem);
+            flujo.Id = idflujo;
+            bool resultado = await unitOfWork.flujoClient.UpdateAsync(flujo);
+            if (resultado)
+            {
+                MessageBox.Show("Registro añadido correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            //TODO: Decidir si quitarlo o no
+            else
+            {
+                await unitOfWork.flujoClient.DeleteAsync(idflujo);
+            }
+            nuevoFlujo = true;
+            nper = 0;
+            Limpiar();
+            flpFlows.Controls.Clear();
         }
 
         private void btnShowAnnuity_Click(object sender, EventArgs e)
@@ -315,19 +350,11 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void FrmCalculus_Load(object sender, EventArgs e)
         {
-            try
-            {
-                cmbTipoCalculo.DataSource = Enum.GetValues(typeof(TipoCalculo));
-                //cmbTipoCalculo.DataSource = Enum.GetValues(typeof(TipoAnualidad));
-                cmbTipoMovimiento.DataSource = Enum.GetValues(typeof(TipoMovimiento));
-                cmbFrecuenciaPago.DataSource = Enum.GetValues(typeof(Periodo));
-                cmbIncremento.DataSource = Enum.GetValues(typeof(TipoCrecimiento));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            cmbTipoCalculo.DataSource = Enum.GetValues(typeof(TipoCalculo));
+            cmbTipoMovimiento.DataSource = Enum.GetValues(typeof(TipoMovimiento));
+            cmbFrecuenciaPago.DataSource = Enum.GetValues(typeof(Periodo));
+            cmbIncremento.DataSource = Enum.GetValues(typeof(TipoCrecimiento)).Cast<TipoCrecimiento>()
+                        .Where(i => i != TipoCrecimiento.SinCrecimiento).ToArray();
 
         }
 
@@ -348,6 +375,7 @@ namespace EconomicMF.Forms.FormsCalculations
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -362,55 +390,60 @@ namespace EconomicMF.Forms.FormsCalculations
             try
             {
                 txtIncremento.Enabled = cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.Serie);
-                txtPeriodoDeGracia.Enabled = !cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual);
-                //txtPagoPeriodico.Enabled = !cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual);
-                txtPagoPeriodico.Visible = !cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual);
+                txtPagoPeriodico.Visible = !cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.FlujoUnico);
                 txtFuturoGrad.Enabled = cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.Serie);
-                txtValorPresente.Enabled = !cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual);
                 cmbIncremento.Enabled = cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.Serie);
-                txtValue.Visible = cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual);
-
+                txtValue.Visible = cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.FlujoUnico);
                 txtValue.Texts = string.Empty;
-                if (cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual))
+                txtDuracion.Enabled = !cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.FlujoUnico);
+                if (cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.FlujoUnico))
                     txtPagoPeriodico.Texts = string.Empty;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
 
         private void ValidateFields()
         {
-            try
-            {
-                //TODO: se puede quitar el textbox de valor presente, valor futuro y del per de gracia
-                if (string.IsNullOrWhiteSpace(txtDuracion.Texts) || string.IsNullOrWhiteSpace(txtTasaInteres.Texts) || string.IsNullOrWhiteSpace(txtInicio.Texts))
-                    throw new Exception("Debe rellenar todos los campos necesarios");
-                if (!cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.ValorIndividual))
-                {
-                    //if (string.IsNullOrWhiteSpace(txtPagoPeriodico.Texts) || string.IsNullOrWhiteSpace(txtPeriodoDeGracia.Texts))
-                    if (string.IsNullOrWhiteSpace(txtPagoPeriodico.Texts))
-                        throw new Exception("Debe de rellenar todos los campos necesarios");
-                }
-                if (cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.Serie))
-                {
-                    if (string.IsNullOrWhiteSpace(txtIncremento.Texts) && string.IsNullOrWhiteSpace(txtFuturoGrad.Texts))
-                    {
-                        throw new Exception("El campo de incremento y el campo del futuro del gradiente no pueden estar vacios al mismo tiempo");
-                    }
-                    if (!string.IsNullOrWhiteSpace(txtIncremento.Texts) && !string.IsNullOrWhiteSpace(txtFuturoGrad.Texts))
-                    {
-                        throw new Exception("El campo de incremento y el campo del futuro del gradiente no pueden estar llenos al mismo tiempo");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
+            if (string.IsNullOrWhiteSpace(txtTasaInteres.Texts) || string.IsNullOrWhiteSpace(txtInicio.Texts))
+            {
+                throw new ArgumentException("Debe de rellenar todos los campos necesarios");
+            }
+            if (!cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.FlujoUnico))
+            {
+                if (string.IsNullOrWhiteSpace(txtPagoPeriodico.Texts) || string.IsNullOrWhiteSpace(txtDuracion.Texts))
+                    throw new ArgumentException("Debe de rellenar todos los campos necesarios");
+
+                int ini = int.Parse(txtInicio.Texts);
+                int fin = int.Parse(txtDuracion.Texts);
+                if (ini >= fin)
+                {
+                    throw new ArgumentException("El periodo de inicio no puede ser mayor al periodo del ultimo pago");
+                }
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(txtValue.Texts))
+                {
+                    throw new ArgumentException("Debe de rellenar todos los campos necesarios");
+                }
+            }
+            if (cmbTipoCalculo.SelectedItem.Equals(TipoCalculo.Serie))
+            {
+                if (string.IsNullOrWhiteSpace(txtIncremento.Texts) && string.IsNullOrWhiteSpace(txtFuturoGrad.Texts))
+                {
+                    throw new ArgumentException("El campo de incremento y el campo del futuro del gradiente no pueden estar vacios al mismo tiempo");
+                }
+                if (!string.IsNullOrWhiteSpace(txtIncremento.Texts) && !string.IsNullOrWhiteSpace(txtFuturoGrad.Texts))
+                {
+                    throw new ArgumentException("El campo de incremento y el campo del futuro del gradiente no pueden estar llenos al mismo tiempo");
+                }
+            }
         }
 
         private void txtPeriodoDeGracia_KeyPress(object sender, KeyPressEventArgs e)
@@ -454,8 +487,122 @@ namespace EconomicMF.Forms.FormsCalculations
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
+        }
+
+        private void cmbIncremento_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((TipoCrecimiento)cmbIncremento.SelectedItem).Equals(TipoCrecimiento.Geometrico))
+            {
+                lblPorc.Visible = true;
+                txtIncremento.PlaceholderText += " (%)";
+            }
+            else
+            {
+                lblPorc.Visible = false;
+                txtIncremento.PlaceholderText = "Incremento";
+            }
+        }
+
+        private void cmbFrecuenciaPago_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch ((FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex)
+            {
+                case FrecuenciaTasa.Anual:
+                    txtDuracion.PlaceholderText = "Año del último pago";
+                    //txtInicio.PlaceholderText = "Año del primer pago";
+                    break;
+                case FrecuenciaTasa.Semestral:
+                    txtDuracion.PlaceholderText = "Semestre del último pago";
+                    //txtInicio.PlaceholderText = "Semestre del primer pago";
+                    break;
+                case FrecuenciaTasa.Cuatrimestral:
+                    txtDuracion.PlaceholderText = "Cuatrimestre del último pago";
+                    //txtInicio.PlaceholderText = "Cuatrimestre del primer pago";
+                    break;
+                case FrecuenciaTasa.Trimestral:
+                    txtDuracion.PlaceholderText = "Trimestre del último pago";
+                    //txtInicio.PlaceholderText = "Trimestre del primer pago";
+                    break;
+                case FrecuenciaTasa.Bimestral:
+                    txtDuracion.PlaceholderText =  "Bimestre del último pago";
+                    //txtInicio.PlaceholderText = "Bimestre del primer pago";
+                    break;
+                case FrecuenciaTasa.Mensual:
+                    txtDuracion.PlaceholderText = "Mes del último pago";
+                    //txtInicio.PlaceholderText = "Mes del primer pago";
+                    break;
+                case FrecuenciaTasa.Semanal:
+                    txtDuracion.PlaceholderText = "Semana del último pago";
+                    //txtInicio.PlaceholderText = "Semana del primer pago";
+                    break;
+                case FrecuenciaTasa.Diario:
+                    txtDuracion.PlaceholderText = "Día del último pago";
+                    //txtInicio.PlaceholderText = "Día del primer pago";
+                    break;
+            }
+        }
+
+        private void ConvertTasa(object sender, EventArgs e)
+        {
+            FrmConversor frmConversor = new FrmConversor((FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex, unitOfWork);
+            frmConversor.ShowDialog();
+            //este if seria opcional 
+            if (frmConversor.tasaconvertida != 0)
+            {
+                txtTasaInteres.Focus();
+                txtTasaInteres.Texts = frmConversor.tasaconvertida.ToString();
+            }
+        }
+        public void Limpiar()
+        {
+            txtDuracion.Texts = string.Empty;
+            txtFuturoGrad.Texts = string.Empty;
+            txtIncremento.Texts = string.Empty;
+            txtValue.Texts = string.Empty;
+            txtPagoPeriodico.Texts = string.Empty;
+            txtInicio.Texts = string.Empty;
+            txtTasaInteres.Texts = string.Empty;
+            lblNum.Text = "Periodo del último pago:";
+            tgbUltimoN.Checked = false;
+
+            cmbFrecuenciaPago.SelectedIndex = 0;
+            cmbTipoMovimiento.SelectedIndex = 0;
+            cmbTipoCalculo.SelectedIndex = 0;
+            cmbIncremento.SelectedIndex = 0;
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            IEnumerable<EconomicDto> clasesEconomicas = await unitOfWork.flujoDetalleClient.GetEconomics(6);
+            FlujoDeCajaDto flujo = CashFlowMethods.CreateCashFlow(clasesEconomicas.ToList(), 12, (Periodo)cmbFrecuenciaPago.SelectedItem);
+            flujo.Id = 6;
+            bool resultado = await unitOfWork.flujoClient.UpdateAsync(flujo);
+        }
+
+        private void tgbUltimoN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tgbUltimoN.Checked == true)
+            {
+                txtN.Enabled = true;
+            }
+            else
+            {
+                txtN.Enabled = false;
+                txtN.Texts = String.Empty;
+            }
+        }
+
+        private void btnVerFrec_Click(object sender, EventArgs e)
+        {
+            string algo = ((Periodo)cmbFrecuenciaPago.SelectedItem).ToString();
+            MessageBox.Show(algo);
+
+            //FrecuenciaTasa frecuencia = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex;
+            //Periodo periodo = Enum.Parse<Periodo>(frecuencia.ToString());
+            //MessageBox.Show(frecuencia.ToString());
         }
     }
 }

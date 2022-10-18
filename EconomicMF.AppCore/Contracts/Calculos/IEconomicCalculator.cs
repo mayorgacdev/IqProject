@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace EconomicMF.AppCore.Contracts.Calculos
 {
-    public interface IEconomicCalculator<TEntity> where TEntity : EconomicDto
+    public interface IEconomicCalculator<T> 
     {
-        decimal CalcularTasa(TEntity economicClass);
-        decimal CalcularTiempo(TEntity economicClass);
-        decimal CalcularVP(TEntity economicClass);
-        decimal CalcularVF(TEntity economicClass);
+        decimal CalcularTasa(T economicClass);
+        decimal CalcularTiempo(T economicClass);
+        decimal CalcularVP(T economicClass);
+        decimal CalcularVF(T economicClass);
     }
 }

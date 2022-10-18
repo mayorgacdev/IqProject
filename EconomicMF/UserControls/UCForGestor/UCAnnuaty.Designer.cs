@@ -41,12 +41,12 @@
             this.lblAnualidad = new System.Windows.Forms.Label();
             this.lblPer = new System.Windows.Forms.Label();
             this.lblDuracion = new System.Windows.Forms.Label();
-            this.lblGracia_Incr = new System.Windows.Forms.Label();
-            this.lblGracia_Incremento = new System.Windows.Forms.Label();
+            this.lblPerGracia = new System.Windows.Forms.Label();
+            this.lblGracia = new System.Windows.Forms.Label();
             this.lblFrec = new System.Windows.Forms.Label();
             this.lblFrecuencia = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.lblTipo = new System.Windows.Forms.Label();
+            this.lblIncr = new System.Windows.Forms.Label();
+            this.lblIncremento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,9 +65,9 @@
             this.lblPago.ForeColor = System.Drawing.Color.SpringGreen;
             this.lblPago.Location = new System.Drawing.Point(454, 8);
             this.lblPago.Name = "lblPago";
-            this.lblPago.Size = new System.Drawing.Size(63, 13);
+            this.lblPago.Size = new System.Drawing.Size(36, 13);
             this.lblPago.TabIndex = 76;
-            this.lblPago.Text = "Anualidad:";
+            this.lblPago.Text = "Pago:";
             // 
             // lblTasa
             // 
@@ -179,27 +179,27 @@
             this.lblDuracion.TabIndex = 79;
             this.lblDuracion.Text = "Duracion:";
             // 
-            // lblGracia_Incr
+            // lblPerGracia
             // 
-            this.lblGracia_Incr.AutoSize = true;
-            this.lblGracia_Incr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblGracia_Incr.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblGracia_Incr.Location = new System.Drawing.Point(520, 23);
-            this.lblGracia_Incr.Name = "lblGracia_Incr";
-            this.lblGracia_Incr.Size = new System.Drawing.Size(75, 13);
-            this.lblGracia_Incr.TabIndex = 82;
-            this.lblGracia_Incr.Text = "<NameUser>";
+            this.lblPerGracia.AutoSize = true;
+            this.lblPerGracia.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPerGracia.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblPerGracia.Location = new System.Drawing.Point(520, 23);
+            this.lblPerGracia.Name = "lblPerGracia";
+            this.lblPerGracia.Size = new System.Drawing.Size(75, 13);
+            this.lblPerGracia.TabIndex = 82;
+            this.lblPerGracia.Text = "<NameUser>";
             // 
-            // lblGracia_Incremento
+            // lblGracia
             // 
-            this.lblGracia_Incremento.AutoSize = true;
-            this.lblGracia_Incremento.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblGracia_Incremento.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblGracia_Incremento.Location = new System.Drawing.Point(454, 23);
-            this.lblGracia_Incremento.Name = "lblGracia_Incremento";
-            this.lblGracia_Incremento.Size = new System.Drawing.Size(61, 13);
-            this.lblGracia_Incremento.TabIndex = 81;
-            this.lblGracia_Incremento.Text = "Per Gracia:";
+            this.lblGracia.AutoSize = true;
+            this.lblGracia.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGracia.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblGracia.Location = new System.Drawing.Point(454, 23);
+            this.lblGracia.Name = "lblGracia";
+            this.lblGracia.Size = new System.Drawing.Size(61, 13);
+            this.lblGracia.TabIndex = 81;
+            this.lblGracia.Text = "Per Gracia:";
             // 
             // lblFrec
             // 
@@ -223,39 +223,39 @@
             this.lblFrecuencia.TabIndex = 85;
             this.lblFrecuencia.Text = "Frecuencia:";
             // 
-            // lblType
+            // lblIncr
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblType.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblType.Location = new System.Drawing.Point(725, 8);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(75, 13);
-            this.lblType.TabIndex = 84;
-            this.lblType.Text = "<NameUser>";
+            this.lblIncr.AutoSize = true;
+            this.lblIncr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblIncr.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblIncr.Location = new System.Drawing.Point(725, 8);
+            this.lblIncr.Name = "lblIncr";
+            this.lblIncr.Size = new System.Drawing.Size(75, 13);
+            this.lblIncr.TabIndex = 84;
+            this.lblIncr.Text = "<NameUser>";
             // 
-            // lblTipo
+            // lblIncremento
             // 
-            this.lblTipo.AutoSize = true;
-            this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTipo.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblTipo.Location = new System.Drawing.Point(659, 8);
-            this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(33, 13);
-            this.lblTipo.TabIndex = 83;
-            this.lblTipo.Text = "Tipo:";
+            this.lblIncremento.AutoSize = true;
+            this.lblIncremento.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblIncremento.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblIncremento.Location = new System.Drawing.Point(659, 8);
+            this.lblIncremento.Name = "lblIncremento";
+            this.lblIncremento.Size = new System.Drawing.Size(68, 13);
+            this.lblIncremento.TabIndex = 87;
+            this.lblIncremento.Text = "Incremento:";
             // 
             // UCAnnuaty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.Controls.Add(this.lblIncremento);
             this.Controls.Add(this.lblFrec);
             this.Controls.Add(this.lblFrecuencia);
-            this.Controls.Add(this.lblType);
-            this.Controls.Add(this.lblTipo);
-            this.Controls.Add(this.lblGracia_Incr);
-            this.Controls.Add(this.lblGracia_Incremento);
+            this.Controls.Add(this.lblIncr);
+            this.Controls.Add(this.lblPerGracia);
+            this.Controls.Add(this.lblGracia);
             this.Controls.Add(this.lblPer);
             this.Controls.Add(this.lblDuracion);
             this.Controls.Add(this.lblAnualidad);
@@ -292,11 +292,11 @@
         private System.Windows.Forms.Label lblAnualidad;
         private System.Windows.Forms.Label lblPer;
         private System.Windows.Forms.Label lblDuracion;
-        private System.Windows.Forms.Label lblGracia_Incr;
-        private System.Windows.Forms.Label lblGracia_Incremento;
+        private System.Windows.Forms.Label lblPerGracia;
+        private System.Windows.Forms.Label lblGracia;
         private System.Windows.Forms.Label lblFrec;
         private System.Windows.Forms.Label lblFrecuencia;
-        private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label lblTipo;
+        private System.Windows.Forms.Label lblIncr;
+        private System.Windows.Forms.Label lblIncremento;
     }
 }

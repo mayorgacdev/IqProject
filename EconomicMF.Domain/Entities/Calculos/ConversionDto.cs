@@ -16,6 +16,6 @@ namespace EconomicMF.Domain.Entities.Calculos
         public FrecuenciaTasa FrecCapActual { get; set; }
         public int CapitalizacionOriginal { get; set; }
         public int CapitalizacionActual { get; set; }
-        public User Usuario { get; set; }
+        //public UserDto Usuario { get; set; }
     }
 }

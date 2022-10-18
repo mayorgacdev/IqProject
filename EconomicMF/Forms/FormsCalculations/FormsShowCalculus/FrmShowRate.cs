@@ -1,42 +1,40 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
+using EconomicMF.Domain.Entities.Calculos;
+using EconomicMF.SettingForms;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
 {
     public partial class FrmShowRate : Form
     {
-        //private Interes interes;
         private readonly IUnitOfWork unitOfWork;
-        private string userEmail;
-        //public FrmShowRate(Interes interes)
-        //{
-        //    //this.interes = interes;
-        //}
+        private int solutionId;
+        private DataTable dt;
 
         public FrmShowRate(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
-            this.userEmail = DataOnMemory.Email;
+            this.solutionId = DataOnMemory.SolutionId;
+            dt = new DataTable();
         }
 
         private void FrmShowRate_Load(object sender, EventArgs e)
         {
             LlenarDgv();
-            //dgvInteres.DataSource = economicClassService.GetAll().Where(x => x.GetType().Equals(typeof(Interes))).ToList();
         }
 
-        private void LlenarDgv()
+        private async void LlenarDgv()
         {
-            //dgvInteres.DataSource = economicClassService.GetInteres(userEmail);
-            //dgvInteres.Columns["IdUser"].Visible = false;
-            //dgvInteres.Columns["Usuario"].Visible = false;
-            //dgvInteres.Columns["TipoInteres"].DisplayIndex = dgvInteres.ColumnCount-3;
-            //dgvInteres.Columns["FrecuenciaTasa"].DisplayIndex = dgvInteres.ColumnCount - 2;
-            //dgvInteres.Columns["Capitalizacion"].DisplayIndex = dgvInteres.ColumnCount - 1;
+            IEnumerable<RateDto> conversions = await unitOfWork.EconomicClient.GetInteresAsync(solutionId);
+            dgvInteres.DataSource = conversions;
+            dgvInteres.Columns["Capitalizacion"].Visible = false;
+            dt = ConvertDatagridview.ConvertToDataTable(dgvInteres);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -44,25 +42,33 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             this.Close();
         }
 
-        private DataTable ConvertToDataTable()
+        private void txtSearch_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            foreach (DataGridViewColumn col in dgvInteres.Columns)
-            {
-                dt.Columns.Add(col.Name);
-            }
+            txtSearch.Clear();
+            panel1.BackColor = Color.HotPink;
+        }
 
-            foreach (DataGridViewRow row in dgvInteres.Rows)
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                DataRow dRow = dt.NewRow();
-                foreach (DataGridViewCell cell in row.Cells)
+                if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
-                    dRow[cell.ColumnIndex] = cell.Value;
+                    LlenarDgv();
+                    return;
                 }
-                dt.Rows.Add(dRow);
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = dt;
+                if (int.TryParse(txtSearch.Text, out int result))
+                {
+                    bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+                }
+                else
+                {
+                    bindingSource.Filter = String.Format("TipoInteres LIKE '*{0}*' OR FrecuenciaTasa LIKE '*{0}*'", txtSearch.Text);
+                }
+                dgvInteres.DataSource = bindingSource;
             }
-
-            return dt;
         }
     }
 }

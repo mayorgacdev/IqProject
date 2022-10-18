@@ -12,6 +12,6 @@ namespace EconomicMF.Domain.Contracts.CalculosRepositories
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        Task<IEnumerable<Conversion>> GetConversionAsync(string email);
+        Task<IEnumerable<ConversionDto>> GetConversionAsync(string email);
     }
 }

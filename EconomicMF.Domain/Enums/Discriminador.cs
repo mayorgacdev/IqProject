@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace EconomicMF.Domain.Enums
 {
-    public enum TipoCalculo
+    public enum Discriminador
     {
-        FlujoUnico,
         Anualidad,
-        Serie
+        Interes
     }
 }

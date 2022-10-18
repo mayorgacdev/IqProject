@@ -1,4 +1,5 @@
 ﻿using EconomicMF.Domain.Entities.Calculos;
+using EconomicMF.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,16 +28,22 @@ namespace EconomicMF.UserControls.UCForGestor
 
         private void ChargeLabels()
         {
-            lblPresente.Text = anualidad.ValorPresente.ToString();
-            lblFuturo.Text = anualidad.ValorFuturo.ToString();
+            lblPresente.Text = anualidad.PresentValue.ToString();
+            lblFuturo.Text = anualidad.FutureValue.ToString();
             lblPer.Text = anualidad.NumPeriodos.ToString();
             lblFrec.Text = anualidad.Periodo.ToString();
             lblAnualidad.Text = anualidad.PagoAnual.ToString();
-            lblType.Text = anualidad.TipoAnualidad.ToString();
+            //lblIncr.Text = anualidad.TipoAnualidad.ToString();
             lblRate.Text = anualidad.TasaInteres.ToString();
-            lblGracia_Incr.Text = (!anualidad.GetType().IsSubclassOf(typeof(AnnuityDto))) ? anualidad.PeriodoGracia.ToString() : 
-                ((Serie)anualidad).Crecimiento.ToString();
-            lblGracia_Incremento.Text = (!anualidad.GetType().IsSubclassOf(typeof(AnnuityDto))) ? "Per Gracia": "Incremento";
+            lblPerGracia.Text = anualidad.PeriodoGracia.ToString();
+            if (anualidad.Crecimiento.Equals(TipoCrecimiento.Geometrico))
+            {
+                lblIncr.Text = $"{anualidad.Crecimiento*100} %";
+            }
+            else
+            {
+                lblIncr.Text = anualidad.Crecimiento.ToString();
+            }
         }
     }
 }

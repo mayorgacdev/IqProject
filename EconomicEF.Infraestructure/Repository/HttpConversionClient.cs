@@ -18,19 +18,19 @@ namespace EconomicEF.Infraestructure.Repository
         {
 
         }
-        public async Task<IEnumerable<Conversion>> GetConversionAsync(string email)
+        public async Task<IEnumerable<ConversionDto>> GetConversionAsync(string email)
         {
-            string URI = URL + email;
+            //https://localhost:7062/api/conversion/email?email=ej%40gmail.com
+            string URI = URL + "/email?email=" + email;
             HttpResponseMessage response = await client.GetAsync(URI);
             if (response.IsSuccessStatusCode)
             {
                 var jsonstring = await response.Content.ReadAsStringAsync();
                 return
-                    JsonConvert.DeserializeObject<List<Conversion>>(jsonstring);
+                    JsonConvert.DeserializeObject<List<ConversionDto>>(jsonstring);
             }
             else
                 throw new Exception("No se pudo obtener las conversiones del usuario con email: " + email);
-
         }
     }
 }

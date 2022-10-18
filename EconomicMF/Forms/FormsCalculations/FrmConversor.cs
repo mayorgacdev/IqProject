@@ -17,7 +17,7 @@ namespace EconomicMF.Forms.FormsCalculations
         private string userEmail;
         private FrecuenciaTasa frecuenciaTasa;
         public decimal tasaconvertida;
-
+        private bool usoOtroform;
         public FrmConversor(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
@@ -25,10 +25,13 @@ namespace EconomicMF.Forms.FormsCalculations
             this.userEmail = DataOnMemory.Email;
         }
 
-        public FrmConversor(FrecuenciaTasa frecuenciaTasa)
+        public FrmConversor(FrecuenciaTasa frecuenciaTasa, IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.frecuenciaTasa = frecuenciaTasa;
+            this.unitOfWork = unitOfWork;
+            this.userEmail = DataOnMemory.Email;
+            this.usoOtroform = true;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -41,7 +44,7 @@ namespace EconomicMF.Forms.FormsCalculations
             cmbInteresOriginal.DataSource = Enum.GetValues(typeof(TipoTasa));
             cmbFrecOriginal.DataSource = Enum.GetValues(typeof(Periodo));
             cmbFrecActual.DataSource = Enum.GetValues(typeof(Periodo));
-            if (unitOfWork is null)
+            if (usoOtroform)
             {
                 //el valor final va a estar dado por la frecuencia de pago del interes y la tasa es efectiva
                 cmbInteresActual.SelectedIndex = (int)TipoTasa.Efectiva;
@@ -55,8 +58,9 @@ namespace EconomicMF.Forms.FormsCalculations
         {
             try
             {
-                int idUsuario = 0;
-                VerificarIgualdad();
+                //MessageBox.Show(idUser.ToString());
+                int idUsuario=0;
+                Validar();
                 //TODO: Add conversor to FRMSHOW
                 if (decimal.Parse(txtOriginal.Texts) <= 0)
                 {
@@ -64,6 +68,8 @@ namespace EconomicMF.Forms.FormsCalculations
                 }
                 if (unitOfWork != null)
                 {
+                    //MessageBox.Show(userEmail);
+                    //userEmail = "ej@gmail.com";
                     User user = await unitOfWork.UserClient.GetByEmailAsync(userEmail);
                     if (user is null)
                     {
@@ -80,14 +86,15 @@ namespace EconomicMF.Forms.FormsCalculations
                     FrecCapActual = GetFrecuencia(cmbFrecActual),
                     CapitalizacionActual = GetNumCap(cmbFrecActual, (TipoTasa)cmbInteresActual.SelectedItem),
                     CapitalizacionOriginal = GetNumCap(cmbFrecOriginal, (TipoTasa)cmbInteresOriginal.SelectedItem),
-                    //es 0 si el formulario se usa para convertir tasas que se ocupan en otros formularios
-                    UserId = idUsuario
+                    UserId = idUsuario,
                 };
                 conversion.TasaActual = ConversionesFactory.VerConversion(conversion).Convertir(conversion);
+                //conversion.TasaActual = Math.Round(conversion.TasaActual, 2);
                 txtActual.Texts = (conversion.TasaActual * 100).ToString();
-                if (unitOfWork is not null)
+                //TODO: ver si se guardaria la conversion de todos modos 
+                if (!usoOtroform)
                 {
-                    await unitOfWork.ConversionClient.CreateAsync(conversion); 
+                    await unitOfWork.ConversionClient.CreateAsync(conversion);
                 }
                 else
                 {
@@ -107,17 +114,21 @@ namespace EconomicMF.Forms.FormsCalculations
                 e.Handled = true;
             }
             // solo 1 punto decimal
-            if ((e.KeyChar == '.') && ((sender as RJTextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
-        private void VerificarIgualdad()
+        private void Validar()
         {
             if (cmbInteresOriginal.SelectedValue.Equals(cmbInteresActual.SelectedValue) && 
                 cmbFrecActual.SelectedValue.Equals(cmbFrecOriginal.SelectedValue))
             {
                 throw new ArgumentException("La conversion es innecesaria");
+            }
+            if (string.IsNullOrWhiteSpace(txtOriginal.Texts))
+            {
+                throw new ArgumentException("No se colocó ninguna tasa para convertir");
             }
         }
 

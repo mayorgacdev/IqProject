@@ -10,19 +10,19 @@ namespace EconomicMF.AppCore.Processes.Anualidades
         
         public decimal CalcularFuturoGradiente(AnnuityDto serie)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public decimal CalcularGradiente(AnnuityDto series)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public decimal CalcularPago(AnnuityDto anualidad)
         {
             double tasa = (double)anualidad.TasaInteres;
-            double vp = (double)anualidad.ValorPresente;
-            double vf = (double)anualidad.ValorFuturo;
+            double vp = (double)anualidad.PresentValue;
+            double vf = (double)anualidad.FutureValue;
 
             double resultado = Financial.Pmt(tasa, (double)anualidad.NumPeriodos, vp, vf, DueDate.BegOfPeriod) * -1;
             return Math.Round((decimal)resultado, 2);
@@ -34,8 +34,8 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             {
                 throw new ArgumentException("El tiempo no puede ser cero");
             }
-            double vp = (double)anualidad.ValorPresente;
-            double vf = (double)anualidad.ValorFuturo;
+            double vp = (double)anualidad.PresentValue;
+            double vf = (double)anualidad.FutureValue;
             double nper = (double)anualidad.NumPeriodos;
 
             double resultado = Financial.Rate(nper, -1 * (double)anualidad.PagoAnual, vp, vf, DueDate.BegOfPeriod) * 100;
@@ -52,8 +52,8 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             {
                 throw new ArgumentException("El pago anual no puede ser cero");
             }
-            double vp = (double)anualidad.ValorPresente;
-            double vf = (double)anualidad.ValorFuturo;
+            double vp = (double)anualidad.PresentValue;
+            double vf = (double)anualidad.FutureValue;
             double rate = (double)anualidad.TasaInteres;
             double pago = (double)anualidad.PagoAnual;
 
@@ -64,7 +64,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
         {
             double tasa = (double)anualidad.TasaInteres;
             double pago = (double)anualidad.PagoAnual * -1;
-            double vp = (double)anualidad.ValorPresente;
+            double vp = (double)anualidad.PresentValue;
 
             double resultado = Financial.FV(tasa, (double)anualidad.NumPeriodos, pago, vp, DueDate.BegOfPeriod);
             return Math.Round((decimal)resultado, 2);
@@ -74,7 +74,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
         {
             double tasa = (double)anualidad.TasaInteres;
             double pago = (double)anualidad.PagoAnual * -1;
-            double vf = (double)anualidad.ValorFuturo;
+            double vf = (double)anualidad.FutureValue;
 
             double resultado = Financial.PV(tasa, (double)anualidad.NumPeriodos, pago, vf, DueDate.BegOfPeriod);
             return Math.Round((decimal)resultado, 2);

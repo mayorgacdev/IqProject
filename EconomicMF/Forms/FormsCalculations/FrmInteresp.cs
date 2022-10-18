@@ -7,6 +7,7 @@ using EconomicMF.Domain.Enums;
 using EconomicMF.Domain.Enums.Calculos;
 using EconomicMF.Domain.Enums.Conversiones;
 using EconomicMF.Helper;
+using EconomicMF.Services.Processes;
 using RJCodeAdvance.RJControls;
 using System;
 using System.Windows.Forms;
@@ -16,13 +17,12 @@ namespace EconomicMF.Forms.FormsCalculations
     public partial class FrmInteresp : Form
     {
         private readonly IUnitOfWork unitOfWork;
-        private string userEmail;
-
+        private int solutionId;
         public FrmInteresp(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
             this.unitOfWork = unitOfWork;
-            this.userEmail = DataOnMemory.Email;
+            this.solutionId = DataOnMemory.SolutionId;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -35,122 +35,11 @@ namespace EconomicMF.Forms.FormsCalculations
             cmbCalculus.DataSource = Enum.GetValues(typeof(CalculosInteres));
             cmbType.DataSource = Enum.GetValues(typeof(TipoInteres));
             cmbPaymentFrec.DataSource = Enum.GetValues(typeof(Periodo));
+            lblDuracion.Text = "Duración\n(en años):";
         }
 
         private void btnAddFlow_Click(object sender, EventArgs e)
         {
-            ////TODO: Add interes to FRMSHOW
-            //decimal vf, vp, tasa, nPer;
-
-            ////Calculos cal = (Calculos)Enum.Parse(typeof(Calculos), cmbCalculus.SelectedItem.ToString());
-            ////MessageBox.Show(cal.ToString());
-
-            //Usuario user = userServices.GetByEmail(userEmail);
-            //if (user == null)
-            //{
-            //    throw new Exception("Este usuario no existe");
-            //}
-
-            //switch ((CalculosInteres)cmbCalculus.SelectedIndex)
-            //{
-            //    case CalculosInteres.TasaDeInteres:
-            //        vf = decimal.Parse(GetText(txtVF));
-            //        vp = decimal.Parse(GetText(txtVP));
-            //        nPer = decimal.Parse(GetText(txtDuracion));
-            //        Validar(vf, vp, nPer);
-            //        Interes interes = new Interes()
-            //        {
-            //            ValorFuturo = vf,
-            //            ValorPresente = vp,
-            //            NumPeriodos = nPer,
-            //            //Periodo = (Periodo)cmbPer.SelectedItem,
-            //            TipoInteres = (TipoInteres)cmbType.SelectedItem,
-            //            FrecuenciaTasa = ValorCmbPeriodo(),
-            //            IdUser = user.Id,
-
-            //        };
-            //        interes.TasaInteres = InteresFactory.CreateInstance(((Interes)interes).TipoInteres).CalcularTasa(((Interes)interes));
-            //        txtTasa.Texts = txtTasa.Text = (interes.TasaInteres * 100).ToString();
-
-            //        economicClassService.Create(interes);
-
-            //        break;
-            //    case CalculosInteres.NumeroDePeriodos:
-            //        vf = decimal.Parse(GetText(txtVF));
-            //        vp = decimal.Parse(GetText(txtVP));
-            //        tasa = decimal.Parse(GetText(txtTasa))/100;
-            //        Validar(vf, vp, tasa);
-            //        interes = new Interes()
-            //        {
-            //            ValorFuturo = vf,
-            //            ValorPresente = vp,
-            //            TasaInteres = tasa,
-            //            //Periodo = (Periodo)cmbPer.SelectedItem,
-            //            TipoInteres = (TipoInteres)cmbType.SelectedItem,
-            //            FrecuenciaTasa = ValorCmbPeriodo(),
-            //            IdUser=user.Id,
-            //        };
-            //        interes.NumPeriodos = InteresFactory.CreateInstance(((Interes)interes).TipoInteres).CalcularTiempo(((Interes)interes));
-            //        txtDuracion.Texts = txtDuracion.Texts =interes.NumPeriodos.ToString();
-
-
-            //        economicClassService.Create(interes);
-
-            //        break;
-            //    case CalculosInteres.ValorPresente:
-            //        //MessageBox.Show(txtVF.Texts);
-            //        vf = decimal.Parse(GetText(txtVF));
-            //        tasa = decimal.Parse(GetText(txtTasa))/100;
-            //        nPer = decimal.Parse(GetText(txtDuracion));
-            //        Validar(vf, nPer, tasa);
-            //        interes = new Interes()
-            //        {
-            //            ValorFuturo = vf,
-            //            TasaInteres = tasa,
-            //            NumPeriodos = nPer,
-            //            //Periodo = (Periodo)cmbPer.SelectedItem,
-            //            TipoInteres = (TipoInteres)cmbType.SelectedItem,
-            //            FrecuenciaTasa = ValorCmbPeriodo(),
-            //            IdUser = user.Id,
-            //        };
-            //        interes.ValorPresente = InteresFactory.CreateInstance(((Interes)interes).TipoInteres).CalcularVP(((Interes)interes));
-            //        //txtVP.Texts = interes.ValorPresente.ToString();
-            //        //txtVP.Text = interes.ValorPresente.ToString();
-            //        txtVP.Texts = txtVP.Text = interes.ValorPresente.ToString();
-
-            //        //txtVP.Texts = txtVP.Text;
-            //        MessageBox.Show(txtVP.Texts);
-            //        economicClassService.Create(interes);
-            //        break;
-            //    case CalculosInteres.ValorFuturo:
-            //        tasa = decimal.Parse(GetText(txtTasa))/100;
-            //        //MessageBox.Show(txtVP.Text);
-            //        vp = decimal.Parse(GetText(txtVP));
-            //        nPer = decimal.Parse(GetText(txtDuracion));
-            //        Validar(tasa, vp, nPer);
-            //        interes = new Interes()
-            //        {
-            //            TasaInteres = tasa,
-            //            ValorPresente = vp,
-            //            NumPeriodos = nPer,
-            //            //Periodo = (Periodo)cmbPer.SelectedItem,
-            //            TipoInteres = (TipoInteres)cmbType.SelectedItem,
-            //            FrecuenciaTasa = ValorCmbPeriodo(),
-            //            IdUser =user.Id,
-            //        };
-            //        interes.ValorFuturo = InteresFactory.CreateInstance(((Interes)interes).TipoInteres).CalcularVF(((Interes)interes));
-            //        txtVF.Texts = txtVF.Text = interes.ValorFuturo.ToString();
-
-            //        economicClassService.Create(interes);
-            //        break;
-            //}
-
-            ////calculando el tiempo total 
-
-            ////decimal nper = ConvertTime.GetTime((Periodo)cmbPaymentFrec.SelectedValue, decimal.Parse(txtAños.Texts), decimal.Parse(txtMeses.Texts),
-            ////    decimal.Parse(txtDias.Texts), decimal.Parse(txtHoras.Texts));
-            ///
-
             GetInteres();
         }
 
@@ -201,18 +90,42 @@ namespace EconomicMF.Forms.FormsCalculations
                     break;
             }
         }
-        private void LimpiarCampos()
-        {
-            txtDuracion.Texts = string.Empty;
-            txtTasa.Texts = string.Empty;
-            txtVF.Texts = string.Empty;
-            txtVP.Texts = string.Empty;
-        }
+        //private void LimpiarCampos()
+        //{
+        //    txtDuracion.Texts = string.Empty;
+        //    txtTasa.Texts = string.Empty;
+        //    txtVF.Texts = string.Empty;
+        //    txtVP.Texts = string.Empty;
+        //}
+
         private void Validar(decimal valor1, decimal valor2, decimal valor3)
         {
             if (valor1 < 0 || valor2 < 0 || valor3 < 0)
             {
                 throw new ArgumentException("No se pueden colocar valores menores o iguales a 0 en ninguno de los campos");
+            }
+        }
+
+        public void ValidarCampos(string campo1, string campo2, string campo3)
+        {
+            if(string.IsNullOrWhiteSpace(campo1) || string.IsNullOrWhiteSpace(campo2) || string.IsNullOrWhiteSpace(campo3))
+            {
+                throw new ArgumentException("No se permiten campos vacios");
+            }
+            if (decimal.TryParse(campo1, out decimal valor1) || decimal.TryParse(campo2, out decimal valor2) || decimal.TryParse(campo3, out decimal valor3))
+            {
+                throw new ArgumentException("Los valores no se pudieron convertir para hacer los calculos");
+            }
+            if (valor1 < 0 || valor2 < 0 || valor3 < 0)
+            {
+                throw new ArgumentException("No se pueden colocar valores menores o iguales a 0 en ninguno de los campos");
+            }
+        }
+        public void ValidarVacio(string campo1, string campo2, string campo3)
+        {
+            if (string.IsNullOrWhiteSpace(campo1) || string.IsNullOrWhiteSpace(campo2) || string.IsNullOrWhiteSpace(campo3))
+            {
+                throw new ArgumentException("No se permiten campos vacios");
             }
         }
         private FrecuenciaTasa ValorCmbPeriodo()
@@ -237,18 +150,6 @@ namespace EconomicMF.Forms.FormsCalculations
                 cmbPaymentFrec.DataSource = Enum.GetValues(typeof(Periodo));
             }
         }
-
-        //creo que esto no se va a ocupar 
-        private void txtDuracion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validation.OnlyNumbers(e);
-        }
-        //private string GetText(RJTextBox rJTextBox)
-        //{
-        //    if (string.IsNullOrWhiteSpace(rJTextBox.Texts))
-        //        return rJTextBox.Text;
-        //    return rJTextBox.Texts;
-        //}
         private decimal GetValue(RJTextBox rJTextBox)
         {
             if (string.IsNullOrWhiteSpace(rJTextBox.Texts) && string.IsNullOrWhiteSpace(rJTextBox.Text))
@@ -264,32 +165,31 @@ namespace EconomicMF.Forms.FormsCalculations
         private async void GetInteres()
         {
             decimal vf, vp, tasa, nPer;
-
-            User user = await unitOfWork.UserClient.GetByEmailAsync(userEmail);
-            if (user == null)
+            Solution solution = await unitOfWork.SolutionClient.GetAsync(solutionId);
+            if (solution == null)
             {
-                throw new Exception("Este usuario no existe");
+                throw new Exception($"La solucion con {solutionId} no existe");
             }
             vf = GetValue(txtVF);
             vp = GetValue(txtVP);
             tasa = GetValue(txtTasa) / 100;
             nPer = GetValue(txtDuracion);
-
+            //ValidarVacio(vf, vp, nPer);
             switch ((CalculosInteres)cmbCalculus.SelectedIndex)
             {
                 case CalculosInteres.TasaDeInteres:
                     Validar(vf, vp, nPer);
-                    RateDto interes = new RateDto()
+                    EconomicDto interes = new EconomicDto()
                     {
-                        ValorFuturo = vf,
-                        ValorPresente = vp,
+                        SolutionId = solutionId,
+                        FutureValue = vf,
+                        PresentValue = vp,
                         NumPeriodos = nPer,
                         TipoInteres = (TipoInteres)cmbType.SelectedItem,
                         FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
-
+                        Discriminator = Discriminador.Interes.ToString(),
                     };
-                    interes.TasaInteres = InteresFactory.CreateInstance(((RateDto)interes).TipoInteres).CalcularTasa(((RateDto)interes));
+                    interes.TasaInteres = InteresFactory.CreateInstance((interes).TipoInteres).CalcularTasa(ConvertEconomicDTOS.ConvertRateDto(interes));
                     txtTasa.Texts = txtTasa.Text = (interes.TasaInteres * 100).ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(interes);
@@ -297,16 +197,17 @@ namespace EconomicMF.Forms.FormsCalculations
                     break;
                 case CalculosInteres.NumeroDePeriodos:
                     Validar(vf, vp, tasa);
-                    interes = new RateDto()
+                    interes = new EconomicDto()
                     {
-                        ValorFuturo = vf,
-                        ValorPresente = vp,
+                        FutureValue = vf,
+                        PresentValue = vp,
                         TasaInteres = tasa,
                         TipoInteres = (TipoInteres)cmbType.SelectedItem,
                         FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
+                        SolutionId = solutionId,
+                        Discriminator = Discriminador.Interes.ToString()
                     };
-                    interes.NumPeriodos = InteresFactory.CreateInstance(((RateDto)interes).TipoInteres).CalcularTiempo(((RateDto)interes));
+                    interes.NumPeriodos = InteresFactory.CreateInstance((interes).TipoInteres).CalcularTiempo(ConvertEconomicDTOS.ConvertRateDto(interes));
 
                     txtDuracion.Texts = txtDuracion.Texts = interes.NumPeriodos.ToString();
                     await unitOfWork.EconomicClient.CreateAsync(interes);
@@ -314,166 +215,39 @@ namespace EconomicMF.Forms.FormsCalculations
                     break;
                 case CalculosInteres.ValorPresente:
                     Validar(vf, nPer, tasa);
-                    interes = new RateDto()
+                    interes = new EconomicDto()
                     {
-                        ValorFuturo = vf,
+                        FutureValue = vf,
                         TasaInteres = tasa,
                         NumPeriodos = nPer,
                         TipoInteres = (TipoInteres)cmbType.SelectedItem,
                         FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
+                        Discriminator = Discriminador.Interes.ToString(),
+                        SolutionId = solutionId,
                     };
-                    interes.ValorPresente = InteresFactory.CreateInstance(((RateDto)interes).TipoInteres).CalcularVP(((RateDto)interes));
-                    txtVP.Texts = txtVP.Text = interes.ValorPresente.ToString();
+                    interes.PresentValue = InteresFactory.CreateInstance((interes).TipoInteres).CalcularVP(ConvertEconomicDTOS.ConvertRateDto(interes));
+                    txtVP.Texts = txtVP.Text = interes.PresentValue.ToString();
                     MessageBox.Show(txtVP.Texts);
                     await unitOfWork.EconomicClient.CreateAsync(interes);
 
                     break;
                 case CalculosInteres.ValorFuturo:
                     Validar(tasa, vp, nPer);
-                    interes = new RateDto()
+                    interes = new EconomicDto()
                     {
                         TasaInteres = tasa,
-                        ValorPresente = vp,
+                        PresentValue = vp,
                         NumPeriodos = nPer,
                         TipoInteres = (TipoInteres)cmbType.SelectedItem,
                         FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
+                        SolutionId = solutionId,
+                        Discriminator = Discriminador.Interes.ToString()
                     };
-                    interes.ValorFuturo = InteresFactory.CreateInstance(((RateDto)interes).TipoInteres).CalcularVF(((RateDto)interes));
-                    txtVF.Texts = txtVF.Text = interes.ValorFuturo.ToString();
+                    interes.FutureValue = InteresFactory.CreateInstance((interes).TipoInteres).CalcularVF(ConvertEconomicDTOS.ConvertRateDto(interes));
+                    txtVF.Texts = txtVF.Text = interes.FutureValue.ToString();
 
                     await unitOfWork.EconomicClient.CreateAsync(interes);
                     break;
-            }
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            FrmConversor frmConversor = new FrmConversor((FrecuenciaTasa)cmbPaymentFrec.SelectedIndex);
-            frmConversor.ShowDialog();
-            //este if seria opcional 
-            if (frmConversor.tasaconvertida != 0)
-            {
-                txtTasa.Focus();
-                txtTasa.Texts = frmConversor.tasaconvertida.ToString();
-            }
-        }
-        private async void añadirInteresPrueba()
-        {
-            //TODO: Add interes to FRMSHOW
-            decimal vf, vp, tasa, nPer;
-
-            User user = await unitOfWork.UserClient.GetByEmailAsync(userEmail);
-            if (user == null)
-            {
-                throw new Exception("Este usuario no existe");
-            }
-            
-            switch ((CalculosInteres)cmbCalculus.SelectedIndex)
-            {
-                case CalculosInteres.TasaDeInteres:
-                    vf = decimal.Parse(txtVF.Texts);
-                    vp = decimal.Parse(txtVP.Texts);
-                    nPer = decimal.Parse(txtDuracion.Texts);
-                    Validar(vf, vp, nPer);
-                    RateDto interes = new RateDto()
-                    {
-                        ValorFuturo = vf,
-                        ValorPresente = vp,
-                        NumPeriodos = nPer,
-                        //Periodo = (Periodo)cmbPer.SelectedItem,
-                        TipoInteres = (TipoInteres)cmbType.SelectedItem,
-                        FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
-
-                    };
-                    //interes.TasaInteres = InteresFactory.CreateInstance(((Interes)interes).TipoInteres).CalcularTasa(((Interes)interes));
-                    txtTasa.Texts = (interes.TasaInteres * 100).ToString();
-
-                    await unitOfWork.EconomicClient.CreateAsync(interes);
-
-                    break;
-                case CalculosInteres.NumeroDePeriodos:
-                    vf = decimal.Parse(txtVF.Texts);
-                    vp = decimal.Parse(txtVP.Texts);
-                    tasa = decimal.Parse(txtTasa.Texts) / 100;
-                    Validar(vf, vp, tasa);
-                    interes = new RateDto()
-                    {
-                        ValorFuturo = vf,
-                        ValorPresente = vp,
-                        TasaInteres = tasa,
-                        //Periodo = (Periodo)cmbPer.SelectedItem,
-                        TipoInteres = (TipoInteres)cmbType.SelectedItem,
-                        FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
-                    };
-                    //interes.NumPeriodos = InteresFactory.CreateInstance(((Interes)interes).TipoInteres).CalcularTiempo(((Interes)interes));
-                    txtDuracion.Texts = interes.NumPeriodos.ToString();
-
-
-                    await unitOfWork.EconomicClient.CreateAsync(interes);
-
-                    break;
-                case CalculosInteres.ValorPresente:
-                    MessageBox.Show("VP: " + txtVP.Texts);
-                    vf = decimal.Parse(txtVF.Texts);
-                    tasa = decimal.Parse(txtTasa.Texts) / 100;
-                    nPer = decimal.Parse(txtDuracion.Texts);
-                    Validar(vf, nPer, tasa);
-                    interes = new RateDto()
-                    {
-                        ValorFuturo = vf,
-                        TasaInteres = tasa,
-                        NumPeriodos = nPer,
-                        //Periodo = (Periodo)cmbPer.SelectedItem,
-                        TipoInteres = (TipoInteres)cmbType.SelectedItem,
-                        FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
-                    };
-                    interes.ValorPresente = InteresFactory.CreateInstance(((RateDto)interes).TipoInteres).CalcularVP(((RateDto)interes));
-                    //txtVP.Texts = interes.ValorPresente.ToString();
-                    //txtVP.Text = interes.ValorPresente.ToString();
-                    txtVP.Texts = interes.ValorPresente.ToString();
-                    //txtVP.Texts = txtVP.Text;
-                    //MessageBox.Show(txtVP.Texts);
-                    await unitOfWork.EconomicClient.CreateAsync(interes);
-                    break;
-                case CalculosInteres.ValorFuturo:
-                    tasa = decimal.Parse(txtTasa.Texts) / 100;
-                    //MessageBox.Show(txtVP.Text);
-                    vp = decimal.Parse(txtVP.Texts);
-                    nPer = decimal.Parse(txtDuracion.Texts);
-                    Validar(tasa, vp, nPer);
-                    interes = new RateDto()
-                    {
-                        TasaInteres = tasa,
-                        ValorPresente = vp,
-                        NumPeriodos = nPer,
-                        //Periodo = (Periodo)cmbPer.SelectedItem,
-                        TipoInteres = (TipoInteres)cmbType.SelectedItem,
-                        FrecuenciaTasa = ValorCmbPeriodo(),
-                        IdUser = user.Id,
-                    };
-                    interes.ValorFuturo = InteresFactory.CreateInstance(((RateDto)interes).TipoInteres).CalcularVF(((RateDto)interes));
-                    txtVF.Texts = interes.ValorFuturo.ToString();
-
-                    await unitOfWork.EconomicClient.CreateAsync(interes);
-                    break;
-            }
-        }
-
-        private void pbTime_Click(object sender, EventArgs e)
-        {
-            FrecuenciaTasa frecuenciaTasa = (FrecuenciaTasa)Enum.Parse(typeof(FrecuenciaTasa), cmbPaymentFrec.SelectedItem.ToString());
-            FrmConvertTime frmConvertTime = new FrmConvertTime(frecuenciaTasa);
-            frmConvertTime.ShowDialog();
-            //este if seria opcional
-            if (frmConvertTime.Time != 0)
-            {
-                txtDuracion.Focus();
-                txtDuracion.Texts = frmConvertTime.Time.ToString();
             }
         }
 
@@ -488,6 +262,46 @@ namespace EconomicMF.Forms.FormsCalculations
                 txtDuracion.Focus();
                 txtDuracion.Texts = frmConvertTime.Time.ToString();
             }
+        }
+
+        private void cmbPaymentFrec_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+            if(!((TipoInteres)cmbType.SelectedIndex).Equals(TipoInteres.CompuestoConTasaNominal))
+            {
+                switch ((FrecuenciaTasa)cmbPaymentFrec.SelectedIndex)
+                {
+                    case FrecuenciaTasa.Anual:
+                        lblDuracion.Text = "Duracion \n(en años):";
+                        break;
+                    case FrecuenciaTasa.Semestral:
+                        lblDuracion.Text = "Duracion \n(en semestres):";
+                        break;
+                    case FrecuenciaTasa.Cuatrimestral:
+                        lblDuracion.Text = "Duracion \n(en cuatrimestres):";
+                        break;
+                    case FrecuenciaTasa.Trimestral:
+                        lblDuracion.Text = "Duracion \n(en trimestres):";
+                        break;
+                    case FrecuenciaTasa.Bimestral:
+                        lblDuracion.Text = "Duracion \n(en bimestres):";
+                        break;
+                    case FrecuenciaTasa.Mensual:
+                        lblDuracion.Text = "Duracion \n(en meses):";
+                        break;
+                    case FrecuenciaTasa.Semanal:
+                        lblDuracion.Text = "Duracion \n(en semanas):";
+                        break;
+                    case FrecuenciaTasa.Diario:
+                        lblDuracion.Text = "Duracion \n(en dias):";
+                        break;
+                } 
+            }
+        }
+
+        private void cmbType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            lblDuracion.Text = "Duracion\n(en años): ";
         }
     }
 }
