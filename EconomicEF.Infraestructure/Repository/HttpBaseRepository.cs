@@ -45,7 +45,8 @@ namespace EconomicEF.Infraestructure.Repository
             if (response.IsSuccessStatusCode)
                 return guid;
             else
-                return 0;
+                throw new Exception("Odio este error");
+
         }
 
         public Task<List<TEntity>> Find(Expression<Func<TEntity, bool>> where)
@@ -87,19 +88,42 @@ namespace EconomicEF.Infraestructure.Repository
 
         public async Task<bool> UpdateAsync(TEntity entity)
         {
+           HttpClient clientX = new HttpClient();
 
-            // PUT: https://localhost:7062/api/project?id=1
+        // PUT: https://localhost:7062/api/project?id=1
             int id = (int)entity.GetType().GetProperty("Id").GetValue(entity);
             string URI = URL + "?id=" + id.ToString();
 
             var serializedObject = JsonConvert.SerializeObject(entity);
             var content = new StringContent(serializedObject, Encoding.UTF8, "application/json");
             //verificar si no tiene la propiedad de id con un try catch
+            var method = new HttpMethod("PATCH");
 
-            HttpResponseMessage responseMessage = await client.PatchAsync(URI, content);
-            if (!responseMessage.IsSuccessStatusCode)
-                throw new Exception("El registro no se pudo actualizar correctamente");
-            return true;
+            var request = new HttpRequestMessage(method, URI)
+            {
+                Content = content
+            };
+
+            HttpResponseMessage httpResponseMessage = new HttpResponseMessage();
+
+            try
+            {
+                httpResponseMessage = await clientX.SendAsync(request);
+
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception("Odio este error");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 

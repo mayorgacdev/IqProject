@@ -24,7 +24,12 @@ namespace EconomicMF.Forms
             this.userEmail = DataOnMemory.Email;
         }
 
-        private async void FrmSolution_Load(object sender, EventArgs e)
+        private void FrmSolution_Load(object sender, EventArgs e)
+        {
+            Charge();
+        }
+
+        private async void Charge()
         {
             try
             {
@@ -34,6 +39,8 @@ namespace EconomicMF.Forms
 
                 if (countUsers > 0)
                 {
+                    flowLayoutPanel1.Controls.Clear();
+
                     foreach (var item in solutions)
                     {
                         UCSolutions uCSolutions = new UCSolutions(unitOfWork, item.Id);
@@ -46,7 +53,6 @@ namespace EconomicMF.Forms
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         #endregion
 
         #region FunctionMoveForm
@@ -105,6 +111,28 @@ namespace EconomicMF.Forms
         private void btnConfig_Click(object sender, EventArgs e)
         {
             SingletonFrm.GetForm(FormType.ConfigInit).ShowDialog();
+        }
+
+        private async void txtSearch__TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Texts.Equals(String.Empty))
+            {
+                Charge();
+                return;
+            }
+            var solutions = await unitOfWork.SolutionClient.GetByUserEmailAsync(userEmail);
+            var solutionQuery = solutions.Where(r => r.SolutionName.Equals(txtSearch.Texts) || r.Description.Equals(txtSearch.Texts));
+            int countUsers = solutionQuery.Count();
+
+            if (countUsers > 0)
+            {
+                flowLayoutPanel1.Controls.Clear();
+                foreach (var item in solutionQuery)
+                {
+                    UCSolutions uCSolutions = new UCSolutions(unitOfWork, item.Id);
+                    flowLayoutPanel1.Controls.Add(uCSolutions);
+                }
+            }
         }
     }
 }

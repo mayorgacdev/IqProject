@@ -1,48 +1,128 @@
-﻿using EconomicMF.SettingForms;
+﻿using DocumentFormat.OpenXml.Office2013.Drawing.Chart;
+using EconomicEF.Common.UserCache;
+using EconomicMF.Domain.Contracts;
+using EconomicMF.Domain.Entities.Flows;
+using System;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FrmInitProjects
 {
     public partial class FrmConfigInit : Form
     {
-        public FrmConfigInit()
+        private IUnitOfWork unitOfWork;
+        public FrmConfigInit(IUnitOfWork unitOfWork)
         {
             InitializeComponent();
+            this.unitOfWork = unitOfWork;
         }
 
-        private void AbrirFormEnPanel(object formHijo)
+        private async void FrmConfigInit_Load(object sender, System.EventArgs e)
         {
-            if (this.panelContenedor.Controls.Count > 0)
-                this.panelContenedor.Controls.RemoveAt(0);
-            Form fh = (Form)formHijo;
-            fh.TopLevel = false;
-            fh.FormBorderStyle = FormBorderStyle.None;
-            fh.Dock = DockStyle.Fill;
-            this.panelContenedor.Controls.Add(fh);
-            this.panelContenedor.Tag = fh;
-            fh.Show();
-        }
+            var user = await unitOfWork.UserClient.GetAsync(DataOnMemory.UserId);
+            txtNameUser.Texts = user.Name;
+            txtPhone.Texts = user.PhoneNumber;
+            txtDNI.Texts = user.Dni;
 
-        private void FrmConfigInit_Load(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void rjToggleButton1_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (rjToggleButton1.Checked)
-            {
-                SettingsTheme.IsDark = false;
-            }
-            else
-            {
-                SettingsTheme.IsDark = true;
-            }
+            TgBtnActive(false);
         }
 
         private void pictureBox2_Click(object sender, System.EventArgs e)
         {
             this.Hide();
+        }
+
+        private void tgUpdatePassword_CheckedChanged_1(object sender, System.EventArgs e)
+        {
+            TgBtnActive(tgUpdatePassword.Checked);
+        }
+
+        private void TgBtnActive(bool isUse)
+        {
+            if (tgUpdatePassword.Checked)
+            {
+                lblContraseñaActual.Visible = isUse;
+                txtContraseñaActual.Visible = isUse;
+
+                lblContraseñaNueva.Visible = isUse;
+                txtContraseñaNueva.Visible = isUse;
+            }
+            else
+            {
+                lblContraseñaActual.Visible = isUse;
+                txtContraseñaActual.Visible = isUse;
+
+                lblContraseñaNueva.Visible = isUse;
+                txtContraseñaNueva.Visible = isUse;
+            }
+        }
+
+        private async void btnDesactivar_Click(object sender, System.EventArgs e)
+        {
+
+            if (txtConfirmar.Texts.Equals(String.Empty))
+            {
+                throw new Exception("Por favor introduzca la contraseña");
+            }
+
+            var user = await unitOfWork.UserClient.GetByEmailAsync(DataOnMemory.Email);
+            user.State = false;
+
+            bool exist = await unitOfWork.UserClient.AccessToAppAsync(user.Email.ToString(), txtConfirmar.Texts);
+
+            await unitOfWork.UserClient.UpdateAsync(new User()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                PhoneNumber = user.Email,
+                Dni = user.Dni,
+                Password = txtConfirmar.Texts,
+                State = user.State,
+                Creation = user.Creation,
+            });
+
+            Application.Exit();
+        }
+
+        private async void btnActualizar_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var user = await unitOfWork.UserClient.GetByEmailAsync(DataOnMemory.Email);
+                user.Name = txtNameUser.Texts;
+                user.PhoneNumber = txtPhone.Texts;
+                user.Dni = txtDNI.Texts;
+
+                bool exist = await unitOfWork.UserClient.AccessToAppAsync(user.Email.ToString(), txtConfirmar.Texts);
+
+                if (exist)
+                {
+                    await unitOfWork.UserClient.UpdateAsync(new User()
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        PhoneNumber = user.Email,
+                        Dni = user.Dni,
+                        Password = txtConfirmar.Texts,
+                        State = user.State,
+                        Creation = user.Creation,
+                    });
+                    MessageBox.Show("Actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar los datos, verifique su contraseña");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
         }
     }
 }

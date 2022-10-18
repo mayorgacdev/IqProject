@@ -47,8 +47,6 @@ namespace EconomicMF.Forms.FormsFlujo
                 dtgXD.Columns[0].Visible = false;
                 dtgFNE.Columns[0].Visible = false;
             }
-
-
         }
 
         private async void dtgFNE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -77,22 +75,6 @@ namespace EconomicMF.Forms.FormsFlujo
                
         }
 
-        private void dtgInvestment_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-
-            //nupContribution.Value = contribution;
-            //nupInvestmentRate.Value = rate;
-            //cmbTipoAmortizacion.SelectedItem = tipoDeAmortizacion;
-        }
-
-
-        private void dtgXD_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dtgXD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgXD.Rows.Count > 0)
@@ -113,19 +95,19 @@ namespace EconomicMF.Forms.FormsFlujo
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dtgFNE.SelectedRows.Count == 1)
+            //try
+            //{=
+                if (dtgFNE.SelectedRows.Count >= 1)
                 {
                     int projectId = (int)dtgFNE.CurrentRow.Cells[0].Value;
                     await unitOfWork.ProjectClient.DeleteAsync(projectId);
                     Charge();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Por favor seleccione la celda correctamente", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Por favor seleccione la celda correctamente", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
         private void btnUpdate_Click(object sender, EventArgs e)

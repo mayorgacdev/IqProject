@@ -75,8 +75,6 @@ public partial class FrmRegister : Form
             }
             
             DataOnMemory.userDto = user;    
-
-            DataOnMemory.UserId = user.Id;
             DataOnMemory.Email = user.Email;
             DataOnMemory.Password = user.Password;
             DataOnMemory.FirstName = user.Name;
@@ -86,7 +84,7 @@ public partial class FrmRegister : Form
             
             Guid code = Guid.NewGuid();
             MemoryOnProject.Guid = code;
-            unitOfWork.MailClient.SendMail("Confirmación de codígo", $"Confirmarción de código no compartir con nadie \nesta información: {code}", new List<string>() { txtEmail.Texts });
+            unitOfWork.MailClient.SenFiles("Confirmación de codígo", $"Confirmarción de código no compartir con nadie \nesta información: {code}", new List<string>() { txtEmail.Texts });
 
             this.Hide();
         }

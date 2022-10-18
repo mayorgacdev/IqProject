@@ -54,10 +54,31 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tgIsFinancement = new RJCodeAdvance.RJControls.RJToggleButton();
             this.lblFinancing = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblInversionesCount = new System.Windows.Forms.Label();
+            this.lblCountAsset = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblExpenseCount = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblCostCount = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblEntryCount = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTasa
@@ -255,6 +276,21 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.pictureBox7);
+            this.panel2.Controls.Add(this.pictureBox6);
+            this.panel2.Controls.Add(this.pictureBox5);
+            this.panel2.Controls.Add(this.pictureBox4);
+            this.panel2.Controls.Add(this.pictureBox3);
+            this.panel2.Controls.Add(this.lblEntryCount);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.lblCostCount);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.lblExpenseCount);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.lblCountAsset);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.lblInversionesCount);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.lblDescription);
             this.panel2.Controls.Add(this.lblName);
@@ -265,6 +301,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lblper);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.lblPeriodo);
             this.panel2.Controls.Add(this.lblTir);
             this.panel2.Controls.Add(this.lblVpn);
@@ -278,7 +315,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(314, 13);
             this.pictureBox2.Name = "pictureBox2";
@@ -396,6 +433,193 @@
             this.lblFinancing.TabIndex = 104;
             this.lblFinancing.Text = "Financiamiento:";
             // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(28, 188);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(162, 31);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Inversiones:";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(186, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 17);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "<periodo>";
+            // 
+            // lblInversionesCount
+            // 
+            this.lblInversionesCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblInversionesCount.AutoSize = true;
+            this.lblInversionesCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblInversionesCount.ForeColor = System.Drawing.Color.White;
+            this.lblInversionesCount.Location = new System.Drawing.Point(186, 193);
+            this.lblInversionesCount.Name = "lblInversionesCount";
+            this.lblInversionesCount.Size = new System.Drawing.Size(22, 25);
+            this.lblInversionesCount.TabIndex = 35;
+            this.lblInversionesCount.Text = "0";
+            // 
+            // lblCountAsset
+            // 
+            this.lblCountAsset.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblCountAsset.AutoSize = true;
+            this.lblCountAsset.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCountAsset.ForeColor = System.Drawing.Color.White;
+            this.lblCountAsset.Location = new System.Drawing.Point(345, 192);
+            this.lblCountAsset.Name = "lblCountAsset";
+            this.lblCountAsset.Size = new System.Drawing.Size(22, 25);
+            this.lblCountAsset.TabIndex = 37;
+            this.lblCountAsset.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.LightBlue;
+            this.label10.Location = new System.Drawing.Point(228, 187);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 31);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Activos:";
+            // 
+            // lblExpenseCount
+            // 
+            this.lblExpenseCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblExpenseCount.AutoSize = true;
+            this.lblExpenseCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblExpenseCount.ForeColor = System.Drawing.Color.White;
+            this.lblExpenseCount.Location = new System.Drawing.Point(500, 191);
+            this.lblExpenseCount.Name = "lblExpenseCount";
+            this.lblExpenseCount.Size = new System.Drawing.Size(22, 25);
+            this.lblExpenseCount.TabIndex = 39;
+            this.lblExpenseCount.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label9.Location = new System.Drawing.Point(383, 186);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 31);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Gastos:";
+            // 
+            // lblCostCount
+            // 
+            this.lblCostCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblCostCount.AutoSize = true;
+            this.lblCostCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCostCount.ForeColor = System.Drawing.Color.White;
+            this.lblCostCount.Location = new System.Drawing.Point(628, 191);
+            this.lblCostCount.Name = "lblCostCount";
+            this.lblCostCount.Size = new System.Drawing.Size(22, 25);
+            this.lblCostCount.TabIndex = 41;
+            this.lblCostCount.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(528, 186);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(94, 31);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Costo:";
+            // 
+            // lblEntryCount
+            // 
+            this.lblEntryCount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblEntryCount.AutoSize = true;
+            this.lblEntryCount.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEntryCount.ForeColor = System.Drawing.Color.White;
+            this.lblEntryCount.Location = new System.Drawing.Point(802, 191);
+            this.lblEntryCount.Name = "lblEntryCount";
+            this.lblEntryCount.Size = new System.Drawing.Size(22, 25);
+            this.lblEntryCount.TabIndex = 43;
+            this.lblEntryCount.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.Blue;
+            this.label14.Location = new System.Drawing.Point(673, 186);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(131, 31);
+            this.label14.TabIndex = 42;
+            this.label14.Text = "Entradas:";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(47, 155);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(33, 30);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 44;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(243, 154);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(33, 30);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 45;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(395, 153);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(33, 30);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 46;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(684, 155);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(33, 30);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 47;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(543, 153);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(33, 30);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 105;
+            this.pictureBox7.TabStop = false;
+            // 
             // FrmChargeData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -417,6 +641,11 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,5 +674,21 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private RJCodeAdvance.RJControls.RJToggleButton tgIsFinancement;
         private System.Windows.Forms.Label lblFinancing;
+        private System.Windows.Forms.Label lblCountAsset;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblInversionesCount;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCostCount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblExpenseCount;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblEntryCount;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

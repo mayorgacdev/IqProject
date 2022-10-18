@@ -7,7 +7,6 @@ using EconomicMF.Forms.FormsFlujo;
 using EconomicMF.Forms.FormsMain;
 using EconomicMF.Forms.FormsProject;
 using EconomicMF.Forms.FormsProject.FNE;
-using EconomicMF.Forms.FrmConfigs;
 using EconomicMF.Forms.FrmInitProjects;
 using EconomicMF.UserControls;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,8 +36,6 @@ namespace EconomicMF.SettingForms
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmOthers>();
                 case FormType.AddSolution:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmAddSolution>();
-                case FormType.UpdateUser:
-                    return ServicesReq.ServiceProvider.GetRequiredService<FrmUpdateUser>();
                 case FormType.AddInvestor:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmAddInvestors>();
                 case FormType.CreateProject:
@@ -55,8 +52,6 @@ namespace EconomicMF.SettingForms
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmAddInversion>();
                 case FormType.Start:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmStart>();
-                case FormType.Config:
-                    return ServicesReq.ServiceProvider.GetRequiredService<FrmConfig>();
                 case FormType.DashBoard:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmDashboard>();
                 case FormType.Inversors:
@@ -101,7 +96,6 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmMain>();
             services.AddSingleton<FrmOthers>();
             services.AddSingleton<FrmAddSolution>();
-            services.AddSingleton<FrmUpdateUser>();
             services.AddSingleton<FrmAddInvestors>();
             services.AddSingleton<FrmCreateProject>();
             services.AddSingleton<FormMain>();
@@ -111,8 +105,6 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmAddInversion>();
             services.AddSingleton<FrmDashboard>();
             services.AddSingleton<FrmStart>();
-            services.AddSingleton<FrmConfig>();
-            services.AddSingleton<FrmConfig>();
             services.AddSingleton<FrmChargeData>();
             services.AddSingleton<FrmInversors>();
             services.AddSingleton<FrmReporte>();

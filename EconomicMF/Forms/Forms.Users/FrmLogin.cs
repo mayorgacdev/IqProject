@@ -49,17 +49,22 @@ public partial class FrmLogin : Form
     {
         try
         {
-            /*
             bool exist = await unitOfWork.UserClient.ExistEmailAsync(txtUserOrEmail.Texts);
 
             if (!exist)
             {
                 throw new Exception("Registrate o verifica tu correo nuevamente");
-            }*/
+            }
 
             bool access = await unitOfWork.UserClient.AccessToAppAsync(txtUserOrEmail.Texts, txtPassword.Texts);
+            var getUser = await unitOfWork.UserClient.GetByEmailAsync(txtUserOrEmail.Texts);
 
-            if (access)
+            if (!getUser.State)
+            {
+                throw new Exception("Su cuenta ha sido desactivada, contactese con iqprojectsolutions@gmail.com");
+            }
+
+            if (access )
             {
                 #region UserDAO
 

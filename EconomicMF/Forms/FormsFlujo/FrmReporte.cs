@@ -2,6 +2,7 @@
 using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
+using EconomicMF.Forms.FormsProject;
 using EconomicMF.UserControls;
 using System;
 using System.Collections.Generic;
@@ -102,7 +103,28 @@ namespace EconomicMF.Forms.FormsFlujo
 
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
+            FrmSendReportToInversor frmSendReportToInversor = new FrmSendReportToInversor(unitOfWork);
+            frmSendReportToInversor.ShowDialog();
+        }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var projects = await unitOfWork.ProjectClient.GetProjectsAsync(DataOnMemory.SolutionId);
+
+            var filter = (from r in (projects)
+                                select new { r.Id, r.Name, r.Duration, r.Description, r.Period, r.TMAR, r.TMARMixta, r.Contribution }).ToList();
+
+
+            dtgFNE.DataSource = filter.Where(g => g.Name.Equals(txtNameProject.Texts)).ToList();
+            dtgFNE.Columns[0].Visible = false;
+        }
+
+        private void txtNameProject__TextChanged(object sender, EventArgs e)
+        {
+            if (txtNameProject.Texts.Equals(String.Empty))
+            {
+                Charge();
+            }
         }
     }
 }

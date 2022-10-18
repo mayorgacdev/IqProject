@@ -185,7 +185,6 @@ namespace EconomicMF.Forms
                 btnProjects.Text = String.Empty;
                 btnInversor.Text = String.Empty;
                 btnGestionar.Text = String.Empty;
-                btnConfigurar.Text = String.Empty;
                 btnOthers.Text = String.Empty;
             }
             else
@@ -195,7 +194,6 @@ namespace EconomicMF.Forms
                 btnProjects.Text = "Proyecto";
                 btnInversor.Text = "Config. Proyecto";
                 btnGestionar.Text = "Gestionar";
-                btnConfigurar.Text = "Configurar";
                 btnOthers.Text = "Otro";
             }
         }

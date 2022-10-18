@@ -72,6 +72,7 @@ namespace EconomicMF.UserControls
                 {
                     path = folderBrowserDialog.SelectedPath + "\\";
                 }
+
                 LocalReport lr = new LocalReport();
                 var projectAsync = await unitOfWork.ProjectClient.GetAsync(projectId);
                 bool mejor = false;

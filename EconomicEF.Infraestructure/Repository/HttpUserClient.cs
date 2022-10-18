@@ -18,7 +18,7 @@ namespace EconomicEF.Infraestructure.Repository
 
         public async Task<bool> AccessToAppAsync(string email, string password)
         {
-            //https://localhost:7062/api/user/others/access?email=ej%40gmail.com&name=oscar&password=ej%40gmail.com
+           //https://localhost:7062/api/user/others/access?email=mayorga077708%40gmail.com123&password=123
 
             string URI = URL + $"/others/access?email={email}&password={password}";
             HttpResponseMessage response = await client.GetAsync(URI);

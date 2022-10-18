@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.btnInversor = new RJCodeAdvance.RJControls.RJButton();
             this.btnOthers = new RJCodeAdvance.RJControls.RJButton();
             this.btnMenu = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
-            this.btnConfigurar = new RJCodeAdvance.RJControls.RJButton();
             this.btnGestionar = new RJCodeAdvance.RJControls.RJButton();
             this.btnReporte = new RJCodeAdvance.RJControls.RJButton();
             this.btnProjects = new RJCodeAdvance.RJControls.RJButton();
@@ -49,7 +49,6 @@
             this.pbImageProfileUser = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelOpen = new System.Windows.Forms.Panel();
             this.dtTIme = new System.Windows.Forms.Timer(this.components);
-            this.btnInversor = new RJCodeAdvance.RJControls.RJButton();
             this.panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -66,7 +65,6 @@
             this.panelButtons.Controls.Add(this.btnMenu);
             this.panelButtons.Controls.Add(this.pbLogo);
             this.panelButtons.Controls.Add(this.btnClose);
-            this.panelButtons.Controls.Add(this.btnConfigurar);
             this.panelButtons.Controls.Add(this.btnGestionar);
             this.panelButtons.Controls.Add(this.btnReporte);
             this.panelButtons.Controls.Add(this.btnProjects);
@@ -78,6 +76,29 @@
             this.panelButtons.Size = new System.Drawing.Size(200, 905);
             this.panelButtons.TabIndex = 5;
             this.panelButtons.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // btnInversor
+            // 
+            this.btnInversor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInversor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnInversor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.btnInversor.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnInversor.BorderRadius = 0;
+            this.btnInversor.BorderSize = 0;
+            this.btnInversor.FlatAppearance.BorderSize = 0;
+            this.btnInversor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInversor.ForeColor = System.Drawing.Color.White;
+            this.btnInversor.Image = ((System.Drawing.Image)(resources.GetObject("btnInversor.Image")));
+            this.btnInversor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInversor.Location = new System.Drawing.Point(0, 427);
+            this.btnInversor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnInversor.Name = "btnInversor";
+            this.btnInversor.Size = new System.Drawing.Size(200, 54);
+            this.btnInversor.TabIndex = 16;
+            this.btnInversor.Text = "Config. Proyecto";
+            this.btnInversor.TextColor = System.Drawing.Color.White;
+            this.btnInversor.UseVisualStyleBackColor = false;
+            this.btnInversor.Click += new System.EventHandler(this.btnInversor_Click);
             // 
             // btnOthers
             // 
@@ -92,7 +113,7 @@
             this.btnOthers.ForeColor = System.Drawing.Color.White;
             this.btnOthers.Image = ((System.Drawing.Image)(resources.GetObject("btnOthers.Image")));
             this.btnOthers.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOthers.Location = new System.Drawing.Point(0, 610);
+            this.btnOthers.Location = new System.Drawing.Point(0, 612);
             this.btnOthers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOthers.Name = "btnOthers";
             this.btnOthers.Size = new System.Drawing.Size(200, 53);
@@ -137,29 +158,6 @@
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click_2);
             // 
-            // btnConfigurar
-            // 
-            this.btnConfigurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfigurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnConfigurar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnConfigurar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnConfigurar.BorderRadius = 0;
-            this.btnConfigurar.BorderSize = 0;
-            this.btnConfigurar.FlatAppearance.BorderSize = 0;
-            this.btnConfigurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfigurar.ForeColor = System.Drawing.Color.White;
-            this.btnConfigurar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfigurar.Image")));
-            this.btnConfigurar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConfigurar.Location = new System.Drawing.Point(0, 671);
-            this.btnConfigurar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnConfigurar.Name = "btnConfigurar";
-            this.btnConfigurar.Size = new System.Drawing.Size(200, 53);
-            this.btnConfigurar.TabIndex = 5;
-            this.btnConfigurar.Text = "Configurar";
-            this.btnConfigurar.TextColor = System.Drawing.Color.White;
-            this.btnConfigurar.UseVisualStyleBackColor = false;
-            this.btnConfigurar.Click += new System.EventHandler(this.btnConfigurar_Click);
-            // 
             // btnGestionar
             // 
             this.btnGestionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -173,7 +171,7 @@
             this.btnGestionar.ForeColor = System.Drawing.Color.White;
             this.btnGestionar.Image = ((System.Drawing.Image)(resources.GetObject("btnGestionar.Image")));
             this.btnGestionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGestionar.Location = new System.Drawing.Point(0, 549);
+            this.btnGestionar.Location = new System.Drawing.Point(0, 551);
             this.btnGestionar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGestionar.Name = "btnGestionar";
             this.btnGestionar.Size = new System.Drawing.Size(200, 53);
@@ -196,7 +194,7 @@
             this.btnReporte.ForeColor = System.Drawing.Color.White;
             this.btnReporte.Image = ((System.Drawing.Image)(resources.GetObject("btnReporte.Image")));
             this.btnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReporte.Location = new System.Drawing.Point(0, 488);
+            this.btnReporte.Location = new System.Drawing.Point(0, 489);
             this.btnReporte.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReporte.Name = "btnReporte";
             this.btnReporte.Size = new System.Drawing.Size(200, 54);
@@ -219,7 +217,7 @@
             this.btnProjects.ForeColor = System.Drawing.Color.White;
             this.btnProjects.Image = ((System.Drawing.Image)(resources.GetObject("btnProjects.Image")));
             this.btnProjects.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProjects.Location = new System.Drawing.Point(0, 365);
+            this.btnProjects.Location = new System.Drawing.Point(0, 366);
             this.btnProjects.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnProjects.Name = "btnProjects";
             this.btnProjects.Size = new System.Drawing.Size(197, 53);
@@ -354,29 +352,6 @@
             this.dtTIme.Enabled = true;
             this.dtTIme.Tick += new System.EventHandler(this.dtTIme_Tick);
             // 
-            // btnInversor
-            // 
-            this.btnInversor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInversor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnInversor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.btnInversor.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnInversor.BorderRadius = 0;
-            this.btnInversor.BorderSize = 0;
-            this.btnInversor.FlatAppearance.BorderSize = 0;
-            this.btnInversor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInversor.ForeColor = System.Drawing.Color.White;
-            this.btnInversor.Image = ((System.Drawing.Image)(resources.GetObject("btnInversor.Image")));
-            this.btnInversor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInversor.Location = new System.Drawing.Point(0, 425);
-            this.btnInversor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnInversor.Name = "btnInversor";
-            this.btnInversor.Size = new System.Drawing.Size(200, 54);
-            this.btnInversor.TabIndex = 16;
-            this.btnInversor.Text = "Config. Proyecto";
-            this.btnInversor.TextColor = System.Drawing.Color.White;
-            this.btnInversor.UseVisualStyleBackColor = false;
-            this.btnInversor.Click += new System.EventHandler(this.btnInversor_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -405,7 +380,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panelButtons;
-        private RJCodeAdvance.RJControls.RJButton btnConfigurar;
         private RJCodeAdvance.RJControls.RJButton btnGestionar;
         private RJCodeAdvance.RJControls.RJButton btnReporte;
         private RJCodeAdvance.RJControls.RJButton btnProjects;

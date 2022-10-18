@@ -41,7 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -157,6 +156,7 @@
             this.txtSearch.TabIndex = 5;
             this.txtSearch.Texts = "";
             this.txtSearch.UnderlinedStyle = false;
+            this.txtSearch._TextChanged += new System.EventHandler(this.txtSearch__TextChanged);
             // 
             // label1
             // 
@@ -165,9 +165,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(63, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 37);
+            this.label1.Size = new System.Drawing.Size(225, 37);
             this.label1.TabIndex = 6;
-            this.label1.Text = "IQProjectSolutions";
+            this.label1.Text = "IQProjectSolution";
             // 
             // label2
             // 
@@ -194,7 +194,6 @@
             // btnConfig
             // 
             this.btnConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
-            this.btnConfig.Controls.Add(this.label6);
             this.btnConfig.Controls.Add(this.label7);
             this.btnConfig.Controls.Add(this.pictureBox2);
             this.btnConfig.Controls.Add(this.label8);
@@ -208,23 +207,12 @@
             this.btnConfig.MouseEnter += new System.EventHandler(this.btnConfig_MouseEnter);
             this.btnConfig.MouseLeave += new System.EventHandler(this.btnConfig_MouseLeave);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(107, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(186, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "cambia el tipo de moneda";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(107, 67);
+            this.label7.Location = new System.Drawing.Point(97, 69);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(176, 20);
             this.label7.TabIndex = 11;
@@ -246,7 +234,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(107, 49);
+            this.label8.Location = new System.Drawing.Point(97, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(265, 20);
             this.label8.TabIndex = 9;
@@ -321,7 +309,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel btnConfig;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label8;

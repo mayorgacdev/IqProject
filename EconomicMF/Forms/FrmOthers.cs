@@ -1,12 +1,9 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
-using EconomicMF.Domain.Entities.Others;
 using EconomicMF.Domain.Enums;
 using EconomicMF.Domain.Enums.Others;
 using EconomicMF.SettingForms;
 using System;
-using System.Collections.Immutable;
-using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -102,6 +99,16 @@ namespace EconomicMF.Forms
                 txtValorResidualAsset.Visible = true;
                 lblTipoDeMetodoAsset.Visible = true;
             }
+        }
+
+        private void dtgFNE_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

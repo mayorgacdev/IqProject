@@ -331,7 +331,7 @@
             this.dtgFNE.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgFNE.RowTemplate.Height = 29;
             this.dtgFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgFNE.Size = new System.Drawing.Size(733, 212);
+            this.dtgFNE.Size = new System.Drawing.Size(770, 212);
             this.dtgFNE.TabIndex = 102;
             // 
             // txtSearch
