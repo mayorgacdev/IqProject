@@ -62,7 +62,7 @@
             this.btnCrear.Location = new System.Drawing.Point(723, 176);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(359, 127);
+            this.btnCrear.Size = new System.Drawing.Size(372, 127);
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             this.btnCrear.MouseEnter += new System.EventHandler(this.btnCrear_MouseEnter);
@@ -189,7 +189,7 @@
             this.btnConfig.Location = new System.Drawing.Point(723, 324);
             this.btnConfig.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(359, 127);
+            this.btnConfig.Size = new System.Drawing.Size(372, 127);
             this.btnConfig.TabIndex = 9;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             this.btnConfig.MouseEnter += new System.EventHandler(this.btnConfig_MouseEnter);

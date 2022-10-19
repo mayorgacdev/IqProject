@@ -40,17 +40,9 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             dt = new DataTable();
         }
 
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-            txtSearch.Clear();
-            panel1.BackColor = Color.HotPink;
-        }
-
         private void FrmShowCashFlowDetail_Load(object sender, EventArgs e)
         {
             //this.pnlChart.Controls.Add(chartCashFlow);
-            this.pnlChart.Controls.Add(chartControl1);
-            chartCashFlow.Visible = false;
             LlenarDgv();
         }
         private async void LlenarDgv()
@@ -63,41 +55,30 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             FlujoCajaSync(cashFlow.ToList());
         }
 
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (string.IsNullOrWhiteSpace(txtSearch.Text))
-                {
-                    LlenarDgv();
-                    return;
-                }
-                BindingSource bindingSource = new BindingSource();
-                bindingSource.DataSource = dt;
-                if (int.TryParse(txtSearch.Text, out int result))
-                {
-                    bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
-                }
-                dgvEconomics.DataSource = bindingSource;
-            }
-        }
+        //private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        if (string.IsNullOrWhiteSpace(txtSearch.Text))
+        //        {
+        //            LlenarDgv();
+        //            return;
+        //        }
+        //        BindingSource bindingSource = new BindingSource();
+        //        bindingSource.DataSource = dt;
+        //        if (int.TryParse(txtSearch.Text, out int result))
+        //        {
+        //            bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+        //        }
+        //        dgvEconomics.DataSource = bindingSource;
+        //    }
+        //}
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         //TODO: Falta probar
-        private void LoadChart(List<EconomicDto> economics)
-        {
-            chartCashFlow.YAxes.GridLines.Display = false;
-            chartCashFlow.Datasets.Clear();
-            //TODO: ver si poner legenda si o no
-            chartCashFlow.Legend.Display = true;
-            foreach(var ec in economics)
-            {
-                AddFlow(ec);
-            }
-        }
         //TODO: Falta probar
         private void AddFlow(EconomicDto economic)
         {
@@ -105,19 +86,17 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             int j = 0;
             for (int i = 0; i <= nper; i++)
             {
-                int width = chartCashFlow.Width;
-                int height = chartCashFlow.Height;
                 double valor = 0;
                 if (string.Compare(economic.Discriminator, Discriminador.Interes.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
                 {
                     valor = (i == economic.NumPeriodos) ? (double)economic.FutureValue : 0;
                     dataset.DataPoints.Add(i.ToString(), valor);
                 }
-                else if(string.Compare(economic.Discriminator, Discriminador.Anualidad.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
+                else if (string.Compare(economic.Discriminator, Discriminador.Anualidad.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
                 {
                     if (economic.TipoDeCrecimiento.Equals(TipoCrecimiento.Aritmetico))
                     {
-                        if(i>=(economic.PeriodoGracia+1) && i <= economic.NumPeriodos)
+                        if (i >= (economic.PeriodoGracia + 1) && i <= economic.NumPeriodos)
                         {
                             valor = (double)economic.PagoAnual + (j * (double)economic.Crecimiento);
                         }
@@ -143,10 +122,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                         dataset.DataPoints.Add(i.ToString(), valor);
                     }
                 }
-                chartCashFlow.Size = new Size(width += 10, height);
             }
-            chartCashFlow.Datasets.Add(dataset);
-            chartCashFlow.Update();
         }
 
         private void FrmShowCashFlowDetail_MouseDown(object sender, MouseEventArgs e)
@@ -158,24 +134,18 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
         //Flujo de caja clase
         private void FlujoCaja()
         {
-            
+
         }
 
         //flujo de caja Synfusion
         public void FlujoCajaSync(List<EconomicDto> economics)
         {
-            ChartSeries series = chartControl1.Series[0];
             //chartControl1.Spacing = 5;
             //ChartSeries series = new ChartSeries($"Presente", ChartSeriesType.Column);
-            chartControl1.PrimaryXAxis.TickLabelsDrawingMode = ChartAxisTickLabelDrawingMode.AutomaticMode;
-            series.Text = series.Name;
-            chartControl1.Title.BackColor = Color.White;
             //Random random = new Random();
-            
+
             foreach (var economic in economics)
             {
-                int width = chartControl1.Width;
-                int height = chartControl1.Height;
 
                 double valor = 0;
                 int j = 0;
@@ -183,16 +153,14 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 if (string.Compare(economic.Discriminator, Discriminador.Interes.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
                 {
                     //valor = (i == economic.NumPeriodos) ? (double)economic.FutureValue : 0;
-                    series.Points.Add((double)economic.NumPeriodos, (double)economic.FutureValue);
                 }
                 else if (string.Compare(economic.Discriminator, Discriminador.Anualidad.ToString(), StringComparison.CurrentCultureIgnoreCase) == 0)
                 {
                     if (economic.TipoDeCrecimiento.Equals(TipoCrecimiento.Aritmetico))
                     {
-                        for(int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
+                        for (int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
                         {
                             valor = (double)economic.PagoAnual + (j * (double)economic.Crecimiento);
-                            series.Points.Add((double)i, (double)valor);
                         }
                         j++;
                     }
@@ -201,7 +169,6 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                         for (int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
                         {
                             valor = (double)economic.PagoAnual * Math.Pow((1 + (double)economic.Crecimiento), j);
-                            series.Points.Add((double)i, (double)valor);
                         }
                         j++;
                     }
@@ -210,16 +177,50 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                         for (int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
                         {
                             //valor = (double)economic.PagoAnual * Math.Pow((1 + (double)economic.Crecimiento), j);
-                            series.Points.Add((double)i, (double)economic.PagoAnual);
                         }
                     }
                 }
-
-                chartControl1.Size = new Size(width += 10, height);
             }
-            series.Style.DisplayText = true;
-            series.Style.TextOrientation = ChartTextOrientation.Smart;
-            chartControl1.Series.Add(series);
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            txtSearch.Texts = String.Empty;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                {
+                    LlenarDgv();
+                    return;
+                }
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = dt;
+                if (int.TryParse(txtSearch.Text, out int result))
+                {
+                    bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+                }
+                dgvEconomics.DataSource = bindingSource;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LlenarDgv();
+                return;
+            }
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = dt;
+            if (int.TryParse(txtSearch.Text, out int result))
+            {
+                bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+            }
+            dgvEconomics.DataSource = bindingSource;
         }
     }
 }

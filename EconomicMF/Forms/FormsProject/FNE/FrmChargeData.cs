@@ -8,15 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
-using System.ComponentModel;
-using System.Data;
-using System.Text.RegularExpressions;
-using NPOI.SS.UserModel;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
-using ListToExcelPackage;
-using Windows.Globalization;
 
 namespace EconomicMF.Forms.FormsProject.FNE
 {
@@ -66,6 +57,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
             List<ProjectCost> projectCosts = await unitOfWork.CostClient.GetAllCost(projectId);
             List<ProjectExpense> projectExpenses = await unitOfWork.ProjectExpense.GetAllExpenses(projectId);
             List<ProjectEntry> projectEntries = await unitOfWork.ProjectEntryClient.GetEntriesAsync(projectId);
+            var projectentities = await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(projectId);
 
             Project project = new Project()
             {
@@ -85,6 +77,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 ProjectExpenses = projectExpenses,
                 ProjectEntries = projectEntries,
                 Assets = assets,
+                InvestmentEntities = projectentities,
             };
 
 
@@ -96,7 +89,6 @@ namespace EconomicMF.Forms.FormsProject.FNE
             lblTasa.Text = "Esperando...";
 
             return project;
-
         }
 
         private void GetFNE(Project project)
@@ -198,7 +190,6 @@ namespace EconomicMF.Forms.FormsProject.FNE
                     lblPeriodo.Text = project.Period;
                     lblTir.Text = ProjectCalculations.TIR(flujo, project.TMAR) + " %";
                     lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: project.TMAR), 2) + " %";
-
                 }
             }
             catch (Exception ex)

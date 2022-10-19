@@ -33,6 +33,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
         {
             this.Close();
         }
+
         private async void LlenarDgv()
         {
             IEnumerable<AnnuityDto> conversions = await unitOfWork.EconomicClient.GetAnualidadesAsync(solutionId);
@@ -40,13 +41,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             dt = ConvertDatagridview.ConvertToDataTable(dgvAnnuaty);
         }
 
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-            txtSearch.Clear();
-            panel1.BackColor = Color.HotPink;
-        }
-
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        private void txtSearch_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -67,6 +62,31 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 }
                 dgvAnnuaty.DataSource = bindingSource;
             }
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            txtSearch.Texts = String.Empty;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LlenarDgv();
+                return;
+            }
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = dt;
+            if (int.TryParse(txtSearch.Text, out int result))
+            {
+                bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+            }
+            else
+            {
+                bindingSource.Filter = String.Format("TipoAnualidad LIKE '*{0}*' OR Periodo LIKE '*{0}*' OR TipoDeCrecimiento LIKE '*{0}*'", txtSearch.Text);
+            }
+            dgvAnnuaty.DataSource = bindingSource;
         }
     }
 }

@@ -34,5 +34,7 @@
         ConfigInit,
         AddGasto,
         AddAsset,
+        OtherDep, 
+        OtherAmt,
     }
 }

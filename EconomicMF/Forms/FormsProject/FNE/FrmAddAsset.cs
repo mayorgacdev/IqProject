@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Drawing;
 using EconomicEF.Common.UserCache;
+using EconomicEF.Infraestructure.Repository;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
@@ -202,6 +203,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
             }
         }
 
+
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dtgFNE.SelectedRows.Count == 1)
@@ -209,6 +211,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 int assetId = (int)dtgFNE.CurrentRow.Cells[0].Value;
                 await unitOfWork.AssetClient.DeleteAsync(assetId);
                 ChargeDtg();
+
             }
         }
         private void tgDepreciacion_CheckedChanged(object sender, EventArgs e)

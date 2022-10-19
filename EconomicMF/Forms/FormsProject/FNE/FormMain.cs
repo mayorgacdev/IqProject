@@ -5,6 +5,7 @@ using EconomicMF.SettingForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsProject.FNE
@@ -113,6 +114,17 @@ namespace EconomicMF.Forms.FormsProject.FNE
         private void btnActivos_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new FrmAddAsset(unitOfWork));
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panelButtons_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

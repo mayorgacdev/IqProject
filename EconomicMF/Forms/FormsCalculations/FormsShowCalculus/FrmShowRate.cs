@@ -42,12 +42,6 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             this.Close();
         }
 
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-            txtSearch.Clear();
-            panel1.BackColor = Color.HotPink;
-        }
-
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -69,6 +63,31 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 }
                 dgvInteres.DataSource = bindingSource;
             }
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            txtSearch.Texts = String.Empty;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LlenarDgv();
+                return;
+            }
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = dt;
+            if (int.TryParse(txtSearch.Text, out int result))
+            {
+                bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+            }
+            else
+            {
+                bindingSource.Filter = String.Format("TipoInteres LIKE '*{0}*' OR FrecuenciaTasa LIKE '*{0}*'", txtSearch.Text);
+            }
+            dgvInteres.DataSource = bindingSource;
         }
     }
 }

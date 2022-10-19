@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
-using EconomicEF.Common.UserCache;
+﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums.Others;
@@ -160,6 +159,7 @@ namespace EconomicMF.Forms.FormsProject
 
         private async void FrmAddInvestors_Load(object sender, EventArgs e)
         {
+            ChargeData();
             ValidatePorcentage();
 
             projectClient = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
@@ -179,7 +179,9 @@ namespace EconomicMF.Forms.FormsProject
         private async void ChargeData()
         {
             dtgvData.DataSource = null;
-            dtgvData.DataSource = await unitOfWork.InvesmentEntityClient.GetUniqueNames(projectClient.SolutionId);
+            dtgvData.DataSource = (from e in 
+                                      (await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(DataOnMemory.ProjectId)) 
+                                      select new { e.Name, e.Email,e.Contribution, e.TipoDeAmortización}).ToList();
         }
         
         private void CleanTextBoxs()

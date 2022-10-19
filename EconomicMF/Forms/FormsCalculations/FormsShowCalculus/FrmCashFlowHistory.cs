@@ -41,6 +41,19 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             this.Close();
         }
 
+        private void dgvCashFlow_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //string stringId = dgvCashFlow.Rows[e.RowIndex].Cells[0].Value.ToString();
+                flujoId = int.Parse(dgvCashFlow.Rows[e.RowIndex].Cells[0].Value.ToString());
+                //string stringnper = dgvCashFlow.Rows[e.RowIndex].Cells[5].Value.ToString();
+                nper = (int)decimal.Parse(dgvCashFlow.Rows[e.RowIndex].Cells[5].Value.ToString());
+                FrmShowCashFlowDetail frmShowCashFlowDetail = new FrmShowCashFlowDetail(unitOfWork, flujoId,nper);
+                frmShowCashFlowDetail.ShowDialog();
+            }
+        }
+
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -62,21 +75,23 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
 
         private void txtSearch_Click(object sender, EventArgs e)
         {
-            txtSearch.Clear();
-            panel1.BackColor = Color.HotPink;
+            txtSearch.Texts = String.Empty;
         }
 
-        private void dgvCashFlow_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
             {
-                //string stringId = dgvCashFlow.Rows[e.RowIndex].Cells[0].Value.ToString();
-                flujoId = int.Parse(dgvCashFlow.Rows[e.RowIndex].Cells[0].Value.ToString());
-                //string stringnper = dgvCashFlow.Rows[e.RowIndex].Cells[5].Value.ToString();
-                nper = (int)decimal.Parse(dgvCashFlow.Rows[e.RowIndex].Cells[5].Value.ToString());
-                FrmShowCashFlowDetail frmShowCashFlowDetail = new FrmShowCashFlowDetail(unitOfWork, flujoId,nper);
-                frmShowCashFlowDetail.ShowDialog();
+                LlenarDgv();
+                return;
             }
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = dt;
+            if (int.TryParse(txtSearch.Text, out int result))
+            {
+                bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+            }
+            dgvCashFlow.DataSource = bindingSource;
         }
     }
 }

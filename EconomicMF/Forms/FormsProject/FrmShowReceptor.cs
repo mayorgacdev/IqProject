@@ -25,6 +25,8 @@ namespace EconomicMF.Forms.FormsProject
             dtgFNE.DataSource = null;
             dtgFNE.DataSource = unitOfWork.MailClient.emailProps;
             dtgFNE.Columns[0].Visible = false;
+            dtgFNE.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dtgFNE.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)

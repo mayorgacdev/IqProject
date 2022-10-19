@@ -44,15 +44,9 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             dt = ConvertDatagridview.ConvertToDataTable(dgvConversiones);
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            txtSearch.Clear();
-            panel1.BackColor = Color.HotPink;
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
@@ -71,6 +65,31 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 }
                 dgvConversiones.DataSource = bindingSource;
             }
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            txtSearch.Texts = String.Empty;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                LlenarDgv();
+                return;
+            }
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = dt;
+            if (int.TryParse(txtSearch.Text, out int result))
+            {
+                bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
+            }
+            else
+            {
+                bindingSource.Filter = String.Format("TipoOriginal LIKE '*{0}*' OR TipoActual LIKE '*{0}*' OR FrecCapOriginal LIKE '*{0}*' OR FrecCapActual LIKE '*{0}*'", txtSearch.Text);
+            }
+            dgvConversiones.DataSource = bindingSource;
         }
     }
 }

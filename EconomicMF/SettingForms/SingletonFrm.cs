@@ -8,6 +8,7 @@ using EconomicMF.Forms.FormsMain;
 using EconomicMF.Forms.FormsProject;
 using EconomicMF.Forms.FormsProject.FNE;
 using EconomicMF.Forms.FrmInitProjects;
+using EconomicMF.Helper;
 using EconomicMF.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -80,6 +81,10 @@ namespace EconomicMF.SettingForms
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmAddExpense>();
                 case FormType.AddAsset:
                     return ServicesReq.ServiceProvider.GetRequiredService<FrmAddAsset>();
+                case FormType.OtherDep:
+                    return ServicesReq.ServiceProvider.GetRequiredService<FrmDepreciacion>();
+                case FormType.OtherAmt:
+                    return ServicesReq.ServiceProvider.GetRequiredService<FrmAmortizacion>();
                 default:
                     throw new Exception("Error");
             }   
@@ -119,6 +124,14 @@ namespace EconomicMF.SettingForms
             services.AddSingleton<FrmAddExpense>();
             services.AddSingleton<FrmAddAsset>();
             services.AddSingleton<UCProject>();
+            services.AddSingleton<FrmAmortizacion>();
+            services.AddSingleton<FrmDepreciacion>();
+            services.AddSingleton<RepositoryOthers>();
         }      
+
+        public static RepositoryOthers GetRepo()
+        {
+            return ServicesReq.ServiceProvider.GetRequiredService<RepositoryOthers>();
+        }
     }
 }

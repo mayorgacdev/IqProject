@@ -344,9 +344,9 @@
             this.lblCalculus.ForeColor = System.Drawing.Color.White;
             this.lblCalculus.Location = new System.Drawing.Point(9, 7);
             this.lblCalculus.Name = "lblCalculus";
-            this.lblCalculus.Size = new System.Drawing.Size(177, 28);
+            this.lblCalculus.Size = new System.Drawing.Size(128, 28);
             this.lblCalculus.TabIndex = 6;
-            this.lblCalculus.Text = "Otras herramientas";
+            this.lblCalculus.Text = "Herramientas";
             // 
             // cmbTipoMovimiento
             // 
