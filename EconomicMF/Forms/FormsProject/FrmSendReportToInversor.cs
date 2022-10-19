@@ -33,13 +33,6 @@ namespace EconomicMF.Forms.FormsProject
                 bodyMessage.Text, new List<string> { txtEmail.Texts });
         }
 
-        /* this.openFileDialog1.Filter =  
-"Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" +  
-"All files (*.*)|*.*";*/
-
-        /*"Office Files", "*.doc", "*.xls", "*.ppt"
-         * */
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             try
