@@ -120,10 +120,11 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(187, 43);
             this.btnExport.TabIndex = 114;
-            this.btnExport.Text = "Exportar E/P";
+            this.btnExport.Text = "Exportar a excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.TextColor = System.Drawing.Color.White;
             this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // txtSearch
             // 

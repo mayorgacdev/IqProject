@@ -182,9 +182,22 @@ namespace EconomicMF.Forms
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            var assets = SingletonFrm.GetRepo().assets;
-            string excelFilename = "C:\\Users\\mayor\\OneDrive\\Desktop\\Feria\\IqProject\\Sample.xlsx";
-            CreateExcelFile.CreateExcelDocument(assets, excelFilename);
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+            else
+            {
+                return;
+            }
+            Random random = new Random();
+            path = $"{path}DepreciationInfo{random.Next(20, 555)}.xlsx";
+
+            CreateExcelFile.CreateExcelDocument(SingletonFrm.GetRepo().assets, path);
         }
 
         private void dtgFNE_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -222,6 +235,58 @@ namespace EconomicMF.Forms
                     SingletonFrm.GetRepo().assets.Remove(asset);
                     ChargeDtg();
                 }
+            }
+        }
+
+        private void tglsVidaDeActivo_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbVidaActivos.SelectedIndex = -1;
+
+            if (tglsVidaDeActivo.Checked)
+            {
+                cmbVidaActivos.Visible = true;
+                txtVidaUtil.Visible = false;
+                lblDepreciación.Visible = false;
+                tgDepreciacion.Visible = false;
+            }
+            else
+            {
+                cmbVidaActivos.Visible = false;
+                txtVidaUtil.Visible = true;
+                lblDepreciación.Visible = true;
+                tgDepreciacion.Visible = true;
+
+                lblValorResidual.Visible = true;
+                txtValorResidual.Visible = true;
+                lblTipoDeMetodo.Visible = true;
+                cmbTipoMetodo.Visible = true;
+            }
+        }
+
+        private void tgDepreciacion_CheckedChanged(object sender, EventArgs e)
+        {
+            tgDep(tgDepreciacion.Checked);
+        }
+
+        private void tgDep(bool on)
+        {
+            if (on)
+            {
+                txtValorResidual.Visible = true;
+                lblValorResidual.Visible = true;
+                lblTipoDeMetodo.Visible = true;
+                cmbTipoMetodo.Visible = true;
+                txtVidaUtil.Visible = true;
+
+            }
+            else
+            {
+                txtValorResidual.Visible = false;
+                lblValorResidual.Visible = false;
+                lblTipoDeMetodo.Visible = false;
+                cmbTipoMetodo.Visible = false;
+                txtVidaUtil.Visible = false;
+
             }
         }
     }

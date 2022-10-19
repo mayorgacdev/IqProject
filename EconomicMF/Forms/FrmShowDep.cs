@@ -1,6 +1,8 @@
 ﻿using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.SettingForms;
+using ExportToExcel;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -53,6 +55,8 @@ namespace EconomicMF.Forms
             }
         }
 
+
+
         private void ChargeDTGC(bool stonks)
         {
             if (stonks)
@@ -88,6 +92,51 @@ namespace EconomicMF.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var item = SingletonFrm.GetRepo().assets.FirstOrDefault(e => e.Code.Equals(guid));
+
+            Random random = new Random();
+
+            if (item is null)
+            {
+                return;
+            }
+
+            string path = string.Empty;
+            string get = string.Empty;
+
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+
+            if (item.DepreciationRate.Equals("DDDS"))
+            {
+                path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                CreateExcelFile.CreateExcelDocument(ProjectCalculations.DDDS(item.Amount, item.Terms, item.AmountResidual, 2), path);
+                path = string.Empty;
+                path = get;
+            }
+            else if (item.DepreciationRate.Equals("DSDA"))
+            {
+                path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                CreateExcelFile.CreateExcelDocument(ProjectCalculations.DSDA(item.Amount, item.Terms, item.AmountResidual), path);
+                path = string.Empty;
+                path = get;
+            }
+            else
+            {
+                path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                CreateExcelFile.CreateExcelDocument(ProjectCalculations.DSDA(item.Amount, item.Terms, item.AmountResidual), path);
+                path = string.Empty;
+                path = get;
+            }
         }
     }
 }

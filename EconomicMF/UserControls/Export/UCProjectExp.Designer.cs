@@ -108,9 +108,10 @@
             this.btnDowloadReport.Name = "btnDowloadReport";
             this.btnDowloadReport.Size = new System.Drawing.Size(283, 35);
             this.btnDowloadReport.TabIndex = 87;
-            this.btnDowloadReport.Text = "Dowload report";
+            this.btnDowloadReport.Text = "Exportar a excel";
             this.btnDowloadReport.TextColor = System.Drawing.Color.White;
             this.btnDowloadReport.UseVisualStyleBackColor = false;
+            this.btnDowloadReport.Click += new System.EventHandler(this.btnDowloadReport_Click);
             // 
             // UCProjectExp
             // 
@@ -124,7 +125,8 @@
             this.Controls.Add(this.lblVP);
             this.Controls.Add(this.pictureBox1);
             this.Name = "UCProjectExp";
-            this.Size = new System.Drawing.Size(817, 75);
+            this.Size = new System.Drawing.Size(812, 82);
+            this.Load += new System.EventHandler(this.UCProjectExp_Load);
             this.MouseEnter += new System.EventHandler(this.UCProjectExp_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.UCProjectExp_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -1,8 +1,10 @@
 ﻿using EconomicEF.Infraestructure.Repository;
+using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Enums.Others;
 using EconomicMF.Helper;
 using EconomicMF.Services.Processes.Intereses;
 using EconomicMF.SettingForms;
+using ExportToExcel;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -75,6 +77,27 @@ namespace EconomicMF.Forms
                     ChargeDgv();
                 }
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+            else
+            {
+                return;
+            }
+
+            Random random = new Random();
+            path = $"{path}AmortizationInfo{random.Next(20, 555)}.xlsx";
+
+            CreateExcelFile.CreateExcelDocument(SingletonFrm.GetRepo().prestamos, path);
         }
     }
 }

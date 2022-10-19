@@ -54,16 +54,17 @@
             this.btnDowloadReport.Name = "btnDowloadReport";
             this.btnDowloadReport.Size = new System.Drawing.Size(283, 35);
             this.btnDowloadReport.TabIndex = 93;
-            this.btnDowloadReport.Text = "Dowload report";
+            this.btnDowloadReport.Text = "Exportar a excel";
             this.btnDowloadReport.TextColor = System.Drawing.Color.White;
             this.btnDowloadReport.UseVisualStyleBackColor = false;
+            this.btnDowloadReport.Click += new System.EventHandler(this.btnDowloadReport_Click);
             // 
             // lblPeriod
             // 
             this.lblPeriod.AutoSize = true;
             this.lblPeriod.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPeriod.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblPeriod.Location = new System.Drawing.Point(292, 36);
+            this.lblPeriod.Location = new System.Drawing.Point(268, 40);
             this.lblPeriod.Name = "lblPeriod";
             this.lblPeriod.Size = new System.Drawing.Size(64, 17);
             this.lblPeriod.TabIndex = 92;
@@ -74,7 +75,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblName.Location = new System.Drawing.Point(292, 16);
+            this.lblName.Location = new System.Drawing.Point(268, 19);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(103, 17);
             this.lblName.TabIndex = 91;
@@ -85,18 +86,18 @@
             this.lblVF.AutoSize = true;
             this.lblVF.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblVF.ForeColor = System.Drawing.Color.White;
-            this.lblVF.Location = new System.Drawing.Point(133, 36);
+            this.lblVF.Location = new System.Drawing.Point(127, 40);
             this.lblVF.Name = "lblVF";
-            this.lblVF.Size = new System.Drawing.Size(156, 17);
+            this.lblVF.Size = new System.Drawing.Size(52, 17);
             this.lblVF.TabIndex = 90;
-            this.lblVF.Text = "Metodo de depreciación:";
+            this.lblVF.Text = "Activos:";
             // 
             // lblVP
             // 
             this.lblVP.AutoSize = true;
             this.lblVP.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblVP.ForeColor = System.Drawing.Color.White;
-            this.lblVP.Location = new System.Drawing.Point(133, 16);
+            this.lblVP.Location = new System.Drawing.Point(127, 19);
             this.lblVP.Name = "lblVP";
             this.lblVP.Size = new System.Drawing.Size(117, 17);
             this.lblVP.TabIndex = 89;
@@ -125,6 +126,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "UcAsserExp";
             this.Size = new System.Drawing.Size(812, 82);
+            this.Load += new System.EventHandler(this.UcAsserExp_Load);
+            this.MouseEnter += new System.EventHandler(this.UcAsserExp_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.UcAsserExp_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

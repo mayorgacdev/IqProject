@@ -1,7 +1,11 @@
-﻿using EconomicMF.Domain.Contracts;
+﻿using EconomicMF.AppCore.Processes;
+using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
+using ExportToExcel;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -55,9 +59,59 @@ namespace EconomicMF.UserControls.Export
         }
         private async void AddData()
         {
-            var amt = await unitOfWork.ProjectClient.GetAsync(projectId);
-
+            var project = await ChargeProject();
+            lblName.Text = project.Name;
+            lblPeriod.Text = project.InvestmentEntities.Count+"";
         }
-        
+
+        private async void btnDowloadReport_Click(object sender, System.EventArgs e)
+        {
+            var project = await ChargeProject();
+            var calculations = ProjectCalculations.Amortizaciones(project);
+            Random random = new Random();
+
+            if (calculations.Count > 0)
+            {
+                string path = string.Empty;
+                string get = string.Empty;
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    path = folderBrowserDialog.SelectedPath + "\\";
+                    get = folderBrowserDialog.SelectedPath + "\\";
+                }
+
+
+                if (calculations.Count > 0)
+                {
+                    foreach (var item in calculations)
+                    {
+                        path = $"{path}{project.Name}{random.Next(20,555)}Amt.xlsx";
+                        CreateExcelFile.CreateExcelDocument(item, path);
+                        path = string.Empty;
+                        path = get;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tienes amortizaciones en tu proyecto");
+            }
+        }
+
+        private void UCforAmt_Load(object sender, EventArgs e)
+        {
+            AddData();
+        }
+
+        private void UCforAmt_MouseEnter(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(33, 30, 70);
+        }
+
+        private void UCforAmt_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(33, 30, 39);
+        }
     }
 }

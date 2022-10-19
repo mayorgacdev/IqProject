@@ -1,9 +1,11 @@
 ﻿using EconomicEF.Common.UserCache;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Calculos;
+using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
 using EconomicMF.Domain.Enums.Conversiones;
 using EconomicMF.SettingForms;
+using ExportToExcel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -90,6 +92,28 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 bindingSource.Filter = String.Format("TipoOriginal LIKE '*{0}*' OR TipoActual LIKE '*{0}*' OR FrecCapOriginal LIKE '*{0}*' OR FrecCapActual LIKE '*{0}*'", txtSearch.Text);
             }
             dgvConversiones.DataSource = bindingSource;
+        }
+
+        private async void btnExport_Click(object sender, EventArgs e)
+        {
+            IEnumerable<ConversionDto> conversions = await unitOfWork.ConversionClient.GetConversionAsync(userEmail);
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+            else
+            {
+                return;
+            }
+
+            Random random = new Random();
+            path = $"{path}Conversiones{random.Next(20, 555)}.xlsx";
+
+            CreateExcelFile.CreateExcelDocument(conversions.ToList(), path);
         }
     }
 }

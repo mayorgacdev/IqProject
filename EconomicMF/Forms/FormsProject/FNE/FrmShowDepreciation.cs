@@ -2,6 +2,8 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums.Others;
+using EconomicMF.SettingForms;
+using ExportToExcel;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
@@ -19,13 +21,13 @@ namespace EconomicMF.Forms.FormsProject.FNE
     public partial class FrmShowDepreciation : Form
     {
         private ProjectClient projectClient;
-        private Asset assetClient;
+        private Asset item;
 
         public FrmShowDepreciation(ProjectClient projectClient, Asset asset)
         {
             InitializeComponent();
             this.projectClient = projectClient;
-            assetClient = asset;
+            item = asset;
         }
 
         private void FrmShowDepreciation_Load(object sender, EventArgs e)
@@ -35,10 +37,10 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void ChargeDtg()
         {
-            string dep = assetClient.DepreciationRate;
+            string dep = item.DepreciationRate;
             lblNameProject.Text = projectClient.Name;
-            lblNameAsset.Text = assetClient.Name;
-            lblMethod.Text = assetClient.DepreciationRate;
+            lblNameAsset.Text = item.Name;
+            lblMethod.Text = item.DepreciationRate;
             lblDuration.Text = projectClient.Duration+" " + projectClient.Period;
             Charge(dep);
         }
@@ -54,17 +56,17 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
             if (dep.Equals("DDDS"))
             {
-                dtgFNE.DataSource = ProjectCalculations.DDDS(assetClient.Amount, projectClient.Duration, assetClient.AmountResidual, 2);
+                dtgFNE.DataSource = ProjectCalculations.DDDS(item.Amount, projectClient.Duration, item.AmountResidual, 2);
                 ChargeDTGC(true);
             }
             if (dep.Equals("DSDA"))
             {
-                dtgFNE.DataSource = ProjectCalculations.DSDA(assetClient.Amount, projectClient.Duration, assetClient.AmountResidual);
+                dtgFNE.DataSource = ProjectCalculations.DSDA(item.Amount, projectClient.Duration, item.AmountResidual);
                 ChargeDTGC(false);
             }
             if (dep.Equals("DLR"))
             {
-                dtgFNE.DataSource = ProjectCalculations.DLR(assetClient.Amount, projectClient.Duration, assetClient.AmountResidual);
+                dtgFNE.DataSource = ProjectCalculations.DLR(item.Amount, projectClient.Duration, item.AmountResidual);
                 ChargeDTGC(true);
             }
         }
@@ -94,43 +96,46 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             if (dtgFNE.Rows.Count > 0)
             {
-                ExportarDatos(dtgFNE);
-            }
-        }
 
-        private void ExportarDatos(PoisonDataGridView data)
-        {
-            try
-            {
-                Microsoft.Office.Interop.Excel.Application application = new Microsoft.Office.Interop.Excel.Application();
-                application.Application.Workbooks.Add(true);
-                int indice = 0;
-                foreach (DataGridViewColumn i in data.Columns)
-                {
-                    indice++;
-                    application.Cells[1, indice] = i.Name;
-                }
-                int indicefila = 0;
-                foreach (DataGridViewRow fila in data.Rows)
-                {
-                    indicefila++;
-                    if (indicefila == 1)
-                    {
-                        //indicefila++;
-                    }
-                    indice = 0;
-                    foreach (DataGridViewColumn columna in data.Columns)
-                    {
-                        indice++;
-                        application.Cells[indicefila + 1, indice] = fila.Cells[columna.Name].Value;
-                    }
+                Random random = new Random();
 
+                if (item is null)
+                {
+                    return;
                 }
-                application.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                string path = string.Empty;
+                string get = string.Empty;
+
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    path = folderBrowserDialog.SelectedPath + "\\";
+                    get = folderBrowserDialog.SelectedPath + "\\";
+                }
+
+                if (item.DepreciationRate.Equals("DDDS"))
+                {
+                    path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                    CreateExcelFile.CreateExcelDocument(ProjectCalculations.DDDS(item.Amount, item.Terms, item.AmountResidual, 2), path);
+                    path = string.Empty;
+                    path = get;
+                }
+                else if (item.DepreciationRate.Equals("DSDA"))
+                {
+                    path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                    CreateExcelFile.CreateExcelDocument(ProjectCalculations.DSDA(item.Amount, item.Terms, item.AmountResidual), path);
+                    path = string.Empty;
+                    path = get;
+                }
+                else
+                {
+                    path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                    CreateExcelFile.CreateExcelDocument(ProjectCalculations.DSDA(item.Amount, item.Terms, item.AmountResidual), path);
+                    path = string.Empty;
+                    path = get;
+                }
             }
         }
     }

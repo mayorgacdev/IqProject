@@ -23,19 +23,21 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void FrmExportProject_Load(object sender, System.EventArgs e)
         {
-            //ChargeAmortizacion();
-            //ChargeAsset();
+            ChargeAmortizacion();
+            ChargeAsset();
             ChargeProject();
         }
 
         private async void ChargeAmortizacion()
         {
-
+            var project = await unitOfWOrk.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+            flpInversion.Controls.Add(new UCforAmt(unitOfWOrk, project.Id));
         }
 
-        private void ChargeAsset()
+        private async void ChargeAsset()
         {
-            throw new NotImplementedException();
+            var project = await unitOfWOrk.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+            flpAssets.Controls.Add(new UcAsserExp(unitOfWOrk, project.Id));
         }
 
         private async void ChargeProject()

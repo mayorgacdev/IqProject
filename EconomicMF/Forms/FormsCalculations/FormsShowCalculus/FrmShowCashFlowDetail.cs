@@ -2,6 +2,7 @@
 using EconomicMF.Domain.Entities.Calculos;
 using EconomicMF.Domain.Enums;
 using EconomicMF.SettingForms;
+using ExportToExcel;
 using Syncfusion.Windows.Forms.Chart;
 using System;
 using System.Collections.Generic;
@@ -221,6 +222,28 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
             }
             dgvEconomics.DataSource = bindingSource;
+        }
+
+        private async void btnExport_Click(object sender, EventArgs e)
+        {
+            IEnumerable<EconomicDto> cashFlow = await unitOfWork.flujoDetalleClient.GetEconomics(flujoId);
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+            else
+            {
+                return;
+            }
+
+            Random random = new Random();
+            path = $"{path}DetalleDeFlujo{random.Next(20, 555)}.xlsx";
+
+            CreateExcelFile.CreateExcelDocument(cashFlow.ToList(), path);
         }
     }
 }

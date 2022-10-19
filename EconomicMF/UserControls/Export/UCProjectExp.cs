@@ -1,7 +1,9 @@
 ﻿using EconomicEF.Infraestructure.Repository;
+using EconomicMF.AppCore.Processes;
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
+using ExportToExcel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,6 +61,14 @@ namespace EconomicMF.UserControls.Export
             return project;
         }
 
+        private async void ChargeLbl()
+        {
+            var project = await ChargeProject();
+
+            lblName.Text = project.Name;
+            lblPeriod.Text = project.Period;
+        }
+
         private void UCProjectExp_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(33, 30, 70);
@@ -67,6 +77,38 @@ namespace EconomicMF.UserControls.Export
         private void UCProjectExp_MouseLeave(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(33, 30, 39);
+        }
+
+        private void UCProjectExp_Load(object sender, EventArgs e)
+        {
+            ChargeLbl();
+        }
+
+        private async void btnDowloadReport_Click(object sender, EventArgs e)
+        {
+            var project = await ChargeProject();
+            var calculations = ProjectCalculations.AllFNE(project);
+
+            if (calculations.Rows.Count > 0)
+            {
+                string path = string.Empty;
+                string get = string.Empty;
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    path = folderBrowserDialog.SelectedPath + "\\";
+                    get = folderBrowserDialog.SelectedPath + "\\";
+                }
+
+                path = $"{path}{project.Name}.xlsx";
+                CreateExcelFile.CreateExcelDocument(calculations, path);
+                path = String.Empty;
+                path = get;
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

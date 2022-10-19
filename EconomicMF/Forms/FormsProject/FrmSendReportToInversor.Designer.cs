@@ -40,6 +40,7 @@
             this.bodyMessage = new ReaLTaiizor.Controls.RichTextBoxEdit();
             this.txtEmail = new RJCodeAdvance.RJControls.RJTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -112,6 +113,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.btnAgregar);
             this.panel2.Controls.Add(this.bodyMessage);
@@ -168,7 +170,7 @@
             this.bodyMessage.EdgeColor = System.Drawing.Color.WhiteSmoke;
             this.bodyMessage.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bodyMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.bodyMessage.Location = new System.Drawing.Point(57, 97);
+            this.bodyMessage.Location = new System.Drawing.Point(58, 112);
             this.bodyMessage.Name = "bodyMessage";
             this.bodyMessage.ReadOnly = false;
             this.bodyMessage.Size = new System.Drawing.Size(522, 189);
@@ -189,14 +191,14 @@
             this.txtEmail.BorderSize = 2;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmail.ForeColor = System.Drawing.Color.White;
-            this.txtEmail.Location = new System.Drawing.Point(57, 39);
+            this.txtEmail.Location = new System.Drawing.Point(58, 54);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.txtEmail.Multiline = false;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtEmail.PasswordChar = false;
             this.txtEmail.PlaceholderColor = System.Drawing.Color.White;
-            this.txtEmail.PlaceholderText = "Email receptor:";
+            this.txtEmail.PlaceholderText = "Email del receptor:";
             this.txtEmail.Size = new System.Drawing.Size(522, 39);
             this.txtEmail.TabIndex = 78;
             this.txtEmail.Texts = "";
@@ -213,6 +215,16 @@
             this.pictureBox2.TabIndex = 74;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(74, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 20);
+            this.label2.TabIndex = 113;
+            this.label2.Text = "Email del receptor";
             // 
             // FrmSendReportToInversor
             // 
@@ -232,6 +244,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -251,5 +264,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox btnMinimize;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label2;
     }
 }

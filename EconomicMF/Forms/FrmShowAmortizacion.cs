@@ -5,6 +5,8 @@ using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Entities.FlowTool;
 using EconomicMF.SettingForms;
+using ExportToExcel;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -134,6 +136,23 @@ namespace EconomicMF.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+
+            path = $"{path}Amortización{random.Next(20, 555)}Amt.xlsx";
+            CreateExcelFile.CreateExcelDocument(Amortizacions[index], path);
         }
     }
 }

@@ -169,9 +169,9 @@
             this.btnExport.Location = new System.Drawing.Point(35, 297);
             this.btnExport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(167, 53);
+            this.btnExport.Size = new System.Drawing.Size(200, 53);
             this.btnExport.TabIndex = 98;
-            this.btnExport.Text = "Exportar E/P";
+            this.btnExport.Text = "Archivos de proyecto";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.TextColor = System.Drawing.Color.White;
             this.btnExport.UseVisualStyleBackColor = false;
@@ -190,7 +190,7 @@
             this.btnAmortizacion.ForeColor = System.Drawing.Color.White;
             this.btnAmortizacion.Image = ((System.Drawing.Image)(resources.GetObject("btnAmortizacion.Image")));
             this.btnAmortizacion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAmortizacion.Location = new System.Drawing.Point(208, 297);
+            this.btnAmortizacion.Location = new System.Drawing.Point(274, 297);
             this.btnAmortizacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAmortizacion.Name = "btnAmortizacion";
             this.btnAmortizacion.Size = new System.Drawing.Size(234, 53);

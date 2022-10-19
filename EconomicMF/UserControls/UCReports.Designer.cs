@@ -59,7 +59,7 @@
             this.btnDowloadReport.Name = "btnDowloadReport";
             this.btnDowloadReport.Size = new System.Drawing.Size(283, 35);
             this.btnDowloadReport.TabIndex = 2;
-            this.btnDowloadReport.Text = "Dowload report";
+            this.btnDowloadReport.Text = "Descargar reporte";
             this.btnDowloadReport.TextColor = System.Drawing.Color.White;
             this.btnDowloadReport.UseVisualStyleBackColor = false;
             this.btnDowloadReport.Click += new System.EventHandler(this.btnDowloadReport_Click_1);

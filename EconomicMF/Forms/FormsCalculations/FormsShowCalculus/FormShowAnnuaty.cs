@@ -2,10 +2,13 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Calculos;
 using EconomicMF.SettingForms;
+using ExportToExcel;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
@@ -87,6 +90,28 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 bindingSource.Filter = String.Format("TipoAnualidad LIKE '*{0}*' OR Periodo LIKE '*{0}*' OR TipoDeCrecimiento LIKE '*{0}*'", txtSearch.Text);
             }
             dgvAnnuaty.DataSource = bindingSource;
+        }
+
+        private async void btnExport_Click(object sender, EventArgs e)
+        {
+            IEnumerable<AnnuityDto> conversions = await unitOfWork.EconomicClient.GetAnualidadesAsync(solutionId);
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+            else
+            {
+                return;
+            }
+
+            Random random = new Random();
+            path = $"{path}Anualidad{random.Next(20, 555)}.xlsx";
+
+            CreateExcelFile.CreateExcelDocument(conversions.ToList(), path);
         }
     }
 }

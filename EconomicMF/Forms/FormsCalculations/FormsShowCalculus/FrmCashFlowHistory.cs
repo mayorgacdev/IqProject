@@ -2,10 +2,12 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Calculos;
 using EconomicMF.SettingForms;
+using ExportToExcel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
@@ -92,6 +94,28 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 bindingSource.Filter = String.Format("Id = {0}", txtSearch.Text);
             }
             dgvCashFlow.DataSource = bindingSource;
+        }
+
+        private async void btnExport_Click(object sender, EventArgs e)
+        {
+            IEnumerable<FlujoDeCajaDto> cashFlow = await unitOfWork.flujoClient.GetBySolutionID(solutionId);
+            string path = string.Empty;
+            string get = string.Empty;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = folderBrowserDialog.SelectedPath + "\\";
+                get = folderBrowserDialog.SelectedPath + "\\";
+            }
+            else
+            {
+                return;
+            }
+
+            Random random = new Random();
+            path = $"{path}History{random.Next(20, 555)}.xlsx";
+
+            CreateExcelFile.CreateExcelDocument(cashFlow.ToList(), path);
         }
     }
 }

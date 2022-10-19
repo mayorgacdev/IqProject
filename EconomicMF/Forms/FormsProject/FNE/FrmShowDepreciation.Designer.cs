@@ -196,7 +196,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(167, 35);
             this.btnExport.TabIndex = 112;
-            this.btnExport.Text = "Exportar E/P";
+            this.btnExport.Text = "Exportar a excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.TextColor = System.Drawing.Color.White;
             this.btnExport.UseVisualStyleBackColor = false;

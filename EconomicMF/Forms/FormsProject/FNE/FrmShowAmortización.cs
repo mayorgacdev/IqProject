@@ -4,6 +4,7 @@ using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.DataWithList;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Entities.FlowTool;
+using ExportToExcel;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
@@ -159,7 +160,19 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             if (dtgFNE.Rows.Count > 0)
             {
-                ExportarDatos(dtgFNE);
+                Random random = new Random();
+
+                string path = string.Empty;
+                string get = string.Empty;
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    path = folderBrowserDialog.SelectedPath + "\\";
+                    get = folderBrowserDialog.SelectedPath + "\\";
+                }
+
+                path = $"{path}Amortización{random.Next(20, 555)}Amt.xlsx";
+                CreateExcelFile.CreateExcelDocument(Amortizacions[index], path);
             }
         }
 

@@ -113,7 +113,8 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             if (dtgFNE.Rows.Count > 0)
             {
-                ExportarDatos(dtgFNE);
+                FrmExportProject frmExportProject = new FrmExportProject(unitOfWork);
+                frmExportProject.ShowDialog();
             }
         }
 

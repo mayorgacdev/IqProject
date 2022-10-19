@@ -106,7 +106,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(159, 39);
             this.btnExport.TabIndex = 160;
-            this.btnExport.Text = "Exportar E/P";
+            this.btnExport.Text = "Exportar a excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExport.TextColor = System.Drawing.Color.White;
             this.btnExport.UseVisualStyleBackColor = false;
@@ -373,6 +373,7 @@
             this.tglsVidaDeActivo.Size = new System.Drawing.Size(45, 22);
             this.tglsVidaDeActivo.TabIndex = 202;
             this.tglsVidaDeActivo.UseVisualStyleBackColor = true;
+            this.tglsVidaDeActivo.CheckedChanged += new System.EventHandler(this.tglsVidaDeActivo_CheckedChanged);
             // 
             // lblDepreciación
             // 
@@ -399,6 +400,7 @@
             this.tgDepreciacion.Size = new System.Drawing.Size(45, 22);
             this.tgDepreciacion.TabIndex = 200;
             this.tgDepreciacion.UseVisualStyleBackColor = true;
+            this.tgDepreciacion.CheckedChanged += new System.EventHandler(this.tgDepreciacion_CheckedChanged);
             // 
             // lblValorResidual
             // 
