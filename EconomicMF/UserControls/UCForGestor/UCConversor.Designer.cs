@@ -84,8 +84,9 @@
             // lblAportación
             // 
             this.lblAportación.AutoSize = true;
+            this.lblAportación.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.lblAportación.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAportación.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblAportación.ForeColor = System.Drawing.Color.White;
             this.lblAportación.Location = new System.Drawing.Point(125, 30);
             this.lblAportación.Name = "lblAportación";
             this.lblAportación.Size = new System.Drawing.Size(60, 17);
@@ -95,8 +96,9 @@
             // lblNameInversor
             // 
             this.lblNameInversor.AutoSize = true;
+            this.lblNameInversor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.lblNameInversor.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNameInversor.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblNameInversor.ForeColor = System.Drawing.Color.White;
             this.lblNameInversor.Location = new System.Drawing.Point(125, 10);
             this.lblNameInversor.Name = "lblNameInversor";
             this.lblNameInversor.Size = new System.Drawing.Size(71, 17);
@@ -116,8 +118,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.SpringGreen;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(305, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 17);
@@ -127,8 +130,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.SpringGreen;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(305, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 17);
@@ -182,8 +186,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.SpringGreen;
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(475, 31);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 17);
@@ -193,8 +198,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.label8.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.Color.SpringGreen;
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(475, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 17);
@@ -226,8 +232,9 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.label11.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.SpringGreen;
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(647, 30);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 17);
@@ -237,8 +244,9 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.label12.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.SpringGreen;
+            this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(647, 10);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 17);

@@ -60,9 +60,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(38, 147);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 20);
+            this.label3.Size = new System.Drawing.Size(217, 20);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Nombre de la solución";
+            this.label3.Text = "Nombre del espacio de trabajo";
             // 
             // txtNameSolution
             // 
@@ -80,7 +80,7 @@
             this.txtNameSolution.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtNameSolution.PasswordChar = false;
             this.txtNameSolution.PlaceholderColor = System.Drawing.Color.Gray;
-            this.txtNameSolution.PlaceholderText = "Nombre de la solución";
+            this.txtNameSolution.PlaceholderText = "Nombre del espacio de trabajo";
             this.txtNameSolution.Size = new System.Drawing.Size(638, 39);
             this.txtNameSolution.TabIndex = 18;
             this.txtNameSolution.Texts = "";
@@ -121,7 +121,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(521, 78);
+            this.pictureBox5.Location = new System.Drawing.Point(576, 78);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(32, 32);
@@ -132,7 +132,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(483, 78);
+            this.pictureBox4.Location = new System.Drawing.Point(538, 78);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 32);
@@ -143,7 +143,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(447, 78);
+            this.pictureBox3.Location = new System.Drawing.Point(502, 78);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 32);
@@ -154,7 +154,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(411, 78);
+            this.pictureBox2.Location = new System.Drawing.Point(466, 78);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -165,7 +165,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(375, 78);
+            this.pictureBox1.Location = new System.Drawing.Point(428, 78);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
@@ -178,11 +178,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(50, 79);
+            this.label1.Location = new System.Drawing.Point(34, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 31);
+            this.label1.Size = new System.Drawing.Size(388, 31);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Evaluación de proyectos";
+            this.label1.Text = "Creación de espacio de trabajo";
             // 
             // btnAtrás
             // 
@@ -238,10 +238,10 @@
             // btnMinimize
             // 
             this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(1082, 4);
+            this.btnMinimize.Location = new System.Drawing.Point(1057, 4);
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(26, 31);
+            this.btnMinimize.Size = new System.Drawing.Size(34, 41);
             this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimize.TabIndex = 14;
             this.btnMinimize.TabStop = false;
@@ -249,10 +249,10 @@
             // btnClose
             // 
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(1115, 4);
+            this.btnClose.Location = new System.Drawing.Point(1097, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(26, 31);
+            this.btnClose.Size = new System.Drawing.Size(44, 41);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 13;
             this.btnClose.TabStop = false;

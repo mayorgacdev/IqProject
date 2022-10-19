@@ -39,7 +39,6 @@
             this.txtSearch = new RJCodeAdvance.RJControls.RJTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnConfig = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -74,7 +73,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(107, 76);
+            this.label10.Location = new System.Drawing.Point(93, 76);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 20);
             this.label10.TabIndex = 11;
@@ -83,7 +82,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(30, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(26, 29);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(61, 67);
@@ -96,7 +95,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(107, 55);
+            this.label5.Location = new System.Drawing.Point(93, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(263, 20);
             this.label5.TabIndex = 9;
@@ -107,11 +106,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(107, 8);
+            this.label4.Location = new System.Drawing.Point(84, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 32);
+            this.label4.Size = new System.Drawing.Size(272, 32);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Crear solución ";
+            this.label4.Text = "Crear espacio de trabajo";
             // 
             // panelContenedor
             // 
@@ -151,7 +150,7 @@
             this.txtSearch.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtSearch.PasswordChar = false;
             this.txtSearch.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtSearch.PlaceholderText = "Buscar ";
+            this.txtSearch.PlaceholderText = "Buscar (nombre de espacio de trabajo)";
             this.txtSearch.Size = new System.Drawing.Size(347, 39);
             this.txtSearch.TabIndex = 5;
             this.txtSearch.Texts = "";
@@ -176,20 +175,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(63, 137);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 28);
+            this.label2.Size = new System.Drawing.Size(222, 28);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Abrir soluciones";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(777, 137);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 28);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Tareas iniciales";
+            this.label2.Text = "Abrir espacio de trabajo";
             // 
             // btnConfig
             // 
@@ -214,14 +202,14 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(97, 69);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(176, 20);
+            this.label7.Size = new System.Drawing.Size(229, 20);
             this.label7.TabIndex = 11;
-            this.label7.Text = "actualiza, elimina datos...";
+            this.label7.Text = "personal contraseña u otro dato ";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(30, 39);
+            this.pictureBox2.Location = new System.Drawing.Point(26, 35);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(61, 67);
@@ -271,7 +259,6 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnConfig);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
@@ -307,7 +294,6 @@
         private RJCodeAdvance.RJControls.RJTextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel btnConfig;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox2;

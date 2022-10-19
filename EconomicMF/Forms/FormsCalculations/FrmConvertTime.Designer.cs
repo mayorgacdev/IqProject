@@ -46,22 +46,22 @@
             // 
             // txtHoras
             // 
-            this.txtHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtHoras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtHoras.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
             this.txtHoras.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtHoras.BorderRadius = 10;
             this.txtHoras.BorderSize = 2;
             this.txtHoras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtHoras.ForeColor = System.Drawing.Color.White;
-            this.txtHoras.Location = new System.Drawing.Point(131, 167);
-            this.txtHoras.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHoras.Location = new System.Drawing.Point(149, 223);
+            this.txtHoras.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoras.Multiline = false;
             this.txtHoras.Name = "txtHoras";
-            this.txtHoras.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtHoras.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtHoras.PasswordChar = false;
             this.txtHoras.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtHoras.PlaceholderText = "Horas";
-            this.txtHoras.Size = new System.Drawing.Size(144, 31);
+            this.txtHoras.Size = new System.Drawing.Size(165, 39);
             this.txtHoras.TabIndex = 88;
             this.txtHoras.Texts = "";
             this.txtHoras.UnderlinedStyle = false;
@@ -72,30 +72,30 @@
             this.lblAño.AutoSize = true;
             this.lblAño.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAño.ForeColor = System.Drawing.Color.White;
-            this.lblAño.Location = new System.Drawing.Point(57, 52);
+            this.lblAño.Location = new System.Drawing.Point(65, 69);
             this.lblAño.Name = "lblAño";
-            this.lblAño.Size = new System.Drawing.Size(48, 21);
+            this.lblAño.Size = new System.Drawing.Size(60, 28);
             this.lblAño.TabIndex = 81;
             this.lblAño.Text = "Años:";
             // 
             // txtDias
             // 
-            this.txtDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtDias.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
             this.txtDias.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtDias.BorderRadius = 10;
             this.txtDias.BorderSize = 2;
             this.txtDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDias.ForeColor = System.Drawing.Color.White;
-            this.txtDias.Location = new System.Drawing.Point(131, 125);
-            this.txtDias.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDias.Location = new System.Drawing.Point(149, 167);
+            this.txtDias.Margin = new System.Windows.Forms.Padding(5);
             this.txtDias.Multiline = false;
             this.txtDias.Name = "txtDias";
-            this.txtDias.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtDias.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtDias.PasswordChar = false;
             this.txtDias.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtDias.PlaceholderText = "Dias";
-            this.txtDias.Size = new System.Drawing.Size(144, 31);
+            this.txtDias.Size = new System.Drawing.Size(165, 39);
             this.txtDias.TabIndex = 87;
             this.txtDias.Texts = "";
             this.txtDias.UnderlinedStyle = false;
@@ -106,30 +106,30 @@
             this.lblMeses.AutoSize = true;
             this.lblMeses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblMeses.ForeColor = System.Drawing.Color.White;
-            this.lblMeses.Location = new System.Drawing.Point(57, 94);
+            this.lblMeses.Location = new System.Drawing.Point(65, 126);
             this.lblMeses.Name = "lblMeses";
-            this.lblMeses.Size = new System.Drawing.Size(57, 21);
+            this.lblMeses.Size = new System.Drawing.Size(70, 28);
             this.lblMeses.TabIndex = 82;
             this.lblMeses.Text = "Meses:";
             // 
             // txtMeses
             // 
-            this.txtMeses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtMeses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtMeses.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
             this.txtMeses.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtMeses.BorderRadius = 10;
             this.txtMeses.BorderSize = 2;
             this.txtMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMeses.ForeColor = System.Drawing.Color.White;
-            this.txtMeses.Location = new System.Drawing.Point(131, 86);
-            this.txtMeses.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMeses.Location = new System.Drawing.Point(149, 115);
+            this.txtMeses.Margin = new System.Windows.Forms.Padding(5);
             this.txtMeses.Multiline = false;
             this.txtMeses.Name = "txtMeses";
-            this.txtMeses.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtMeses.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtMeses.PasswordChar = false;
             this.txtMeses.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtMeses.PlaceholderText = "Meses";
-            this.txtMeses.Size = new System.Drawing.Size(144, 31);
+            this.txtMeses.Size = new System.Drawing.Size(165, 39);
             this.txtMeses.TabIndex = 86;
             this.txtMeses.Texts = "";
             this.txtMeses.UnderlinedStyle = false;
@@ -140,30 +140,30 @@
             this.lblDias.AutoSize = true;
             this.lblDias.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDias.ForeColor = System.Drawing.Color.White;
-            this.lblDias.Location = new System.Drawing.Point(57, 132);
+            this.lblDias.Location = new System.Drawing.Point(65, 178);
             this.lblDias.Name = "lblDias";
-            this.lblDias.Size = new System.Drawing.Size(43, 21);
+            this.lblDias.Size = new System.Drawing.Size(53, 28);
             this.lblDias.TabIndex = 83;
             this.lblDias.Text = "Días:";
             // 
             // txtAños
             // 
-            this.txtAños.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtAños.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtAños.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
             this.txtAños.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtAños.BorderRadius = 10;
             this.txtAños.BorderSize = 2;
             this.txtAños.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAños.ForeColor = System.Drawing.Color.White;
-            this.txtAños.Location = new System.Drawing.Point(131, 44);
-            this.txtAños.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAños.Location = new System.Drawing.Point(149, 59);
+            this.txtAños.Margin = new System.Windows.Forms.Padding(5);
             this.txtAños.Multiline = false;
             this.txtAños.Name = "txtAños";
-            this.txtAños.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtAños.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtAños.PasswordChar = false;
             this.txtAños.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtAños.PlaceholderText = "Años";
-            this.txtAños.Size = new System.Drawing.Size(144, 31);
+            this.txtAños.Size = new System.Drawing.Size(165, 39);
             this.txtAños.TabIndex = 85;
             this.txtAños.Texts = "";
             this.txtAños.UnderlinedStyle = false;
@@ -174,18 +174,19 @@
             this.lblHoras.AutoSize = true;
             this.lblHoras.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblHoras.ForeColor = System.Drawing.Color.White;
-            this.lblHoras.Location = new System.Drawing.Point(60, 167);
+            this.lblHoras.Location = new System.Drawing.Point(65, 223);
             this.lblHoras.Name = "lblHoras";
-            this.lblHoras.Size = new System.Drawing.Size(54, 21);
+            this.lblHoras.Size = new System.Drawing.Size(67, 28);
             this.lblHoras.TabIndex = 84;
             this.lblHoras.Text = "Horas:";
             // 
             // btnClose
             // 
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(131, 299);
+            this.btnClose.Location = new System.Drawing.Point(150, 399);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(30, 38);
+            this.btnClose.Size = new System.Drawing.Size(34, 51);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 89;
             this.btnClose.TabStop = false;
@@ -196,9 +197,9 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(57, 9);
+            this.lblTitle.Location = new System.Drawing.Point(65, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(188, 25);
+            this.lblTitle.Size = new System.Drawing.Size(227, 31);
             this.lblTitle.TabIndex = 90;
             this.lblTitle.Text = "Conversor de tiempo";
             // 
@@ -212,9 +213,10 @@
             this.btnConvertir.FlatAppearance.BorderSize = 0;
             this.btnConvertir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvertir.ForeColor = System.Drawing.Color.White;
-            this.btnConvertir.Location = new System.Drawing.Point(44, 262);
+            this.btnConvertir.Location = new System.Drawing.Point(50, 349);
+            this.btnConvertir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConvertir.Name = "btnConvertir";
-            this.btnConvertir.Size = new System.Drawing.Size(231, 29);
+            this.btnConvertir.Size = new System.Drawing.Size(264, 39);
             this.btnConvertir.TabIndex = 92;
             this.btnConvertir.Text = "Convertir";
             this.btnConvertir.TextColor = System.Drawing.Color.White;
@@ -228,12 +230,13 @@
             this.txtResultado.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtResultado.ForeColor = System.Drawing.Color.White;
             this.txtResultado.Image = null;
-            this.txtResultado.Location = new System.Drawing.Point(44, 215);
+            this.txtResultado.Location = new System.Drawing.Point(50, 287);
+            this.txtResultado.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtResultado.MaxLength = 32767;
             this.txtResultado.Multiline = false;
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = false;
-            this.txtResultado.Size = new System.Drawing.Size(230, 42);
+            this.txtResultado.Size = new System.Drawing.Size(263, 46);
             this.txtResultado.TabIndex = 97;
             this.txtResultado.Text = "Resultado";
             this.txtResultado.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
@@ -241,10 +244,10 @@
             // 
             // FrmConvertTime
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(316, 347);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.ClientSize = new System.Drawing.Size(361, 463);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.btnConvertir);
             this.Controls.Add(this.lblTitle);
@@ -258,6 +261,7 @@
             this.Controls.Add(this.txtAños);
             this.Controls.Add(this.lblHoras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmConvertTime";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmConvertTime";

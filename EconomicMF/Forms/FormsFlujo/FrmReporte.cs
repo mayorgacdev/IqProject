@@ -31,7 +31,8 @@ namespace EconomicMF.Forms.FormsFlujo
             var projects = await unitOfWork.ProjectClient.GetProjectsAsync(DataOnMemory.SolutionId);
 
             dtgFNE.DataSource = (from e in (projects)
-                                 select new { e.Id, e.Name, e.Duration, e.Description, e.Period, e.TMAR, e.TMARMixta, e.Contribution }).ToList();
+                                 select new { e.Id, e.Name, e.Duration, e.Description, e.Period, e.TMAR,
+                                     e.TMARMixta, e.Contribution }).ToList();
             dtgFNE.Columns[0].Visible = false;
 
             ChargeUcReport(projects);

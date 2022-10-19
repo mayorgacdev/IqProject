@@ -58,7 +58,7 @@
             // 
             // txtOriginal
             // 
-            this.txtOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtOriginal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
             this.txtOriginal.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtOriginal.BorderRadius = 10;
@@ -81,7 +81,7 @@
             // 
             // txtActual
             // 
-            this.txtActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtActual.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
             this.txtActual.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtActual.BorderRadius = 10;
@@ -124,7 +124,7 @@
             // 
             // cmbInteresOriginal
             // 
-            this.cmbInteresOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.cmbInteresOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
             this.cmbInteresOriginal.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbInteresOriginal.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbInteresOriginal.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
@@ -138,7 +138,7 @@
             this.cmbInteresOriginal.DropDownHeight = 100;
             this.cmbInteresOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInteresOriginal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbInteresOriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbInteresOriginal.ForeColor = System.Drawing.Color.White;
             this.cmbInteresOriginal.FormattingEnabled = true;
             this.cmbInteresOriginal.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbInteresOriginal.IntegralHeight = false;
@@ -153,7 +153,7 @@
             // 
             // cmbInteresActual
             // 
-            this.cmbInteresActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.cmbInteresActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
             this.cmbInteresActual.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbInteresActual.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbInteresActual.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
@@ -167,7 +167,7 @@
             this.cmbInteresActual.DropDownHeight = 100;
             this.cmbInteresActual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInteresActual.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbInteresActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbInteresActual.ForeColor = System.Drawing.Color.White;
             this.cmbInteresActual.FormattingEnabled = true;
             this.cmbInteresActual.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbInteresActual.IntegralHeight = false;
@@ -182,7 +182,7 @@
             // 
             // cmbFrecOriginal
             // 
-            this.cmbFrecOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.cmbFrecOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
             this.cmbFrecOriginal.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbFrecOriginal.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbFrecOriginal.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
@@ -196,7 +196,7 @@
             this.cmbFrecOriginal.DropDownHeight = 100;
             this.cmbFrecOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFrecOriginal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbFrecOriginal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbFrecOriginal.ForeColor = System.Drawing.Color.White;
             this.cmbFrecOriginal.FormattingEnabled = true;
             this.cmbFrecOriginal.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbFrecOriginal.IntegralHeight = false;
@@ -210,8 +210,8 @@
             // 
             // cmbFrecActual
             // 
-            this.cmbFrecActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
-            this.cmbFrecActual.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.cmbFrecActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
+            this.cmbFrecActual.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(60)))));
             this.cmbFrecActual.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbFrecActual.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.cmbFrecActual.ColorD = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
@@ -224,7 +224,7 @@
             this.cmbFrecActual.DropDownHeight = 100;
             this.cmbFrecActual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFrecActual.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbFrecActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbFrecActual.ForeColor = System.Drawing.Color.White;
             this.cmbFrecActual.FormattingEnabled = true;
             this.cmbFrecActual.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbFrecActual.IntegralHeight = false;
@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(608, 405);
             this.Controls.Add(this.lblTasaActual);
             this.Controls.Add(this.lblTasaOriginal);

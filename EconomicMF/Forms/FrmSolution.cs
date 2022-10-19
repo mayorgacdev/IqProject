@@ -120,19 +120,23 @@ namespace EconomicMF.Forms
                 Charge();
                 return;
             }
-            var solutions = await unitOfWork.SolutionClient.GetByUserEmailAsync(userEmail);
-            var solutionQuery = solutions.Where(r => r.SolutionName.Equals(txtSearch.Texts) || r.Description.Equals(txtSearch.Texts));
-            int countUsers = solutionQuery.Count();
-
-            if (countUsers > 0)
+            else
             {
+                var solutions = await unitOfWork.SolutionClient.GetByUserEmailAsync(userEmail);
+                var solutionQuery = (from r in solutions
+                                     where r.SolutionName.Equals(txtSearch.Texts) || r.Description.Equals(txtSearch.Texts)
+                                     select
+                                     new { r.Id }).ToList();
+
                 flowLayoutPanel1.Controls.Clear();
                 foreach (var item in solutionQuery)
                 {
                     UCSolutions uCSolutions = new UCSolutions(unitOfWork, item.Id);
                     flowLayoutPanel1.Controls.Add(uCSolutions);
                 }
+
             }
+
         }
     }
 }

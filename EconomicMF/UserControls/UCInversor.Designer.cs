@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCInversor));
             this.lblNameInversor = new System.Windows.Forms.Label();
-            this.pbProfileImage = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfileImage)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNameInversor
@@ -39,41 +39,35 @@
             this.lblNameInversor.AutoSize = true;
             this.lblNameInversor.Font = new System.Drawing.Font("Yu Gothic UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNameInversor.ForeColor = System.Drawing.Color.White;
-            this.lblNameInversor.Location = new System.Drawing.Point(55, 16);
+            this.lblNameInversor.Location = new System.Drawing.Point(68, 16);
             this.lblNameInversor.Name = "lblNameInversor";
             this.lblNameInversor.Size = new System.Drawing.Size(120, 23);
             this.lblNameInversor.TabIndex = 1;
             this.lblNameInversor.Text = "Pepito Inversor";
             // 
-            // pbProfileImage
+            // pictureBox1
             // 
-            this.pbProfileImage.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbProfileImage.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.pbProfileImage.BorderColor2 = System.Drawing.Color.HotPink;
-            this.pbProfileImage.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbProfileImage.BorderSize = 2;
-            this.pbProfileImage.GradientAngle = 50F;
-            this.pbProfileImage.Image = ((System.Drawing.Image)(resources.GetObject("pbProfileImage.Image")));
-            this.pbProfileImage.Location = new System.Drawing.Point(10, 10);
-            this.pbProfileImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pbProfileImage.Name = "pbProfileImage";
-            this.pbProfileImage.Size = new System.Drawing.Size(36, 36);
-            this.pbProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbProfileImage.TabIndex = 2;
-            this.pbProfileImage.TabStop = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(11, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(44, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // UCInversor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
-            this.Controls.Add(this.pbProfileImage);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblNameInversor);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCInversor";
             this.Size = new System.Drawing.Size(242, 53);
             this.Load += new System.EventHandler(this.UCInversor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfileImage)).EndInit();
+            this.Click += new System.EventHandler(this.UCInversor_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,6 +75,6 @@
 
         #endregion
         private System.Windows.Forms.Label lblNameInversor;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox pbProfileImage;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

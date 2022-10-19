@@ -38,17 +38,23 @@
             this.bodyMessage = new ReaLTaiizor.Controls.RichTextBoxEdit();
             this.txtEmail = new RJCodeAdvance.RJControls.RJTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMinimize = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.btnMinimize);
+            this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnMenu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -72,10 +78,10 @@
             // btnMenu
             // 
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
-            this.btnMenu.Location = new System.Drawing.Point(0, 0);
+            this.btnMenu.Location = new System.Drawing.Point(9, 3);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(38, 43);
+            this.btnMenu.Size = new System.Drawing.Size(31, 36);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMenu.TabIndex = 15;
             this.btnMenu.TabStop = false;
@@ -175,14 +181,37 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(585, 140);
+            this.pictureBox2.Location = new System.Drawing.Point(599, 140);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 67);
+            this.pictureBox2.Size = new System.Drawing.Size(37, 53);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 74;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.Location = new System.Drawing.Point(576, 2);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(34, 41);
+            this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimize.TabIndex = 20;
+            this.btnMinimize.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(616, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(44, 41);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // FrmSendReportToInversor
             // 
@@ -202,6 +231,8 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,5 +248,7 @@
         private ReaLTaiizor.Controls.RichTextBoxEdit bodyMessage;
         private RJCodeAdvance.RJControls.RJButton btnAgregar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnMinimize;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

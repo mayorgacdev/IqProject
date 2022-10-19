@@ -118,7 +118,7 @@
             this.btnOthers.Name = "btnOthers";
             this.btnOthers.Size = new System.Drawing.Size(200, 53);
             this.btnOthers.TabIndex = 15;
-            this.btnOthers.Text = "Otros";
+            this.btnOthers.Text = "Otro";
             this.btnOthers.TextColor = System.Drawing.Color.White;
             this.btnOthers.UseVisualStyleBackColor = false;
             this.btnOthers.Click += new System.EventHandler(this.btnOthers_Click);
@@ -176,7 +176,7 @@
             this.btnGestionar.Name = "btnGestionar";
             this.btnGestionar.Size = new System.Drawing.Size(200, 53);
             this.btnGestionar.TabIndex = 4;
-            this.btnGestionar.Text = "Gestionar";
+            this.btnGestionar.Text = "Herramientas";
             this.btnGestionar.TextColor = System.Drawing.Color.White;
             this.btnGestionar.UseVisualStyleBackColor = false;
             this.btnGestionar.Click += new System.EventHandler(this.btnGestionar_Click);

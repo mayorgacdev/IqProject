@@ -87,6 +87,14 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 Assets = assets,
             };
 
+
+            lblCostCount.Text = projectCosts.Count + "";
+            lblCountAsset.Text = assets.Count + "";
+            lblEntryCount.Text = projectEntries.Count + "";
+            lblExpenseCount.Text = projectExpenses.Count + "";
+            lblInversionesCount.Text = invesmentAreas.Count + "";
+            lblTasa.Text = "Esperando...";
+
             return project;
 
         }
@@ -265,6 +273,5 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 ChargeLabels(project);
             }
         }
-
     }
 }

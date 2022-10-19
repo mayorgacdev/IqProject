@@ -47,8 +47,6 @@
             this.txtPhone = new RJCodeAdvance.RJControls.RJTextBox();
             this.txtContraseñaNueva = new RJCodeAdvance.RJControls.RJTextBox();
             this.txtNameUser = new RJCodeAdvance.RJControls.RJTextBox();
-            this.lblContraseñaActual = new System.Windows.Forms.Label();
-            this.txtContraseñaActual = new RJCodeAdvance.RJControls.RJTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblInit = new System.Windows.Forms.Label();
             this.tgUpdatePassword = new RJCodeAdvance.RJControls.RJToggleButton();
@@ -58,6 +56,7 @@
             this.btnUpdate = new RJCodeAdvance.RJControls.RJButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelConfig = new System.Windows.Forms.Panel();
+            this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.panelContenedor.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
@@ -224,8 +224,6 @@
             this.panelOpen.Controls.Add(this.txtPhone);
             this.panelOpen.Controls.Add(this.txtContraseñaNueva);
             this.panelOpen.Controls.Add(this.txtNameUser);
-            this.panelOpen.Controls.Add(this.lblContraseñaActual);
-            this.panelOpen.Controls.Add(this.txtContraseñaActual);
             this.panelOpen.Controls.Add(this.label2);
             this.panelOpen.Controls.Add(this.lblInit);
             this.panelOpen.Controls.Add(this.tgUpdatePassword);
@@ -290,7 +288,7 @@
             // 
             this.lblContraseñaNueva.AutoSize = true;
             this.lblContraseñaNueva.ForeColor = System.Drawing.Color.White;
-            this.lblContraseñaNueva.Location = new System.Drawing.Point(405, 409);
+            this.lblContraseñaNueva.Location = new System.Drawing.Point(83, 399);
             this.lblContraseñaNueva.Name = "lblContraseñaNueva";
             this.lblContraseñaNueva.Size = new System.Drawing.Size(126, 20);
             this.lblContraseñaNueva.TabIndex = 137;
@@ -327,7 +325,7 @@
             this.txtContraseñaNueva.BorderSize = 2;
             this.txtContraseñaNueva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtContraseñaNueva.ForeColor = System.Drawing.Color.White;
-            this.txtContraseñaNueva.Location = new System.Drawing.Point(371, 424);
+            this.txtContraseñaNueva.Location = new System.Drawing.Point(70, 424);
             this.txtContraseñaNueva.Margin = new System.Windows.Forms.Padding(5);
             this.txtContraseñaNueva.Multiline = false;
             this.txtContraseñaNueva.Name = "txtContraseñaNueva";
@@ -335,7 +333,7 @@
             this.txtContraseñaNueva.PasswordChar = true;
             this.txtContraseñaNueva.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtContraseñaNueva.PlaceholderText = "Contraseña nueva";
-            this.txtContraseñaNueva.Size = new System.Drawing.Size(287, 39);
+            this.txtContraseñaNueva.Size = new System.Drawing.Size(588, 39);
             this.txtContraseñaNueva.TabIndex = 136;
             this.txtContraseñaNueva.Texts = "";
             this.txtContraseñaNueva.UnderlinedStyle = true;
@@ -361,38 +359,6 @@
             this.txtNameUser.TabIndex = 124;
             this.txtNameUser.Texts = "";
             this.txtNameUser.UnderlinedStyle = true;
-            // 
-            // lblContraseñaActual
-            // 
-            this.lblContraseñaActual.AutoSize = true;
-            this.lblContraseñaActual.ForeColor = System.Drawing.Color.White;
-            this.lblContraseñaActual.Location = new System.Drawing.Point(125, 409);
-            this.lblContraseñaActual.Name = "lblContraseñaActual";
-            this.lblContraseñaActual.Size = new System.Drawing.Size(127, 20);
-            this.lblContraseñaActual.TabIndex = 135;
-            this.lblContraseñaActual.Text = "Contraseña actual";
-            // 
-            // txtContraseñaActual
-            // 
-            this.txtContraseñaActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.txtContraseñaActual.BorderColor = System.Drawing.Color.White;
-            this.txtContraseñaActual.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtContraseñaActual.BorderRadius = 0;
-            this.txtContraseñaActual.BorderSize = 2;
-            this.txtContraseñaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtContraseñaActual.ForeColor = System.Drawing.Color.White;
-            this.txtContraseñaActual.Location = new System.Drawing.Point(70, 424);
-            this.txtContraseñaActual.Margin = new System.Windows.Forms.Padding(5);
-            this.txtContraseñaActual.Multiline = false;
-            this.txtContraseñaActual.Name = "txtContraseñaActual";
-            this.txtContraseñaActual.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
-            this.txtContraseñaActual.PasswordChar = true;
-            this.txtContraseñaActual.PlaceholderColor = System.Drawing.Color.Gray;
-            this.txtContraseñaActual.PlaceholderText = "Contraseña actual";
-            this.txtContraseñaActual.Size = new System.Drawing.Size(277, 39);
-            this.txtContraseñaActual.TabIndex = 134;
-            this.txtContraseñaActual.Texts = "";
-            this.txtContraseñaActual.UnderlinedStyle = true;
             // 
             // label2
             // 
@@ -511,12 +477,25 @@
             // panelConfig
             // 
             this.panelConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.panelConfig.Controls.Add(this.btnMinimize);
             this.panelConfig.Controls.Add(this.pictureBox2);
             this.panelConfig.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelConfig.Location = new System.Drawing.Point(0, 0);
             this.panelConfig.Name = "panelConfig";
             this.panelConfig.Size = new System.Drawing.Size(984, 49);
             this.panelConfig.TabIndex = 0;
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.Location = new System.Drawing.Point(896, 4);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(34, 41);
+            this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimize.TabIndex = 19;
+            this.btnMinimize.TabStop = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // FrmConfigInit
             // 
@@ -543,6 +522,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelConfig.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -572,10 +552,9 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label3;
         private RJCodeAdvance.RJControls.RJTextBox txtConfirmar;
-        private System.Windows.Forms.Label lblContraseñaActual;
-        private RJCodeAdvance.RJControls.RJTextBox txtContraseñaActual;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelConfig;
         private System.Windows.Forms.PictureBox btnClose;
+        private System.Windows.Forms.PictureBox btnMinimize;
     }
 }

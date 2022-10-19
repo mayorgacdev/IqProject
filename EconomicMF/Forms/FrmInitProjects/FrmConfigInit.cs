@@ -28,7 +28,7 @@ namespace EconomicMF.Forms.FrmInitProjects
 
         private void pictureBox2_Click(object sender, System.EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void tgUpdatePassword_CheckedChanged_1(object sender, System.EventArgs e)
@@ -40,16 +40,12 @@ namespace EconomicMF.Forms.FrmInitProjects
         {
             if (tgUpdatePassword.Checked)
             {
-                lblContraseñaActual.Visible = isUse;
-                txtContraseñaActual.Visible = isUse;
 
                 lblContraseñaNueva.Visible = isUse;
                 txtContraseñaNueva.Visible = isUse;
             }
             else
             {
-                lblContraseñaActual.Visible = isUse;
-                txtContraseñaActual.Visible = isUse;
 
                 lblContraseñaNueva.Visible = isUse;
                 txtContraseñaNueva.Visible = isUse;
@@ -65,6 +61,7 @@ namespace EconomicMF.Forms.FrmInitProjects
             }
 
             var user = await unitOfWork.UserClient.GetByEmailAsync(DataOnMemory.Email);
+
             user.State = false;
 
             bool exist = await unitOfWork.UserClient.AccessToAppAsync(user.Email.ToString(), txtConfirmar.Texts);
@@ -73,7 +70,8 @@ namespace EconomicMF.Forms.FrmInitProjects
             {
                 Id = user.Id,
                 Name = user.Name,
-                PhoneNumber = user.Email,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
                 Dni = user.Dni,
                 Password = txtConfirmar.Texts,
                 State = user.State,
@@ -87,31 +85,65 @@ namespace EconomicMF.Forms.FrmInitProjects
         {
             try
             {
-                var user = await unitOfWork.UserClient.GetByEmailAsync(DataOnMemory.Email);
-                user.Name = txtNameUser.Texts;
-                user.PhoneNumber = txtPhone.Texts;
-                user.Dni = txtDNI.Texts;
-
-                bool exist = await unitOfWork.UserClient.AccessToAppAsync(user.Email.ToString(), txtConfirmar.Texts);
-
-                if (exist)
+                if (tgUpdatePassword.Checked)
                 {
-                    await unitOfWork.UserClient.UpdateAsync(new User()
+                    var user = await unitOfWork.UserClient.GetByEmailAsync(DataOnMemory.Email);
+                    user.Name = txtNameUser.Texts;
+                    user.PhoneNumber = txtPhone.Texts;
+                    user.Dni = txtDNI.Texts;
+
+                    bool exist = await unitOfWork.UserClient.AccessToAppAsync(user.Email.ToString(), txtConfirmar.Texts);
+
+                    if (exist)
                     {
-                        Id = user.Id,
-                        Name = user.Name,
-                        PhoneNumber = user.Email,
-                        Dni = user.Dni,
-                        Password = txtConfirmar.Texts,
-                        State = user.State,
-                        Creation = user.Creation,
-                    });
-                    MessageBox.Show("Actualizado correctamente");
+                        await unitOfWork.UserClient.UpdateAsync(new User()
+                        {
+                            Id = user.Id,
+                            Name = user.Name,
+                            Email = user.Email,
+                            PhoneNumber = user.PhoneNumber,
+                            Dni = user.Dni,
+                            Password = txtContraseñaNueva.Texts,
+                            State = user.State,
+                            Creation = user.Creation,
+                        });
+                        MessageBox.Show("Actualizado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al actualizar los datos, verifique su contraseña");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar los datos, verifique su contraseña");
+                    var user = await unitOfWork.UserClient.GetByEmailAsync(DataOnMemory.Email);
+                    user.Name = txtNameUser.Texts;
+                    user.PhoneNumber = txtPhone.Texts;
+                    user.Dni = txtDNI.Texts;
+
+                    bool exist = await unitOfWork.UserClient.AccessToAppAsync(user.Email.ToString(), txtConfirmar.Texts);
+
+                    if (exist)
+                    {
+                        await unitOfWork.UserClient.UpdateAsync(new User()
+                        {
+                            Id = user.Id,
+                            Name = user.Name,
+                            Email = user.Email,
+                            PhoneNumber = user.PhoneNumber,
+                            Dni = user.Dni,
+                            Password = txtConfirmar.Texts,
+                            State = user.State,
+                            Creation = user.Creation,
+                        });
+                        MessageBox.Show("Actualizado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al actualizar los datos, verifique su contraseña");
+                    }
                 }
+                
             }
             catch (Exception ex)
             {
@@ -123,6 +155,11 @@ namespace EconomicMF.Forms.FrmInitProjects
         private void btnClose_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

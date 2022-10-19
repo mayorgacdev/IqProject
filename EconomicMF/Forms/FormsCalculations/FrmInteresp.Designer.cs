@@ -46,28 +46,27 @@
             this.txtDuracion = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblDuracion = new System.Windows.Forms.Label();
             this.btnConverTime = new RJCodeAdvance.RJControls.RJButton();
-            this.foreverTextBox1 = new ReaLTaiizor.Controls.ForeverTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // txtVF
             // 
-            this.txtVF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtVF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtVF.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(150)))));
             this.txtVF.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtVF.BorderRadius = 10;
             this.txtVF.BorderSize = 2;
             this.txtVF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtVF.ForeColor = System.Drawing.Color.White;
-            this.txtVF.Location = new System.Drawing.Point(519, 108);
-            this.txtVF.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVF.Location = new System.Drawing.Point(593, 144);
+            this.txtVF.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtVF.Multiline = false;
             this.txtVF.Name = "txtVF";
-            this.txtVF.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtVF.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtVF.PasswordChar = false;
             this.txtVF.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtVF.PlaceholderText = "Valor futuro";
-            this.txtVF.Size = new System.Drawing.Size(202, 31);
+            this.txtVF.Size = new System.Drawing.Size(231, 39);
             this.txtVF.TabIndex = 54;
             this.txtVF.Texts = "";
             this.txtVF.UnderlinedStyle = false;
@@ -75,22 +74,22 @@
             // 
             // txtTasa
             // 
-            this.txtTasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtTasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtTasa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(150)))));
             this.txtTasa.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtTasa.BorderRadius = 10;
             this.txtTasa.BorderSize = 2;
             this.txtTasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtTasa.ForeColor = System.Drawing.Color.White;
-            this.txtTasa.Location = new System.Drawing.Point(177, 154);
-            this.txtTasa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTasa.Location = new System.Drawing.Point(202, 205);
+            this.txtTasa.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtTasa.Multiline = false;
             this.txtTasa.Name = "txtTasa";
-            this.txtTasa.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtTasa.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtTasa.PasswordChar = false;
             this.txtTasa.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtTasa.PlaceholderText = "Tasa de interés (%)";
-            this.txtTasa.Size = new System.Drawing.Size(212, 31);
+            this.txtTasa.Size = new System.Drawing.Size(242, 39);
             this.txtTasa.TabIndex = 52;
             this.txtTasa.Texts = "";
             this.txtTasa.UnderlinedStyle = false;
@@ -98,22 +97,22 @@
             // 
             // txtVP
             // 
-            this.txtVP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtVP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtVP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(150)))));
             this.txtVP.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtVP.BorderRadius = 10;
             this.txtVP.BorderSize = 2;
             this.txtVP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtVP.ForeColor = System.Drawing.Color.White;
-            this.txtVP.Location = new System.Drawing.Point(177, 108);
-            this.txtVP.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVP.Location = new System.Drawing.Point(202, 144);
+            this.txtVP.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtVP.Multiline = false;
             this.txtVP.Name = "txtVP";
-            this.txtVP.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtVP.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtVP.PasswordChar = false;
             this.txtVP.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtVP.PlaceholderText = "Valor presente";
-            this.txtVP.Size = new System.Drawing.Size(212, 31);
+            this.txtVP.Size = new System.Drawing.Size(242, 39);
             this.txtVP.TabIndex = 51;
             this.txtVP.Texts = "";
             this.txtVP.UnderlinedStyle = false;
@@ -122,9 +121,10 @@
             // btnClose
             // 
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(359, 290);
+            this.btnClose.Location = new System.Drawing.Point(410, 387);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(30, 38);
+            this.btnClose.Size = new System.Drawing.Size(34, 51);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 59;
             this.btnClose.TabStop = false;
@@ -140,9 +140,10 @@
             this.btnAddFlow.FlatAppearance.BorderSize = 0;
             this.btnAddFlow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFlow.ForeColor = System.Drawing.Color.White;
-            this.btnAddFlow.Location = new System.Drawing.Point(17, 244);
+            this.btnAddFlow.Location = new System.Drawing.Point(19, 325);
+            this.btnAddFlow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddFlow.Name = "btnAddFlow";
-            this.btnAddFlow.Size = new System.Drawing.Size(708, 29);
+            this.btnAddFlow.Size = new System.Drawing.Size(809, 39);
             this.btnAddFlow.TabIndex = 60;
             this.btnAddFlow.Text = "Calcular";
             this.btnAddFlow.TextColor = System.Drawing.Color.White;
@@ -165,14 +166,15 @@
             this.cmbType.DropDownHeight = 100;
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbType.ForeColor = System.Drawing.Color.White;
             this.cmbType.FormattingEnabled = true;
             this.cmbType.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbType.IntegralHeight = false;
             this.cmbType.ItemHeight = 20;
-            this.cmbType.Location = new System.Drawing.Point(20, 46);
+            this.cmbType.Location = new System.Drawing.Point(23, 61);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(200, 26);
+            this.cmbType.Size = new System.Drawing.Size(228, 26);
             this.cmbType.StartIndex = 0;
             this.cmbType.TabIndex = 61;
             this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
@@ -194,14 +196,15 @@
             this.cmbCalculus.DropDownHeight = 100;
             this.cmbCalculus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCalculus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbCalculus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbCalculus.ForeColor = System.Drawing.Color.White;
             this.cmbCalculus.FormattingEnabled = true;
             this.cmbCalculus.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbCalculus.IntegralHeight = false;
             this.cmbCalculus.ItemHeight = 20;
-            this.cmbCalculus.Location = new System.Drawing.Point(525, 46);
+            this.cmbCalculus.Location = new System.Drawing.Point(600, 61);
+            this.cmbCalculus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbCalculus.Name = "cmbCalculus";
-            this.cmbCalculus.Size = new System.Drawing.Size(200, 26);
+            this.cmbCalculus.Size = new System.Drawing.Size(228, 26);
             this.cmbCalculus.StartIndex = 0;
             this.cmbCalculus.TabIndex = 62;
             this.cmbCalculus.SelectedIndexChanged += new System.EventHandler(this.cmbCalculus_SelectedIndexChanged);
@@ -222,14 +225,15 @@
             this.cmbPaymentFrec.DropDownHeight = 100;
             this.cmbPaymentFrec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaymentFrec.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbPaymentFrec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(97)))));
+            this.cmbPaymentFrec.ForeColor = System.Drawing.Color.White;
             this.cmbPaymentFrec.FormattingEnabled = true;
             this.cmbPaymentFrec.HoverSelectionColor = System.Drawing.Color.Empty;
             this.cmbPaymentFrec.IntegralHeight = false;
             this.cmbPaymentFrec.ItemHeight = 20;
-            this.cmbPaymentFrec.Location = new System.Drawing.Point(272, 46);
+            this.cmbPaymentFrec.Location = new System.Drawing.Point(311, 61);
+            this.cmbPaymentFrec.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbPaymentFrec.Name = "cmbPaymentFrec";
-            this.cmbPaymentFrec.Size = new System.Drawing.Size(200, 26);
+            this.cmbPaymentFrec.Size = new System.Drawing.Size(228, 26);
             this.cmbPaymentFrec.StartIndex = 0;
             this.cmbPaymentFrec.TabIndex = 63;
             this.cmbPaymentFrec.SelectionChangeCommitted += new System.EventHandler(this.cmbPaymentFrec_SelectionChangeCommitted);
@@ -239,9 +243,9 @@
             this.lblInteres.AutoSize = true;
             this.lblInteres.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblInteres.ForeColor = System.Drawing.Color.White;
-            this.lblInteres.Location = new System.Drawing.Point(17, 154);
+            this.lblInteres.Location = new System.Drawing.Point(19, 205);
             this.lblInteres.Name = "lblInteres";
-            this.lblInteres.Size = new System.Drawing.Size(141, 21);
+            this.lblInteres.Size = new System.Drawing.Size(175, 28);
             this.lblInteres.TabIndex = 66;
             this.lblInteres.Text = "Tasa de interés (%):";
             // 
@@ -250,9 +254,9 @@
             this.lblPresente.AutoSize = true;
             this.lblPresente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPresente.ForeColor = System.Drawing.Color.White;
-            this.lblPresente.Location = new System.Drawing.Point(17, 109);
+            this.lblPresente.Location = new System.Drawing.Point(19, 145);
             this.lblPresente.Name = "lblPresente";
-            this.lblPresente.Size = new System.Drawing.Size(110, 21);
+            this.lblPresente.Size = new System.Drawing.Size(137, 28);
             this.lblPresente.TabIndex = 67;
             this.lblPresente.Text = "Valor presente";
             // 
@@ -261,9 +265,9 @@
             this.lblFuturo.AutoSize = true;
             this.lblFuturo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFuturo.ForeColor = System.Drawing.Color.White;
-            this.lblFuturo.Location = new System.Drawing.Point(400, 109);
+            this.lblFuturo.Location = new System.Drawing.Point(457, 145);
             this.lblFuturo.Name = "lblFuturo";
-            this.lblFuturo.Size = new System.Drawing.Size(100, 21);
+            this.lblFuturo.Size = new System.Drawing.Size(125, 28);
             this.lblFuturo.TabIndex = 68;
             this.lblFuturo.Text = "Valor futuro: ";
             // 
@@ -272,9 +276,9 @@
             this.lblTipo.AutoSize = true;
             this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTipo.ForeColor = System.Drawing.Color.White;
-            this.lblTipo.Location = new System.Drawing.Point(41, 9);
+            this.lblTipo.Location = new System.Drawing.Point(47, 12);
             this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(112, 21);
+            this.lblTipo.Size = new System.Drawing.Size(141, 28);
             this.lblTipo.TabIndex = 81;
             this.lblTipo.Text = "Tipo de interés";
             // 
@@ -283,9 +287,9 @@
             this.lblCalculo.AutoSize = true;
             this.lblCalculo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblCalculo.ForeColor = System.Drawing.Color.White;
-            this.lblCalculo.Location = new System.Drawing.Point(587, 9);
+            this.lblCalculo.Location = new System.Drawing.Point(671, 12);
             this.lblCalculo.Name = "lblCalculo";
-            this.lblCalculo.Size = new System.Drawing.Size(66, 21);
+            this.lblCalculo.Size = new System.Drawing.Size(81, 28);
             this.lblCalculo.TabIndex = 82;
             this.lblCalculo.Text = "Calcular";
             // 
@@ -294,30 +298,30 @@
             this.lblFrecuencia.AutoSize = true;
             this.lblFrecuencia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFrecuencia.ForeColor = System.Drawing.Color.White;
-            this.lblFrecuencia.Location = new System.Drawing.Point(292, 9);
+            this.lblFrecuencia.Location = new System.Drawing.Point(334, 12);
             this.lblFrecuencia.Name = "lblFrecuencia";
-            this.lblFrecuencia.Size = new System.Drawing.Size(144, 21);
+            this.lblFrecuencia.Size = new System.Drawing.Size(182, 28);
             this.lblFrecuencia.TabIndex = 83;
             this.lblFrecuencia.Text = "Frecuencia de pago";
             // 
             // txtDuracion
             // 
-            this.txtDuracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
+            this.txtDuracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
             this.txtDuracion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(150)))));
             this.txtDuracion.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtDuracion.BorderRadius = 10;
             this.txtDuracion.BorderSize = 2;
             this.txtDuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDuracion.ForeColor = System.Drawing.Color.White;
-            this.txtDuracion.Location = new System.Drawing.Point(519, 154);
-            this.txtDuracion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDuracion.Location = new System.Drawing.Point(593, 205);
+            this.txtDuracion.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtDuracion.Multiline = false;
             this.txtDuracion.Name = "txtDuracion";
-            this.txtDuracion.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtDuracion.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtDuracion.PasswordChar = false;
             this.txtDuracion.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtDuracion.PlaceholderText = "Duración";
-            this.txtDuracion.Size = new System.Drawing.Size(202, 31);
+            this.txtDuracion.Size = new System.Drawing.Size(231, 39);
             this.txtDuracion.TabIndex = 53;
             this.txtDuracion.Texts = "";
             this.txtDuracion.UnderlinedStyle = false;
@@ -328,9 +332,9 @@
             this.lblDuracion.AutoSize = true;
             this.lblDuracion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDuracion.ForeColor = System.Drawing.Color.White;
-            this.lblDuracion.Location = new System.Drawing.Point(400, 154);
+            this.lblDuracion.Location = new System.Drawing.Point(457, 205);
             this.lblDuracion.Name = "lblDuracion";
-            this.lblDuracion.Size = new System.Drawing.Size(80, 21);
+            this.lblDuracion.Size = new System.Drawing.Size(100, 28);
             this.lblDuracion.TabIndex = 69;
             this.lblDuracion.Text = "Duración: ";
             // 
@@ -344,40 +348,22 @@
             this.btnConverTime.FlatAppearance.BorderSize = 0;
             this.btnConverTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConverTime.ForeColor = System.Drawing.Color.White;
-            this.btnConverTime.Location = new System.Drawing.Point(17, 209);
+            this.btnConverTime.Location = new System.Drawing.Point(19, 279);
+            this.btnConverTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConverTime.Name = "btnConverTime";
-            this.btnConverTime.Size = new System.Drawing.Size(708, 29);
+            this.btnConverTime.Size = new System.Drawing.Size(809, 39);
             this.btnConverTime.TabIndex = 91;
             this.btnConverTime.Text = "Convertir tiempo";
             this.btnConverTime.TextColor = System.Drawing.Color.White;
             this.btnConverTime.UseVisualStyleBackColor = false;
             this.btnConverTime.Click += new System.EventHandler(this.btnConverTime_Click);
             // 
-            // foreverTextBox1
-            // 
-            this.foreverTextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.foreverTextBox1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
-            this.foreverTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(150)))));
-            this.foreverTextBox1.FocusOnHover = false;
-            this.foreverTextBox1.ForeColor = System.Drawing.Color.White;
-            this.foreverTextBox1.Location = new System.Drawing.Point(523, 290);
-            this.foreverTextBox1.MaxLength = 32767;
-            this.foreverTextBox1.Multiline = false;
-            this.foreverTextBox1.Name = "foreverTextBox1";
-            this.foreverTextBox1.ReadOnly = false;
-            this.foreverTextBox1.Size = new System.Drawing.Size(202, 29);
-            this.foreverTextBox1.TabIndex = 92;
-            this.foreverTextBox1.Text = "foreverTextBox1";
-            this.foreverTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.foreverTextBox1.UseSystemPasswordChar = false;
-            // 
             // FrmInteresp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(750, 344);
-            this.Controls.Add(this.foreverTextBox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
+            this.ClientSize = new System.Drawing.Size(857, 459);
             this.Controls.Add(this.btnConverTime);
             this.Controls.Add(this.lblFrecuencia);
             this.Controls.Add(this.lblCalculo);
@@ -396,7 +382,6 @@
             this.Controls.Add(this.txtTasa);
             this.Controls.Add(this.txtVP);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmInteresp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInteresp";
@@ -426,6 +411,5 @@
         private RJCodeAdvance.RJControls.RJTextBox txtDuracion;
         private System.Windows.Forms.Label lblDuracion;
         private RJCodeAdvance.RJControls.RJButton btnConverTime;
-        private ReaLTaiizor.Controls.ForeverTextBox foreverTextBox1;
     }
 }

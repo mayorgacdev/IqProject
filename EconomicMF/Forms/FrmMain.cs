@@ -49,7 +49,7 @@ namespace EconomicMF.Forms
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(SingletonFrm.GetForm(FormType.DashBoard));
+            AbrirFormEnPanel(new FrmStart(unitOfWork));
             ChargeLabels();
         }
 

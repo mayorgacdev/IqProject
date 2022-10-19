@@ -1,4 +1,4 @@
-ALTER PROCEDURE RemoveProject @projectId int 
+CREATE PROCEDURE RemoveProject @projectId int
 AS 
 BEGIN
      DELETE FROM Asset WHERE ProjectId = @projectId

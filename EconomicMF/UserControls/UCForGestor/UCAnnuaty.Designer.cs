@@ -53,19 +53,20 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(80)))));
-            this.panel1.Location = new System.Drawing.Point(3, 41);
+            this.panel1.Location = new System.Drawing.Point(3, 55);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(841, 2);
+            this.panel1.Size = new System.Drawing.Size(961, 3);
             this.panel1.TabIndex = 63;
             // 
             // lblPago
             // 
             this.lblPago.AutoSize = true;
             this.lblPago.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPago.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblPago.Location = new System.Drawing.Point(454, 8);
+            this.lblPago.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblPago.Location = new System.Drawing.Point(519, 11);
             this.lblPago.Name = "lblPago";
-            this.lblPago.Size = new System.Drawing.Size(36, 13);
+            this.lblPago.Size = new System.Drawing.Size(41, 17);
             this.lblPago.TabIndex = 76;
             this.lblPago.Text = "Pago:";
             // 
@@ -73,10 +74,10 @@
             // 
             this.lblTasa.AutoSize = true;
             this.lblTasa.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTasa.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblTasa.Location = new System.Drawing.Point(285, 8);
+            this.lblTasa.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblTasa.Location = new System.Drawing.Point(326, 11);
             this.lblTasa.Name = "lblTasa";
-            this.lblTasa.Size = new System.Drawing.Size(32, 13);
+            this.lblTasa.Size = new System.Drawing.Size(37, 17);
             this.lblTasa.TabIndex = 75;
             this.lblTasa.Text = "Tasa:";
             // 
@@ -85,9 +86,9 @@
             this.lblFuturo.AutoSize = true;
             this.lblFuturo.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFuturo.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblFuturo.Location = new System.Drawing.Point(164, 23);
+            this.lblFuturo.Location = new System.Drawing.Point(187, 31);
             this.lblFuturo.Name = "lblFuturo";
-            this.lblFuturo.Size = new System.Drawing.Size(72, 13);
+            this.lblFuturo.Size = new System.Drawing.Size(82, 17);
             this.lblFuturo.TabIndex = 74;
             this.lblFuturo.Text = "<Id project>";
             // 
@@ -96,9 +97,9 @@
             this.lblPresente.AutoSize = true;
             this.lblPresente.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPresente.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblPresente.Location = new System.Drawing.Point(164, 8);
+            this.lblPresente.Location = new System.Drawing.Point(187, 11);
             this.lblPresente.Name = "lblPresente";
-            this.lblPresente.Size = new System.Drawing.Size(90, 13);
+            this.lblPresente.Size = new System.Drawing.Size(103, 17);
             this.lblPresente.TabIndex = 73;
             this.lblPresente.Text = "<name project>";
             // 
@@ -106,10 +107,10 @@
             // 
             this.lblVF.AutoSize = true;
             this.lblVF.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblVF.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblVF.Location = new System.Drawing.Point(91, 23);
+            this.lblVF.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblVF.Location = new System.Drawing.Point(104, 31);
             this.lblVF.Name = "lblVF";
-            this.lblVF.Size = new System.Drawing.Size(58, 13);
+            this.lblVF.Size = new System.Drawing.Size(63, 17);
             this.lblVF.TabIndex = 72;
             this.lblVF.Text = "V. Futuro:";
             // 
@@ -117,20 +118,19 @@
             // 
             this.lblVP.AutoSize = true;
             this.lblVP.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblVP.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblVP.Location = new System.Drawing.Point(91, 8);
+            this.lblVP.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblVP.Location = new System.Drawing.Point(104, 11);
             this.lblVP.Name = "lblVP";
-            this.lblVP.Size = new System.Drawing.Size(67, 13);
+            this.lblVP.Size = new System.Drawing.Size(76, 17);
             this.lblVP.TabIndex = 71;
             this.lblVP.Text = "V. Presente:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(71, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(81, 35);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 70;
             this.pictureBox1.TabStop = false;
@@ -140,9 +140,9 @@
             this.lblRate.AutoSize = true;
             this.lblRate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblRate.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblRate.Location = new System.Drawing.Point(348, 8);
+            this.lblRate.Location = new System.Drawing.Point(398, 11);
             this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(75, 13);
+            this.lblRate.Size = new System.Drawing.Size(88, 17);
             this.lblRate.TabIndex = 77;
             this.lblRate.Text = "<NameUser>";
             // 
@@ -151,9 +151,9 @@
             this.lblAnualidad.AutoSize = true;
             this.lblAnualidad.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAnualidad.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblAnualidad.Location = new System.Drawing.Point(520, 8);
+            this.lblAnualidad.Location = new System.Drawing.Point(594, 11);
             this.lblAnualidad.Name = "lblAnualidad";
-            this.lblAnualidad.Size = new System.Drawing.Size(75, 13);
+            this.lblAnualidad.Size = new System.Drawing.Size(88, 17);
             this.lblAnualidad.TabIndex = 78;
             this.lblAnualidad.Text = "<NameUser>";
             // 
@@ -162,9 +162,9 @@
             this.lblPer.AutoSize = true;
             this.lblPer.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPer.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblPer.Location = new System.Drawing.Point(348, 23);
+            this.lblPer.Location = new System.Drawing.Point(398, 31);
             this.lblPer.Name = "lblPer";
-            this.lblPer.Size = new System.Drawing.Size(75, 13);
+            this.lblPer.Size = new System.Drawing.Size(88, 17);
             this.lblPer.TabIndex = 80;
             this.lblPer.Text = "<NameUser>";
             // 
@@ -172,10 +172,10 @@
             // 
             this.lblDuracion.AutoSize = true;
             this.lblDuracion.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDuracion.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblDuracion.Location = new System.Drawing.Point(285, 23);
+            this.lblDuracion.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblDuracion.Location = new System.Drawing.Point(326, 31);
             this.lblDuracion.Name = "lblDuracion";
-            this.lblDuracion.Size = new System.Drawing.Size(57, 13);
+            this.lblDuracion.Size = new System.Drawing.Size(63, 17);
             this.lblDuracion.TabIndex = 79;
             this.lblDuracion.Text = "Duracion:";
             // 
@@ -184,9 +184,9 @@
             this.lblPerGracia.AutoSize = true;
             this.lblPerGracia.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPerGracia.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblPerGracia.Location = new System.Drawing.Point(520, 23);
+            this.lblPerGracia.Location = new System.Drawing.Point(594, 31);
             this.lblPerGracia.Name = "lblPerGracia";
-            this.lblPerGracia.Size = new System.Drawing.Size(75, 13);
+            this.lblPerGracia.Size = new System.Drawing.Size(88, 17);
             this.lblPerGracia.TabIndex = 82;
             this.lblPerGracia.Text = "<NameUser>";
             // 
@@ -194,10 +194,10 @@
             // 
             this.lblGracia.AutoSize = true;
             this.lblGracia.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblGracia.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblGracia.Location = new System.Drawing.Point(454, 23);
+            this.lblGracia.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblGracia.Location = new System.Drawing.Point(519, 31);
             this.lblGracia.Name = "lblGracia";
-            this.lblGracia.Size = new System.Drawing.Size(61, 13);
+            this.lblGracia.Size = new System.Drawing.Size(71, 17);
             this.lblGracia.TabIndex = 81;
             this.lblGracia.Text = "Per Gracia:";
             // 
@@ -206,9 +206,9 @@
             this.lblFrec.AutoSize = true;
             this.lblFrec.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFrec.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblFrec.Location = new System.Drawing.Point(725, 23);
+            this.lblFrec.Location = new System.Drawing.Point(829, 31);
             this.lblFrec.Name = "lblFrec";
-            this.lblFrec.Size = new System.Drawing.Size(75, 13);
+            this.lblFrec.Size = new System.Drawing.Size(88, 17);
             this.lblFrec.TabIndex = 86;
             this.lblFrec.Text = "<NameUser>";
             // 
@@ -216,10 +216,10 @@
             // 
             this.lblFrecuencia.AutoSize = true;
             this.lblFrecuencia.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFrecuencia.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblFrecuencia.Location = new System.Drawing.Point(659, 23);
+            this.lblFrecuencia.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblFrecuencia.Location = new System.Drawing.Point(753, 31);
             this.lblFrecuencia.Name = "lblFrecuencia";
-            this.lblFrecuencia.Size = new System.Drawing.Size(65, 13);
+            this.lblFrecuencia.Size = new System.Drawing.Size(72, 17);
             this.lblFrecuencia.TabIndex = 85;
             this.lblFrecuencia.Text = "Frecuencia:";
             // 
@@ -228,9 +228,9 @@
             this.lblIncr.AutoSize = true;
             this.lblIncr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblIncr.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblIncr.Location = new System.Drawing.Point(725, 8);
+            this.lblIncr.Location = new System.Drawing.Point(829, 11);
             this.lblIncr.Name = "lblIncr";
-            this.lblIncr.Size = new System.Drawing.Size(75, 13);
+            this.lblIncr.Size = new System.Drawing.Size(88, 17);
             this.lblIncr.TabIndex = 84;
             this.lblIncr.Text = "<NameUser>";
             // 
@@ -238,16 +238,16 @@
             // 
             this.lblIncremento.AutoSize = true;
             this.lblIncremento.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblIncremento.ForeColor = System.Drawing.Color.SpringGreen;
-            this.lblIncremento.Location = new System.Drawing.Point(659, 8);
+            this.lblIncremento.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lblIncremento.Location = new System.Drawing.Point(753, 11);
             this.lblIncremento.Name = "lblIncremento";
-            this.lblIncremento.Size = new System.Drawing.Size(68, 13);
+            this.lblIncremento.Size = new System.Drawing.Size(76, 17);
             this.lblIncremento.TabIndex = 87;
             this.lblIncremento.Text = "Incremento:";
             // 
             // UCAnnuaty
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(39)))));
             this.Controls.Add(this.lblIncremento);
@@ -268,9 +268,8 @@
             this.Controls.Add(this.lblVP);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UCAnnuaty";
-            this.Size = new System.Drawing.Size(841, 43);
+            this.Size = new System.Drawing.Size(961, 57);
             this.Load += new System.EventHandler(this.UCAnnuaty_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
