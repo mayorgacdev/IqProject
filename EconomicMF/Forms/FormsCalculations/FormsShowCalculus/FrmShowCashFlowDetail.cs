@@ -44,7 +44,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
         private void FrmShowCashFlowDetail_Load(object sender, EventArgs e)
         {
             //this.pnlChart.Controls.Add(chartCashFlow);
-            LlenarDgv();
+            //LlenarDgv();
         }
         private async void LlenarDgv()
         {
@@ -79,8 +79,6 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
         {
             this.Close();
         }
-        //TODO: Falta probar
-        //TODO: Falta probar
         private void AddFlow(EconomicDto economic)
         {
             var dataset = new Guna.Charts.WinForms.GunaBarDataset();
@@ -132,12 +130,6 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        //Flujo de caja clase
-        private void FlujoCaja()
-        {
-
-        }
-
         //flujo de caja Synfusion
         public void FlujoCajaSync(List<EconomicDto> economics)
         {
@@ -182,11 +174,6 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                     }
                 }
             }
-        }
-
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-            txtSearch.Texts = String.Empty;
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -244,6 +231,12 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             path = $"{path}DetalleDeFlujo{random.Next(20, 555)}.xlsx";
 
             CreateExcelFile.CreateExcelDocument(cashFlow.ToList(), path);
+        }
+
+        private void txtSearch_Click_1(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            panel1.BackColor = Color.HotPink;
         }
     }
 }

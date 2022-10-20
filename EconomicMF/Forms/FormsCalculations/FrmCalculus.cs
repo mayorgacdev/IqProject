@@ -88,7 +88,6 @@ namespace EconomicMF.Forms.FormsCalculations
                     if (int.Parse(txtInicio.Texts) <= 0)
                     {
                         throw new ArgumentException("Una serie no puede comenzar en el año 0 o antes");
-                        //add mas codigo
                     }
                     EconomicDto serie = CrearSerie();
                     uCAnnuaty = new UCAnnuaty(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
@@ -157,7 +156,6 @@ namespace EconomicMF.Forms.FormsCalculations
                 //propiedad de economic 
                 FrecuenciaTasa = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex
             };
-            //TODO: Revisar el signo del pago, entre otras cosas
             if (serie.FuturoGradiente == 0)
                 serie.FuturoGradiente = AnualidadSeriesFactory.CreateInstance(serie.TipoAnualidad).CalcularFuturoGradiente(ConvertEconomicDTOS.ConvertAnualidadDTO(serie));
             if (serie.Crecimiento == 0)
@@ -188,7 +186,6 @@ namespace EconomicMF.Forms.FormsCalculations
                 Discriminator = Discriminador.Interes.ToString(),
                 //Discriminator = "Interes Flujo",
                 NumPeriodos = periodo,
-                //TODO : revisar si esto es correcto, y si se tiene que ocultar
                 FutureValue = (cmbTipoMovimiento.SelectedItem.Equals(TipoMovimiento.Entrada)) ? valor: valor*-1,
                 TasaInteres = tasa,
                 FrecuenciaTasa = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex,
@@ -222,9 +219,7 @@ namespace EconomicMF.Forms.FormsCalculations
                 Discriminator = Discriminador.Anualidad.ToString(),
                 Crecimiento = 0,
                 FuturoGradiente = 0,
-                //Discriminator = "Anualidad Flujo"
                 //Numero de periodos, aqui se refiere a cuando realizo se ultimo pago
-                //pero podria cambiar a numero de pagos
                 NumPeriodos = (perGracia<0)? (ultimoPago+1) : ultimoPago,
                 TasaInteres = tasa,
                 TipoAnualidad = GetTipoAnualidad(),
@@ -295,10 +290,6 @@ namespace EconomicMF.Forms.FormsCalculations
             //}
             if (tgbUltimoN.Checked == true)
             {
-                //if(int.TryParse(txtN.Texts, out int n))
-                //{
-
-                //}
                 int n = int.Parse(txtN.Texts);
                 if (n < nper)
                 {
@@ -593,16 +584,6 @@ namespace EconomicMF.Forms.FormsCalculations
                 txtN.Enabled = false;
                 txtN.Texts = String.Empty;
             }
-        }
-
-        private void btnVerFrec_Click(object sender, EventArgs e)
-        {
-            string algo = ((Periodo)cmbFrecuenciaPago.SelectedItem).ToString();
-            MessageBox.Show(algo);
-
-            //FrecuenciaTasa frecuencia = (FrecuenciaTasa)cmbFrecuenciaPago.SelectedIndex;
-            //Periodo periodo = Enum.Parse<Periodo>(frecuencia.ToString());
-            //MessageBox.Show(frecuencia.ToString());
         }
     }
 }

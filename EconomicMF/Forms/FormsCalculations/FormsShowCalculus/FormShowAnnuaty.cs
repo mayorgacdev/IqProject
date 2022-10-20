@@ -67,11 +67,6 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             }
         }
 
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-            txtSearch.Texts = String.Empty;
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtSearch.Text))
@@ -112,6 +107,12 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
             path = $"{path}Anualidad{random.Next(20, 555)}.xlsx";
 
             CreateExcelFile.CreateExcelDocument(conversions.ToList(), path);
+        }
+
+        private void txtSearch_Click_1(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            panel1.BackColor = Color.HotPink;
         }
     }
 }
