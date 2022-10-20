@@ -110,6 +110,7 @@ namespace EconomicMF.Forms.FormsCalculations
             btnConvert.Enabled = false;
             nuevoFlujo = false;
             lblNum.Text = $"Periodo del ultimo pago: {nper}";
+            btnCalculateFlow.Enabled = true;
         }
 
         private EconomicDto CrearSerie()
@@ -317,6 +318,7 @@ namespace EconomicMF.Forms.FormsCalculations
             nper = 0;
             Limpiar();
             flpFlows.Controls.Clear();
+            btnCalculateFlow.Enabled = false;
         }
 
         private void btnShowAnnuity_Click(object sender, EventArgs e)
@@ -351,24 +353,24 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void txtPagoPeriodico_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-                {
-                    e.Handled = true;
-                }
-                // solo 1 punto decimal
-                if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
-                {
-                    e.Handled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            //try
+            //{
+            //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //    {
+            //        e.Handled = true;
+            //    }
+            //    // solo 1 punto decimal
+            //    if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            //    {
+            //        e.Handled = true;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -455,32 +457,32 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void txtIncremento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
-                {
-                    e.Handled = true;
-                }
-                // solo 1 punto decimal
-                if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
-                {
-                    e.Handled = true;
-                }
-                if ((e.KeyChar == '-') && ((sender as RJTextBox).Texts.IndexOf('-') > -1))
-                {
-                    e.Handled = true;
-                }
-                if ((sender as RJTextBox).Texts.Length > 0 && (e.KeyChar == '-') && (sender as RJTextBox).Texts.ToCharArray()[0] != '-')
-                {
-                    e.Handled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            //try
+            //{
+            //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            //    {
+            //        e.Handled = true;
+            //    }
+            //    // solo 1 punto decimal
+            //    if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            //    {
+            //        e.Handled = true;
+            //    }
+            //    if ((e.KeyChar == '-') && ((sender as RJTextBox).Texts.IndexOf('-') > -1))
+            //    {
+            //        e.Handled = true;
+            //    }
+            //    if ((sender as RJTextBox).Texts.Length > 0 && (e.KeyChar == '-') && (sender as RJTextBox).Texts.ToCharArray()[0] != '-')
+            //    {
+            //        e.Handled = true;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            Validation.ValidateDecimalNegative(sender, e);
         }
 
         private void cmbIncremento_OnSelectedIndexChanged(object sender, EventArgs e)

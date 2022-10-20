@@ -45,15 +45,16 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void txtValidation_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-            // solo 1 punto decimal
-            if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
+            //// solo 1 punto decimal
+            //if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
         private void VerificarSeleccion()
         {

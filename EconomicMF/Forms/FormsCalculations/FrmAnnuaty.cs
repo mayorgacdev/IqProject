@@ -75,16 +75,17 @@ namespace EconomicMF.Forms.FormsCalculations
         }
         private void txtValidationDecimal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
 
-            // solo 1 punto decimal
-            if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            //// solo 1 punto decimal
+            //if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
         private async void TipoCalculoAnualidad(Calculos calculo, TipoAnualidad tipo)
         {
@@ -442,23 +443,24 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void txtIncremento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
-            {
-                e.Handled = true;
-            }
-            // solo 1 punto decimal
-            if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-            if ((e.KeyChar == '-') && ((sender as RJTextBox).Texts.IndexOf('-') > -1))
-            {
-                e.Handled = true;
-            }
-            if ((sender as RJTextBox).Texts.Length > 0 && (e.KeyChar == '-') && (sender as RJTextBox).Texts.ToCharArray()[0] != '-')
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            //{
+            //    e.Handled = true;
+            //}
+            //// solo 1 punto decimal
+            //if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            //if ((e.KeyChar == '-') && ((sender as RJTextBox).Texts.IndexOf('-') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            //if ((sender as RJTextBox).Texts.Length > 0 && (e.KeyChar == '-') && (sender as RJTextBox).Texts.ToCharArray()[0] != '-')
+            //{
+            //    e.Handled = true;
+            //}
+            Validation.ValidateDecimalNegative(sender, e);
         }
 
         private void pbTime_Click(object sender, EventArgs e)

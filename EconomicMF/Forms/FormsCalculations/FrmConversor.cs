@@ -5,6 +5,7 @@ using EconomicMF.Domain.Entities.Calculos;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
 using EconomicMF.Domain.Enums.Conversiones;
+using EconomicMF.Helper;
 using RJCodeAdvance.RJControls;
 using System;
 using System.Runtime.InteropServices;
@@ -104,15 +105,16 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void txtOriginal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-            // solo 1 punto decimal
-            if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
+            //// solo 1 punto decimal
+            //if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
         private void Validar()
         {
