@@ -34,7 +34,7 @@ namespace EconomicMF.Services.Processes
                 TasaInteres = economicDto.TasaInteres,
                 NumPeriodos = economicDto.NumPeriodos,
                 PagoAnual = (decimal)economicDto.PagoAnual,
-                PeriodoGracia = economicDto.PeriodoGracia,
+                PeriodoGracia = (decimal)economicDto.PeriodoGracia,
                 Crecimiento = (decimal)economicDto.Crecimiento,
                 FuturoGradiente = (decimal)economicDto.FuturoGradiente,
                 TipoAnualidad = economicDto.TipoAnualidad,

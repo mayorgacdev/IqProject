@@ -7,17 +7,6 @@ namespace EconomicMF.AppCore.Processes.Anualidades
 {
     public class AnualidadAntCalculator : IAnualidadCalculator
     {
-        
-        public decimal CalcularFuturoGradiente(AnnuityDto serie)
-        {
-            return 0;
-        }
-
-        public decimal CalcularGradiente(AnnuityDto series)
-        {
-            return 0;
-        }
-
         public decimal CalcularPago(AnnuityDto anualidad)
         {
             double tasa = (double)anualidad.TasaInteres;
@@ -25,7 +14,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             double vf = (double)anualidad.FutureValue;
 
             double resultado = Financial.Pmt(tasa, (double)anualidad.NumPeriodos, vp, vf, DueDate.BegOfPeriod) * -1;
-            return Math.Round((decimal)resultado, 2);
+            return Math.Round((decimal)resultado, 4);
         }
 
         public decimal CalcularTasa(AnnuityDto anualidad)
@@ -39,7 +28,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             double nper = (double)anualidad.NumPeriodos;
 
             double resultado = Financial.Rate(nper, -1 * (double)anualidad.PagoAnual, vp, vf, DueDate.BegOfPeriod) * 100;
-            return Math.Round((decimal)resultado, 2);
+            return Math.Round((decimal)resultado, 4);
         }
 
         public decimal CalcularTiempo(AnnuityDto anualidad)
@@ -57,7 +46,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             double rate = (double)anualidad.TasaInteres;
             double pago = (double)anualidad.PagoAnual;
 
-            return (decimal)Math.Round(Financial.NPer(rate, -1 * pago, vp, vf, DueDate.BegOfPeriod), 2);
+            return (decimal)Math.Round(Financial.NPer(rate, -1 * pago, vp, vf, DueDate.BegOfPeriod), 4);
         }
 
         public decimal CalcularVF(AnnuityDto anualidad)
@@ -67,7 +56,7 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             double vp = (double)anualidad.PresentValue;
 
             double resultado = Financial.FV(tasa, (double)anualidad.NumPeriodos, pago, vp, DueDate.BegOfPeriod);
-            return Math.Round((decimal)resultado, 2);
+            return Math.Round((decimal)resultado, 4);
         }
 
         public decimal CalcularVP(AnnuityDto anualidad)
@@ -77,7 +66,18 @@ namespace EconomicMF.AppCore.Processes.Anualidades
             double vf = (double)anualidad.FutureValue;
 
             double resultado = Financial.PV(tasa, (double)anualidad.NumPeriodos, pago, vf, DueDate.BegOfPeriod);
-            return Math.Round((decimal)resultado, 2);
+            return Math.Round((decimal)resultado, 4);
         }
+        #region no
+        public decimal CalcularFuturoGradiente(AnnuityDto serie)
+        {
+            return 0;
+        }
+
+        public decimal CalcularGradiente(AnnuityDto series)
+        {
+            return 0;
+        }
+        #endregion
     }
 }

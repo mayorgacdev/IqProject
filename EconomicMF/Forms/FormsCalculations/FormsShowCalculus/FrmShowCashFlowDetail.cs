@@ -159,7 +159,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                 {
                     if (economic.TipoDeCrecimiento.Equals(TipoCrecimiento.Aritmetico))
                     {
-                        for (int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
+                        for (int i = (int)economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
                         {
                             valor = (double)economic.PagoAnual + (j * (double)economic.Crecimiento);
                         }
@@ -167,7 +167,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                     }
                     else if (economic.TipoDeCrecimiento.Equals(TipoCrecimiento.Geometrico))
                     {
-                        for (int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
+                        for (int i = (int)economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
                         {
                             valor = (double)economic.PagoAnual * Math.Pow((1 + (double)economic.Crecimiento), j);
                         }
@@ -175,7 +175,7 @@ namespace EconomicMF.Forms.FormsCalculations.FormsShowCalculus
                     }
                     else
                     {
-                        for (int i = economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
+                        for (int i = (int)economic.PeriodoGracia + 1; i <= economic.NumPeriodos; i++)
                         {
                             //valor = (double)economic.PagoAnual * Math.Pow((1 + (double)economic.Crecimiento), j);
                         }

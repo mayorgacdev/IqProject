@@ -13,26 +13,24 @@ namespace EconomicMF.AppCore.Processes
         {
             if (periodo.ToString().Contains("Anual", StringComparison.CurrentCultureIgnoreCase))
             {
-                return years + months / 12 + days / 365 + hours / 8760;
+                return Math.Round((years + months / 12 + days / 365 + hours / 8760),4);
             }
             switch (periodo)
             {
-                //case FrecuenciaTasa.Anual:
-                //    return years + months / 12 + days / 365 + hours / 8760;
                 case FrecuenciaTasa.Mensual:
-                    return years * 12 + months + days / 30 + hours / 730.001M;
+                    return Math.Round((years * 12 + months + days / 30 + hours / 730.001M),4);
                 case FrecuenciaTasa.Diario:
-                    return years * 365 + months * 30 + days + hours / 24;
+                    return Math.Round((years * 365 + months * 30 + days + hours / 24),4);
                 case FrecuenciaTasa.Semestral:
-                    return years * 2 + months / 6 + days / 182.5M + hours / 4380;
+                    return Math.Round((years * 2 + months / 6 + days / 182.5M + hours / 4380),4);
                 case FrecuenciaTasa.Cuatrimestral:
-                    return years * 3 + months / 4 + (days / (365 / 3)) + hours / 2920;
+                    return Math.Round((years * 3 + months / 4 + (days / (365 / 3)) + hours / 2920), 4);
                 case FrecuenciaTasa.Trimestral:
-                    return years * 4 + months / 3 + days / 91.25M + hours / 2190;
+                    return Math.Round((years * 4 + months / 3 + days / 91.25M + hours / 2190), 4);
                 case FrecuenciaTasa.Bimestral:
-                    return years * 6 + months / 2 + (days / (365 / 6)) + hours / 1460;
+                    return Math.Round((years * 6 + months / 2 + (days / (365 / 6)) + hours / 1460), 4);
                 case FrecuenciaTasa.Semanal:
-                    return years * 52 + months * 4 + days / 7 + hours / 168;
+                    return Math.Round((years * 52 + months * 4 + days / 7 + hours / 168), 4);
                 default:
                     return 0;
             }

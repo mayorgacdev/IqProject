@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EconomicMF.Domain.Enums.Calculos
 {
-    public enum CalculosSeries
+    public enum CalculosAnualidadDif
     {
         ValorPresente,
         ValorFuturo,
+        Pago,
     }
 }

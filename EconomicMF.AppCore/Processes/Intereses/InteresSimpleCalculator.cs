@@ -13,22 +13,22 @@ namespace EconomicMF.AppCore.Processes.Intereses
 
         public decimal CalcularVF(RateDto interes)
         {
-            return Math.Round((decimal)(interes.PresentValue * (1 + interes.TasaInteres * interes.NumPeriodos)), 2);
+            return Math.Round((decimal)(interes.PresentValue * (1 + interes.TasaInteres * interes.NumPeriodos)), 4);
         }
 
         public decimal CalcularTiempo(RateDto interes)
         {
-            return Math.Round((decimal)(((interes.FutureValue / interes.PresentValue) - 1) / interes.TasaInteres), 2);
+            return Math.Round((decimal)(((interes.FutureValue / interes.PresentValue) - 1) / interes.TasaInteres), 4);
         }
 
         public decimal CalcularVP(RateDto interes)
         {
-            return Math.Round((decimal)(interes.FutureValue / (1 + interes.TasaInteres * interes.NumPeriodos)), 2);
+            return Math.Round((decimal)(interes.FutureValue / (1 + interes.TasaInteres * interes.NumPeriodos)), 4);
         }
 
         public decimal CalcularTasa(RateDto interes)
         {
-            return Math.Round((decimal)(((interes.FutureValue / interes.PresentValue) - 1) / interes.NumPeriodos), 2);
+            return Math.Round((decimal)(((interes.FutureValue / interes.PresentValue) - 1) / interes.NumPeriodos), 4);
         }
     }
 }

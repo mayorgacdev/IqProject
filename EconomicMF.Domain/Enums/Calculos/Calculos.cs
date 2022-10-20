@@ -13,6 +13,5 @@ namespace EconomicMF.Domain.Enums.Calculos
         TasaDeInteres,
         NumeroDePeriodos,
         Pago,
-        Incremento,
     }
 }

@@ -14,7 +14,6 @@ namespace EconomicMF.AppCore.Processes.Conversiones
     //cuando es semestral, cuatrimestral, tremestral, etc, menos anual 
     public class ConversorTasaPeriodica : IConversor
     {
-
         public decimal Convertir(ConversionDto conversion)
         {
             int cap;

@@ -52,7 +52,7 @@ namespace EconomicMF.Forms.FormsCalculations
 
         private void FrmConvertTime_Load(object sender, EventArgs e)
         {
-            txtResultado.Text = "Conversion en";
+            txtResultado.Text = "Conversión en";
             Equivalencia();
         }
         private void Equivalencia()

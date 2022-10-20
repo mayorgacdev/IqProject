@@ -20,7 +20,7 @@ namespace EconomicMF.AppCore.Processes.Intereses
                 return (decimal)Math.Round(valor,2);
             }
             double factor = (double)(1 + interes.TasaInteres / interes.Capitalizacion);
-            return Math.Round((decimal)(interes.PresentValue * (decimal)Math.Pow(factor, (double)interes.NumPeriodos * interes.Capitalizacion)), 2);
+            return Math.Round((decimal)(interes.PresentValue * (decimal)Math.Pow(factor, (double)interes.NumPeriodos * interes.Capitalizacion)), 4);
         }
 
         public decimal CalcularTiempo(RateDto interes)
@@ -33,7 +33,7 @@ namespace EconomicMF.AppCore.Processes.Intereses
             }
             double numerador = (double)(interes.FutureValue / interes.PresentValue);
             double denominador = (double)(1 + interes.TasaInteres / interes.Capitalizacion);
-            return Math.Round((decimal)(Math.Log(numerador) / (interes.Capitalizacion * Math.Log(denominador))), 2);
+            return Math.Round((decimal)(Math.Log(numerador) / (interes.Capitalizacion * Math.Log(denominador))), 4);
         }
 
         public decimal CalcularVP(RateDto interes)
@@ -45,7 +45,7 @@ namespace EconomicMF.AppCore.Processes.Intereses
                 return (decimal)Math.Round(valor, 2);
             }
             double factor = (double)(1 + interes.TasaInteres / interes.Capitalizacion);
-            return Math.Round((decimal)(interes.FutureValue * (decimal)Math.Pow(factor, (double)interes.NumPeriodos * -1 * interes.Capitalizacion)), 2);
+            return Math.Round((decimal)(interes.FutureValue * (decimal)Math.Pow(factor, (double)interes.NumPeriodos * -1 * interes.Capitalizacion)), 4);
         }
 
         public decimal CalcularTasa(RateDto interes)
@@ -58,7 +58,7 @@ namespace EconomicMF.AppCore.Processes.Intereses
             }
             double raiz = (double)(interes.NumPeriodos * interes.Capitalizacion);
             double valor = Math.Pow((double)(interes.FutureValue / interes.PresentValue), 1 / raiz);
-            return Math.Round((decimal)(interes.Capitalizacion * (valor - 1)),2);
+            return Math.Round((decimal)(interes.Capitalizacion * (valor - 1)),4);
         }
     }
 }

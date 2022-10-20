@@ -34,7 +34,7 @@ namespace EconomicMF.Domain.Entities.Calculos
         public string Discriminator { get; set; } = null!;
         public decimal? PagoAnual { get; set; }
         public TipoAnualidad TipoAnualidad { get; set; }
-        public int PeriodoGracia { get; set; }
+        public decimal PeriodoGracia { get; set; }
         public Periodo Periodo { get; set; }
         public TipoInteres TipoInteres { get; set; }
         public FrecuenciaTasa FrecuenciaTasa { get; set; }
