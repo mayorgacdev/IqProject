@@ -5,6 +5,7 @@ using EconomicMF.Helper;
 using EconomicMF.Services.Processes.Intereses;
 using EconomicMF.SettingForms;
 using ExportToExcel;
+using RJCodeAdvance.RJControls;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -25,17 +26,23 @@ namespace EconomicMF.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Prestamo prestamo = new Prestamo()
+            try
             {
-                Nombre = txtName.Texts,
-                Monto = decimal.Parse(txtMonto.Texts),
-                Interes = double.Parse(txtInteres.Texts),
-                Año = int.Parse(txtN.Texts),
-                TipoDeAmortizacion = cmbTipoMetodo.SelectedItem.ToString(),
-            };
-
-            SingletonFrm.GetRepo().prestamos.Add(prestamo);
-            ChargeDgv();
+                Prestamo prestamo = new Prestamo()
+                {
+                    Nombre = txtName.Texts,
+                    Monto = decimal.Parse(txtMonto.Texts),
+                    Interes = double.Parse(txtInteres.Texts),
+                    Año = int.Parse(txtN.Texts),
+                    TipoDeAmortizacion = cmbTipoMetodo.SelectedItem.ToString(),
+                };
+                Limpiar();
+                SingletonFrm.GetRepo().prestamos.Add(prestamo);
+                ChargeDgv();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ChargeDgv()
@@ -78,7 +85,14 @@ namespace EconomicMF.Forms
                 }
             }
         }
-
+        public void Limpiar()
+        {
+            txtInteres.Texts = "";
+            txtMonto.Texts = "";
+            txtN.Texts = "";
+            txtName.Texts = "";
+            cmbTipoMetodo.Texts = "";
+        }
         private void btnExport_Click(object sender, EventArgs e)
         {
             string path = string.Empty;
@@ -98,6 +112,41 @@ namespace EconomicMF.Forms
             path = $"{path}AmortizationInfo{random.Next(20, 555)}.xlsx";
 
             CreateExcelFile.CreateExcelDocument(SingletonFrm.GetRepo().prestamos, path);
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.ValidateDecimalnotNegative(sender,e);
+        }
+
+        private void txtInteres_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            // solo 1 punto decimal
+            if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            if ((sender as RJTextBox).Texts.Contains(".") && (char)Keys.Back != e.KeyChar)
+            {
+                if ((sender as RJTextBox).Texts.Substring((sender as RJTextBox).Texts.IndexOf('.')).Length > 4)
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            if ((sender as RJTextBox).Texts.Length > 2 && (char)Keys.Back != e.KeyChar && '.' != e.KeyChar)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
         }
     }
 }

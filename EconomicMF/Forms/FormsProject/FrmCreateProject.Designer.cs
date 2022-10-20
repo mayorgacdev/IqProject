@@ -310,6 +310,7 @@
             this.txtDuracion.TabIndex = 28;
             this.txtDuracion.Texts = "";
             this.txtDuracion.UnderlinedStyle = true;
+            this.txtDuracion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDuracion_KeyPress);
             // 
             // txtDescripción
             // 

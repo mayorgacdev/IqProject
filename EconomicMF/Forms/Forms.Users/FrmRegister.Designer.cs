@@ -109,6 +109,7 @@
             this.txtPhone.TabIndex = 15;
             this.txtPhone.Texts = "";
             this.txtPhone.UnderlinedStyle = true;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // btnImage
             // 

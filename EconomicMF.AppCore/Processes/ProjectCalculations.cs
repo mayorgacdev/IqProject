@@ -907,12 +907,13 @@ namespace EconomicMF.AppCore.Processes
                 };
                 activosN.Add(prest);
             }
+            var list1 = new List<decimal>();
             foreach (var depre in project.Assets)
             {
                 vidautil = GetVidaUtil(depre.Name, periodo);
                 if (depre.IsDepreciable)
                 {
-                    for (int i = 0; i <= vidautil; i++)
+                    for (int i = 0; i <= (vidautil>project.Duration?project.Duration:vidautil); i++)
                     {
                         if (depre.DepreciationRate == Depreciacion.DLR.ToString())
                         {
@@ -1298,7 +1299,7 @@ namespace EconomicMF.AppCore.Processes
                 {
                     ActivosGeneral activos1 = new ActivosGeneral() { Nombre = depre.Name };
                     activos1.Monto = new List<decimal>();
-                    for (int i = 0; i <= vidautil; i++)
+                    for (int i = 0; i <= (vidautil > project.Duration ? project.Duration : vidautil); i++)
                     {
 
                         if (depre.DepreciationRate == Depreciacion.DLR.ToString())

@@ -59,7 +59,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
                 AbrirFormEnPanel(new FrmChargeData(unitOfWork, DataOnMemory.ProjectId));
 
-            }
+           }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);

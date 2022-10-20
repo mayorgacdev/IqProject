@@ -38,13 +38,24 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 txtCrecimiento.Visible = true;
             }
         }
+        private void Limpiar()
+        {
+            txtCosto.Texts = "";
+            txtCrecimiento.Texts = "";
+            txtEnd.Texts = "";
+            txtStart.Texts = "";
+            txtTipoDeCosto.Texts = "";
+            cmbTipodeCrecimiento.Texts = "";
+        }
 
         private async void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
+                var N = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+                Validation.ValidateStarEnd(int.Parse(txtStart.Texts), int.Parse(txtEnd.Texts), N.Duration);
                 TipoCrecimiento crecimiento = (TipoCrecimiento)cmbTipodeCrecimiento.SelectedItem;
-                if (crecimiento != TipoCrecimiento.SinCrecimiento && crecimiento 
+                if (crecimiento != TipoCrecimiento.SinCrecimiento && crecimiento
                     is TipoCrecimiento.Aritmetico || crecimiento is TipoCrecimiento.Geometrico)
                 {
                     ProjectExpense projectExpense = new ProjectExpense()
@@ -81,6 +92,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
                     ChargeDtg();
                 }
+                Limpiar();
             }
             catch (Exception ex)
             {
@@ -98,7 +110,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dtgFNE.SelectedRows.Count == 1)
+            if (dtgFNE.SelectedRows.Count == 1 && dtgFNE.CurrentRow != null)
             {
                 int expenseId = (int)dtgFNE.CurrentRow.Cells[0].Value;
                 await unitOfWork.ProjectExpense.DeleteAsync(expenseId);
@@ -140,12 +152,13 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void txtCrecimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalNegative(sender, e);
         }
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
     }
 }

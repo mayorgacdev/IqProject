@@ -2,7 +2,9 @@
 using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Domain.Enums;
+using EconomicMF.Helper;
 using EconomicMF.SettingForms;
+using RJCodeAdvance.RJControls;
 using System;
 using System.Data;
 using System.Linq;
@@ -59,7 +61,7 @@ namespace EconomicMF.Forms.FormsProject
 
         private void FrmCreateProject_Load(object sender, EventArgs e)
         {
-            cmbPeriodo.Items.AddRange(Enum.GetValues(typeof(Periodo)).Cast<object>().ToArray());
+            cmbPeriodo.Items.AddRange(Enum.GetValues(typeof(PeriodoP)).Cast<object>().ToArray());
             SingletonFrm.GetForm(FormType.Main).Hide();
 
         }
@@ -71,6 +73,11 @@ namespace EconomicMF.Forms.FormsProject
         {
             try
             {
+                if (int.Parse(txtDuracion.Texts) > 40)
+                {
+                    MessageBox.Show("Ingrese una duarcion correcta");
+                    return;
+                }
                 if (tgIsFinancement.Checked)
                 {
                     ProjectClient project = new ProjectClient()
@@ -174,6 +181,28 @@ namespace EconomicMF.Forms.FormsProject
             label4.Visible = false;
             
             cmbPeriodo.SelectedIndex = -1;
+        }
+
+        private void txtDuracion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+           if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+            if ((sender as RJTextBox).Texts.Length > 3 && (char)Keys.Back != e.KeyChar)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

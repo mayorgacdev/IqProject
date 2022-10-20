@@ -1,4 +1,5 @@
 ﻿using EconomicMF.Domain.Entities.Flows;
+using RJCodeAdvance.RJControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,11 +77,11 @@ namespace EconomicMF.Helper
                     throw new ArgumentException("Cédula invalida");
 
                 }
-                if (!Regex.IsMatch(telefono, @"\A[0-9]{4}(\-)[0-9]{4}\Z"))
-                {
-                    throw new ArgumentException("Número de telefono invalido");
+                //if (!Regex.IsMatch(telefono, @"\A[0-9]{4}(\-)[0-9]{4}\Z"))
+                //{
+                //    throw new ArgumentException("Número de telefono invalido");
 
-                }
+                //}
                 if (!Regex.IsMatch(correo, @"\A(\w+\.?\w*\@\w+\.)(com)\Z"))
                 {
                     throw new ArgumentException("correo electronico invalido");
@@ -130,5 +131,99 @@ namespace EconomicMF.Helper
             }
 
         }
+        public static void ValidateDecimalnotNegative(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+                // solo 1 punto decimal
+                if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+                if ((sender as RJTextBox).Texts.Contains(".") && (char)Keys.Back != e.KeyChar) {
+                    if ((sender as RJTextBox).Texts.Substring((sender as RJTextBox).Texts.IndexOf('.')).Length > 4)
+                    {
+                        e.Handled = true;
+                    }
+                }else
+                if((sender as RJTextBox).Texts.Length > 9 && (char)Keys.Back != e.KeyChar && '.' != e.KeyChar)
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+        public static void ValidateDecimalNegative(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+                {
+                    e.Handled = true;
+                }
+                // solo 1 punto decimal
+                if ((e.KeyChar == '.') && ((sender as RJTextBox).Texts.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+                if ((e.KeyChar == '-') && ((sender as RJTextBox).Texts.IndexOf('-') > -1))
+                {
+                    e.Handled = true;
+                }
+                if ((sender as RJTextBox).Texts.Length > 0 && (e.KeyChar == '-') && (sender as RJTextBox).Texts.ToCharArray()[0] != '-')
+                {
+                    e.Handled = true;
+                }
+                if ((sender as RJTextBox).Texts.Contains(".") && (char)Keys.Back != e.KeyChar) {
+                    if ((sender as RJTextBox).Texts.Substring((sender as RJTextBox).Texts.IndexOf('.')).Length > 4)
+                    {
+                        e.Handled = true;
+                    }
+                }
+                else
+                if ((sender as RJTextBox).Texts.Length > 9 && (char)Keys.Back != e.KeyChar && '.' != e.KeyChar)
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+        public static void ValidateStarEnd(int star, int end, int N)
+        {
+            try
+            {
+
+                if (star >= end)
+                {
+                    throw new ArgumentException("El inicio no puede ser mayor que el fin");
+                }
+                if (star == 0)
+                {
+                    throw new ArgumentException("El inicio no puede ser igual a 0");
+                }
+                if (end > N)
+                {
+                    throw new ArgumentException($"El fin no puede superar la duración del proyecto: {N}");
+                }
+                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

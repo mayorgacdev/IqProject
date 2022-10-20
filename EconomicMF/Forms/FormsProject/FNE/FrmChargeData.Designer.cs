@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblTasa = new System.Windows.Forms.Label();
             this.lblGetTmar = new System.Windows.Forms.Label();
             this.lblVpn = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,10 +40,10 @@
             this.btnExport = new RJCodeAdvance.RJControls.RJButton();
             this.btnAmortizacion = new RJCodeAdvance.RJControls.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTasa = new System.Windows.Forms.Label();
             this.lblCreation = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblper = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblPeriodo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
@@ -80,18 +79,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFNE)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTasa
-            // 
-            this.lblTasa.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblTasa.AutoSize = true;
-            this.lblTasa.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTasa.ForeColor = System.Drawing.Color.White;
-            this.lblTasa.Location = new System.Drawing.Point(707, 133);
-            this.lblTasa.Name = "lblTasa";
-            this.lblTasa.Size = new System.Drawing.Size(22, 25);
-            this.lblTasa.TabIndex = 21;
-            this.lblTasa.Text = "0";
             // 
             // lblGetTmar
             // 
@@ -204,10 +191,10 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.lblTasa);
             this.panel2.Controls.Add(this.lblCreation);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.lblper);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.lblPeriodo);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.rjCircularPictureBox1);
@@ -235,11 +222,22 @@
             this.panel2.Controls.Add(this.lblVpn);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblGetTmar);
-            this.panel2.Controls.Add(this.lblTasa);
             this.panel2.Location = new System.Drawing.Point(36, 25);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(844, 254);
             this.panel2.TabIndex = 102;
+            // 
+            // lblTasa
+            // 
+            this.lblTasa.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblTasa.AutoSize = true;
+            this.lblTasa.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTasa.ForeColor = System.Drawing.Color.White;
+            this.lblTasa.Location = new System.Drawing.Point(722, 135);
+            this.lblTasa.Name = "lblTasa";
+            this.lblTasa.Size = new System.Drawing.Size(22, 25);
+            this.lblTasa.TabIndex = 121;
+            this.lblTasa.Text = "0";
             // 
             // lblCreation
             // 
@@ -277,25 +275,13 @@
             this.lblper.TabIndex = 116;
             this.lblper.Text = "Periodo:";
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(671, 212);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 17);
-            this.label6.TabIndex = 117;
-            this.label6.Text = "Esperando...";
-            // 
             // lblPeriodo
             // 
             this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPeriodo.AutoSize = true;
             this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPeriodo.ForeColor = System.Drawing.Color.White;
-            this.lblPeriodo.Location = new System.Drawing.Point(671, 209);
+            this.lblPeriodo.Location = new System.Drawing.Point(664, 212);
             this.lblPeriodo.Name = "lblPeriodo";
             this.lblPeriodo.Size = new System.Drawing.Size(73, 17);
             this.lblPeriodo.TabIndex = 118;
@@ -659,7 +645,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblTasa;
         private System.Windows.Forms.Label lblGetTmar;
         private System.Windows.Forms.Label lblVpn;
         private System.Windows.Forms.Label label4;
@@ -694,8 +679,8 @@
         private System.Windows.Forms.Label lblCreation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblper;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblPeriodo;
         private ReaLTaiizor.Controls.PoisonDataGridView dtgFNE;
+        private System.Windows.Forms.Label lblTasa;
     }
 }

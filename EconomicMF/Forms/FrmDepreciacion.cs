@@ -147,6 +147,7 @@ namespace EconomicMF.Forms
                     SingletonFrm.GetRepo().assets.Add(asset);
                     ChargeDtg();
                 }
+                Limpiar();
             }
             catch (Exception ex)
             {
@@ -216,7 +217,16 @@ namespace EconomicMF.Forms
             }
 
         }
-
+        private void Limpiar()
+        {
+            txtDescription.Texts = "";
+            txtMonto.Texts = "";
+            txtName.Texts = "";
+            txtValorResidual.Texts = "";
+            txtVidaUtil.Texts = "";
+            cmbTipoMetodo.Text = "";
+            cmbVidaActivos.Texts = "";
+        }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dtgFNE.SelectedRows.Count == 1)
@@ -288,6 +298,26 @@ namespace EconomicMF.Forms
                 txtVidaUtil.Visible = false;
 
             }
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.ValidateDecimalnotNegative(sender, e);
+        }
+
+        private void txtValorResidual__TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtVidaUtil_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.OnlyNumbers(e);
+        }
+
+        private void txtValorResidual_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
     }
 }

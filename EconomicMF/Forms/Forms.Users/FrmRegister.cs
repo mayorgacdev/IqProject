@@ -3,6 +3,7 @@ using EconomicMF.Domain.Contracts;
 using EconomicMF.Domain.Entities.Flows;
 using EconomicMF.Helper;
 using EconomicMF.SettingForms;
+using RJCodeAdvance.RJControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -53,9 +54,14 @@ public partial class FrmRegister : Form
     private async void btnSubmit_Click(object sender, EventArgs e)
     {   
         try
-        { 
+        {
+            if (txtPhone.Texts.Length < 8)
+            {
+                MessageBox.Show("Ingrese un numero de telefono correcto");
+                return;
+            }
             //Validation.ValidateRegister(txtName.Texts, txtDNI.Texts, txtPhone.Texts, txtEmail.Texts, txtPassword.Texts);
-
+            Validation.ValidateRegister(txtName.Texts,txtDNI.Texts,txtPhone.Texts,txtEmail.Texts,txtPassword.Texts);
             User user = new User()
             {
                 Name = txtName.Texts,
@@ -87,6 +93,7 @@ public partial class FrmRegister : Form
             unitOfWork.MailClient.SenFiles("Confirmación de codígo", $"Confirmarción de código no compartir con nadie \nesta información: {code}", new List<string>() { txtEmail.Texts });
 
             this.Hide();
+
         }
         catch (Exception ex)
         {
@@ -102,4 +109,27 @@ public partial class FrmRegister : Form
     }
 
     #endregion
+
+    private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+    {
+
+        if (Char.IsDigit(e.KeyChar))
+        {
+            e.Handled = false;
+        }
+        else
+           if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+        {
+            e.Handled = false;
+        }
+        else
+        {
+            //el resto de teclas pulsadas se desactivan
+            e.Handled = true;
+        }
+        if ((sender as RJTextBox).Texts.Length > 7 && (char)Keys.Back != e.KeyChar)
+        {
+            e.Handled = true;
+        }
+    }
 }

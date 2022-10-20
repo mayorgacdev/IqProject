@@ -48,11 +48,22 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 lblMonto.Visible = false;
             }
         }
+        private void Limpiar()
+        {
+            txtMonto.Texts = "";
+            txtName.Texts = "";
+            
+        }
 
         private async void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (decimal.Parse(txtMonto.Texts)>1000000000)
+                {
+                    MessageBox.Show("El monto es mayor a 1000000000", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (tgIsDiferida.Checked)
                 {
                     InvesmentArea invesmentArea = new InvesmentArea()
@@ -83,6 +94,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                     await unitOfWork.InvesmentArea.SetInvesmentArea(invesmentArea);
                     ChargeDtg();
                 }
+                Limpiar();
             }
             catch (Exception ex)
             {
@@ -100,7 +112,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dtgFNE.SelectedRows.Count == 1)
+            if (dtgFNE.SelectedRows.Count == 1 && dtgFNE.CurrentRow != null)
             {
                 int inversionId = (int)dtgFNE.CurrentRow.Cells[0].Value;
                 await unitOfWork.InvesmentArea.DeleteAsync(inversionId);
@@ -132,7 +144,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
     }
 }

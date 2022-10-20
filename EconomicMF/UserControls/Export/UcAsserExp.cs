@@ -68,26 +68,28 @@ namespace EconomicMF.UserControls.Export
 
                 foreach (var item in project.Assets)
                 {
+                    if (item.IsDepreciable) { 
                     if (item.DepreciationRate.Equals("DDDS"))
                     {
-                        path = $"{path}dep{random.Next(20,555)}.xlxs";
+                        path = $"{path}dep{random.Next(20,555)}.xlsx";
                         CreateExcelFile.CreateExcelDocument(ProjectCalculations.DDDS(item.Amount, item.Terms, item.AmountResidual, 2), path);
                         path = string.Empty;
                         path = get;
                     }
                     else if (item.DepreciationRate.Equals("DSDA"))
                     {
-                        path = $"{path}dep{random.Next(20, 555)}.xlxs";
+                        path = $"{path}dep{random.Next(20, 555)}.xlsx";
                         CreateExcelFile.CreateExcelDocument(ProjectCalculations.DSDA(item.Amount, item.Terms, item.AmountResidual), path);
                         path = string.Empty;
                         path = get;
                     }
                     else
                     {
-                        path = $"{path}dep{random.Next(20, 555)}.xlxs";
-                        CreateExcelFile.CreateExcelDocument(ProjectCalculations.DSDA(item.Amount, item.Terms, item.AmountResidual), path);
+                        path = $"{path}dep{random.Next(20, 555)}.xlsx";
+                        CreateExcelFile.CreateExcelDocument(ProjectCalculations.DLR(item.Amount, item.Terms, item.AmountResidual), path);
                         path = string.Empty;
                         path = get;
+                    }
                     }
                 }
             }

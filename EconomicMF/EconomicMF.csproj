@@ -29,7 +29,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="NPOI" Version="2.5.6" />
     <PackageReference Include="ReaLTaiizor" Version="3.7.8.6" />
-    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.16" />
     <PackageReference Include="RJCodeAdvance.RJControls" Version="1.0.0" />
     <PackageReference Include="SpreadsheetLight" Version="3.5.0" />
     <PackageReference Include="Syncfusion.Chart.Windows" Version="20.1.0.57" />

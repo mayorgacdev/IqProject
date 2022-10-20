@@ -93,8 +93,8 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void GetFNE(Project project)
         {
-            try
-            {
+            /*try
+            {*/
                 if (project.InvestmentArea.Count == 0 || project.Assets.Count == 0 || ExistAny(project) is false)
                 {
                     return;
@@ -102,11 +102,11 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
                 dtgFNE.DataSource = null;
                 dtgFNE.DataSource = ProjectCalculations.AllFNE(project);
-            }
+            /*}
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 lblDescription.Text = project.Description;
                 lblCreation.Text = project.CreationDate.ToShortDateString();
 
-                if (getProject.WithFinancing)
+                if (tgIsFinancement.Checked)
                 {
                     List<InvesmentEntity> invesmentEntities = await unitOfWork.InvesmentEntityClient.GetByProjectIdAsync(DataOnMemory.ProjectId);
                     project.InvestmentEntities = invesmentEntities;
@@ -178,9 +178,9 @@ namespace EconomicMF.Forms.FormsProject.FNE
                     decimal tmarMixta = ProjectCalculations.TMAR(project);
 
                     lblVpn.Text = Math.Round(ProjectCalculations.VPN(flujo, tmarMixta), 2) + " $";
-                    lblGetTmar.Text = "TMAR mixta";
+                    lblGetTmar.Text = "TMAR";
                     lblTasa.Text = tmarMixta + " %";
-                    lblPeriodo.Text = getProject.Period;
+                    lblPeriodo.Text = project.Period;
                     lblTir.Text = Math.Round(ProjectCalculations.TIR(flujo, adivinar: tmarMixta), 2) + " %";
                 }
                 else
@@ -264,6 +264,11 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 GetFNE(project);
                 ChargeLabels(project);
             }
+        }
+
+        private void lblTasa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

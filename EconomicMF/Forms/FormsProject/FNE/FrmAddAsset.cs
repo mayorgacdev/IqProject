@@ -12,6 +12,7 @@ using Syncfusion.Runtime.Serialization;
 using System;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EconomicMF.Forms.FormsProject.FNE
@@ -44,6 +45,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 txtVidaUtil.Visible = false;
                 lblDepreciación.Visible = false;
                 tgDepreciacion.Visible = false;
+
             }
             else
             {
@@ -58,20 +60,70 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 cmbTipoMetodo.Visible = true;
             }
         }
-
+        public void Limpiar()
+        {
+            txtVidaUtil.Texts = string.Empty;
+            txtMonto.Texts = string.Empty;
+            txtName.Texts = string.Empty;
+            txtDescription.Texts = string.Empty;
+            txtValorResidual.Texts = string.Empty;
+            cmbVidaActivos.Texts = string.Empty;
+            cmbTipoMetodo.Texts = string.Empty;
+        }
         private async void btnAgregar_Click(object sender, EventArgs e)
         {
-            try
+             try
+             {
+
+
+            var p = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+            int n = (int)Enum.GetValues<PeriodoP>().Where(a => a.ToString() == p.Period).ToList()[0]; ;
+
+            if (!tglsVidaDeActivo.Checked)
             {
-                
-                if (tglsVidaDeActivo.Checked)
+                if (txtVidaUtil.Texts == string.Empty || txtMonto.Texts == string.Empty || txtName.Texts == string.Empty ||
+                    txtDescription.Texts == string.Empty || txtValorResidual.Texts == string.Empty)
+                {
+                    MessageBox.Show("Todos los datos son requeridos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                if (decimal.Parse(txtValorResidual.Texts) > decimal.Parse(txtMonto.Texts) - (decimal.Parse(txtMonto.Texts) / 2) || int.Parse(txtVidaUtil.Texts) == 0|| int.Parse(txtVidaUtil.Texts) > 20 * n)
+                {
+                    MessageBox.Show("se encontró un problema con los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+            }
+            else
+            {
+                if (cmbVidaActivos.Texts != VidaUtilActivos.Terreno.ToString())
+                {
+                    if (cmbVidaActivos.Texts == string.Empty || txtMonto.Texts == string.Empty || txtName.Texts == string.Empty ||
+                        txtDescription.Texts == string.Empty || cmbTipoMetodo.Texts == string.Empty || txtValorResidual.Texts == string.Empty)
+                    {
+                        MessageBox.Show("Todos los datos son requeridos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (double.Parse(txtValorResidual.Texts) > double.Parse(txtMonto.Texts) - (double.Parse(txtMonto.Texts) / 2))
+                    {
+                        MessageBox.Show("se encontró un problema con los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                }
+            
+
+
+            }
+            if (tglsVidaDeActivo.Checked)
                 {
                     if ((VidaUtilActivos)cmbVidaActivos.SelectedItem is VidaUtilActivos.Terreno)
                     {
                         Asset asset = new Asset()
                         {
                             ProjectId = DataOnMemory.ProjectId,
-                            Name = txtName.Texts,
+                            Name = cmbVidaActivos.SelectedItem.ToString(),
                             Description = txtDescription.Texts,
                             Amount = decimal.Parse(txtMonto.Texts),
                             AmountResidual = 0,
@@ -91,7 +143,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                         Asset asset = new Asset()
                         {
                             ProjectId = DataOnMemory.ProjectId,
-                            Name = txtName.Texts,
+                            Name = cmbVidaActivos.SelectedItem.ToString(),
                             Description = txtDescription.Texts,
                             Amount = decimal.Parse(txtMonto.Texts),
                             AmountResidual = decimal.Parse(txtValorResidual.Texts),
@@ -147,6 +199,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
                     await unitOfWork.AssetClient.SetAssetAsync(asset);
                     ChargeDtg();
                 }
+                Limpiar();
             }
             catch (Exception ex)
             {
@@ -177,7 +230,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
             {
                 cmbVidaUtilActivosF(true);
             }
-            
+
         }
 
         private void cmbVidaUtilActivosF(bool on)
@@ -218,7 +271,54 @@ namespace EconomicMF.Forms.FormsProject.FNE
         {
             tgDep(tgDepreciacion.Checked);
         }
+        private async Task<bool> ValidarDatos(bool on)
+        {
+            var p = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+            int n = (int)Enum.GetValues<PeriodoP>().Where(a => a.ToString() == p.Period).ToList()[0]; ;
 
+            if (!on)
+            {
+                if (txtVidaUtil.Texts == String.Empty || txtMonto.Texts == String.Empty || txtName.Texts == String.Empty ||
+                    txtDescription.Texts == string.Empty || txtValorResidual.Texts == string.Empty)
+                {
+                    MessageBox.Show ("Todos los datos son requeridos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }else
+                if (decimal.Parse(txtValorResidual.Texts) > decimal.Parse(txtMonto.Texts) - (decimal.Parse(txtMonto.Texts) / 2))
+                {
+                    MessageBox.Show("se encontró un problema con los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (cmbVidaActivos.Texts != VidaUtilActivos.Terreno.ToString())
+                {
+                    if (cmbVidaActivos.Texts == String.Empty || txtMonto.Texts == String.Empty || txtName.Texts == String.Empty ||
+                        txtDescription.Texts == string.Empty || cmbTipoMetodo.Texts == string.Empty || txtValorResidual.Texts == string.Empty)
+                    {
+                        MessageBox.Show("Todos los datos son requeridos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    else if ( int.Parse(txtVidaUtil.Texts) > 20 * n || int.Parse(txtVidaUtil.Texts) == 0 || decimal.Parse(txtValorResidual.Texts) > decimal.Parse(txtMonto.Texts) - (decimal.Parse(txtMonto.Texts) / 2))
+                    {
+                        MessageBox.Show("se encontró un problema con los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    else
+                        return true;
+
+                }
+                else return true;
+
+            
+            }
+            
+        }
         private void tgDep(bool on)
         {
             if (on)
@@ -289,12 +389,23 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalnotNegative(sender, e);
+
         }
 
         private void txtValorResidual_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalnotNegative(sender, e);
+        }
+
+        private void txtVidaUtil_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

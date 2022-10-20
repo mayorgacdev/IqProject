@@ -52,11 +52,27 @@ namespace EconomicMF.Forms.FormsProject.FNE
                 txtCrecimiento.Visible = true;
             }
         }
-
+        private void Limpiar()
+        {
+            txtCosto.Texts = "";
+            txtCrecimiento.Texts = "";
+            txtEnd.Texts = "";
+            txtStart.Texts = "";
+            txtTipoDeCosto.Texts = "";
+            cmbTipodeCrecimiento.Texts = "";
+            
+        }
         private async void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (decimal.Parse(txtCosto.Texts) > 1000000000)
+                {
+                    MessageBox.Show("El monto es mayor a 1000000000", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var N = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+                Validation.ValidateStarEnd(int.Parse(txtStart.Texts), int.Parse(txtEnd.Texts), N.Duration);
                 if ((TipoCrecimiento)cmbTipodeCrecimiento.SelectedItem is not TipoCrecimiento.SinCrecimiento)
                 {
                     ProjectCost projectCost = new ProjectCost()
@@ -91,6 +107,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
                     ChargeDtg();
                 }
+                Limpiar();
             }
             catch (Exception ex)
             {
@@ -108,7 +125,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dtgFNE.SelectedRows.Count == 1)
+            if (dtgFNE.SelectedRows.Count == 1 && dtgFNE.CurrentRow != null)
             {
                 int costId = (int)dtgFNE.CurrentRow.Cells[0].Value;
                 await unitOfWork.CostClient.DeleteAsync(costId);
@@ -140,7 +157,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void txtCrecimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalNegative(sender, e);
         }
 
         private void txtStart_KeyPress(object sender, KeyPressEventArgs e)
@@ -155,7 +172,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
     }
 }

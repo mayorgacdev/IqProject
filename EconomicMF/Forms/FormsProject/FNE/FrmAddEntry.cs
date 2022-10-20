@@ -59,11 +59,22 @@ namespace EconomicMF.Forms.FormsProject.FNE
             dtgFNE.Columns[0].Visible = false;
             dtgFNE.Columns[1].Visible = false;
         }
+        private void Limpiar()
+        {
+            txtIngreso.Texts = "";
+            txtCrecimiento.Texts = "";
+            txtEnd.Texts = "";
+            txtStart.Texts = "";
+            txtTipoIngreso.Texts = "";
+            cmbTipodeCrecimiento.Texts = "";
+        }
 
-        private async void btnAgregar_Click_1(object sender, EventArgs e)
+            private async void btnAgregar_Click_1(object sender, EventArgs e)
         {
             try
             {
+                var N = await unitOfWork.ProjectClient.GetAsync(DataOnMemory.ProjectId);
+                Validation.ValidateStarEnd(int.Parse(txtStart.Texts), int.Parse(txtEnd.Texts), N.Duration);
                 TipoCrecimiento crecimiento = (TipoCrecimiento)cmbTipodeCrecimiento.SelectedItem;
                 if (crecimiento != TipoCrecimiento.SinCrecimiento && crecimiento
                     is TipoCrecimiento.Aritmetico || crecimiento is TipoCrecimiento.Geometrico)
@@ -102,6 +113,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
                     ChargeDtg();
                 }
+                Limpiar();
             }
             catch (Exception ex)
             {
@@ -111,7 +123,7 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dtgFNE.SelectedRows.Count == 1)
+            if (dtgFNE.SelectedRows.Count == 1 && dtgFNE.CurrentRow != null)
             {
                 int entryId = (int)dtgFNE.CurrentRow.Cells[0].Value;
                 await unitOfWork.ProjectEntryClient.DeleteAsync(entryId);
@@ -143,12 +155,12 @@ namespace EconomicMF.Forms.FormsProject.FNE
 
         private void txtIngreso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalnotNegative(sender, e);
         }
 
         private void txtCrecimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validation.OnlyNumbers(e);
+            Validation.ValidateDecimalNegative(sender, e);
         }
 
         private void txtStart_KeyPress(object sender, KeyPressEventArgs e)
